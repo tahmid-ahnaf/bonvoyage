@@ -1,8 +1,8 @@
 #include "variablesLevelTwo.h"
 
 
-int CHARACTER2_FRAME_WIDTH, CHARACTER2_FRAME_HEIGHT;
-        int CHARACTER2_TEXTURE_WIDTH, CHARACTER2_TEXTURE_HEIGHT;
+        int levelTwoCharacterFrameWidth, levelTwoCharacterFrameHeight,
+        levelTwoCharacterTextureWidth, levelTwoCharacterTextureHeight;
 
         float character2Frametime = 0;
         int character2Prevtime = 0;
@@ -20,11 +20,11 @@ int CHARACTER2_FRAME_WIDTH, CHARACTER2_FRAME_HEIGHT;
         int rectx, recty;
         int COIN_TEXTURE_HEIGHT, COIN_TEXTURE_WIDTH;
         int RANDOM_GENERATOR;
-        int DELAY_COUNT_FOR_POINT_POPUP=0, DELAY_COUNT_FOR_HEARTS =0, DELAY_COUNT_FOR_LIFE_RECT_CHANGE=0, DELAY_COUNT_FOR_EXPLOSION=0, DELAY_COUNT_FOR_CHARACTER_COLLISION_EFFECT =0;
-        int HEART_TEXTURE_WIDTH, HEART_TEXTURE_HEIGHT;
-        int CURRENT_LIFE =100;
-        int LIFE_PERCENTAGE = 0;
-        char LIFE_STRING[256] = {'0'};
+        int DelayCountForPointPopUp=0, DelayCountForHearts =0, DelayCountForLifeRectChange=0, DelayCountForExplosion=0, DelayCountForCharacterCollisionEffect =0;
+        int heartTextureWidth, heartTextureHeight;
+        int CurrentLife =100;
+        int LifePercentage = 0;
+        char LifeString[256] = {'0'};
         int highScore;
         int currentScore = 0;
         char scoreString[256];

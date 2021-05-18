@@ -14,16 +14,16 @@ void collisionsLevelTwo()
             levelTwoCoinPointPopUp.rect.h = 50;
             levelTwoCoinPointPopUp.rect.x = levelTwoCoin1.rect.x;
             levelTwoCoinPointPopUp.rect.y = levelTwoCoin1.rect.y;
-            DELAY_COUNT_FOR_POINT_POPUP++;
+            DelayCountForPointPopUp++;
         }
-        if (DELAY_COUNT_FOR_POINT_POPUP > 0)
+        if (DelayCountForPointPopUp > 0)
         {
-            DELAY_COUNT_FOR_POINT_POPUP++;
+            DelayCountForPointPopUp++;
             levelTwoCoinPointPopUp.rect.y -= 5;
         }
-        if (DELAY_COUNT_FOR_POINT_POPUP == 40)
+        if (DelayCountForPointPopUp == 40)
         {
-            DELAY_COUNT_FOR_POINT_POPUP = 0;
+            DelayCountForPointPopUp = 0;
             levelTwoCoinPointPopUp.rect.w = 0;
             levelTwoCoinPointPopUp.rect.h = 0;
         }
@@ -40,16 +40,16 @@ void collisionsLevelTwo()
             levelTwoCoinPointPopUp.rect.h = 50;
             levelTwoCoinPointPopUp.rect.x = levelTwoCoin2.rect.x;
             levelTwoCoinPointPopUp.rect.y = levelTwoCoin2.rect.y;
-            DELAY_COUNT_FOR_POINT_POPUP++;
+            DelayCountForPointPopUp++;
         }
-        if (DELAY_COUNT_FOR_POINT_POPUP > 0)
+        if (DelayCountForPointPopUp > 0)
         {
-            DELAY_COUNT_FOR_POINT_POPUP++;
+            DelayCountForPointPopUp++;
             levelTwoCoinPointPopUp.rect.y -= 5;
         }
-        if (DELAY_COUNT_FOR_POINT_POPUP == 40)
+        if (DelayCountForPointPopUp == 40)
         {
-            DELAY_COUNT_FOR_POINT_POPUP = 0;
+            DelayCountForPointPopUp = 0;
             levelTwoCoinPointPopUp.rect.w = 0;
             levelTwoCoinPointPopUp.rect.h = 0;
         }
@@ -59,36 +59,36 @@ void collisionsLevelTwo()
         if (COLLISION_3)
         {
             Mix_PlayMusic(explosionsound, 1);
-            LIFE_PERCENTAGE += 200;
+            LifePercentage += 200;
             levelTwoExplosion.rect.w = (int)333 / 1.5;
             levelTwoExplosion.rect.h = (int)320 / 1.5;
             levelTwoExplosion.rect.x = levelTwoBomb.rect.x;
             levelTwoExplosion.rect.y = levelTwoBomb.rect.y;
             levelTwoBomb.rect.w = 0;
             levelTwoBomb.rect.h = 0;
-            DELAY_COUNT_FOR_EXPLOSION = 0;
+            DelayCountForExplosion = 0;
             
             levelTwoWindowCharacter.surface = IMG_Load("images/level2obstacles/sonicsprite2.png");
             levelTwoWindowCharacter.tex = SDL_CreateTextureFromSurface(app.rend, levelTwoWindowCharacter.surface);
-            DELAY_COUNT_FOR_CHARACTER_COLLISION_EFFECT=0;
-            DELAY_COUNT_FOR_CHARACTER_COLLISION_EFFECT++;
+            DelayCountForCharacterCollisionEffect=0;
+            DelayCountForCharacterCollisionEffect++;
         }
         else
         {
-            DELAY_COUNT_FOR_EXPLOSION++;
+            DelayCountForExplosion++;
         }
-        if (DELAY_COUNT_FOR_EXPLOSION == 10 && levelTwoBomb.rect.w == 0)
+        if (DelayCountForExplosion == 10 && levelTwoBomb.rect.w == 0)
         {
              levelTwoExplosion.rect.w = 0;
              levelTwoExplosion.rect.h = 0;
-            DELAY_COUNT_FOR_EXPLOSION = 0;
+            DelayCountForExplosion = 0;
         }
 
         SDL_bool COLLISION_4 = SDL_HasIntersection(&levelTwoInvisibleBorder.rect, &levelTwoWindowCharacterPosition.rect);
 
         if (COLLISION_4)
         {
-           LIFE_PERCENTAGE += 20;
+           LifePercentage += 20;
            levelTwoWindowCharacterPosition.rect.y = levelTwoInvisibleBorder.rect.y + levelTwoInvisibleBorder.rect.h + 20;
         }
 
@@ -104,15 +104,15 @@ void collisionsLevelTwo()
         // levelTwoWindow.lifescorertext.rect.y = (int)69;
 
 
-        // CURRENT_LIFE = 100 - (LIFE_PERCENTAGE / 20);
-        // sprintf(LIFE_STRING, "%i", CURRENT_LIFE);
+        // CurrentLife = 100 - (LifePercentage / 20);
+        // sprintf(LIFE_STRING, "%i", CurrentLife);
 
-        // if(CURRENT_LIFE<=10)
+        // if(CurrentLife<=10)
         // {
         //     CHARACTER2 = IMG_Load("images/level2obstacles/sonicsprite3.png");
         //     CHARACTER2_TEX = SDL_CreateTextureFromSurface(rend, CHARACTER2);
         // }
-        // else if(DELAY_COUNT_FOR_CHARACTER_COLLISION_EFFECT==0)
+        // else if(DelayCountForCharacterCollisionEffect==0)
         // {
         //     CHARACTER2 = IMG_Load("images/level2obstacles/sonicsprite.png");
         //     CHARACTER2_TEX = SDL_CreateTextureFromSurface(rend, CHARACTER2);
@@ -125,9 +125,9 @@ void collisionsLevelTwo()
             levelTwoHeart.rect.w = 0;
             levelTwoHeart.rect.h = 0;
 
-            if (CURRENT_LIFE >= 95)
+            if (CurrentLife >= 95)
             {
-               LIFE_PERCENTAGE = 0;
+               LifePercentage = 0;
             }
 
            levelTwoLifeBonusPopUp.rect.w = 50;
@@ -144,13 +144,13 @@ void collisionsLevelTwo()
 
     //     if(abs(levelTwoLifeBonusPopUp.rect.x -levelTwoWindow.lifescorertext.rect.x )<=30)
     //       {
-    //         if(CURRENT_LIFE>=95 &&levelTwoLifeBonusPopUp.rect.w==50)
+    //         if(CurrentLife>=95 &&levelTwoLifeBonusPopUp.rect.w==50)
     //         {
-    //            LIFE_PERCENTAGE=0;
+    //            LifePercentage=0;
     //         }
     //     else if(levelTwoLifeBonusPopUp.rect.w==50)
     //       {
-    //         LIFE_PERCENTAGE-=100;
+    //         LifePercentage-=100;
     //         Mix_PlayMusic(pointgainsound, 1);
     //         font = TTF_OpenFont("Freshman.ttf", 40);
     //         levelTwoWindow.lifescorertext.rect.x =1154;

@@ -1,8 +1,8 @@
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_ttf.h>
 #include "preprocessors.h"
-    extern    int CHARACTER2_FRAME_WIDTH, CHARACTER2_FRAME_HEIGHT;
-    extern    int CHARACTER2_TEXTURE_WIDTH, CHARACTER2_TEXTURE_HEIGHT;
+    extern    int levelTwoCharacterFrameWidth, levelTwoCharacterFrameHeight;
+    extern    int levelTwoCharacterTextureWidth, levelTwoCharacterTextureHeight;
 
     extern    float character2Frametime;
     extern    int character2Prevtime;
@@ -20,11 +20,11 @@
     extern    int rectx, recty;
     extern    int COIN_TEXTURE_HEIGHT, COIN_TEXTURE_WIDTH;
     extern    int RANDOM_GENERATOR;
-    extern    int DELAY_COUNT_FOR_POINT_POPUP, DELAY_COUNT_FOR_HEARTS, DELAY_COUNT_FOR_LIFE_RECT_CHANGE, DELAY_COUNT_FOR_EXPLOSION, DELAY_COUNT_FOR_CHARACTER_COLLISION_EFFECT;
-    extern    int HEART_TEXTURE_WIDTH, HEART_TEXTURE_HEIGHT;
-    extern    int CURRENT_LIFE;
-    extern    int LIFE_PERCENTAGE;
-    extern    char LIFE_STRING[256];
+    extern    int DelayCountForPointPopUp, DelayCountForHearts, DelayCountForLifeRectChange, DelayCountForExplosion, DelayCountForCharacterCollisionEffect;
+    extern    int heartTextureWidth, heartTextureHeight;
+    extern    int CurrentLife;
+    extern    int LifePercentage;
+    extern    char LifeString[256];
     extern    int highScore;
     extern    int currentScore ;
     extern    char scoreString[256];
@@ -40,11 +40,11 @@
     extern    int isspaceclicked;
     extern    int iflifeatstake;
     extern   float levelTwoSkyAnimationSpeed,
-        levelTwoMountainsAnimationSpeed,
-        levelTwoTreeShadeAnimationSpeed,
-        levelTwoTreesAnimationSpeed,
-        levelTwoTrackAnimationSpeed,
-        levelTwoCloudsAnimationSpeed,
-        levelTwoBirdsAnimationSpeed,
-        levelTwoBOX_X_POS,
-        levelTwoBOX_Y_POS;
+                   levelTwoMountainsAnimationSpeed,
+                   levelTwoTreeShadeAnimationSpeed,
+                   levelTwoTreesAnimationSpeed,
+                   levelTwoTrackAnimationSpeed,
+                   levelTwoCloudsAnimationSpeed,
+                   levelTwoBirdsAnimationSpeed,
+                   levelTwoBOX_X_POS,
+                   levelTwoBOX_Y_POS;

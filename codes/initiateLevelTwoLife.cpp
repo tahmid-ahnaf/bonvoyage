@@ -37,10 +37,10 @@ void LevelTwoLifeLoad()
    
 
     levelTwoRotatingHeart.rect;
-    SDL_QueryTexture(levelTwoHeart.tex, NULL, NULL, &HEART_TEXTURE_HEIGHT, &HEART_TEXTURE_WIDTH);
+    SDL_QueryTexture(levelTwoHeart.tex, NULL, NULL, &heartTextureHeight, &heartTextureWidth);
 
-    int HEART_FRAME_WIDTH = HEART_TEXTURE_WIDTH / 2;
-    int HEART_FRAME_HEIGHT = HEART_TEXTURE_HEIGHT / 2;
+    int HEART_FRAME_WIDTH = heartTextureWidth / 2;
+    int HEART_FRAME_HEIGHT = heartTextureHeight / 2;
 
     levelTwoRotatingHeart.rect.w = (int)HEART_FRAME_WIDTH;
     levelTwoRotatingHeart.rect.h = (int)HEART_FRAME_HEIGHT;

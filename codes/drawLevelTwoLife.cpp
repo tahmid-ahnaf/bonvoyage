@@ -43,31 +43,31 @@ void updateLifeBonusPopupFunction()
 
         if(abs(levelTwoLifeBonusPopUp.rect.x - levelTwoLifeScoreText.rect.x )<=30)
           {
-            if(CURRENT_LIFE>=95 && levelTwoLifeBonusPopUp.rect.w==50)
+            if(CurrentLife>=95 && levelTwoLifeBonusPopUp.rect.w==50)
             {
-                LIFE_PERCENTAGE=0;
+                LifePercentage=0;
             }
         else if(levelTwoLifeBonusPopUp.rect.w==50)
           {
-            LIFE_PERCENTAGE-=100;
+            LifePercentage-=100;
             Mix_PlayMusic(pointgainsound, 1);
             font = TTF_OpenFont("Freshman.ttf", 40);
             levelTwoLifeScoreText.rect.x =1154;
             levelTwoLifeScoreText.rect.y =62;
-            DELAY_COUNT_FOR_LIFE_RECT_CHANGE++;
+            DelayCountForLifeRectChange++;
           }
 
         levelTwoLifeBonusPopUp.rect.w = 0;
         levelTwoLifeBonusPopUp.rect.h = 0;
           }
 
-        if(DELAY_COUNT_FOR_LIFE_RECT_CHANGE>0)
+        if(DelayCountForLifeRectChange>0)
         {
-           DELAY_COUNT_FOR_LIFE_RECT_CHANGE++;
+           DelayCountForLifeRectChange++;
         }
-        if(DELAY_COUNT_FOR_LIFE_RECT_CHANGE==15)
+        if(DelayCountForLifeRectChange==15)
         {
-            DELAY_COUNT_FOR_LIFE_RECT_CHANGE=0;
+            DelayCountForLifeRectChange=0;
             // font =  TTF_OpenFont("Freshman.ttf", 30);
             levelTwoLifeScoreText.rect.x = (int)1163;
             levelTwoLifeScoreText.rect.y = (int)69;
@@ -76,19 +76,19 @@ void updateLifeBonusPopupFunction()
 
 void updateHeartPosition()
 {
-   CURRENT_LIFE = 100 - (LIFE_PERCENTAGE / 20);
-        sprintf(LIFE_STRING, "%i", CURRENT_LIFE);
-    if (CURRENT_LIFE <= 95)
+   CurrentLife = 100 - (LifePercentage / 20);
+        sprintf(LifeString, "%i", CurrentLife);
+    if (CurrentLife <= 95)
         {
-            if (DELAY_COUNT_FOR_HEARTS == 0)
+            if (DelayCountForHearts == 0)
             {
                 levelTwoHeart.rect.w = 0;
                 levelTwoHeart.rect.h = 0;
             }
 
-            DELAY_COUNT_FOR_HEARTS++;
+            DelayCountForHearts++;
 
-            if (DELAY_COUNT_FOR_HEARTS == 30)
+            if (DelayCountForHearts == 30)
             {
                 levelTwoHeart.rect.w = 100;
                 levelTwoHeart.rect.h = 100;
@@ -100,14 +100,14 @@ void updateHeartPosition()
                     levelTwoHeart.rect.y = 500;
                 }
             }
-            if (DELAY_COUNT_FOR_HEARTS == 300)
+            if (DelayCountForHearts == 300)
             {
                 levelTwoHeart.rect.w = 0;
                 levelTwoHeart.rect.h = 0;
             }
-            if (DELAY_COUNT_FOR_HEARTS == 500)
+            if (DelayCountForHearts == 500)
             {
-                DELAY_COUNT_FOR_HEARTS = 0;
+                DelayCountForHearts = 0;
             }
         }
         else
@@ -122,14 +122,14 @@ void updateHeartPosition()
 
 void lifeatstakeaftereffect()
 {
-    if(CURRENT_LIFE<=10 && iflifeatstake==0)
+    if(CurrentLife<=10 && iflifeatstake==0)
         {
             iflifeatstake=1;
             levelTwoWindowCharacter.surface = IMG_Load("images/level2obstacles/sonicsprite3.png");
             levelTwoWindowCharacter.tex = SDL_CreateTextureFromSurface(app.rend, levelTwoWindowCharacter.surface);
             
         }
-        else if(CURRENT_LIFE>10 && iflifeatstake==1)
+        else if(CurrentLife>10 && iflifeatstake==1)
         {   
             iflifeatstake=0;
             levelTwoWindowCharacter.surface = IMG_Load("images/level2obstacles/sonicsprite.png");
@@ -140,7 +140,7 @@ void lifeatstakeaftereffect()
 
 void drawLevelTwoLifeText()
 {  
-        levelTwoLifeScoreText.surface = TTF_RenderText_Solid( variables.font, LIFE_STRING , variables.color);
+        levelTwoLifeScoreText.surface = TTF_RenderText_Solid( variables.font, LifeString , variables.color);
         levelTwoLifeScoreText.tex = SDL_CreateTextureFromSurface(app.rend, levelTwoLifeScoreText.surface);
         levelTwoLifeScoreText.rect;
         SDL_QueryTexture(levelTwoLifeScoreText.tex, NULL, NULL, &levelTwoLifeScoreText.rect.w, &levelTwoLifeScoreText.rect.h);

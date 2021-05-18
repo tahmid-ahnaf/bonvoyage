@@ -221,16 +221,16 @@ void leveltwowindow(void)
     int PREV_TIME = 0;
     float DELTA_TIME = 0;
 
-    SDL_QueryTexture(levelTwoWindowCharacter.tex, NULL, NULL, &CHARACTER2_TEXTURE_HEIGHT, &CHARACTER2_TEXTURE_WIDTH);
+    SDL_QueryTexture(levelTwoWindowCharacter.tex, NULL, NULL, &levelTwoCharacterTextureHeight, &levelTwoCharacterTextureWidth);
 
-    CHARACTER2_FRAME_WIDTH = CHARACTER2_TEXTURE_WIDTH/ 2;
-    CHARACTER2_FRAME_HEIGHT = CHARACTER2_TEXTURE_HEIGHT / 2;
-    levelTwoWindowCharacter.rect.w = CHARACTER2_FRAME_WIDTH;
-    levelTwoWindowCharacter.rect.h = CHARACTER2_FRAME_HEIGHT;
+    levelTwoCharacterFrameWidth = levelTwoCharacterTextureWidth/ 2;
+    levelTwoCharacterFrameHeight = levelTwoCharacterTextureHeight / 2;
+    levelTwoWindowCharacter.rect.w = levelTwoCharacterFrameWidth;
+    levelTwoWindowCharacter.rect.h = levelTwoCharacterFrameHeight;
     levelTwoWindowCharacter.rect.x = 0;
     levelTwoWindowCharacter.rect.y = 0;
-    levelTwoWindowCharacterPosition.rect.w = CHARACTER2_FRAME_WIDTH;
-    levelTwoWindowCharacterPosition.rect.h = CHARACTER2_FRAME_HEIGHT;
+    levelTwoWindowCharacterPosition.rect.w = levelTwoCharacterFrameWidth;
+    levelTwoWindowCharacterPosition.rect.h = levelTwoCharacterFrameHeight;
     levelTwoWindowCharacterPosition.rect.x = 30;
     levelTwoWindowCharacterPosition.rect.y =720;
     float CHARACTER2_X_POS = (float)100;

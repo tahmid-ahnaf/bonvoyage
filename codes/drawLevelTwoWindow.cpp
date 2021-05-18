@@ -8,41 +8,43 @@ void updateAnimationSpeedForLevelTwoWindow()
     character2Deltatime = (character2Currentime - character2Prevtime) / 280.0f;
 
      
-    if(DELAY_COUNT_FOR_CHARACTER_COLLISION_EFFECT==250)
+    if(DelayCountForCharacterCollisionEffect==250)
     {
-     if(CURRENT_LIFE>10){
+     if(CurrentLife>10)
+     {
    levelTwoWindowCharacter.surface = IMG_Load("images/level2obstacles/sonicsprite.png");
        levelTwoWindowCharacter.tex = SDL_CreateTextureFromSurface(app.rend,levelTwoWindowCharacter.surface);
-     }else{
+     }else
+     {
          levelTwoWindowCharacter.surface = IMG_Load("images/level2obstacles/sonicsprite3.png");
        levelTwoWindowCharacter.tex = SDL_CreateTextureFromSurface(app.rend,levelTwoWindowCharacter.surface); 
      }
-       DELAY_COUNT_FOR_CHARACTER_COLLISION_EFFECT=0; 
+       DelayCountForCharacterCollisionEffect=0; 
     
     }
-    if(DELAY_COUNT_FOR_CHARACTER_COLLISION_EFFECT>0)
+    if(DelayCountForCharacterCollisionEffect>0)
     {
-       DELAY_COUNT_FOR_CHARACTER_COLLISION_EFFECT++;
+       DelayCountForCharacterCollisionEffect++;
     }
 
-  rectx =levelTwoWindowCharacter.rect.x;   
-recty =levelTwoWindowCharacter.rect.y ;
- character2Frametime += character2Deltatime;
+    rectx =levelTwoWindowCharacter.rect.x;   
+    recty =levelTwoWindowCharacter.rect.y ;
+    character2Frametime += character2Deltatime;
 
  
         if (character2Frametime >= (0.25f))
         {
             character2Frametime = 0;
-          rectx += CHARACTER2_FRAME_WIDTH;
-        if(rectx == CHARACTER2_TEXTURE_WIDTH && recty == 130)
+          rectx += levelTwoCharacterFrameWidth;
+        if(rectx == levelTwoCharacterTextureWidth && recty == 130)
         {
            recty = 0; 
             rectx = 0;
         }
-        else  if (rectx== CHARACTER2_TEXTURE_WIDTH)
+        else  if (rectx== levelTwoCharacterTextureWidth)
         {
            rectx = 0;
-            recty = CHARACTER2_FRAME_HEIGHT; 
+            recty = levelTwoCharacterFrameHeight; 
         } 
     } 
 
@@ -64,7 +66,7 @@ collisionsLevelTwo();
 lifeatstakeaftereffect();
   updateLifeBonusPopupFunction();
    updateScoreLevel2();
-     sprintf(LIFE_STRING, "%i", CURRENT_LIFE);
+     sprintf(LifeString, "%i", CurrentLife);
 
 
  

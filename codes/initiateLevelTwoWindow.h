@@ -1,19 +1,31 @@
 #include "commonHeaders.h"
+
 extern App app;
-extern Windows welcome_window, newgameWindow, levelOneWindow, levelTwoWindow;
+extern component
+
+    levelTwoWindowSky,
+    levelTwoWindowMoon,
+    levelTwoWindowMountains,
+    levelTwoWindowTreeShade,
+    levelTwoWindowClouds,
+    levelTwoWindowTrack,
+    levelTwoWindowCharacter,
+  
+    levelTwoWindowCharacterPosition,
+    levelTwoBox, levelTwoInvisibleBorder, levelTwoCoin1, levelTwoCoin2, levelTwoRotatingCoin, levelTwoCoinPointPopUp, levelTwoBomb, levelTwoPlane, levelTwoExplosion,
+    levelTwoHeart, levelTwoRotatingHeart, levelTwoLifeBonusPopUp, levelTwoLifeScoreDisplay, levelTwoHeartDisplay, levelTwoScoreText, levelTwoHighScoreText,
+    window,
+    levelOneWindowCoins[4],
+    characterFramePosition,
+    back;
+
 extern Variables variables;
-extern void boxload(void);
+extern void LevelTwoBoxLoad(void);
 extern void BoxCleanUp(void);
-extern void  Level2Coinsload(void);
-extern void  Level2CoinsCleanUp(void);
-extern void  heartload(void);
-
-// extern void invisibleborderload(void);
-// extern void InvisibleBorderCleanUp(void);
-extern void bombandplaneload(void);
+extern void LevelTwoCoinsload(void);
+extern void LevelTwoCoinsCleanUp(void);
+extern void Level2CoinsPopCleanUp(void); 
+extern void BombandPlaneLoad(void);
 extern void BombandPlaneCleanUp(void);
-extern void  HeartCleanUp(void);
-extern void Leve2LifeTextCleanUp();
-extern void popuppointcleanup();
-
-extern void LoadScoreFileLevel2();
+extern void LevelTwoLifeLoad(void);
+extern void LevelTwoLoadScoreFile();

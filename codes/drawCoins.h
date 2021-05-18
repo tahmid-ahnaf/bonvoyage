@@ -1,7 +1,10 @@
 #include "commonHeaders.h"
-
+// #include "allstructs.h"
 extern App app;
-extern Windows welcome_window, newgameWindow, levelOneWindow, levelTwoWindow;
-extern Variables variables;
+extern component
 
-// extern void updateScore(void);
+    levelOneWindowCoins[5],
+
+    back;
+
+extern Variables variables;

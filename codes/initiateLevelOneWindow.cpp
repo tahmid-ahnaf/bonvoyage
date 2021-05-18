@@ -4,9 +4,9 @@ void levelonewindow(void)
 {
     //sky
 
-    levelOneWindow.sky.surface = IMG_Load("images/levelone/nsky.png");
+    window.surface = IMG_Load("images/levelone/newsky.png");
 
-    if (!levelOneWindow.sky.surface)
+    if (!window.surface)
     {
         printf("sky_BUTTON Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -15,9 +15,9 @@ void levelonewindow(void)
         exit(1);
     }
 
-    levelOneWindow.sky.tex = SDL_CreateTextureFromSurface(app.rend, levelOneWindow.sky.surface);
-
-    if (!levelOneWindow.sky.tex)
+    levelOneWindowSky.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
+    if (!levelOneWindowSky.tex)
     {
         printf("sky_  Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -25,17 +25,17 @@ void levelonewindow(void)
         SDL_Quit();
         exit(1);
     }
-    levelOneWindow.sky.rect;
-    SDL_QueryTexture(levelOneWindow.sky.tex, NULL, NULL, &levelOneWindow.sky.rect.w, &levelOneWindow.sky.rect.h);
-    levelOneWindow.sky.rect.w = (int)WINDOW_WIDTH;
-    levelOneWindow.sky.rect.h = (int)WINDOW_HEIGHT;
-    levelOneWindow.sky.rect.x = (int)0;
-    levelOneWindow.sky.rect.y = (int)0;
+    levelOneWindowSky.rect;
+    SDL_QueryTexture(levelOneWindowSky.tex, NULL, NULL, &levelOneWindowSky.rect.w, &levelOneWindowSky.rect.h);
+    levelOneWindowSky.rect.w = (int)WINDOW_WIDTH;
+    levelOneWindowSky.rect.h = (int)WINDOW_HEIGHT;
+    levelOneWindowSky.rect.x = (int)0;
+    levelOneWindowSky.rect.y = (int)0;
 
     //sun
-    levelOneWindow.sun.surface = IMG_Load("images/levelone/sun.png");
+    window.surface = IMG_Load("images/levelone/sun-min.png");
 
-    if (!levelOneWindow.sun.surface)
+    if (!window.surface)
     {
         printf("sun_BUTTON Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -44,9 +44,9 @@ void levelonewindow(void)
         exit(1);
     }
 
-    levelOneWindow.sun.tex = SDL_CreateTextureFromSurface(app.rend, levelOneWindow.sun.surface);
-
-    if (!levelOneWindow.sun.tex)
+    levelOneWindowSun.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
+    if (!levelOneWindowSun.tex)
     {
         printf("mountains_  Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -54,17 +54,17 @@ void levelonewindow(void)
         SDL_Quit();
         exit(1);
     }
-    levelOneWindow.sun.rect;
-    SDL_QueryTexture(levelOneWindow.sun.tex, NULL, NULL, &levelOneWindow.sun.rect.w, &levelOneWindow.sun.rect.h);
-    levelOneWindow.sun.rect.w = (int)110;
-    levelOneWindow.sun.rect.h = (int)110;
-    levelOneWindow.sun.rect.x = WINDOW_WIDTH / 2;
-    levelOneWindow.sun.rect.y = 150;
+    levelOneWindowSun.rect;
+    SDL_QueryTexture(levelOneWindowSun.tex, NULL, NULL, &levelOneWindowSun.rect.w, &levelOneWindowSun.rect.h);
+    levelOneWindowSun.rect.w = (int)110;
+    levelOneWindowSun.rect.h = (int)110;
+    levelOneWindowSun.rect.x = WINDOW_WIDTH / 2;
+    levelOneWindowSun.rect.y = 150;
 
     //clouds
-    levelOneWindow.clouds.surface = IMG_Load("images/levelone/clouds.png");
+    window.surface = IMG_Load("images/levelone/clouds-min.png");
 
-    if (!levelOneWindow.clouds.surface)
+    if (!window.surface)
     {
         printf("clouds_BUTTON Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -73,9 +73,9 @@ void levelonewindow(void)
         exit(1);
     }
 
-    levelOneWindow.clouds.tex = SDL_CreateTextureFromSurface(app.rend, levelOneWindow.clouds.surface);
-
-    if (!levelOneWindow.clouds.tex)
+    levelOneWindowClouds.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
+    if (!levelOneWindowClouds.tex)
     {
         printf("clouds Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -83,17 +83,17 @@ void levelonewindow(void)
         SDL_Quit();
         exit(1);
     }
-    levelOneWindow.clouds.rect;
-    SDL_QueryTexture(levelOneWindow.clouds.tex, NULL, NULL, &levelOneWindow.clouds.rect.w, &levelOneWindow.clouds.rect.h);
-    levelOneWindow.clouds.rect.w = (int)WINDOW_WIDTH - 200;
-    levelOneWindow.clouds.rect.h = (int)226;
-    levelOneWindow.clouds.rect.x = (int)0;
-    levelOneWindow.clouds.rect.y = 50;
+    levelOneWindowClouds.rect;
+    SDL_QueryTexture(levelOneWindowClouds.tex, NULL, NULL, &levelOneWindowClouds.rect.w, &levelOneWindowClouds.rect.h);
+    levelOneWindowClouds.rect.w = (int)WINDOW_WIDTH - 200;
+    levelOneWindowClouds.rect.h = (int)226;
+    levelOneWindowClouds.rect.x = (int)0;
+    levelOneWindowClouds.rect.y = 50;
     //mountains
 
-    levelOneWindow.mountains.surface = IMG_Load("images/levelone/mountains.png");
+    window.surface = IMG_Load("images/levelone/newmountains.png");
 
-    if (!levelOneWindow.mountains.surface)
+    if (!window.surface)
     {
         printf("mountains_BUTTON Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -102,9 +102,9 @@ void levelonewindow(void)
         exit(1);
     }
 
-    levelOneWindow.mountains.tex = SDL_CreateTextureFromSurface(app.rend, levelOneWindow.mountains.surface);
-
-    if (!levelOneWindow.mountains.tex)
+    levelOneWindowMountains.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
+    if (!levelOneWindowMountains.tex)
     {
         printf("mountains_  Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -112,17 +112,17 @@ void levelonewindow(void)
         SDL_Quit();
         exit(1);
     }
-    levelOneWindow.mountains.rect;
-    SDL_QueryTexture(levelOneWindow.mountains.tex, NULL, NULL, &levelOneWindow.mountains.rect.w, &levelOneWindow.mountains.rect.h);
-    levelOneWindow.mountains.rect.w = (int)WINDOW_WIDTH;
-    levelOneWindow.mountains.rect.h = (int)650;
-    levelOneWindow.mountains.rect.x = (int)0;
-    levelOneWindow.mountains.rect.y = (int)220;
+    levelOneWindowMountains.rect;
+    SDL_QueryTexture(levelOneWindowMountains.tex, NULL, NULL, &levelOneWindowMountains.rect.w, &levelOneWindowMountains.rect.h);
+    levelOneWindowMountains.rect.w = (int)WINDOW_WIDTH;
+    levelOneWindowMountains.rect.h = (int)584;
+    levelOneWindowMountains.rect.x = (int)0;
+    levelOneWindowMountains.rect.y = (int)180;
 
     //treeshade
-    levelOneWindow.treeshade.surface = IMG_Load("images/levelone/treeshade.png");
+    window.surface = IMG_Load("images/levelone/treeshadegreen.png");
 
-    if (!levelOneWindow.treeshade.surface)
+    if (!window.surface)
     {
         printf("treeshade_BUTTON Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -131,9 +131,9 @@ void levelonewindow(void)
         exit(1);
     }
 
-    levelOneWindow.treeshade.tex = SDL_CreateTextureFromSurface(app.rend, levelOneWindow.treeshade.surface);
-
-    if (!levelOneWindow.treeshade.tex)
+    levelOneWindowTreeShade.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
+    if (!levelOneWindowTreeShade.tex)
     {
         printf("treeshade_  Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -141,17 +141,18 @@ void levelonewindow(void)
         SDL_Quit();
         exit(1);
     }
-    levelOneWindow.treeshade.rect;
-    SDL_QueryTexture(levelOneWindow.treeshade.tex, NULL, NULL, &levelOneWindow.treeshade.rect.w, &levelOneWindow.treeshade.rect.h);
-    levelOneWindow.treeshade.rect.w = (int)WINDOW_WIDTH;
-    levelOneWindow.treeshade.rect.h = (int)380;
-    levelOneWindow.treeshade.rect.x = (int)0;
-    levelOneWindow.treeshade.rect.y = (int)385;
+    levelOneWindowTreeShade.rect;
+    SDL_QueryTexture(levelOneWindowTreeShade.tex, NULL, NULL, &levelOneWindowTreeShade.rect.w, &levelOneWindowTreeShade.rect.h);
+    levelOneWindowTreeShade.rect.w = (int)WINDOW_WIDTH;
+    levelOneWindowTreeShade.rect.h = (int)357;
+    //  levelOneWindowTreeShade.rect.h = (int)445;
+    levelOneWindowTreeShade.rect.x = (int)0;
+    levelOneWindowTreeShade.rect.y = (int)330;
 
     // trees
-    levelOneWindow.trees.surface = IMG_Load("images/levelone/trees.png");
+    window.surface = IMG_Load("images/levelone/newtrees.png");
 
-    if (!levelOneWindow.trees.surface)
+    if (!window.surface)
     {
         printf("trees_BUTTON Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -160,9 +161,9 @@ void levelonewindow(void)
         exit(1);
     }
 
-    levelOneWindow.trees.tex = SDL_CreateTextureFromSurface(app.rend, levelOneWindow.trees.surface);
-
-    if (!levelOneWindow.trees.tex)
+    levelOneWindowTrees.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
+    if (!levelOneWindowTrees.tex)
     {
         printf("trees_  Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -170,19 +171,19 @@ void levelonewindow(void)
         SDL_Quit();
         exit(1);
     }
-    levelOneWindow.trees.rect;
-    SDL_QueryTexture(levelOneWindow.trees.tex, NULL, NULL, &levelOneWindow.trees.rect.w, &levelOneWindow.trees.rect.h);
-    levelOneWindow.trees.rect.w = (int)WINDOW_WIDTH;
-    levelOneWindow.trees.rect.h = (int)266;
-    levelOneWindow.trees.rect.x = (int)0;
-    levelOneWindow.trees.rect.y = (int)500;
+    levelOneWindowTrees.rect;
+    SDL_QueryTexture(levelOneWindowTrees.tex, NULL, NULL, &levelOneWindowTrees.rect.w, &levelOneWindowTrees.rect.h);
+    levelOneWindowTrees.rect.w = (int)WINDOW_WIDTH;
+    levelOneWindowTrees.rect.h = (int)207;
+    levelOneWindowTrees.rect.x = (int)0;
+    levelOneWindowTrees.rect.y = (int)580;
 
     //clouds
 
     //track
-    levelOneWindow.track.surface = IMG_Load("images/levelone/daytrack.png");
+    window.surface = IMG_Load("images/levelone/newtrack.png");
 
-    if (!levelOneWindow.track.surface)
+    if (!window.surface)
     {
         printf("track_BUTTON Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -191,9 +192,9 @@ void levelonewindow(void)
         exit(1);
     }
 
-    levelOneWindow.track.tex = SDL_CreateTextureFromSurface(app.rend, levelOneWindow.track.surface);
-
-    if (!levelOneWindow.track.tex)
+    levelOneWindowTrack.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
+    if (!levelOneWindowTrack.tex)
     {
         printf("track Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -201,17 +202,17 @@ void levelonewindow(void)
         SDL_Quit();
         exit(1);
     }
-    levelOneWindow.track.rect;
-    SDL_QueryTexture(levelOneWindow.track.tex, NULL, NULL, &levelOneWindow.track.rect.w, &levelOneWindow.track.rect.h);
-    levelOneWindow.track.rect.w = (int)WINDOW_WIDTH;
-    levelOneWindow.track.rect.h = (int)200;
-    levelOneWindow.track.rect.x = (int)0;
-    levelOneWindow.track.rect.y = (int)760;
+    levelOneWindowTrack.rect;
+    SDL_QueryTexture(levelOneWindowTrack.tex, NULL, NULL, &levelOneWindowTrack.rect.w, &levelOneWindowTrack.rect.h);
+    levelOneWindowTrack.rect.w = (int)WINDOW_WIDTH;
+    levelOneWindowTrack.rect.h = (int)200;
+    levelOneWindowTrack.rect.x = (int)0;
+    levelOneWindowTrack.rect.y = (int)760;
 
-    //character
-    levelOneWindow.character.surface = IMG_Load("images/levelone/Transparent_sprite.png");
+    //tiger
+    window.surface = IMG_Load("images/levelone/tiger_sprite.png");
 
-    if (!levelOneWindow.character.surface)
+    if (!window.surface)
     {
         printf("character_BUTTON Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -220,9 +221,45 @@ void levelonewindow(void)
         exit(1);
     }
 
-    levelOneWindow.character.tex = SDL_CreateTextureFromSurface(app.rend, levelOneWindow.character.surface);
+    levelOneWindowTiger.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
+    if (!levelOneWindowTiger.tex)
+    {
+        printf("Tiger Texture %s\n", SDL_GetError());
+        SDL_DestroyRenderer(app.rend);
+        SDL_DestroyWindow(app.window);
+        SDL_Quit();
+        exit(1);
+    }
 
-    if (!levelOneWindow.character.tex)
+    SDL_QueryTexture(levelOneWindowTiger.tex, NULL, NULL, &levelOneTigerTexturewidth, &levelOneTigerTextureheight);
+    levelOneTigerFramewidth = levelOneTigerTexturewidth / 6 + 1;
+    //for red sprite                                        //for green sprite
+    levelOneTigerFrameheight = levelOneTigerTextureheight / 2;
+    levelOneWindowTiger.rect.w = levelOneTigerFramewidth;
+    levelOneWindowTiger.rect.h = levelOneTigerFrameheight;
+    levelOneWindowTiger.rect.x = 0;
+    levelOneWindowTiger.rect.y = 0;
+    tigerFramePosition.rect.w = levelOneTigerFramewidth;
+    tigerFramePosition.rect.h = levelOneTigerFrameheight;
+    tigerFramePosition.rect.x = WINDOW_WIDTH / 2 - 400;
+    tigerFramePosition.rect.y = 730;
+
+    //character
+    window.surface = IMG_Load("images/levelone/Transparent_sprite-min.png");
+
+    if (!window.surface)
+    {
+        printf("character_BUTTON Error: %s\n", IMG_GetError());
+        SDL_DestroyRenderer(app.rend);
+        SDL_DestroyWindow(app.window);
+        SDL_Quit();
+        exit(1);
+    }
+
+    levelOneWindowCharacter.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
+    if (!levelOneWindowCharacter.tex)
     {
         printf("character Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -231,23 +268,23 @@ void levelonewindow(void)
         exit(1);
     }
 
-    SDL_QueryTexture(levelOneWindow.character.tex, NULL, NULL, &variables.levelOneVars.characterTexturewidth, &variables.levelOneVars.characterTextureheight);
-    variables.levelOneVars.characterFramewidth = variables.levelOneVars.characterTexturewidth / 6 + 1;
+    SDL_QueryTexture(levelOneWindowCharacter.tex, NULL, NULL, &levelOneCharacterTexturewidth, &levelOneCharacterTextureheight);
+    levelOneCharacterFramewidth = levelOneCharacterTexturewidth / 6 + 1;
     //for red sprite                                        //for green sprite
-    variables.levelOneVars.characterFrameheight = variables.levelOneVars.characterTextureheight / 2;
-    levelOneWindow.character.rect.w = variables.levelOneVars.characterFramewidth;
-    levelOneWindow.character.rect.h = variables.levelOneVars.characterFrameheight;
-    levelOneWindow.character.rect.x = 0;
-    levelOneWindow.character.rect.y = 0;
-    levelOneWindow.characterFramePosition.rect.w = variables.levelOneVars.characterFramewidth;
-    levelOneWindow.characterFramePosition.rect.h = variables.levelOneVars.characterFrameheight;
-    levelOneWindow.characterFramePosition.rect.x = 0;
-    levelOneWindow.characterFramePosition.rect.y = 0;
+    levelOneCharacterFrameheight = levelOneCharacterTextureheight / 2;
+    levelOneWindowCharacter.rect.w = levelOneCharacterFramewidth;
+    levelOneWindowCharacter.rect.h = levelOneCharacterFrameheight;
+    levelOneWindowCharacter.rect.x = 0;
+    levelOneWindowCharacter.rect.y = 0;
+    characterFramePosition.rect.w = levelOneCharacterFramewidth - 50;
+    characterFramePosition.rect.h = levelOneCharacterFrameheight - 50;
+    characterFramePosition.rect.x = WINDOW_WIDTH / 2 - 100;
+    characterFramePosition.rect.y = 665;
 
     //score
-    levelOneWindow.score.surface = IMG_Load("images/levelone/coins.png");
+    window.surface = IMG_Load("images/levelone/coins-min.png");
 
-    if (!levelOneWindow.score.surface)
+    if (!window.surface)
     {
         printf("score_BUTTON Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -256,9 +293,10 @@ void levelonewindow(void)
         exit(1);
     }
 
-    levelOneWindow.score.tex = SDL_CreateTextureFromSurface(app.rend, levelOneWindow.score.surface);
+    levelOneWindowScore.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
 
-    if (!levelOneWindow.score.tex)
+    if (!levelOneWindowScore.tex)
     {
         printf("score Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -266,17 +304,17 @@ void levelonewindow(void)
         SDL_Quit();
         exit(1);
     }
-    levelOneWindow.score.rect;
-    SDL_QueryTexture(levelOneWindow.score.tex, NULL, NULL, &levelOneWindow.score.rect.w, &levelOneWindow.score.rect.h);
-    levelOneWindow.score.rect.w = (int)35;
-    levelOneWindow.score.rect.h = (int)40;
-    levelOneWindow.score.rect.x = (int)60;
-    levelOneWindow.score.rect.y = (int)33;
+    levelOneWindowScore.rect;
+    SDL_QueryTexture(levelOneWindowScore.tex, NULL, NULL, &levelOneWindowScore.rect.w, &levelOneWindowScore.rect.h);
+    levelOneWindowScore.rect.w = (int)35;
+    levelOneWindowScore.rect.h = (int)40;
+    levelOneWindowScore.rect.x = (int)60;
+    levelOneWindowScore.rect.y = (int)33;
 
     //highScore
-    levelOneWindow.highScore.surface = IMG_Load("images/levelone/highscore.png");
+    window.surface = IMG_Load("images/levelone/trophy.png");
 
-    if (!levelOneWindow.highScore.surface)
+    if (!window.surface)
     {
         printf("highScore_BUTTON Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -285,9 +323,10 @@ void levelonewindow(void)
         exit(1);
     }
 
-    levelOneWindow.highScore.tex = SDL_CreateTextureFromSurface(app.rend, levelOneWindow.highScore.surface);
+    levelOneWindowHighScore.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
 
-    if (!levelOneWindow.highScore.tex)
+    if (!levelOneWindowHighScore.tex)
     {
         printf("highScore Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -295,36 +334,77 @@ void levelonewindow(void)
         SDL_Quit();
         exit(1);
     }
-    levelOneWindow.highScore.rect;
-    SDL_QueryTexture(levelOneWindow.highScore.tex, NULL, NULL, &levelOneWindow.highScore.rect.w, &levelOneWindow.highScore.rect.h);
-    levelOneWindow.highScore.rect.w = (int)35;
-    levelOneWindow.highScore.rect.h = (int)40;
-    levelOneWindow.highScore.rect.x = (int)60;
-    levelOneWindow.highScore.rect.y = (int)100;
+    levelOneWindowHighScore.rect;
+    SDL_QueryTexture(levelOneWindowHighScore.tex, NULL, NULL, &levelOneWindowHighScore.rect.w, &levelOneWindowHighScore.rect.h);
+    levelOneWindowHighScore.rect.w = (int)35;
+    levelOneWindowHighScore.rect.h = (int)40;
+    levelOneWindowHighScore.rect.x = (int)60;
+    levelOneWindowHighScore.rect.y = (int)100;
+
+    //curzon
+    window.surface = IMG_Load("images/levelone/curzon.png");
+
+    if (!window.surface)
+    {
+        printf("highScore_BUTTON Error: %s\n", IMG_GetError());
+        SDL_DestroyRenderer(app.rend);
+        SDL_DestroyWindow(app.window);
+        SDL_Quit();
+        exit(1);
+    }
+
+    levelOneCurzon.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
+
+    if (!levelOneCurzon.tex)
+    {
+        printf("highScore Texture %s\n", SDL_GetError());
+        SDL_DestroyRenderer(app.rend);
+        SDL_DestroyWindow(app.window);
+        SDL_Quit();
+        exit(1);
+    }
+    levelOneCurzon.rect;
+    SDL_QueryTexture(levelOneCurzon.tex, NULL, NULL, &levelOneCurzon.rect.w, &levelOneCurzon.rect.h);
+    levelOneCurzon.rect.w = (int)400;
+    levelOneCurzon.rect.h = (int)200;
+    levelOneCurzon.rect.x = (int)curzonPosition;
+    levelOneCurzon.rect.y = (int)600;
 
     coinsload();
+    obstacleload();
+    coinseffectload();
+    lifeload();
+    updateScore();
 }
 
 void levelOneWindowCleanUp()
 {
-    SDL_FreeSurface(levelOneWindow.sky.surface);
-    SDL_DestroyTexture(levelOneWindow.sky.tex);
-    SDL_FreeSurface(levelOneWindow.mountains.surface);
-    SDL_DestroyTexture(levelOneWindow.mountains.tex);
-    SDL_FreeSurface(levelOneWindow.treeshade.surface);
-    SDL_DestroyTexture(levelOneWindow.treeshade.tex);
-    SDL_FreeSurface(levelOneWindow.clouds.surface);
-    SDL_DestroyTexture(levelOneWindow.clouds.tex);
-    SDL_FreeSurface(levelOneWindow.track.surface);
-    SDL_DestroyTexture(levelOneWindow.track.tex);
-    SDL_FreeSurface(levelOneWindow.character.surface);
-    SDL_DestroyTexture(levelOneWindow.character.tex);
-    SDL_FreeSurface(levelOneWindow.score.surface);
-    SDL_DestroyTexture(levelOneWindow.score.tex);
-    SDL_FreeSurface(levelOneWindow.highScore.surface);
-    SDL_DestroyTexture(levelOneWindow.highScore.tex);
-    SDL_FreeSurface(levelOneWindow.sun.surface);
-    SDL_DestroyTexture(levelOneWindow.sun.tex);
+    // SDL_FreeSurface(levelOneWindowSky.surface);
+    SDL_DestroyTexture(levelOneWindowSky.tex);
+
+    // SDL_FreeSurface(levelOneWindowMountains.surface);
+    SDL_DestroyTexture(levelOneWindowMountains.tex);
+    // SDL_FreeSurface(levelOneWindowTreeShade.surface);
+    SDL_DestroyTexture(levelOneWindowTreeShade.tex);
+    // SDL_FreeSurface(levelOneWindowTrees.surface);
+    SDL_DestroyTexture(levelOneWindowTrees.tex);
+    // SDL_FreeSurface(levelOneWindowClouds.surface);
+    SDL_DestroyTexture(levelOneWindowClouds.tex);
+    // SDL_FreeSurface(levelOneWindowTrack.surface);
+    SDL_DestroyTexture(levelOneWindowTrack.tex);
+    // SDL_FreeSurface(levelOneWindowCharacter.surface);
+    SDL_DestroyTexture(levelOneWindowCharacter.tex);
+    // SDL_FreeSurface(levelOneWindowScore.surface);
+    SDL_DestroyTexture(levelOneWindowScore.tex);
+    // SDL_FreeSurface(levelOneWindowHighScore.surface);
+    SDL_DestroyTexture(levelOneWindowHighScore.tex);
+    SDL_DestroyTexture(levelOneCurzon.tex);
+
+    // SDL_FreeSurface(levelOneWindowSun.surface);
+    SDL_DestroyTexture(levelOneWindowSun.tex);
     coinsCleanUp();
+    obstacleCleanUp();
+
     IMG_Quit();
 }

@@ -5,9 +5,6 @@ int main(int argc, char *argv[])
     memset(&app, 0, sizeof(App));
 
     initSDL(); //in init.cpp file
-
-    // LoadScoreFile(); //in loadScoreFIle.cpp file
-
     atexit(cleanup);
 
     while (1)

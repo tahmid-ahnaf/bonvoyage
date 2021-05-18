@@ -1,93 +1,94 @@
 #include "drawLevelTwoWindow.h"
 
 void updateAnimationSpeedForLevelTwoWindow()
-{     
-    // variables.levelTwoVars.font = TTF_OpenFont("Freshman.ttf", 30);
+{   
 
-    variables.levelTwoVars.character2Prevtime = variables.levelTwoVars.character2Currentime;
-    variables.levelTwoVars.character2Currentime = SDL_GetTicks();
-    variables.levelTwoVars.character2Deltatime = (variables.levelTwoVars.character2Currentime - variables.levelTwoVars.character2Prevtime) / 280.0f;
+    character2Prevtime = character2Currentime;
+    character2Currentime = SDL_GetTicks();
+    character2Deltatime = (character2Currentime - character2Prevtime) / 280.0f;
 
      
-    if(variables.levelTwoVars.DELAY_COUNT_FOR_CHARACTER_COLLISION_EFFECT==250)
+    if(DELAY_COUNT_FOR_CHARACTER_COLLISION_EFFECT==250)
     {
-     if(variables.levelTwoVars.CURRENT_LIFE>10){
-   levelTwoWindow.character2.surface = IMG_Load("images/level2obstacles/sonicsprite.png");
-       levelTwoWindow.character2.tex = SDL_CreateTextureFromSurface(app.rend,levelTwoWindow.character2.surface);
+     if(CURRENT_LIFE>10){
+   levelTwoWindowCharacter.surface = IMG_Load("images/level2obstacles/sonicsprite.png");
+       levelTwoWindowCharacter.tex = SDL_CreateTextureFromSurface(app.rend,levelTwoWindowCharacter.surface);
      }else{
-         levelTwoWindow.character2.surface = IMG_Load("images/level2obstacles/sonicsprite3.png");
-       levelTwoWindow.character2.tex = SDL_CreateTextureFromSurface(app.rend,levelTwoWindow.character2.surface); 
+         levelTwoWindowCharacter.surface = IMG_Load("images/level2obstacles/sonicsprite3.png");
+       levelTwoWindowCharacter.tex = SDL_CreateTextureFromSurface(app.rend,levelTwoWindowCharacter.surface); 
      }
-       variables.levelTwoVars.DELAY_COUNT_FOR_CHARACTER_COLLISION_EFFECT=0; 
+       DELAY_COUNT_FOR_CHARACTER_COLLISION_EFFECT=0; 
     
     }
-    if(variables.levelTwoVars.DELAY_COUNT_FOR_CHARACTER_COLLISION_EFFECT>0)
+    if(DELAY_COUNT_FOR_CHARACTER_COLLISION_EFFECT>0)
     {
-       variables.levelTwoVars.DELAY_COUNT_FOR_CHARACTER_COLLISION_EFFECT++;
+       DELAY_COUNT_FOR_CHARACTER_COLLISION_EFFECT++;
     }
 
-  variables.levelTwoVars.rectx =levelTwoWindow.character2.rect.x;
-variables.levelTwoVars.recty =levelTwoWindow.character2.rect.y ;
- variables.levelTwoVars.character2Frametime += variables.levelTwoVars.character2Deltatime;
+  rectx =levelTwoWindowCharacter.rect.x;   
+recty =levelTwoWindowCharacter.rect.y ;
+ character2Frametime += character2Deltatime;
 
  
-        if (variables.levelTwoVars.character2Frametime >= (0.25f))
+        if (character2Frametime >= (0.25f))
         {
-            variables.levelTwoVars.character2Frametime = 0;
-          variables.levelTwoVars.rectx += variables.levelTwoVars.CHARACTER2_FRAME_WIDTH;
-        if(variables.levelTwoVars.rectx == variables.levelTwoVars.CHARACTER2_TEXTURE_WIDTH && variables.levelTwoVars.recty == 130)
+            character2Frametime = 0;
+          rectx += CHARACTER2_FRAME_WIDTH;
+        if(rectx == CHARACTER2_TEXTURE_WIDTH && recty == 130)
         {
-           variables.levelTwoVars.recty = 0; 
-            variables.levelTwoVars.rectx = 0;
+           recty = 0; 
+            rectx = 0;
         }
-        else  if (variables.levelTwoVars.rectx== variables.levelTwoVars.CHARACTER2_TEXTURE_WIDTH)
+        else  if (rectx== CHARACTER2_TEXTURE_WIDTH)
         {
-           variables.levelTwoVars.rectx = 0;
-            variables.levelTwoVars.recty = variables.levelTwoVars.CHARACTER2_FRAME_HEIGHT; 
+           rectx = 0;
+            recty = CHARACTER2_FRAME_HEIGHT; 
         } 
     } 
 
- levelTwoWindow.character2.rect.x=  levelTwoWindow.rotatingcoin.rect.x = levelTwoWindow.rotatingheart.rect.x =   variables.levelTwoVars.rectx;
- levelTwoWindow.character2.rect.y =  levelTwoWindow.rotatingcoin.rect.y = levelTwoWindow.rotatingheart.rect.y =    variables.levelTwoVars.recty ;
+ levelTwoWindowCharacter.rect.x=  levelTwoRotatingCoin.rect.x = levelTwoRotatingHeart.rect.x =    rectx;
+ levelTwoWindowCharacter.rect.y =  levelTwoRotatingCoin.rect.y = levelTwoRotatingHeart.rect.y =    recty ;
+
+
  
- Leve2LifeText();
-boxmotion();
+ drawLevelTwoLifeText();
+  boxmotion();
   updateHeartPosition();
 
  
-//   if (variables.levelTwoVars.currentScore >variables.levelTwoVars.highScore)
+//   if (currentScore >highScore)
 //             {
 //   updateHighScoreOnFileLevel2();
 //   }
-collisions();
+collisionsLevelTwo();
 lifeatstakeaftereffect();
   updateLifeBonusPopupFunction();
-  updateScoreLevel2();
-     sprintf(variables.levelTwoVars.LIFE_STRING, "%i", variables.levelTwoVars.CURRENT_LIFE);
+   updateScoreLevel2();
+     sprintf(LIFE_STRING, "%i", CURRENT_LIFE);
 
 
  
         
-        if (variables.levelTwoVars.CHARACTER2_Y_POS <= 40)
+        if (CHARACTER2_Y_POS <= 40)
         {
-            variables.levelTwoVars.CHARACTER2_Y_POS = 40;
+            CHARACTER2_Y_POS = 40;
         }
-        if (variables.levelTwoVars.CHARACTER2_X_POS <= 40)
+        if (CHARACTER2_X_POS <= 40)
         {
-            variables.levelTwoVars.CHARACTER2_X_POS = 40;
+            CHARACTER2_X_POS = 40;
         }
-        if (variables.levelTwoVars.CHARACTER2_Y_POS>= 800)
+        if (CHARACTER2_Y_POS>= 800)
         {
-            variables.levelTwoVars.CHARACTER2_Y_POS= 800;
+            CHARACTER2_Y_POS= 800;
         }
-        if (variables.levelTwoVars.CHARACTER2_X_POS >= WINDOW_WIDTH)
+        if (CHARACTER2_X_POS >= WINDOW_WIDTH)
         {
-            variables.levelTwoVars.CHARACTER2_X_POS = 0;
+            CHARACTER2_X_POS = 0;
         }
          /*############### KEEPING THE CHARACTER INTO THE FRAME ENDS ####################*/
 
-        levelTwoWindow.character2Position.rect.x = variables.levelTwoVars.CHARACTER2_X_POS;
-        levelTwoWindow.character2Position.rect.y = variables.levelTwoVars.CHARACTER2_Y_POS;
+        levelTwoWindowCharacterPosition.rect.x = CHARACTER2_X_POS;
+        levelTwoWindowCharacterPosition.rect.y = CHARACTER2_Y_POS;
 
 
 
@@ -96,93 +97,148 @@ lifeatstakeaftereffect();
     // levelTwoWindow.characterFramePosition.rect.x = 500;
     // levelOneWindow.characterFramePosition.rect.y = 630;
 
-    variables.AnimationSpeed.levelTwoWindow.sky -= 0.5;
-    if (variables.AnimationSpeed.levelTwoWindow.sky < -levelTwoWindow.sky.rect.w)
+   levelTwoSkyAnimationSpeed -= 0.5;
+    if (levelTwoSkyAnimationSpeed < -levelTwoWindowSky.rect.w)
     {
-        variables.AnimationSpeed.levelTwoWindow.sky = 0;
+        levelTwoSkyAnimationSpeed = 0;
     }
 
-    variables.AnimationSpeed.levelTwoWindow.mountains -= 2;
-    if (variables.AnimationSpeed.levelTwoWindow.mountains < -levelTwoWindow.mountains.rect.w)
+    levelTwoMountainsAnimationSpeed-= 2;
+    if (levelTwoMountainsAnimationSpeed< -levelTwoWindowMountains.rect.w)
     {
-        variables.AnimationSpeed.levelTwoWindow.mountains = 0;
+        levelTwoMountainsAnimationSpeed= 0;
     }
 
-    variables.AnimationSpeed.levelTwoWindow.treeshade -= 4;
-    if (variables.AnimationSpeed.levelTwoWindow.treeshade < -levelTwoWindow.treeshade.rect.w)
+    levelTwoTreeShadeAnimationSpeed -= 4;
+    if (levelTwoTreeShadeAnimationSpeed < -levelTwoWindowTreeShade.rect.w)
     {
-        variables.AnimationSpeed.levelTwoWindow.treeshade = 0;
+        levelTwoTreeShadeAnimationSpeed = 0;
     }
-    variables.AnimationSpeed.levelTwoWindow.clouds -= 1;
-    if (variables.AnimationSpeed.levelTwoWindow.clouds < -levelTwoWindow.clouds.rect.w)
+    levelTwoCloudsAnimationSpeed -= 1;
+    if (levelTwoCloudsAnimationSpeed < -levelTwoWindowClouds.rect.w)
     {
-        variables.AnimationSpeed.levelTwoWindow.clouds = 0;
+        levelTwoCloudsAnimationSpeed = 0;
     }
 
-    variables.AnimationSpeed.levelTwoWindow.track -= 6;
-    if (variables.AnimationSpeed.levelTwoWindow.track < -levelTwoWindow.track.rect.w)
+    levelTwoTrackAnimationSpeed -= 6;
+    if (levelTwoTrackAnimationSpeed < -levelTwoWindowTrack.rect.w)
     {
-        variables.AnimationSpeed.levelTwoWindow.track = 0;
+        levelTwoTrackAnimationSpeed = 0;
     }
+    /*
+    // characterPrevtime = characterCurrentime;
+    // characterCurrentime = SDL_GetTicks();
+    // variables.levelOneVars.characterDeltatime = (variables.levelOneVars.characterCurrentime - variables.levelOneVars.characterPrevtime) / 280.0f;
+
+    // characterFrametime += characterDeltatime;
+    // if (characterFrametime >= (0.25f))
+    // {
+    //     characterFrametime = 0.0;
+    //     levelTwoWindowCharacter.rect.x += characterFramewidth;
+
+    //     if (levelTwoWindowCharacter.rect.x >= characterTexturewidth)
+    //     {
+    //         levelTwoWindowCharacter.rect.x = 0;
+    //     }
+    // }
+    characterFramePosition.rect.x = 500;
+    characterFramePosition.rect.y = 630;
+
+    levelTwoSkyAnimationSpeed -= 0.5;
+    if (levelTwoSkyAnimationSpeed < -levelTwoWindowSky.rect.w)
+    {
+        levelTwoSkyAnimationSpeed = 0;
+    }
+
+    levelTwoMountainsAnimationSpeed-= 2;
+    if (levelTwoMountainsAnimationSpeed< -levelTwoWindowMountains.rect.w)
+    {
+        levelTwoMountainsAnimationSpeed= 0;
+    }
+
+    levelTwoTreeShadeAnimationSpeed -= 4;
+    if (levelTwoTreeShadeAnimationSpeed < -levelTwoWindowTreeShade.rect.w)
+    {
+        levelTwoTreeShadeAnimationSpeed = 0;
+    }
+    levelTwoCloudsAnimationSpeed -= 1;
+    if (levelTwoCloudsAnimationSpeed < -levelTwoWindowClouds.rect.w)
+    {
+        levelTwoCloudsAnimationSpeed = 0;
+    }
+
+    levelTwoTrackAnimationSpeed -= 6;
+    if (levelTwoTrackAnimationSpeed < -levelTwoWindowTrack.rect.w)
+    {
+        levelTwoTrackAnimationSpeed = 0;
+    }
+    */
 }
-
- 
-
 void drawLevelTwoWindowFunction()
-{   
-    if(variables.levelTwoVars.isspaceclicked==1){
- updateAnimationSpeedForLevelTwoWindow();
-    }else{
-        //  SDL_RenderCopy(app.rend, levelTwoWindow.character2.tex, NULL, &levelTwoWindow.character2.rect);
+{
+    if (isspaceclicked == 1 && variables.levelTwo == 1)
+    {
+        updateAnimationSpeedForLevelTwoWindow();
+       
+        
     }
-    
-   
-    
 
-    levelTwoWindow.sky.rect.x = variables.AnimationSpeed.levelTwoWindow.sky;
-    levelTwoWindow.mountains.rect.x = variables.AnimationSpeed.levelTwoWindow.mountains;
-    levelTwoWindow.treeshade.rect.x = variables.AnimationSpeed.levelTwoWindow.treeshade;
-    levelTwoWindow.clouds.rect.x = variables.AnimationSpeed.levelTwoWindow.clouds;
-    levelTwoWindow.track.rect.x = variables.AnimationSpeed.levelTwoWindow.track;
+    levelTwoWindowSky.rect.x = levelTwoSkyAnimationSpeed;
+    levelTwoWindowMountains.rect.x = levelTwoMountainsAnimationSpeed;
+    levelTwoWindowTreeShade.rect.x = levelTwoTreeShadeAnimationSpeed;
+    levelTwoWindowClouds.rect.x = levelTwoCloudsAnimationSpeed;
+    levelTwoWindowTrack.rect.x = levelTwoTrackAnimationSpeed;
     SDL_RenderClear(app.rend);
 
-    SDL_RenderCopy(app.rend, levelTwoWindow.sky.tex, NULL, &levelTwoWindow.sky.rect);
-    levelTwoWindow.sky.rect.x = variables.AnimationSpeed.levelTwoWindow.sky + levelTwoWindow.sky.rect.w;
-    SDL_RenderCopy(app.rend, levelTwoWindow.sky.tex, NULL, &levelTwoWindow.sky.rect);
+    SDL_RenderCopy(app.rend, levelTwoWindowSky.tex, NULL, &levelTwoWindowSky.rect);
+    levelTwoWindowSky.rect.x = levelTwoSkyAnimationSpeed + levelTwoWindowSky.rect.w;
+    SDL_RenderCopy(app.rend, levelTwoWindowSky.tex, NULL, &levelTwoWindowSky.rect);
 
-    SDL_RenderCopy(app.rend, levelTwoWindow.mountains.tex, NULL, &levelTwoWindow.mountains.rect);
-    levelTwoWindow.mountains.rect.x = variables.AnimationSpeed.levelTwoWindow.mountains + levelTwoWindow.mountains.rect.w;
-    SDL_RenderCopy(app.rend, levelTwoWindow.mountains.tex, NULL, &levelTwoWindow.mountains.rect);
+    SDL_RenderCopy(app.rend, levelTwoWindowMountains.tex, NULL, &levelTwoWindowMountains.rect);
+    levelTwoWindowMountains.rect.x = levelTwoMountainsAnimationSpeed+ levelTwoWindowMountains.rect.w;
+    SDL_RenderCopy(app.rend, levelTwoWindowMountains.tex, NULL, &levelTwoWindowMountains.rect);
 
-    SDL_RenderCopy(app.rend, levelTwoWindow.treeshade.tex, NULL, &levelTwoWindow.treeshade.rect);
-    levelTwoWindow.treeshade.rect.x = variables.AnimationSpeed.levelTwoWindow.treeshade + levelTwoWindow.treeshade.rect.w;
-    SDL_RenderCopy(app.rend, levelTwoWindow.treeshade.tex, NULL, &levelTwoWindow.treeshade.rect);
+    SDL_RenderCopy(app.rend, levelTwoWindowTreeShade.tex, NULL, &levelTwoWindowTreeShade.rect);
+    levelTwoWindowTreeShade.rect.x = levelTwoTreeShadeAnimationSpeed + levelTwoWindowTreeShade.rect.w;
+    SDL_RenderCopy(app.rend, levelTwoWindowTreeShade.tex, NULL, &levelTwoWindowTreeShade.rect);
 
-    SDL_RenderCopy(app.rend, levelTwoWindow.track.tex, NULL, &levelTwoWindow.track.rect);
-    levelTwoWindow.track.rect.x = variables.AnimationSpeed.levelTwoWindow.track + levelTwoWindow.track.rect.w;
-    SDL_RenderCopy(app.rend, levelTwoWindow.track.tex, NULL, &levelTwoWindow.track.rect);
+    SDL_RenderCopy(app.rend, levelTwoWindowTrack.tex, NULL, &levelTwoWindowTrack.rect);
+    levelTwoWindowTrack.rect.x = levelTwoTrackAnimationSpeed + levelTwoWindowTrack.rect.w;
+    SDL_RenderCopy(app.rend, levelTwoWindowTrack.tex, NULL, &levelTwoWindowTrack.rect);
 
-    SDL_RenderCopy(app.rend, levelTwoWindow.moon.tex, NULL, &levelTwoWindow.moon.rect);
+    SDL_RenderCopy(app.rend, levelTwoWindowMoon.tex, NULL, &levelTwoWindowMoon.rect);
 
-    SDL_RenderCopy(app.rend, levelTwoWindow.clouds.tex, NULL, &levelTwoWindow.clouds.rect);
-    levelTwoWindow.clouds.rect.x = variables.AnimationSpeed.levelTwoWindow.clouds + levelTwoWindow.clouds.rect.w;
-    SDL_RenderCopy(app.rend, levelTwoWindow.clouds.tex, NULL, &levelTwoWindow.clouds.rect);
-     SDL_RenderCopy(app.rend, levelTwoWindow.character2.tex, &levelTwoWindow.character2.rect, &levelTwoWindow.character2Position.rect);
-    //    SDL_RenderCopyEx(app.rend, levelTwoWindow.character2.tex, &levelTwoWindow.character2.rect, &levelTwoWindow.character2Position.rect, NULL , NULL , SDL_FLIP_HORIZONTAL);
-   
-    SDL_RenderCopy(app.rend, welcome_window.back.tex, NULL, &welcome_window.back.rect);
+    SDL_RenderCopy(app.rend, levelTwoWindowClouds.tex, NULL, &levelTwoWindowClouds.rect);
+    levelTwoWindowClouds.rect.x = levelTwoCloudsAnimationSpeed + levelTwoWindowClouds.rect.w;
+    SDL_RenderCopy(app.rend, levelTwoWindowClouds.tex, NULL, &levelTwoWindowClouds.rect);
 
- if(variables.levelTwoVars.isspaceclicked==1){
- 
+    SDL_RenderCopy(app.rend, levelTwoWindowCharacter.tex, &levelTwoWindowCharacter.rect, & levelTwoWindowCharacterPosition.rect);
 
- drawBoxFunction();
+    SDL_RenderCopy(app.rend, back.tex, NULL, &back.rect);
+
+    if (isspaceclicked == 1 && variables.levelTwo == 1)
+    {
+        // drawBoxFunction(); 
+        // drawLevelTwoCoinsFunction();
+        // drawLevelTwoCoinsPopupFunction();
+        // drawBombandPlaneFunction();
+        // drawLevelTwoLifeFunction();
+        // drawLevelTwoHeartFunction();
+
+
+    drawBoxFunction();
     drawLevelTwoCoinsFunction();
     drawBombandPlaneFunction();
     drawLevelTwoHeartFunction();
     drawLevelTwoLifeFunction();
     drawLevelTwoCoinsPopupFunction();
-drawLevelTwoHeartPopupFunction();
-        Leve2LifeTextCleanUp();
+    drawLevelTwoHeartPopupFunction();
+    LevelTwoLifeTextCleanUp();
+
+
     }
+     
+
+     
     
 }

@@ -4,9 +4,9 @@ void newgamewindow(void)
 {
     //levelone button
 
-    welcome_window.levelOneButton.surface = IMG_Load("images/level1.png");
+    window.surface = IMG_Load("images/buttons/sundarbanButton.png");
 
-    if (!welcome_window.levelOneButton.surface)
+    if (!window.surface)
     {
         printf("levelOneButton_BUTTON Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -15,9 +15,9 @@ void newgamewindow(void)
         exit(1);
     }
 
-    welcome_window.levelOneButton.tex = SDL_CreateTextureFromSurface(app.rend, welcome_window.levelOneButton.surface);
-
-    if (!welcome_window.levelOneButton.tex)
+    newgameWindowlevelOneButton.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
+    if (!newgameWindowlevelOneButton.tex)
     {
         printf("levelOneButton_  Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -25,18 +25,18 @@ void newgamewindow(void)
         SDL_Quit();
         exit(1);
     }
-    welcome_window.levelOneButton.rect;
-    SDL_QueryTexture(welcome_window.levelOneButton.tex, NULL, NULL, &welcome_window.levelOneButton.rect.w, &welcome_window.levelOneButton.rect.h);
-    welcome_window.levelOneButton.rect.w = (int)400;
-    welcome_window.levelOneButton.rect.h = (int)100;
-    welcome_window.levelOneButton.rect.x = (int)WINDOW_WIDTH / 2 - 200;
-    welcome_window.levelOneButton.rect.y = (int)WINDOW_HEIGHT / 2 - 200;
+    newgameWindowlevelOneButton.rect;
+    SDL_QueryTexture(newgameWindowlevelOneButton.tex, NULL, NULL, &newgameWindowlevelOneButton.rect.w, &newgameWindowlevelOneButton.rect.h);
+    newgameWindowlevelOneButton.rect.w = (int)322;
+    newgameWindowlevelOneButton.rect.h = (int)63;
+    newgameWindowlevelOneButton.rect.x = (int)WINDOW_WIDTH / 2 - 161;
+    newgameWindowlevelOneButton.rect.y = (int)WINDOW_HEIGHT / 2 - 200;
 
     //level two button
 
-    welcome_window.levelTwoButton.surface = IMG_Load("images/level2.png");
+    window.surface = IMG_Load("images/buttons/coxsbazarButton.png");
 
-    if (!welcome_window.levelTwoButton.surface)
+    if (!window.surface)
     {
         printf("levelTwoButton_BUTTON Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -45,9 +45,9 @@ void newgamewindow(void)
         exit(1);
     }
 
-    welcome_window.levelTwoButton.tex = SDL_CreateTextureFromSurface(app.rend, welcome_window.levelTwoButton.surface);
-
-    if (!welcome_window.levelTwoButton.tex)
+    newgameWindowlevelTwoButton.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
+    if (!newgameWindowlevelTwoButton.tex)
     {
         printf("levelTwoButton_  Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -55,18 +55,18 @@ void newgamewindow(void)
         SDL_Quit();
         exit(1);
     }
-    welcome_window.levelTwoButton.rect;
-    SDL_QueryTexture(welcome_window.levelTwoButton.tex, NULL, NULL, &welcome_window.levelTwoButton.rect.w, &welcome_window.levelTwoButton.rect.h);
-    welcome_window.levelTwoButton.rect.w = (int)400;
-    welcome_window.levelTwoButton.rect.h = (int)100;
-    welcome_window.levelTwoButton.rect.x = (int)WINDOW_WIDTH / 2 - 200;
-    welcome_window.levelTwoButton.rect.y = (int)WINDOW_HEIGHT / 2 - 100;
+    newgameWindowlevelTwoButton.rect;
+    SDL_QueryTexture(newgameWindowlevelTwoButton.tex, NULL, NULL, &newgameWindowlevelTwoButton.rect.w, &newgameWindowlevelTwoButton.rect.h);
+    newgameWindowlevelTwoButton.rect.w = (int)322;
+    newgameWindowlevelTwoButton.rect.h = (int)63;
+    newgameWindowlevelTwoButton.rect.x = (int)WINDOW_WIDTH / 2 - 161;
+    newgameWindowlevelTwoButton.rect.y = (int)WINDOW_HEIGHT / 2 - 100;
 }
 
 void newGameWindowCleanUp()
 {
-    SDL_FreeSurface(welcome_window.levelOneButton.surface);
-    SDL_DestroyTexture(welcome_window.levelOneButton.tex);
-    SDL_FreeSurface(welcome_window.levelTwoButton.surface);
-    SDL_DestroyTexture(welcome_window.levelTwoButton.tex);
+    // SDL_FreeSurface(newgameWindowlevelOneButton.surface);
+    SDL_DestroyTexture(newgameWindowlevelOneButton.tex);
+    // SDL_FreeSurface(window.surface );
+    SDL_DestroyTexture(newgameWindowlevelTwoButton.tex);
 }

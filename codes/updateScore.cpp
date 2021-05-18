@@ -1,18 +1,20 @@
 #include "updateScore.h"
 void updateScore()
 {
-    sprintf(variables.levelOneVars.highScoreString, "%i", variables.levelOneVars.highScore);
-    variables.levelOneVars.currentScore += 1;
-    sprintf(variables.levelOneVars.scoreString, "%i", variables.levelOneVars.currentScore);
+    LoadScoreFile();
+    sprintf(levelOneScoreString, "%i", levelOneCurrentScore);
 
-    // if (variables.levelOneVars.currentScore > variables.levelOneVars.highScore)
-    // {
+    if (variables.gameOver == 1 && count == 1)
+    {
+        updateHighScoreOnFile();
+        scoreboard();
+    }
 
-    //     updateHighScoreOnFile();
-    // }
-    levelOneWindow.scoreText.surface = TTF_RenderText_Solid(variables.levelOneVars.font, variables.levelOneVars.scoreString, variables.levelOneVars.color);
+    sprintf(levelOneHighScoreString, "%i", scoreList[0]);
 
-    if (!levelOneWindow.scoreText.surface)
+    levelOneWindowScoreText.surface = TTF_RenderText_Solid(variables.font, levelOneScoreString, variables.color);
+
+    if (!levelOneWindowScoreText.surface)
     {
         printf("scoreText_BUTTON Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -21,9 +23,9 @@ void updateScore()
         exit(1);
     }
 
-    levelOneWindow.scoreText.tex = SDL_CreateTextureFromSurface(app.rend, levelOneWindow.scoreText.surface);
+    levelOneWindowScoreText.tex = SDL_CreateTextureFromSurface(app.rend, levelOneWindowScoreText.surface);
 
-    if (!levelOneWindow.scoreText.tex)
+    if (!levelOneWindowScoreText.tex)
     {
         printf("scoreText Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -31,17 +33,17 @@ void updateScore()
         SDL_Quit();
         exit(1);
     }
-    SDL_QueryTexture(levelOneWindow.scoreText.tex, NULL, NULL, &levelOneWindow.scoreText.rect.w, &levelOneWindow.scoreText.rect.h);
-    levelOneWindow.scoreText.rect.w = (int)40;
-    levelOneWindow.scoreText.rect.h = (int)23;
-    levelOneWindow.scoreText.rect.x = (int)150;
-    levelOneWindow.scoreText.rect.y = (int)45;
+    SDL_QueryTexture(levelOneWindowScoreText.tex, NULL, NULL, &levelOneWindowScoreText.rect.w, &levelOneWindowScoreText.rect.h);
+    levelOneWindowScoreText.rect.w = (int)40;
+    levelOneWindowScoreText.rect.h = (int)23;
+    levelOneWindowScoreText.rect.x = (int)150;
+    levelOneWindowScoreText.rect.y = (int)45;
 
     //highscore
 
-    levelOneWindow.highScoreText.surface = TTF_RenderText_Solid(variables.levelOneVars.font, variables.levelOneVars.highScoreString, variables.levelOneVars.color);
+    levelOneWindowHighScoreText.surface = TTF_RenderText_Solid(variables.font, levelOneHighScoreString, variables.color);
 
-    if (!levelOneWindow.highScoreText.surface)
+    if (!levelOneWindowHighScoreText.surface)
     {
         printf("highScoreText_BUTTON Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -50,9 +52,9 @@ void updateScore()
         exit(1);
     }
 
-    levelOneWindow.highScoreText.tex = SDL_CreateTextureFromSurface(app.rend, levelOneWindow.highScoreText.surface);
+    levelOneWindowHighScoreText.tex = SDL_CreateTextureFromSurface(app.rend, levelOneWindowHighScoreText.surface);
 
-    if (!levelOneWindow.highScoreText.tex)
+    if (!levelOneWindowHighScoreText.tex)
     {
         printf("highScoreText Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -60,33 +62,39 @@ void updateScore()
         SDL_Quit();
         exit(1);
     }
-    SDL_QueryTexture(levelOneWindow.highScoreText.tex, NULL, NULL, &levelOneWindow.highScoreText.rect.w, &levelOneWindow.highScoreText.rect.h);
-    levelOneWindow.highScoreText.rect.w = (int)40;
-    levelOneWindow.highScoreText.rect.h = (int)23;
-    levelOneWindow.highScoreText.rect.x = (int)150;
-    levelOneWindow.highScoreText.rect.y = (int)110;
+    SDL_QueryTexture(levelOneWindowHighScoreText.tex, NULL, NULL, &levelOneWindowHighScoreText.rect.w, &levelOneWindowHighScoreText.rect.h);
+    levelOneWindowHighScoreText.rect.w = (int)40;
+    levelOneWindowHighScoreText.rect.h = (int)23;
+    levelOneWindowHighScoreText.rect.x = (int)150;
+    levelOneWindowHighScoreText.rect.y = (int)110;
 }
+
+
+
+
+
+
 
 
 void updateScoreLevel2()
 {
-    sprintf(variables.levelTwoVars.highScoreString, "%i", variables.levelTwoVars.highScore);
+    sprintf(highScoreString, "%i", highScore);
    
-    sprintf(variables.levelTwoVars.scoreString, "%i", variables.levelTwoVars.currentScore);
+    sprintf(scoreString, "%i", currentScore);
 
-    // if (variables.levelOneVars.currentScore > variables.levelOneVars.highScore)
+    // if (currentScore > highScore)
     // {
 
     //     updateHighScoreOnFile();
     // }
 
-      if (variables.levelTwoVars.currentScore >variables.levelTwoVars.highScore)
-            {
-  updateHighScoreOnFileLevel2();
-  }
-    levelTwoWindow.scoreText.surface = TTF_RenderText_Solid(variables.levelOneVars.font, variables.levelTwoVars.scoreString, variables.levelTwoVars.color);
+      if (currentScore >highScore)
+      {
+        updateHighScoreOnFileLevel2();
+      }
+    levelTwoScoreText.surface = TTF_RenderText_Solid(variables.font, scoreString, variables.color);
 
-    if (!levelTwoWindow.scoreText.surface)
+    if (!levelTwoScoreText.surface)
     {
         printf("scoreText_BUTTON Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -95,9 +103,9 @@ void updateScoreLevel2()
         exit(1);
     }
 
-    levelTwoWindow.scoreText.tex = SDL_CreateTextureFromSurface(app.rend, levelTwoWindow.scoreText.surface);
+    levelTwoScoreText.tex = SDL_CreateTextureFromSurface(app.rend, levelTwoScoreText.surface);
 
-    if (!levelTwoWindow.scoreText.tex)
+    if (!levelTwoScoreText.tex)
     {
         printf("scoreText Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -105,18 +113,18 @@ void updateScoreLevel2()
         SDL_Quit();
         exit(1);
     }
-    SDL_QueryTexture(levelTwoWindow.scoreText.tex, NULL, NULL, &levelTwoWindow.scoreText.rect.w, &levelTwoWindow.scoreText.rect.h);
-    levelTwoWindow.scoreText.rect.w = (int)levelTwoWindow.scoreText.surface->w;
-    levelTwoWindow.scoreText.rect.h = (int)levelTwoWindow.scoreText.surface->h;
-    levelTwoWindow.scoreText.rect.x = (int)150;
-    levelTwoWindow.scoreText.rect.y = (int)45;
+    SDL_QueryTexture(levelTwoScoreText.tex, NULL, NULL, &levelTwoScoreText.rect.w, &levelTwoScoreText.rect.h);
+    levelTwoScoreText.rect.w = (int)levelTwoScoreText.surface->w;
+    levelTwoScoreText.rect.h = (int)levelTwoScoreText.surface->h;
+    levelTwoScoreText.rect.x = (int)150;
+    levelTwoScoreText.rect.y = (int)45;
    
 
     //highscore
 
-    levelTwoWindow.highScoreText.surface = TTF_RenderText_Solid(variables.levelOneVars.font, variables.levelTwoVars.highScoreString, variables.levelTwoVars.color);
+    levelTwoHighScoreText.surface = TTF_RenderText_Solid(variables.font, highScoreString, variables.color);
 
-    if (!levelTwoWindow.highScoreText.surface)
+    if (!levelTwoHighScoreText.surface)
     {
         printf("highScoreText_BUTTON Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -125,9 +133,9 @@ void updateScoreLevel2()
         exit(1);
     }
 
-    levelTwoWindow.highScoreText.tex = SDL_CreateTextureFromSurface(app.rend, levelTwoWindow.highScoreText.surface);
+    levelTwoHighScoreText.tex = SDL_CreateTextureFromSurface(app.rend, levelTwoHighScoreText.surface);
 
-    if (!levelTwoWindow.highScoreText.tex)
+    if (!levelTwoHighScoreText.tex)
     {
         printf("highScoreText Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -135,9 +143,9 @@ void updateScoreLevel2()
         SDL_Quit();
         exit(1);
     }
-    SDL_QueryTexture(levelTwoWindow.highScoreText.tex, NULL, NULL, &levelTwoWindow.highScoreText.rect.w, &levelTwoWindow.highScoreText.rect.h);
-    levelTwoWindow.highScoreText.rect.w = (int)levelTwoWindow.highScoreText.surface->w;
-    levelTwoWindow.highScoreText.rect.h = (int)levelTwoWindow.highScoreText.surface->h;
-    levelTwoWindow.highScoreText.rect.x = (int)150;
-    levelTwoWindow.highScoreText.rect.y = (int)110;
+    SDL_QueryTexture(levelTwoHighScoreText.tex, NULL, NULL, &levelTwoHighScoreText.rect.w, &levelTwoHighScoreText.rect.h);
+    levelTwoHighScoreText.rect.w = (int)levelTwoHighScoreText.surface->w;
+    levelTwoHighScoreText.rect.h = (int)levelTwoHighScoreText.surface->h;
+    levelTwoHighScoreText.rect.x = (int)150;
+    levelTwoHighScoreText.rect.y = (int)110;
 }

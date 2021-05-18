@@ -3,32 +3,96 @@
 void doInput(void)
 {
     SDL_Event event;
-//level1 
-    // while (SDL_PollEvent(&event) && variables.levelOne==1)
-    // {
-    //     switch (event.type)
-    //     {
-    //     case SDL_QUIT:
-    //         exit(0);
-    //         break;
-    //     case SDL_KEYDOWN:
-    //         switch (event.key.keysym.scancode)
-    //         {
-    //         case SDL_SCANCODE_SPACE:
-    //             variables.levelOneVars.space = 1;
-    //             break;
-    //         case SDL_SCANCODE_UP:
-    //             variables.levelOneVars.characterYposition -= variables.levelOneVars.moveSpeed * variables.levelOneVars.characterDeltatime + 400;
-    //             break;
-    //         }
-    //     default:
-    //         break;
-    //     }
-    // }
-//level2
+ 
+
  while (SDL_PollEvent(&event)  )
         {   
             
+       if (event.type == SDL_QUIT)
+        {
+            exit(1);
+        } 
+         if(variables.levelOnePlayerName == 1 || variables.levelOne == 1){
+ 
+
+
+          if (event.type == SDL_KEYDOWN)
+        {
+            if (event.key.keysym.sym == SDLK_BACKSPACE && strlen(playerName) > 1)
+            {
+
+                playerName[strlen(playerName) - 1] = '\0';
+                updatePlayerName();
+            }
+            //Handle copy
+            // else if (e.key.keysym.sym == SDLK_c && SDL_GetModState() & KMOD_CTRL)
+            // {
+            //     SDL_SetClipboardText(inputText.c_str());
+            // }
+            //Handle paste
+            // else if (e.key.keysym.sym == SDLK_v && SDL_GetModState() & KMOD_CTRL)
+            // {
+            //     inputText = SDL_GetClipboardText();
+            //     renderText = true;
+            // }
+            else if (event.key.keysym.scancode == SDL_SCANCODE_SPACE && (variables.levelOne == 1 || variables.levelTwo == 1))
+            {
+                space = 1;
+                // levelOneObstacleAnimationSpeed++;
+            }
+            else if (event.key.keysym.scancode == SDL_SCANCODE_UP)
+            {
+                levelOneCharacterYposition -= levelOneMoveSpeed * levelOneCharacterDeltatime + 400;
+            }
+        }
+        else if (event.type == SDL_TEXTINPUT && variables.levelOnePlayerName == 1)
+        {
+            //Not copy or pasting
+            if (!(SDL_GetModState() & KMOD_CTRL && (event.text.text[0] == ' ' || event.text.text[0] == 'c' || event.text.text[0] == 'C' || event.text.text[0] == 'v' || event.text.text[0] == 'V')))
+            {
+                strcat(playerName, event.text.text);
+
+                updatePlayerName();
+            }
+        }
+
+        // case:
+        //     switch (event.key.keysym.scancode)
+        //     {
+        //     case SDL_SCANCODE_SPACE:
+        //         space = 1;
+        //         levelOneObstacleAnimationSpeed++;
+        //         break;
+        //     case SDL_SCANCODE_UP:
+        //         levelOneCharacterYposition -= levelOneMoveSpeed * levelOneCharacterDeltatime + 400;
+        //         break;
+        //     case SDL_SCANCODE_BACKSPACE:
+        //         if (strlen(playerName) > 0)
+        //         {
+        //             playerName[strlen(playerName) - 1] = '\0';
+        //         }
+        //         break;
+        //     case SDL_SCANCODE_C:
+        //         if (SDL_GetModState() & KMOD_CTRL)
+        //         {
+        //             SDL_SetClipboardText(playerName);
+        //         }
+        //     }
+
+        // case SDL_TEXTINPUT:
+        //     // strcat(playerName, event.text.text);
+        //     strcat(playerName, event.text.text);
+
+        //     updatePlayerName();
+        // default:
+        //     break;
+        // }
+       
+
+ }
+  
+  if(  variables.levelTwo == 1){
+
         switch (event.type)
         {
         case SDL_QUIT:
@@ -36,110 +100,188 @@ void doInput(void)
             break;
 
         case SDL_KEYDOWN:
-        if(variables.levelTwo==1){
-                    switch (event.key.keysym.scancode)
+            switch (event.key.keysym.scancode)
                     {
                         case SDL_SCANCODE_SPACE: //IF SPACE IS PRESSED GAME STARTS
-                   variables.levelTwoVars.isspaceclicked=1;
-                            if (levelTwoWindow.character2Position.rect.y- ( levelTwoWindow.invisibleborder.rect.y + levelTwoWindow.invisibleborder.rect.h) < 120 && levelTwoWindow.character2Position.rect.y - ( levelTwoWindow.invisibleborder.rect.y +  levelTwoWindow.invisibleborder.rect.h) > 0 && (abs((variables.levelTwoVars.CHARACTER2_X_POS)-levelTwoWindow.invisibleborder.rect.x) <= levelTwoWindow.invisibleborder.rect.w))
+                   isspaceclicked=1;
+                            if (levelTwoWindowCharacterPosition.rect.y- ( levelTwoInvisibleBorder.rect.y + levelTwoInvisibleBorder.rect.h) < 120 && levelTwoWindowCharacterPosition.rect.y - ( levelTwoInvisibleBorder.rect.y +  levelTwoInvisibleBorder.rect.h) > 0 && (abs((CHARACTER2_X_POS)-levelTwoInvisibleBorder.rect.x) <= levelTwoInvisibleBorder.rect.w))
                             {
 
-                                variables.levelTwoVars.CHARACTER2_Y_POS -= levelTwoWindow.character2Position.rect.y - (levelTwoWindow.invisibleborder.rect.y + levelTwoWindow.invisibleborder.rect.h) + 20;
+                                CHARACTER2_Y_POS -= levelTwoWindowCharacterPosition.rect.y - (levelTwoInvisibleBorder.rect.y + levelTwoInvisibleBorder.rect.h) + 20;
                             }
-                            else if (variables.levelTwoVars.CHARACTER2_Y_POS > 300)
+                            else if (CHARACTER2_Y_POS > 300)
                             {
-                               variables.levelTwoVars.CHARACTER2_Y_POS -= 120;
+                               CHARACTER2_Y_POS -= 120;
                             }
-                                break;
+                            break;
                         
     
                 case SDL_SCANCODE_RIGHT:
-                if(variables.levelTwoVars.CHARACTER2_X_POS<WINDOW_WIDTH-300){
-  variables.levelTwoVars.CHARACTER2_X_POS += variables.levelTwoVars.moveSpeed * variables.levelTwoVars.character2Deltatime;
+                if(CHARACTER2_X_POS<WINDOW_WIDTH-300){
+  CHARACTER2_X_POS += moveSpeed * character2Deltatime;
                 }
                   
                     break;
                 case SDL_SCANCODE_LEFT:
-                    variables.levelTwoVars.CHARACTER2_X_POS -= variables.levelTwoVars.moveSpeed * variables.levelTwoVars.character2Deltatime;
+                    CHARACTER2_X_POS -= moveSpeed * character2Deltatime;
        break;
 
                 case SDL_SCANCODE_UP:
               
-                    variables.levelTwoVars.CHARACTER2_Y_POS = WINDOW_HEIGHT-500;
+                    CHARACTER2_Y_POS = WINDOW_HEIGHT-500;
                     break;
              
 
                 case SDL_SCANCODE_DOWN:
                      
-                           variables.levelTwoVars.CHARACTER2_Y_POS += variables.levelTwoVars.moveSpeed * variables.levelTwoVars.character2Deltatime;
+                           CHARACTER2_Y_POS += moveSpeed * character2Deltatime;
                            break;
                         
               }
 
  }
- if(variables.levelOne==1){
-
-      
-            switch (event.key.keysym.scancode)
-            {
-            case SDL_SCANCODE_SPACE:
-                variables.levelOneVars.space = 1;
-                break;
-            case SDL_SCANCODE_UP:
-                variables.levelOneVars.characterYposition -= variables.levelOneVars.moveSpeed * variables.levelOneVars.characterDeltatime + 400;
-                break;
-            }
-        default:
-            break;
-
- }
+ 
+ 
+  }
  
  
  
  
  
  
- 
- 
- }
-
 
 
 
         }
 
 
- 
+    //tar jinijs khabo na
 
+
+
+/*
+    
+
+    while (SDL_PollEvent(&event))
+    {
+        if (event.type == SDL_QUIT)
+        {
+            exit(0);
+        }
+
+        else if (event.type == SDL_KEYDOWN)
+        {
+            if (event.key.keysym.sym == SDLK_BACKSPACE && strlen(playerName) > 1)
+            {
+
+                playerName[strlen(playerName) - 1] = '\0';
+                updatePlayerName();
+            }
+            //Handle copy
+            // else if (e.key.keysym.sym == SDLK_c && SDL_GetModState() & KMOD_CTRL)
+            // {
+            //     SDL_SetClipboardText(inputText.c_str());
+            // }
+            //Handle paste
+            // else if (e.key.keysym.sym == SDLK_v && SDL_GetModState() & KMOD_CTRL)
+            // {
+            //     inputText = SDL_GetClipboardText();
+            //     renderText = true;
+            // }
+            else if (event.key.keysym.scancode == SDL_SCANCODE_SPACE && (variables.levelOne == 1 || variables.levelTwo == 1))
+            {
+                space = 1;
+                // levelOneObstacleAnimationSpeed++;
+            }
+            else if (event.key.keysym.scancode == SDL_SCANCODE_UP)
+            {
+                levelOneCharacterYposition -= levelOneMoveSpeed * levelOneCharacterDeltatime + 400;
+            }
+        }
+        else if (event.type == SDL_TEXTINPUT && variables.levelOnePlayerName == 1)
+        {
+            //Not copy or pasting
+            if (!(SDL_GetModState() & KMOD_CTRL && (event.text.text[0] == ' ' || event.text.text[0] == 'c' || event.text.text[0] == 'C' || event.text.text[0] == 'v' || event.text.text[0] == 'V')))
+            {
+                strcat(playerName, event.text.text);
+
+                updatePlayerName();
+            }
+        }
+
+        // case:
+        //     switch (event.key.keysym.scancode)
+        //     {
+        //     case SDL_SCANCODE_SPACE:
+        //         space = 1;
+        //         levelOneObstacleAnimationSpeed++;
+        //         break;
+        //     case SDL_SCANCODE_UP:
+        //         levelOneCharacterYposition -= levelOneMoveSpeed * levelOneCharacterDeltatime + 400;
+        //         break;
+        //     case SDL_SCANCODE_BACKSPACE:
+        //         if (strlen(playerName) > 0)
+        //         {
+        //             playerName[strlen(playerName) - 1] = '\0';
+        //         }
+        //         break;
+        //     case SDL_SCANCODE_C:
+        //         if (SDL_GetModState() & KMOD_CTRL)
+        //         {
+        //             SDL_SetClipboardText(playerName);
+        //         }
+        //     }
+
+        // case SDL_TEXTINPUT:
+        //     // strcat(playerName, event.text.text);
+        //     strcat(playerName, event.text.text);
+
+        //     updatePlayerName();
+        // default:
+        //     break;
+        // }
+    }
+
+    */
 
     int mousex, mousey;
     int buttons = SDL_GetMouseState(&mousex, &mousey);
     if (buttons & SDL_BUTTON(SDL_BUTTON_LEFT))
     {
-        if ((mousex >= welcome_window.newgame.rect.x && mousex <= (welcome_window.newgame.rect.x + welcome_window.newgame.rect.w) && mousey >= welcome_window.newgame.rect.y && mousey <= (welcome_window.newgame.rect.y + welcome_window.newgame.rect.h)))
+        if (variables.gameWindowBegin == 1 && (mousex >= welcomeWindowNewgameButton.rect.x && mousex <= (welcomeWindowNewgameButton.rect.x + welcomeWindowNewgameButton.rect.w) && mousey >= welcomeWindowNewgameButton.rect.y && mousey <= (welcomeWindowNewgameButton.rect.y + welcomeWindowNewgameButton.rect.h)))
         {
 
-            // welcome_window.newgame.rect.w = (int)0;
-            // welcome_window.newgame.rect.h = (int)0;
+            variables.levelOne = 0;
+            variables.levelTwo = 0;
             variables.chooseLevel = 1;
             variables.gameWindowBegin = 0;
-            variables.levelOne = 0;
-
-            printf("%d", variables.chooseLevel);
+            variables.levelOneCompleted = 0;
+            variables.levelOnePlayerName = 0;
+            variables.newScore = 0;
+            variables.ScoreBoard = 0;
         }
-        if ((mousex >= welcome_window.levelOneButton.rect.x && mousex <= (welcome_window.levelOneButton.rect.x + welcome_window.levelOneButton.rect.w) && mousey >= welcome_window.levelOneButton.rect.y && mousey <= (welcome_window.levelOneButton.rect.y + welcome_window.levelOneButton.rect.h)))
+        if (variables.chooseLevel == 1 && (mousex >= newgameWindowlevelOneButton.rect.x && mousex <= (newgameWindowlevelOneButton.rect.x + newgameWindowlevelOneButton.rect.w) && mousey >= newgameWindowlevelOneButton.rect.y && mousey <= (newgameWindowlevelOneButton.rect.y + newgameWindowlevelOneButton.rect.h)))
         {
-            variables.levelOne = 1;
+            variables.levelOne = 0;
+            variables.levelTwo = 0;
             variables.chooseLevel = 0;
             variables.gameWindowBegin = 0;
+            variables.levelOneCompleted = 0;
+            variables.levelOnePlayerName = 1;
+            variables.newScore = 0;
+            variables.ScoreBoard = 0;
         }
 
-        if ((mousex >= welcome_window.levelTwoButton.rect.x && mousex <= (welcome_window.levelTwoButton.rect.x + welcome_window.levelTwoButton.rect.w) && mousey >= welcome_window.levelTwoButton.rect.y && mousey <= (welcome_window.levelTwoButton.rect.y + welcome_window.levelTwoButton.rect.h)))
+        if (variables.chooseLevel == 1 && (mousex >= newgameWindowlevelTwoButton.rect.x && mousex <= (newgameWindowlevelTwoButton.rect.x + newgameWindowlevelTwoButton.rect.w) && mousey >= newgameWindowlevelTwoButton.rect.y && mousey <= (newgameWindowlevelTwoButton.rect.y + newgameWindowlevelTwoButton.rect.h)))
         {
             variables.levelOne = 0;
             variables.levelTwo = 1;
             variables.chooseLevel = 0;
             variables.gameWindowBegin = 0;
+            variables.levelOneCompleted = 0;
+            variables.levelOnePlayerName = 0;
+            variables.newScore = 0;
+            variables.ScoreBoard = 0;
         }
         // if (mousex >= LEVEL2_BUTTON_rect.x && mousex <= (LEVEL2_BUTTON_rect.x + LEVEL2_BUTTON_rect.w) && mousey >= LEVEL2_BUTTON_rect.y && mousey <= (LEVEL2_BUTTON_rect.y + LEVEL2_BUTTON_rect.h) && NEWGAME_MENU == 1)
         // {
@@ -157,10 +299,33 @@ void doInput(void)
         //     NEWGAME_BUTTON_rect.w = (int)0;
         //     NEWGAME_BUTTON_rect.h = (int)0;
         // }
-        if (mousex >= welcome_window.back.rect.x && mousex <= (welcome_window.back.rect.x + welcome_window.back.rect.w) && mousey >= welcome_window.back.rect.y && mousey <= (welcome_window.back.rect.y + welcome_window.back.rect.h))
+
+        if (strlen(playerName) > 1 && variables.levelOnePlayerName == 1 && (mousex >= enterButton.rect.x && mousex <= (enterButton.rect.x + enterButton.rect.w) && mousey >= enterButton.rect.y && mousey <= (enterButton.rect.y + enterButton.rect.h)))
+        {
+            variables.levelOne = 1;
+            variables.levelTwo = 0;
+            variables.chooseLevel = 0;
+            variables.gameWindowBegin = 0;
+            variables.levelOneCompleted = 0;
+            variables.levelOnePlayerName = 0;
+            variables.newScore = 1;
+            variables.ScoreBoard = 0;
+        }
+        if (variables.gameWindowBegin == 1 && (mousex >= welcomeWindowControlsButton.rect.x && mousex <= (welcomeWindowControlsButton.rect.x + welcomeWindowControlsButton.rect.w) && mousey >= welcomeWindowControlsButton.rect.y && mousey <= (welcomeWindowControlsButton.rect.y + welcomeWindowControlsButton.rect.h)))
+        {
+            variables.levelOne = 0;
+            variables.levelTwo = 0;
+            variables.chooseLevel = 0;
+            variables.gameWindowBegin = 0;
+            variables.levelOneCompleted = 0;
+            variables.levelOnePlayerName = 0;
+            variables.newScore = 0;
+            variables.ScoreBoard = 1;
+        }
+        if (mousex >= back.rect.x && mousex <= (back.rect.x + back.rect.w) && mousey >= back.rect.y && mousey <= (back.rect.y + back.rect.h))
         {
 
             resetAll();
-                }
+        }
     }
 }

@@ -1,4 +1,10 @@
 #include "commonHeaders.h"
+
 extern App app;
-extern Windows welcome_window, newgameWindow, levelOneWindow, levelTwoWindow;
+extern component
+
+    levelOneWindowCoins[5],
+    window,
+    back;
+
 extern Variables variables;

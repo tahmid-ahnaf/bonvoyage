@@ -12,7 +12,7 @@ void prepareScene(void)
 
     // updateAnimationSpeedForLevelTwoWindow();
     // updateAnimationSpeedForLevelOneWindow();
-    if (variables.gameWindowBegin == 0)
+    if (variables.gameWindowBegin == 1)
     {
 
         drawWelcomeWindowFunction();
@@ -25,12 +25,23 @@ void prepareScene(void)
 
     if (variables.levelOne == 1)
     {
-        // drawLevelOneWindowFunction();
         drawLevelOneWindowFunction();
+    }
+    if (variables.levelOneCompleted == 1)
+    {
+        drawLevelOneCompletedFunction();
     }
     if (variables.levelTwo == 1)
     {
         drawLevelTwoWindowFunction();
+    }
+    if (variables.levelOnePlayerName == 1)
+    {
+        drawLevelOnePlayerNameFunction();
+    }
+    if (variables.ScoreBoard == 1)
+    {
+        drawScoreBoardFunction();
     }
 }
 

@@ -1,7 +1,4 @@
 #include "initialize.h"
-
- 
-
 void initSDL(void)
 {
 
@@ -35,35 +32,41 @@ void initSDL(void)
         SDL_Quit();
         exit(1);
     }
-    
-   
-    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
-    variables.levelTwoVars.background = Mix_LoadMUS("audio/Delusion.mp3");
-    variables.levelTwoVars.coingain = Mix_LoadMUS("audio/coingain.mp3");
-    variables.levelTwoVars.explosionsound = Mix_LoadMUS("audio/explosionsound.mp3");
-    variables.levelTwoVars.jumpsound = Mix_LoadMUS("audio/jump.mp3");
-    variables.levelTwoVars.pointgainsound = Mix_LoadMUS("audio/pointgain.mp3");
-
-
-
+    variables.font = TTF_OpenFont("Freshman.ttf", 30); //OPENING FONT FROM LOCAL STORAGE
+                                                       // SDL_Color color = {244, 189, 2};
+    // variables.color = {25, 25, 112};
+    variables.color = {0, 230, 64};
     //Welcome screen sky
+    // updatePlayerName();
 
-    variables.levelOneVars.font = TTF_OpenFont("Freshman.ttf", 30); //OPENING FONT FROM LOCAL STORAGE
-                                                                    // SDL_Color color = {244, 189, 2};
-    variables.levelOneVars.color = {25, 25, 112};
+
+    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+    background = Mix_LoadMUS("audio/Delusion.mp3");
+    coingain = Mix_LoadMUS("audio/coingain.mp3");
+    explosionsound = Mix_LoadMUS("audio/explosionsound.mp3");
+    jumpsound = Mix_LoadMUS("audio/jump.mp3");
+    pointgainsound = Mix_LoadMUS("audio/pointgain.mp3");
+
+
+
+    SDL_StartTextInput();
 
     welcomewindow();
 
     newgamewindow();
 
+    updatePlayerName();
+
     levelonewindow();
 
     leveltwowindow();
+    levelonecompleted();
+    scoreboard();
 
     //back
-    welcome_window.back.surface = IMG_Load("images/back.png");
+    window.surface = IMG_Load("images/backbutton.png");
 
-    if (!welcome_window.back.surface)
+    if (!window.surface)
     {
         printf("back_BUTTON Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -72,9 +75,9 @@ void initSDL(void)
         exit(1);
     }
 
-    welcome_window.back.tex = SDL_CreateTextureFromSurface(app.rend, welcome_window.back.surface);
-
-    if (!welcome_window.back.tex)
+    back.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
+    if (!back.tex)
     {
         printf("back_BUTTON  Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -82,15 +85,13 @@ void initSDL(void)
         SDL_Quit();
         exit(1);
     }
-    welcome_window.back.rect;
-    SDL_QueryTexture(welcome_window.back.tex, NULL, NULL, &welcome_window.back.rect.w, &welcome_window.back.rect.h);
-    welcome_window.back.rect.w = (int)160;
-    welcome_window.back.rect.h = (int)70;
-    welcome_window.back.rect.x = (int)30;
-    welcome_window.back.rect.y = (int)840;
 
+    SDL_QueryTexture(back.tex, NULL, NULL, &back.rect.w, &back.rect.h);
+    back.rect.w = (int)115;
+    back.rect.h = (int)47;
+    back.rect.x = (int)30;
+    back.rect.y = (int)890;
 }
-
 void cleanup(void)
 {
 
@@ -98,12 +99,13 @@ void cleanup(void)
     newGameWindowCleanUp();
     levelTwoWindowCleanUp();
     levelOneWindowCleanUp();
+    SDL_StopTextInput();
+    TTF_CloseFont(variables.font);
+    TTF_Quit();
+    IMG_Quit();
+
     SDL_DestroyRenderer(app.rend);
 
     SDL_DestroyWindow(app.window);
-    TTF_CloseFont(variables.levelOneVars.font);
-    TTF_CloseFont(variables.levelTwoVars.font);
-    TTF_Quit();
-    IMG_Quit();
     SDL_Quit();
 }

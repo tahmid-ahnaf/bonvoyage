@@ -3,40 +3,37 @@
 
 
 void drawLevelTwoCoinsPopupFunction(){
-  SDL_RenderCopy(app.rend,levelTwoWindow.coin_point_popup.tex, 0, &levelTwoWindow.coin_point_popup.rect);
+  SDL_RenderCopy(app.rend,levelTwoCoinPointPopUp.tex, 0, &levelTwoCoinPointPopUp.rect);
 }
 
  
 void drawLevelTwoCoinsFunction()
 {
 //      SDL_RenderCopy(rend, COIN_TEX, &ROTATING_COIN, &COIN_RECT);
-    SDL_RenderCopy(app.rend, levelTwoWindow.level2Coin.tex,&levelTwoWindow.rotatingcoin.rect, &levelTwoWindow.level2Coin.rect);
-      SDL_RenderCopy(app.rend, levelTwoWindow.level2Coin2.tex,&levelTwoWindow.rotatingcoin.rect, &levelTwoWindow.level2Coin2.rect);
+    SDL_RenderCopy(app.rend, levelTwoCoin1.tex,&levelTwoRotatingCoin.rect, &levelTwoCoin1.rect);
+    SDL_RenderCopy(app.rend, levelTwoCoin2.tex,&levelTwoRotatingCoin.rect, &levelTwoCoin2.rect);
      
 }
 
 
 void updateCoinsPosition()
 {
-    levelTwoWindow.level2Coin.rect.w = (int)40;
-    levelTwoWindow.level2Coin.rect.h = (int)40;
-    levelTwoWindow.level2Coin2.rect.w = (int)40;
-    levelTwoWindow.level2Coin2.rect.h = (int)40;
+    levelTwoCoin1.rect.w = (int)40;
+    levelTwoCoin1.rect.h = (int)40;
+    levelTwoCoin2.rect.w = (int)40;
+    levelTwoCoin2.rect.h = (int)40;
 
-    if (levelTwoWindow.box.rect.y < WINDOW_HEIGHT / 2 || levelTwoWindow.box.rect.y >= WINDOW_HEIGHT - 400 ||  levelTwoWindow.box.rect.y- levelTwoWindow.character2Position.rect.y<=levelTwoWindow.level2Coin.rect.h)
+    if (levelTwoBox.rect.y < WINDOW_HEIGHT / 2 || levelTwoBox.rect.y >= WINDOW_HEIGHT - 400 ||  levelTwoBox.rect.y- levelTwoWindowCharacterPosition.rect.y<=levelTwoCoin1.rect.h)
     {
-        levelTwoWindow.box.rect.y = WINDOW_HEIGHT / 2 + rand() % 50;
+        levelTwoBox.rect.y = WINDOW_HEIGHT / 2 + rand() % 50;
     }
 
-            // BORDER_RECT.y = levelTwoWindow.box.rect.y + 30;
-        levelTwoWindow.level2Coin.rect.y = levelTwoWindow.box.rect.y - 70 - rand() % 200;
-        levelTwoWindow.level2Coin2.rect.y = levelTwoWindow.box.rect.y - 70 - rand() % 200;
+            // BORDER_RECT.y = levelTwoBox.rect.y + 30;
+        levelTwoCoin1.rect.y = levelTwoBox.rect.y - 70 - rand() % 200;
+        levelTwoCoin2.rect.y = levelTwoBox.rect.y - 70 - rand() % 200;
 
-        if (levelTwoWindow.level2Coin.rect.y < levelTwoWindow.box.rect.y && levelTwoWindow.level2Coin.rect.y > levelTwoWindow.box.rect.y - 120)
+        if (levelTwoCoin1.rect.y < levelTwoBox.rect.y && levelTwoCoin1.rect.y > levelTwoBox.rect.y - 120)
         {
-            levelTwoWindow.level2Coin.rect.y = WINDOW_WIDTH + 300;
-        }
-     
-
-       
+            levelTwoCoin1.rect.y = WINDOW_WIDTH + 300;
+        }  
 }

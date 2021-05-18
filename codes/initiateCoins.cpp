@@ -3,11 +3,11 @@
 void coinsload(void)
 {
     //sky
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 5; i++)
     {
-        levelOneWindow.coins[i].surface = IMG_Load("images/levelone/coins.png");
+        window.surface = IMG_Load("images/levelone/coins-min.png");
 
-        if (!levelOneWindow.coins[i].surface)
+        if (!window.surface)
         {
             printf("coins[i]_BUTTON Error: %s\n", IMG_GetError());
             SDL_DestroyRenderer(app.rend);
@@ -16,9 +16,9 @@ void coinsload(void)
             exit(1);
         }
 
-        levelOneWindow.coins[i].tex = SDL_CreateTextureFromSurface(app.rend, levelOneWindow.coins[i].surface);
-
-        if (!levelOneWindow.coins[i].tex)
+        levelOneWindowCoins[i].tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+        SDL_FreeSurface(window.surface);
+        if (!levelOneWindowCoins[i].tex)
         {
             printf("coins[i]_  Texture %s\n", SDL_GetError());
             SDL_DestroyRenderer(app.rend);
@@ -26,21 +26,20 @@ void coinsload(void)
             SDL_Quit();
             exit(1);
         }
-        levelOneWindow.coins[i].rect;
-        SDL_QueryTexture(levelOneWindow.coins[i].tex, NULL, NULL, &levelOneWindow.coins[i].rect.w, &levelOneWindow.coins[i].rect.h);
-        levelOneWindow.coins[i].rect.w = (int)40;
-        levelOneWindow.coins[i].rect.h = (int)40;
-        levelOneWindow.coins[i].rect.x = (int)600;
-        levelOneWindow.coins[i].rect.y = (int)500;
+        levelOneWindowCoins[i].rect;
+        SDL_QueryTexture(levelOneWindowCoins[i].tex, NULL, NULL, &levelOneWindowCoins[i].rect.w, &levelOneWindowCoins[i].rect.h);
+        levelOneWindowCoins[i].rect.w = (int)40;
+        levelOneWindowCoins[i].rect.h = (int)40;
+        levelOneWindowCoins[i].rect.x = (int)WINDOW_WIDTH + 100;
+        levelOneWindowCoins[i].rect.y = (int)500;
     }
 }
 
 void coinsCleanUp()
 {
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 5; i++)
     {
-        SDL_FreeSurface(levelOneWindow.coins[i].surface);
-        SDL_DestroyTexture(levelOneWindow.coins[i].tex);
+        SDL_DestroyTexture(levelOneWindowCoins[i].tex);
     }
 
     IMG_Quit();

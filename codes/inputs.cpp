@@ -3,9 +3,7 @@
 void doInput(void)
 {
     SDL_Event event;
- 
-
- while (SDL_PollEvent(&event)  )
+ while (SDL_PollEvent(&event))
         {   
             
        if (event.type == SDL_QUIT)
@@ -91,15 +89,16 @@ void doInput(void)
 
  }
   
-  if(  variables.levelTwo == 1){
+    if(variables.levelTwo == 1)
+    {
 
         switch (event.type)
         {
-        case SDL_QUIT:
+         case SDL_QUIT:
             exit(1);
             break;
 
-        case SDL_KEYDOWN:
+         case SDL_KEYDOWN:
             switch (event.key.keysym.scancode)
                     {
                         case SDL_SCANCODE_SPACE: //IF SPACE IS PRESSED GAME STARTS
@@ -116,15 +115,17 @@ void doInput(void)
                             break;
                         
     
-                case SDL_SCANCODE_RIGHT:
-                if(CHARACTER2_X_POS<WINDOW_WIDTH-300){
-  CHARACTER2_X_POS += moveSpeed * character2Deltatime;
+         case SDL_SCANCODE_RIGHT:
+                if(CHARACTER2_X_POS<WINDOW_WIDTH-300)
+                {
+                   CHARACTER2_X_POS += moveSpeed * character2Deltatime;
                 }
                   
-                    break;
+                break;
+                
                 case SDL_SCANCODE_LEFT:
                     CHARACTER2_X_POS -= moveSpeed * character2Deltatime;
-       break;
+                    break;
 
                 case SDL_SCANCODE_UP:
               
@@ -134,115 +135,16 @@ void doInput(void)
 
                 case SDL_SCANCODE_DOWN:
                      
-                           CHARACTER2_Y_POS += moveSpeed * character2Deltatime;
-                           break;
+                    CHARACTER2_Y_POS += moveSpeed * character2Deltatime;
+                    break;
                         
               }
 
  }
  
- 
   }
- 
- 
- 
- 
- 
- 
+       }
 
-
-
-        }
-
-
-    //tar jinijs khabo na
-
-
-
-/*
-    
-
-    while (SDL_PollEvent(&event))
-    {
-        if (event.type == SDL_QUIT)
-        {
-            exit(0);
-        }
-
-        else if (event.type == SDL_KEYDOWN)
-        {
-            if (event.key.keysym.sym == SDLK_BACKSPACE && strlen(playerName) > 1)
-            {
-
-                playerName[strlen(playerName) - 1] = '\0';
-                updatePlayerName();
-            }
-            //Handle copy
-            // else if (e.key.keysym.sym == SDLK_c && SDL_GetModState() & KMOD_CTRL)
-            // {
-            //     SDL_SetClipboardText(inputText.c_str());
-            // }
-            //Handle paste
-            // else if (e.key.keysym.sym == SDLK_v && SDL_GetModState() & KMOD_CTRL)
-            // {
-            //     inputText = SDL_GetClipboardText();
-            //     renderText = true;
-            // }
-            else if (event.key.keysym.scancode == SDL_SCANCODE_SPACE && (variables.levelOne == 1 || variables.levelTwo == 1))
-            {
-                space = 1;
-                // levelOneObstacleAnimationSpeed++;
-            }
-            else if (event.key.keysym.scancode == SDL_SCANCODE_UP)
-            {
-                levelOneCharacterYposition -= levelOneMoveSpeed * levelOneCharacterDeltatime + 400;
-            }
-        }
-        else if (event.type == SDL_TEXTINPUT && variables.levelOnePlayerName == 1)
-        {
-            //Not copy or pasting
-            if (!(SDL_GetModState() & KMOD_CTRL && (event.text.text[0] == ' ' || event.text.text[0] == 'c' || event.text.text[0] == 'C' || event.text.text[0] == 'v' || event.text.text[0] == 'V')))
-            {
-                strcat(playerName, event.text.text);
-
-                updatePlayerName();
-            }
-        }
-
-        // case:
-        //     switch (event.key.keysym.scancode)
-        //     {
-        //     case SDL_SCANCODE_SPACE:
-        //         space = 1;
-        //         levelOneObstacleAnimationSpeed++;
-        //         break;
-        //     case SDL_SCANCODE_UP:
-        //         levelOneCharacterYposition -= levelOneMoveSpeed * levelOneCharacterDeltatime + 400;
-        //         break;
-        //     case SDL_SCANCODE_BACKSPACE:
-        //         if (strlen(playerName) > 0)
-        //         {
-        //             playerName[strlen(playerName) - 1] = '\0';
-        //         }
-        //         break;
-        //     case SDL_SCANCODE_C:
-        //         if (SDL_GetModState() & KMOD_CTRL)
-        //         {
-        //             SDL_SetClipboardText(playerName);
-        //         }
-        //     }
-
-        // case SDL_TEXTINPUT:
-        //     // strcat(playerName, event.text.text);
-        //     strcat(playerName, event.text.text);
-
-        //     updatePlayerName();
-        // default:
-        //     break;
-        // }
-    }
-
-    */
 
     int mousex, mousey;
     int buttons = SDL_GetMouseState(&mousex, &mousey);

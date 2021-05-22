@@ -14,6 +14,7 @@ void BombandPlaneLoad()
     }
 
     levelTwoBomb.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
 
     if (!levelTwoBomb.tex)
     {
@@ -46,6 +47,7 @@ void BombandPlaneLoad()
     }
 
     levelTwoPlane.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
 
     if (!levelTwoPlane.tex)
     {
@@ -76,6 +78,7 @@ void BombandPlaneLoad()
     }
 
     levelTwoExplosion.tex= SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
 
     if (!levelTwoExplosion.tex)
     {
@@ -96,12 +99,10 @@ void BombandPlaneLoad()
 }
     void BombandPlaneCleanUp()
     {
-    //   SDL_FreeSurface(levelTwoBomb.surface);
-      SDL_DestroyTexture(levelTwoPlane.tex);
-    //   SDL_FreeSurface(levelTwoPlane.surface);
-      SDL_DestroyTexture(levelTwoBomb.tex);
-
-      IMG_Quit();
+        SDL_DestroyTexture(levelTwoPlane.tex);
+        SDL_DestroyTexture(levelTwoBomb.tex);
+        SDL_DestroyTexture(levelTwoExplosion.tex);
+        IMG_Quit();
     }
 
 

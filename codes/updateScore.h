@@ -2,49 +2,15 @@
 
 extern App app;
 extern component
-    welcomeWindowSky,
-    welcomeWindowBirds,
-    welcomeWindowMountains,
-    welcomeWindowTrees,
-    welcomeWindowGameTitle,
-    welcomeWindowNewgameButton,
-    welcomeWindowControlsButton,
-    welcomeWindowDetailsButton,
-
-    newgameWindowlevelOneButton,
-    newgameWindowlevelTwoButton,
-
-    levelOneWindowSky,
-    levelOneWindowSun,
-    levelOneWindowMountains,
-    levelOneWindowTreeShade,
-    levelOneWindowTrees,
-    levelOneWindowClouds,
-    levelOneWindowTrack,
-    levelOneWindowCharacter,
-    levelOneWindowScore,
-    levelOneWindowHighScore,
+    window,
     levelOneWindowScoreText,
     levelOneWindowHighScoreText,
-
-    levelTwoWindowSky,
-    levelTwoWindowMoon,
-    levelTwoWindowMountains,
-    levelTwoWindowTreeShade,
-    levelTwoWindowClouds,
-    levelTwoWindowTrack,
-    levelTwoWindowCharacter,
-    levelTwoWindowCharacterPosition,
-    levelTwoBox, levelTwoInvisibleBorder, levelTwoCoin1, levelTwoCoin2, levelTwoRotatingCoin, levelTwoCoinPointPopUp, levelTwoBomb, levelTwoPlane, levelTwoExplosion,
-    levelTwoHeart, levelTwoRotatingHeart, levelTwoLifeBonusPopUp, levelTwoLifeScoreDisplay, levelTwoHeartDisplay, levelTwoScoreText, levelTwoHighScoreText,
-    characterFramePosition,
-
-    levelOneWindowCoins[4],
-
-    back;
+    levelTwoWindowScoreText,
+    levelTwoWindowHighScoreText;
 
 extern Variables variables;
 extern void updateHighScoreOnFile(void);
+extern void updateLevelTwoHighScoreOnFile(void);
 extern void LoadScoreFile();
+extern void LevelTwoLoadScoreFile();
 extern void scoreboard();
-extern void updateHighScoreOnFileLevel2();

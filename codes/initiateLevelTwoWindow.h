@@ -9,23 +9,17 @@ extern component
     levelTwoWindowTreeShade,
     levelTwoWindowClouds,
     levelTwoWindowTrack,
-    levelTwoWindowCharacter,
-  
-    levelTwoWindowCharacterPosition,
-    levelTwoBox, levelTwoInvisibleBorder, levelTwoCoin1, levelTwoCoin2, levelTwoRotatingCoin, levelTwoCoinPointPopUp, levelTwoBomb, levelTwoPlane, levelTwoExplosion,
-    levelTwoHeart, levelTwoRotatingHeart, levelTwoLifeBonusPopUp, levelTwoLifeScoreDisplay, levelTwoHeartDisplay, levelTwoScoreText, levelTwoHighScoreText,
-    window,
-    levelOneWindowCoins[4],
+    levelTwoWindowCharacter,levelTwoWindowCharacterPosition,
     characterFramePosition,
-    back;
+    window;
 
 extern Variables variables;
-extern void LevelTwoBoxLoad(void);
-extern void BoxCleanUp(void);
-extern void LevelTwoCoinsload(void);
-extern void LevelTwoCoinsCleanUp(void);
-extern void Level2CoinsPopCleanUp(void); 
-extern void BombandPlaneLoad(void);
-extern void BombandPlaneCleanUp(void);
-extern void LevelTwoLifeLoad(void);
+extern void LevelTwoBoxLoad();
+extern void LevelTwoCoinsload();
+extern void BoxCleanUp();
+extern void LevelTwoCoinsCleanUp();
+extern void BombandPlaneLoad();
 extern void LevelTwoLoadScoreFile();
+extern void BombandPlaneCleanUp();
+extern void LevelTwoCoinsPopCleanUp();
+extern void LevelTwoLifeLoad();

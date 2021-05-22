@@ -9,11 +9,8 @@ extern component
     welcomeWindowGameTitle,
     welcomeWindowNewgameButton,
     welcomeWindowControlsButton,
-    welcomeWindowDetailsButton,
+    welcomeWindowLegendsButton,
     welcomeWindowExitButton,
-    window,
-    enterName,
-    enterButton,
-    back;
+    window;
 
 extern Variables variables;

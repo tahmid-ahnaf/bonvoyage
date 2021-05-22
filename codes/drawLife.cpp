@@ -1,9 +1,9 @@
 #include "drawLife.h"
 
-void drawLifeFunction()
+void levelOneDrawLifeFunction()
 {
 
-    for (int i = 0; i < 6; i++)
+    for (int i = 0; i < lifeSize; i++)
     {
         levelOneWindowLife[i].rect.x = i * 40 + 1000;
         levelOneWindowLife[i].rect.y = 30;

@@ -9,7 +9,7 @@ extern component
     welcomeWindowGameTitle,
     welcomeWindowNewgameButton,
     welcomeWindowControlsButton,
-    welcomeWindowDetailsButton,
+    welcomeWindowLegendsButton,
 
     newgameWindowlevelOneButton,
     newgameWindowlevelTwoButton,
@@ -33,17 +33,17 @@ extern component
     levelTwoWindowTreeShade,
     levelTwoWindowClouds,
     levelTwoWindowTrack,
-    levelTwoWindowCharacter,
-    levelTwoWindowCharacterPosition,
-    levelTwoBox, levelTwoInvisibleBorder, levelTwoCoin1, levelTwoCoin2, levelTwoRotatingCoin, levelTwoCoinPointPopUp, levelTwoBomb, levelTwoPlane, levelTwoExplosion,
-    levelTwoHeart, levelTwoRotatingHeart, levelTwoLifeBonusPopUp, levelTwoLifeScoreDisplay, levelTwoHeartDisplay, levelTwoScoreText, levelTwoHighScoreText,
+    levelTwoWindowCharacter, levelTwoWindowCharacterPosition, levelTwoInvisibleBorder, 
     characterFramePosition,
+    welcomeWindowExitButton,
 
-    levelOneWindowCoins[4],
+    levelOneWindowCoins[5],
+
+    tigerFramePosition,
+    levelOneWindowObstacle[3],
     enterButton,
     back;
 
 extern Variables variables;
-// extern int levelOneObstacleAnimationSpeed;
 extern void resetAll();
 extern void updatePlayerName();

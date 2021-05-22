@@ -1,8 +1,7 @@
 #include "initiateCoinsEffect.h"
 
-void coinseffectload(void)
+void levelOneCoinsEffectLoad(void)
 {
-    //sky
     for (int i = 0; i < 5; i++)
     {
         window.surface = IMG_Load("images/levelone/100.png");
@@ -31,11 +30,11 @@ void coinseffectload(void)
         levelOneWindowCoinsEffect[i].rect.w = (int)0;
         levelOneWindowCoinsEffect[i].rect.h = (int)0;
         levelOneWindowCoinsEffect[i].rect.x = (int)0;
-        levelOneWindowCoinsEffect[i].rect.y =  levelOneWindowCoins[i].rect.y;
+        levelOneWindowCoinsEffect[i].rect.y = levelOneWindowCoins[i].rect.y;
     }
 }
 
-void coinseffectCleanUp()
+void levelOneCoinsEffectCleanUp()
 {
     for (int i = 0; i < 5; i++)
     {

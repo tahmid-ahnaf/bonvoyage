@@ -4,7 +4,6 @@ extern App app;
 extern component
 
     levelOneWindowCoins[5],
-    window,
-    back;
+    window;
 
 extern Variables variables;

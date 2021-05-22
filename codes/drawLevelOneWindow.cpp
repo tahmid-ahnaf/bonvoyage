@@ -31,7 +31,7 @@ void updateAnimationSpeedForLevelOneWindow()
             levelOneCurrentScore += 22;
         }
     }
-    curzonPosition -= 3;
+
     levelOneTigerFrametime += levelOneTigerDeltatime;
     if (levelOneTigerFrametime >= (0.25f))
     {
@@ -43,7 +43,7 @@ void updateAnimationSpeedForLevelOneWindow()
             levelOneWindowTiger.rect.x = 0;
         }
     }
-    if (SDL_HasIntersection(&characterFramePosition.rect, &levelOneCurzon.rect))
+    if (characterFramePosition.rect.x >= levelOneCurzon.rect.x + 100)
     {
         variables.levelOneCompleted = 1;
         variables.levelOne = 0;
@@ -117,42 +117,21 @@ void updateAnimationSpeedForLevelOneWindow()
         {
             levelOneCharacterYposition += SCROLL_SPEED / 70;
         }
+
+        if (tigerYposition < 730)
+        {
+            tigerYposition += (float)SCROLL_SPEED / 130;
+        }
     }
 
-    // levelOneSkyAnimationSpeed -= 0.5;
-    // if (levelOneSkyAnimationSpeed < -levelOneWindowSky.rect.w)
-    // {
-    //     levelOneSkyAnimationSpeed = 0;
-    // }
+    tigerFramePosition.rect.y = tigerYposition;
 
-    // levelOneMountainsAnimationSpeed -= 2;
-    // if (levelOneMountainsAnimationSpeed < -levelOneWindowMountains.rect.w)
-    // {
-    //     levelOneMountainsAnimationSpeed = 0;
-    // }
-
-    // levelOneTreeShadeAnimationSpeed -= 4;
-    // if (levelOneTreeShadeAnimationSpeed < -levelOneWindowTreeShade.rect.w)
-    // {
-    //     levelOneTreeShadeAnimationSpeed = 0;
-    // }
-
-    // levelOneTreesAnimationSpeed -= 5;
-    // if (levelOneTreesAnimationSpeed < -levelOneWindowTrees.rect.w)
-    // {
-    //     levelOneTreesAnimationSpeed = 0;
-    // }
-    // levelOneCloudsAnimationSpeed -= 1;
-    // if (levelOneCloudsAnimationSpeed < -levelOneWindowClouds.rect.w)
-    // {
-    //     levelOneCloudsAnimationSpeed = 0;
-    // }
-
-    // levelOneTrackAnimationSpeed -= 6;
-    // if (levelOneTrackAnimationSpeed < -levelOneWindowTrack.rect.w)
-    // {
-    //     levelOneTrackAnimationSpeed = 0;
-    // }
+    if (lifeSize == 0)
+    {
+        variables.levelOne = 0;
+        variables.gameOver1 = 1;
+    }
+    curzonPosition -= 3;
 }
 void drawLevelOneWindowFunction()
 {
@@ -204,15 +183,17 @@ void drawLevelOneWindowFunction()
     SDL_RenderCopy(app.rend, levelOneWindowHighScore.tex, NULL, &levelOneWindowHighScore.rect);
     SDL_RenderCopy(app.rend, levelOneWindowScoreText.tex, NULL, &levelOneWindowScoreText.rect);
     SDL_RenderCopy(app.rend, levelOneWindowHighScoreText.tex, NULL, &levelOneWindowHighScoreText.rect);
-    SDL_RenderCopy(app.rend, levelOneCurzon.tex, NULL, &levelOneCurzon.rect);
+
     SDL_RenderCopy(app.rend, back.tex, NULL, &back.rect);
-    // SDL_RenderCopy(app.rend, levelOneWindow.coins[0].tex, NULL, &levelOneWindow.coins[0].rect);
+
     if (variables.levelOne == 1 && space == 1)
     {
         drawCoinsFunction();
-        drawObstacleFunction();
+        levelOneDrawObstacleFunction();
         collision();
         drawCoinsEffectFunction();
-        drawLifeFunction();
+        levelOneDrawLifeFunction();
+        levelOneDrawLifeLossFunction();
     }
+    SDL_RenderCopy(app.rend, levelOneCurzon.tex, NULL, &levelOneCurzon.rect);
 }

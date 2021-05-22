@@ -1,6 +1,6 @@
 #include "initiateLevelOneWindow.h"
 
-void levelonewindow(void)
+void levelOneWindowLoad(void)
 {
     //sky
 
@@ -342,7 +342,7 @@ void levelonewindow(void)
     levelOneWindowHighScore.rect.y = (int)100;
 
     //curzon
-    window.surface = IMG_Load("images/levelone/curzon.png");
+    window.surface = IMG_Load("images/levelone/newcurzon.png");
 
     if (!window.surface)
     {
@@ -369,42 +369,29 @@ void levelonewindow(void)
     levelOneCurzon.rect.w = (int)400;
     levelOneCurzon.rect.h = (int)200;
     levelOneCurzon.rect.x = (int)curzonPosition;
-    levelOneCurzon.rect.y = (int)600;
+    levelOneCurzon.rect.y = (int)630;
 
-    coinsload();
-    obstacleload();
-    coinseffectload();
-    lifeload();
+    levelOneCoinsLoad();
+    levelOneObstacleLoad();
+    levelOneCoinsEffectLoad();
+    levelOneLifeLoad();
+    levelOneLifeLossLoad();
     updateScore();
 }
 
 void levelOneWindowCleanUp()
 {
-    // SDL_FreeSurface(levelOneWindowSky.surface);
-    SDL_DestroyTexture(levelOneWindowSky.tex);
 
-    // SDL_FreeSurface(levelOneWindowMountains.surface);
+    SDL_DestroyTexture(levelOneWindowSky.tex);
     SDL_DestroyTexture(levelOneWindowMountains.tex);
-    // SDL_FreeSurface(levelOneWindowTreeShade.surface);
     SDL_DestroyTexture(levelOneWindowTreeShade.tex);
-    // SDL_FreeSurface(levelOneWindowTrees.surface);
     SDL_DestroyTexture(levelOneWindowTrees.tex);
-    // SDL_FreeSurface(levelOneWindowClouds.surface);
     SDL_DestroyTexture(levelOneWindowClouds.tex);
-    // SDL_FreeSurface(levelOneWindowTrack.surface);
     SDL_DestroyTexture(levelOneWindowTrack.tex);
-    // SDL_FreeSurface(levelOneWindowCharacter.surface);
     SDL_DestroyTexture(levelOneWindowCharacter.tex);
-    // SDL_FreeSurface(levelOneWindowScore.surface);
     SDL_DestroyTexture(levelOneWindowScore.tex);
-    // SDL_FreeSurface(levelOneWindowHighScore.surface);
     SDL_DestroyTexture(levelOneWindowHighScore.tex);
     SDL_DestroyTexture(levelOneCurzon.tex);
-
-    // SDL_FreeSurface(levelOneWindowSun.surface);
     SDL_DestroyTexture(levelOneWindowSun.tex);
-    coinsCleanUp();
-    obstacleCleanUp();
-
     IMG_Quit();
 }

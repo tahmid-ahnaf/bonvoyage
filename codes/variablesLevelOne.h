@@ -1,9 +1,19 @@
+extern float welcomeWindowSkyAnimationSpeed;
+extern float welcomeWindowMountainsAnimationSpeed;
+extern float welcomeWindowBirdsAnimationSpeed;
+
 extern float levelOneSkyAnimationSpeed;
 extern float levelOneMountainsAnimationSpeed;
 extern float levelOneTreeShadeAnimationSpeed;
 extern float levelOneTreesAnimationSpeed;
 extern float levelOneTrackAnimationSpeed;
 extern float levelOneCloudsAnimationSpeed;
+
+// extern float levelTwoSkyAnimationSpeed;
+// extern float levelTwoMountainsAnimationSpeed;
+// extern float levelTwoTreeShadeAnimationSpeed;
+// extern float levelTwoTrackAnimationSpeed;
+// extern float levelTwoCloudsAnimationSpeed;
 
 extern int levelOneCharacterFramewidth, levelOneCharacterFrameheight;
 extern int levelOneCharacterTexturewidth, levelOneCharacterTextureheight;
@@ -47,6 +57,10 @@ extern int scoreList[100];
 extern int levelOnePointEffectAnimationSpeed[5];
 extern int levelOnePointAnimationSpeed[5];
 extern int levelOneObstacleAnimationSpeed[3];
+extern int levelOneLifeAnimationSpeed[3];
 
 extern int curzonPosition;
 extern int count;
+extern int tigerJumped;
+extern float tigerYposition;
+extern int lifeSize;

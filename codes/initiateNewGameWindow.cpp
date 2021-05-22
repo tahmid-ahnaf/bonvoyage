@@ -1,10 +1,10 @@
 #include "initiateNewGameWindow.h"
 
-void newgamewindow(void)
+void newgameWindowLoad(void)
 {
     //levelone button
 
-    window.surface = IMG_Load("images/buttons/sundarbanButton.png");
+    window.surface = IMG_Load("images/buttons/newSundarbanButton.png");
 
     if (!window.surface)
     {
@@ -34,7 +34,7 @@ void newgamewindow(void)
 
     //level two button
 
-    window.surface = IMG_Load("images/buttons/coxsbazarButton.png");
+    window.surface = IMG_Load("images/buttons/newCoxsBazarButton.png");
 
     if (!window.surface)
     {
@@ -65,8 +65,8 @@ void newgamewindow(void)
 
 void newGameWindowCleanUp()
 {
-    // SDL_FreeSurface(newgameWindowlevelOneButton.surface);
+
     SDL_DestroyTexture(newgameWindowlevelOneButton.tex);
-    // SDL_FreeSurface(window.surface );
     SDL_DestroyTexture(newgameWindowlevelTwoButton.tex);
+    IMG_Quit();
 }

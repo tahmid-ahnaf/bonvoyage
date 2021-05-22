@@ -9,8 +9,6 @@ void LoadScoreFile()
     while (fscanf(fp, "%s %d\n", &playerNameList[i], &scoreList[i]) != EOF)
     {
         sprintf(showPlayerNameList[scoreList[i]], "%s", playerNameList[i]);
-        // showPlayerNameList[scorelist[i]] = playerNameList[i];
-        // fscanf(fp, "%d", &scoreList[i]);
         i++;
     }
     int tmp;
@@ -25,8 +23,6 @@ void LoadScoreFile()
                 scoreList[i] = tmp;
             }
         }
-        // printf("%d\n", tmp);
-        // printf("%s\n", playerNameList[i]);
         sprintf(scoreBoardPlayerNameString[i], "%s", playerNameList[i]);
     }
     fclose(fp);
@@ -38,21 +34,15 @@ void updateHighScoreOnFile()
     levelOneHighScore = levelOneCurrentScore;
 
     fp = fopen("score.txt", "a");
-    if (variables.newScore == 1 && variables.gameOver == 1)
+    if (variables.newScore == 1 && variables.gameOver == 1 && levelOneHighScore > 0)
     {
         fprintf(fp, "%s ", playerName);
         fprintf(fp, "%d\n", levelOneHighScore);
     }
 
-    // remove("score.txt");
-    // rename("new.txt", "score.txt");
     sprintf(levelOneHighScoreString, "%i", levelOneHighScore);
     fclose(fp);
 }
-
-
-
-//level 2
 
 void LevelTwoLoadScoreFile()
 {
@@ -62,7 +52,7 @@ void LevelTwoLoadScoreFile()
     fclose(fp);
 }
 
-void updateHighScoreOnFileLevel2()
+void updateLevelTwoHighScoreOnFile()
 {
     highScore = currentScore;
     FILE *fp = fopen("new.txt", "w");
@@ -72,3 +62,4 @@ void updateHighScoreOnFileLevel2()
     sprintf(highScoreString, "%i", highScore);
     fclose(fp);
 }
+

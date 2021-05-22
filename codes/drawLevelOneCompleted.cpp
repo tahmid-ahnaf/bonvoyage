@@ -2,7 +2,6 @@
 
 void updateAnimationSpeedForLevelOneCompleted()
 {
-    // updateHighScoreOnFile();
     levelOneBackgroundPrevtime = levelOneBackgroundCurrenttime;
     levelOneBackgroundCurrenttime = SDL_GetTicks();
     levelOneBackgroundDeltatime = (levelOneBackgroundCurrenttime - levelOneBackgroundPrevtime) / 20.0f;
@@ -46,41 +45,6 @@ void updateAnimationSpeedForLevelOneCompleted()
             levelOneTrackAnimationSpeed = 0;
         }
     }
-
-    // levelOneSkyAnimationSpeed -= 0.5;
-    // if (levelOneSkyAnimationSpeed < -levelOneWindowSky.rect.w)
-    // {
-    //     levelOneSkyAnimationSpeed = 0;
-    // }
-
-    // levelOneMountainsAnimationSpeed -= 2;
-    // if (levelOneMountainsAnimationSpeed < -levelOneWindowMountains.rect.w)
-    // {
-    //     levelOneMountainsAnimationSpeed = 0;
-    // }
-
-    // levelOneTreeShadeAnimationSpeed -= 4;
-    // if (levelOneTreeShadeAnimationSpeed < -levelOneWindowTreeShade.rect.w)
-    // {
-    //     levelOneTreeShadeAnimationSpeed = 0;
-    // }
-
-    // levelOneTreesAnimationSpeed -= 5;
-    // if (levelOneTreesAnimationSpeed < -levelOneWindowTrees.rect.w)
-    // {
-    //     levelOneTreesAnimationSpeed = 0;
-    // }
-    // levelOneCloudsAnimationSpeed -= 1;
-    // if (levelOneCloudsAnimationSpeed < -levelOneWindowClouds.rect.w)
-    // {
-    //     levelOneCloudsAnimationSpeed = 0;
-    // }
-
-    // levelOneTrackAnimationSpeed -= 6;
-    // if (levelOneTrackAnimationSpeed < -levelOneWindowTrack.rect.w)
-    // {
-    //     levelOneTrackAnimationSpeed = 0;
-    //
 }
 void drawLevelOneCompletedFunction()
 {
@@ -92,10 +56,7 @@ void drawLevelOneCompletedFunction()
     if (variables.gameOver == 1 && count == 1)
     {
         updateScore();
-        printf("yes ");
     }
-
-    // updateAnimationSpeedForLevelOneWindow();
     levelOneWindowSky.rect.x = levelOneSkyAnimationSpeed;
     levelOneWindowMountains.rect.x = levelOneMountainsAnimationSpeed;
     levelOneWindowTreeShade.rect.x = levelOneTreeShadeAnimationSpeed;

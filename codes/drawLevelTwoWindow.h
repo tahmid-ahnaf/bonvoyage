@@ -1,62 +1,30 @@
 #include "commonHeaders.h"
-// #include "allstructs.h"
 extern App app;
 extern component
-    welcomeWindowSky,
-    welcomeWindowBirds,
-    welcomeWindowMountains,
-    welcomeWindowTrees,
-    welcomeWindowGameTitle,
-    welcomeWindowNewgameButton,
-    welcomeWindowControlsButton,
-    welcomeWindowDetailsButton,
-
-    newgameWindowlevelOneButton,
-    newgameWindowlevelTwoButton,
-
-    levelOneWindowSky,
-    levelOneWindowSun,
-    levelOneWindowMountains,
-    levelOneWindowTreeShade,
-    levelOneWindowTrees,
-    levelOneWindowClouds,
-    levelOneWindowTrack,
-    levelOneWindowCharacter,
-    levelOneWindowScore,
-    levelOneWindowHighScore,
-    levelOneWindowScoreText,
-    levelOneWindowHighScoreText,
-
     levelTwoWindowSky,
     levelTwoWindowMoon,
     levelTwoWindowMountains,
     levelTwoWindowTreeShade,
     levelTwoWindowClouds,
     levelTwoWindowTrack,
-    levelTwoWindowCharacter,
-    levelTwoWindowCharacterPosition,
-    levelTwoBox, levelTwoInvisibleBorder, levelTwoCoin1, levelTwoCoin2, levelTwoRotatingCoin, levelTwoCoinPointPopUp, levelTwoBomb, levelTwoPlane, levelTwoExplosion,
-    levelTwoHeart, levelTwoRotatingHeart, levelTwoLifeBonusPopUp, levelTwoLifeScoreDisplay, levelTwoHeartDisplay, levelTwoScoreText, levelTwoHighScoreText,
+    levelTwoWindowCharacter, levelTwoWindowCharacterPosition, levelTwoRotatingCoin, levelTwoRotatingHeart,
     characterFramePosition,
-
-    levelOneWindowCoins[4],
-
+    levelTwoWindowScoreText, levelTwoWindowHighScoreText,
     back;
 
 extern Variables variables;
-extern void  boxmotion();
-extern void  drawBoxFunction();
-extern void  drawLevelTwoCoinsFunction();
-extern void  drawLevelTwoCoinsPopupFunction();
-extern void  drawBombandPlaneFunction();
-extern void  collisionsLevelTwo();
-extern void  drawLevelTwoLifeFunction();
-extern void  updateHeartPosition();
-extern void  updateLifeBonusPopupFunction();
-extern void  updateScoreLevel2();
-extern void  drawLevelTwoLifeText();
-extern void  drawLevelTwoHeartFunction();
-extern void  lifeatstakeaftereffect();
-extern void drawLevelTwoHeartPopupFunction();
-extern void  LevelTwoLifeTextCleanUp();
-
+extern void drawBoxFunction(void);
+extern void boxmotion(void);
+extern void drawLevelTwoCoinsFunction(void);
+extern void drawLevelTwoCoinsPopupFunction(void);
+extern void drawBombandPlaneFunction(void);
+extern void collisionsLevelTwo(void);
+extern void updateLevelTwoScore(void);
+extern void updateLevelTwoLifeBonusPopupFunction(void);
+extern void drawLevelTwoLifeText(void);
+extern void drawLevelTwoLifeFunction(void);
+extern void LevelTwoLifeTextCleanUp(void);
+extern void updateHeartPosition(void);
+extern void lifeatstakeaftereffect(void);
+extern void drawLevelTwoHeartFunction(void);
+extern void drawLevelTwoHeartPopupFunction(void);

@@ -2,16 +2,6 @@
 void prepareScene(void)
 {
 
-    // updateAnimationSpeedForWelcomeWindow();
-    // updateAnimationSpeedForNewgameWindow();
-
-    // if (variables.levelOneVars.space == 1)
-    // {
-
-    // }
-
-    // updateAnimationSpeedForLevelTwoWindow();
-    // updateAnimationSpeedForLevelOneWindow();
     if (variables.gameWindowBegin == 1)
     {
 
@@ -42,6 +32,10 @@ void prepareScene(void)
     if (variables.ScoreBoard == 1)
     {
         drawScoreBoardFunction();
+    }
+    if (variables.gameOver1 == 1)
+    {
+        drawLevelOneGameOverFunction();
     }
 }
 

@@ -2,27 +2,23 @@
  
 void heartDisplayAndScoreDisplayCleanUp()
 {
-    SDL_FreeSurface(levelTwoHeartDisplay.surface);
     SDL_DestroyTexture(levelTwoHeartDisplay.tex);  
-    SDL_FreeSurface(levelTwoLifeScoreDisplay.surface);
     SDL_DestroyTexture(levelTwoLifeScoreDisplay.tex);   
 }
- void drawLevelTwoLifeFunction()
- {
+void drawLevelTwoLifeFunction()
+{
     SDL_RenderCopy(app.rend, levelTwoLifeScoreDisplay.tex , 0, &levelTwoLifeScoreDisplay.rect);
     SDL_RenderCopy(app.rend, levelTwoHeartDisplay.tex , 0, &levelTwoHeartDisplay.rect);
     SDL_RenderCopy(app.rend, levelTwoLifeScoreText.tex , 0, &levelTwoLifeScoreText.rect);
-    SDL_RenderCopy(app.rend, levelTwoScoreText.tex , 0, &levelTwoScoreText.rect);
-    SDL_RenderCopy(app.rend, levelTwoHighScoreText.tex , 0, &levelTwoHighScoreText.rect);
- }
+}
 
-void drawLevelTwoHeartPopupFunction(){
-//   SDL_RenderCopy(app.rend,levelTwoWindow.coin_point_popup.tex, 0, &levelTwoWindow.coin_point_popup.rect);
+void drawLevelTwoHeartPopupFunction()
+{
     SDL_RenderCopy(app.rend,levelTwoLifeBonusPopUp.tex, 0, &levelTwoLifeBonusPopUp.rect);
 }
 
-void popuppointcleanup(){
-    // SDL_FreeSurface(levelTwoLifeBonusPopUp.surface);
+void popuppointcleanup()
+{
     SDL_DestroyTexture(levelTwoLifeBonusPopUp.tex);
     heartDisplayAndScoreDisplayCleanUp();
 }
@@ -30,12 +26,9 @@ void popuppointcleanup(){
  
 void drawLevelTwoHeartFunction()
 {
-//      SDL_RenderCopy(rend, COIN_TEX, &ROTATING_COIN, &COIN_RECT);
     SDL_RenderCopy(app.rend, levelTwoHeart.tex,&levelTwoRotatingHeart.rect, &levelTwoHeart.rect);
-    
-     
 }
-void updateLifeBonusPopupFunction()
+void updateLevelTwoLifeBonusPopupFunction()
 {
 
         levelTwoLifeBonusPopUp.rect.x+= (levelTwoLifeScoreText.rect.x - levelTwoLifeBonusPopUp.rect.x)/30;
@@ -43,32 +36,32 @@ void updateLifeBonusPopupFunction()
 
         if(abs(levelTwoLifeBonusPopUp.rect.x - levelTwoLifeScoreText.rect.x )<=30)
           {
-            if(CurrentLife>=95 && levelTwoLifeBonusPopUp.rect.w==50)
+            if(currentLife>=95 && levelTwoLifeBonusPopUp.rect.w==50)
             {
-                LifePercentage=0;
+                lifePercentage=0;
             }
         else if(levelTwoLifeBonusPopUp.rect.w==50)
           {
-            LifePercentage-=100;
+            lifePercentage-=100;
             Mix_PlayMusic(pointgainsound, 1);
-            font = TTF_OpenFont("Freshman.ttf", 40);
+            variables.levelTwofont = TTF_OpenFont("Freshman.ttf", 40);
             levelTwoLifeScoreText.rect.x =1154;
             levelTwoLifeScoreText.rect.y =62;
-            DelayCountForLifeRectChange++;
+            delayCountForLifeRectChange++;
           }
 
         levelTwoLifeBonusPopUp.rect.w = 0;
         levelTwoLifeBonusPopUp.rect.h = 0;
           }
 
-        if(DelayCountForLifeRectChange>0)
+        if(delayCountForLifeRectChange>0)
         {
-           DelayCountForLifeRectChange++;
+           delayCountForLifeRectChange++;
         }
-        if(DelayCountForLifeRectChange==15)
+        if(delayCountForLifeRectChange==15)
         {
-            DelayCountForLifeRectChange=0;
-            // font =  TTF_OpenFont("Freshman.ttf", 30);
+            delayCountForLifeRectChange=0;
+            variables.levelTwofont = TTF_OpenFont("Freshman.ttf", 30);
             levelTwoLifeScoreText.rect.x = (int)1163;
             levelTwoLifeScoreText.rect.y = (int)69;
         }
@@ -76,19 +69,19 @@ void updateLifeBonusPopupFunction()
 
 void updateHeartPosition()
 {
-   CurrentLife = 100 - (LifePercentage / 20);
-        sprintf(LifeString, "%i", CurrentLife);
-    if (CurrentLife <= 95)
+    currentLife = 100 - (lifePercentage / 20);
+    sprintf(lifeString, "%i", currentLife);
+    if (currentLife <= 95)
         {
-            if (DelayCountForHearts == 0)
+            if (delayCountForHearts == 0)
             {
                 levelTwoHeart.rect.w = 0;
                 levelTwoHeart.rect.h = 0;
             }
 
-            DelayCountForHearts++;
+            delayCountForHearts++;
 
-            if (DelayCountForHearts == 30)
+            if (delayCountForHearts == 30)
             {
                 levelTwoHeart.rect.w = 100;
                 levelTwoHeart.rect.h = 100;
@@ -100,14 +93,14 @@ void updateHeartPosition()
                     levelTwoHeart.rect.y = 500;
                 }
             }
-            if (DelayCountForHearts == 300)
+            if (delayCountForHearts == 300)
             {
                 levelTwoHeart.rect.w = 0;
                 levelTwoHeart.rect.h = 0;
             }
-            if (DelayCountForHearts == 500)
+            if (delayCountForHearts == 500)
             {
-                DelayCountForHearts = 0;
+                delayCountForHearts = 0;
             }
         }
         else
@@ -122,14 +115,14 @@ void updateHeartPosition()
 
 void lifeatstakeaftereffect()
 {
-    if(CurrentLife<=10 && iflifeatstake==0)
+    if(currentLife<=10 && iflifeatstake==0)
         {
             iflifeatstake=1;
             levelTwoWindowCharacter.surface = IMG_Load("images/level2obstacles/sonicsprite3.png");
             levelTwoWindowCharacter.tex = SDL_CreateTextureFromSurface(app.rend, levelTwoWindowCharacter.surface);
             
         }
-        else if(CurrentLife>10 && iflifeatstake==1)
+        else if(currentLife>10 && iflifeatstake==1)
         {   
             iflifeatstake=0;
             levelTwoWindowCharacter.surface = IMG_Load("images/level2obstacles/sonicsprite.png");
@@ -140,7 +133,7 @@ void lifeatstakeaftereffect()
 
 void drawLevelTwoLifeText()
 {  
-        levelTwoLifeScoreText.surface = TTF_RenderText_Solid( variables.font, LifeString , variables.color);
+        levelTwoLifeScoreText.surface = TTF_RenderText_Solid( variables.levelTwofont, lifeString , variables.levelTwocolor);
         levelTwoLifeScoreText.tex = SDL_CreateTextureFromSurface(app.rend, levelTwoLifeScoreText.surface);
         levelTwoLifeScoreText.rect;
         SDL_QueryTexture(levelTwoLifeScoreText.tex, NULL, NULL, &levelTwoLifeScoreText.rect.w, &levelTwoLifeScoreText.rect.h);
@@ -156,11 +149,8 @@ void drawLevelTwoLifeText()
 void LevelTwoLifeTextCleanUp()
 {
         
-    SDL_FreeSurface(levelTwoLifeScoreText.surface);
     SDL_DestroyTexture(levelTwoLifeScoreText.tex);
-    SDL_FreeSurface(levelTwoScoreText.surface);
-    SDL_DestroyTexture(levelTwoScoreText.tex);
-    SDL_FreeSurface(levelTwoHighScoreText.surface);
-    SDL_DestroyTexture(levelTwoHighScoreText.tex);
+    SDL_DestroyTexture(levelTwoWindowScoreText.tex);
+    SDL_DestroyTexture(levelTwoWindowHighScoreText.tex);
 }
 

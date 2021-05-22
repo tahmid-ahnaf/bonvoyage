@@ -1,8 +1,8 @@
 #include "initiateLevelOneCompleted.h"
 
-void levelonecompleted(void)
+void levelOneCompletedLoad(void)
 {
-    //sky
+    // overlay
 
     window.surface = IMG_Load("images/levelone/overlay-min.png");
 
@@ -32,7 +32,7 @@ void levelonecompleted(void)
     levelOneCompletedOverlay.rect.x = (int)0;
     levelOneCompletedOverlay.rect.y = (int)0;
 
-    //sun
+    //Trophy
     window.surface = IMG_Load("images/levelone/trophygreen.png");
 
     if (!window.surface)
@@ -64,7 +64,7 @@ void levelonecompleted(void)
 
 void levelOneCompletedCleanUp()
 {
-    // SDL_FreeSurface(levelOneWindowSky.surface);
+
     SDL_DestroyTexture(levelOneCompletedOverlay.tex);
     SDL_DestroyTexture(levelOneCompletedMessage.tex);
     IMG_Quit();

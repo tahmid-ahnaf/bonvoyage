@@ -72,7 +72,6 @@ void drawCoinsEffectFunction()
     for (int i = 0; i < 5; i++)
     {
 
-        //SDL_RenderCopy(app.rend, levelOneWindowCoins[i].tex, NULL, &levelOneWindowCoins[i].rect);
         SDL_RenderCopy(app.rend, levelOneWindowCoinsEffect[i].tex, NULL, &levelOneWindowCoinsEffect[i].rect);
         levelOneWindowCoinsEffect[i].rect.x = levelOnePointEffectAnimationSpeed[i] + 100;
         SDL_RenderCopy(app.rend, levelOneWindowCoinsEffect[i].tex, NULL, &levelOneWindowCoinsEffect[i].rect);

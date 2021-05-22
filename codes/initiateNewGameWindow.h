@@ -2,18 +2,9 @@
 
 extern App app;
 extern component
-    welcomeWindowSky,
-    welcomeWindowBirds,
-    welcomeWindowMountains,
-    welcomeWindowTrees,
-    welcomeWindowGameTitle,
-    welcomeWindowNewgameButton,
-    welcomeWindowControlsButton,
-    welcomeWindowDetailsButton,
+
     window,
     newgameWindowlevelOneButton,
-    newgameWindowlevelTwoButton,
-
-    back;
+    newgameWindowlevelTwoButton;
 
 extern Variables variables;

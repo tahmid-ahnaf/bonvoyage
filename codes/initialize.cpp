@@ -1,8 +1,9 @@
 #include "initialize.h"
+
 void initSDL(void)
 {
 
-    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_AUDIO) == 0)
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_AUDIO) < 0)
     {
         printf("video and timer: %s\n", SDL_GetError());
     }
@@ -32,13 +33,11 @@ void initSDL(void)
         SDL_Quit();
         exit(1);
     }
-    variables.font = TTF_OpenFont("Freshman.ttf", 30); //OPENING FONT FROM LOCAL STORAGE
-                                                       // SDL_Color color = {244, 189, 2};
-    // variables.color = {25, 25, 112};
-    variables.color = {0, 230, 64};
-    //Welcome screen sky
-    // updatePlayerName();
+    variables.font = TTF_OpenFont("Freshman.ttf", 30);
 
+    variables.color = {43, 255, 0};
+    variables.levelTwofont = TTF_OpenFont("Freshman.ttf", 30);
+    variables.levelTwocolor =  {0, 230, 64};
 
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
     background = Mix_LoadMUS("audio/Delusion.mp3");
@@ -47,28 +46,12 @@ void initSDL(void)
     jumpsound = Mix_LoadMUS("audio/jump.mp3");
     pointgainsound = Mix_LoadMUS("audio/pointgain.mp3");
 
-
-
-    SDL_StartTextInput();
-
-    welcomewindow();
-
-    newgamewindow();
-
-    updatePlayerName();
-
-    levelonewindow();
-
-    leveltwowindow();
-    levelonecompleted();
-    scoreboard();
-
     //back
     window.surface = IMG_Load("images/backbutton.png");
 
     if (!window.surface)
     {
-        printf("back_BUTTON Error: %s\n", IMG_GetError());
+        printf("Back Button Error Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -79,7 +62,7 @@ void initSDL(void)
     SDL_FreeSurface(window.surface);
     if (!back.tex)
     {
-        printf("back_BUTTON  Texture %s\n", SDL_GetError());
+        printf("Back Button Error  Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -91,21 +74,61 @@ void initSDL(void)
     back.rect.h = (int)47;
     back.rect.x = (int)30;
     back.rect.y = (int)890;
+
+    //function calls
+
+    SDL_StartTextInput();
+
+    welcomeWindowLoad();
+
+    newgameWindowLoad();
+
+    updatePlayerName();
+
+    levelOneWindowLoad();
+
+    levelTwoWindowLoad();
+
+    levelOneCompletedLoad();
+
+    levelOneGameOverLoad();
+
+    scoreboard();
 }
 void cleanup(void)
 {
 
     welcomeWindowCleanUp();
+
     newGameWindowCleanUp();
-    levelTwoWindowCleanUp();
+
     levelOneWindowCleanUp();
+    levelOneScoreCleanUp();
+    levelTwoScoreCleanUp();
+    levelOnePlayerNameCleanUp();
+    levelOneScoreboardCleanUp();
+    levelOneObstacleCleanUp();
+    levelOneLifeLossCleanUp();
+    levelOneCoinsEffectCleanUp();
+    levelOneCoinsCleanUp();
+    levelOneGameOverCleanUp();
+
+    levelTwoWindowCleanUp();
+
+    SDL_DestroyRenderer(app.rend);
+    SDL_DestroyWindow(app.window);
+
+    SDL_DestroyTexture(back.tex);
+    
     SDL_StopTextInput();
     TTF_CloseFont(variables.font);
     TTF_Quit();
+    Mix_FreeMusic(background);
+    Mix_FreeMusic(coingain);
+    Mix_FreeMusic(explosionsound);
+    Mix_FreeMusic(jumpsound);
+    Mix_FreeMusic(pointgainsound);
+    Mix_CloseAudio();
     IMG_Quit();
-
-    SDL_DestroyRenderer(app.rend);
-
-    SDL_DestroyWindow(app.window);
     SDL_Quit();
 }

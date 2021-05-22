@@ -3,7 +3,6 @@ extern App app;
 extern component
 
     levelOneWindowLife[6],
-    window,
-    back;
+    window;
 
 extern Variables variables;

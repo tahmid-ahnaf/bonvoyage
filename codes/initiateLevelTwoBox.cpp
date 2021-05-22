@@ -14,6 +14,7 @@ void InvisibleBorderLoad()
     }
 
     levelTwoInvisibleBorder.tex = SDL_CreateTextureFromSurface(app.rend,  window.surface);
+    SDL_FreeSurface(window.surface);
 
     if (!levelTwoInvisibleBorder.tex)
     {
@@ -36,8 +37,6 @@ void InvisibleBorderLoad()
 void InvisibleBorderCleanUp()
 {
      
- 
-    SDL_FreeSurface( window.surface);
     SDL_DestroyTexture(levelTwoInvisibleBorder.tex);
     IMG_Quit();
 }
@@ -56,6 +55,7 @@ void LevelTwoBoxLoad(void)
     }
 
     levelTwoBox.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
 
     if (!levelTwoBox.tex)
     {
@@ -78,9 +78,6 @@ void LevelTwoBoxLoad(void)
 
 void BoxCleanUp()
 {
-     
- 
-    // SDL_FreeSurface(window.surface);
     SDL_DestroyTexture(levelTwoBox.tex);
     InvisibleBorderCleanUp();
     IMG_Quit();

@@ -59,8 +59,6 @@ void drawCoinsFunction()
     coinsupdateanimation();
     for (int i = 0; i < 5; i++)
     {
-
-        //SDL_RenderCopy(app.rend, levelOneWindowCoins[i].tex, NULL, &levelOneWindowCoins[i].rect);
         SDL_RenderCopy(app.rend, levelOneWindowCoins[i].tex, NULL, &levelOneWindowCoins[i].rect);
         levelOneWindowCoins[i].rect.x = levelOnePointAnimationSpeed[i];
         SDL_RenderCopy(app.rend, levelOneWindowCoins[i].tex, NULL, &levelOneWindowCoins[i].rect);

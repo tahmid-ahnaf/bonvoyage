@@ -3,8 +3,6 @@
 extern App app;
 extern component
 
-    levelOneWindowObstacle[3],
-
-    back;
+    levelOneWindowObstacle[3];
 
 extern Variables variables;

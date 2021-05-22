@@ -21,18 +21,15 @@ extern component
     characterFramePosition,
     tigerFramePosition,
 
-    levelOneWindowCoins[4],
-
-    back;
+    levelOneWindowCoins[5];
 
 extern Variables variables;
 
-extern void coinsload();
-extern void obstacleload();
-extern void coinseffectload();
+extern void levelOneCoinsLoad();
+extern void levelOneObstacleLoad();
+extern void levelOneCoinsEffectLoad();
+extern void levelOneLifeLossLoad();
+extern void levelOneLifeLoad();
 
-extern void lifeload();
-extern void coinsCleanUp();
-extern void obstacleCleanUp();
 extern void updateHighScoreOnFile();
 extern void updateScore();

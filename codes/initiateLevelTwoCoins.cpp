@@ -1,6 +1,6 @@
 #include "initiateLevelTwoCoins.h"
 
-void Level2CoinsPopup()
+void LevelTwoCoinsPopupLoad()
 {
     
     window.surface = IMG_Load("images/level2obstacles/point.png");
@@ -15,6 +15,7 @@ void Level2CoinsPopup()
     }
 
     levelTwoCoinPointPopUp.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
 
     if (!levelTwoCoinPointPopUp.tex)
     {
@@ -41,15 +42,17 @@ void LevelTwoCoinsload(void)
 
     if (!window.surface)
     {
-        printf("BOX Error: %s\n", IMG_GetError());
+        printf("Coins Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
         exit(1);
     }
 
+    
     levelTwoCoin1.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
     levelTwoCoin2.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
 
     if (!levelTwoCoin1.tex)
     {
@@ -77,36 +80,31 @@ void LevelTwoCoinsload(void)
 
 
  
-    SDL_QueryTexture(levelTwoCoin1.tex , NULL, NULL, &COIN_TEXTURE_HEIGHT, &COIN_TEXTURE_WIDTH);
-    SDL_QueryTexture(levelTwoCoin2.tex , NULL, NULL, &COIN_TEXTURE_HEIGHT, &COIN_TEXTURE_WIDTH);
+    SDL_QueryTexture(levelTwoCoin1.tex , NULL, NULL, &coinTextureHeight, &coinTextureWidth);
+    SDL_QueryTexture(levelTwoCoin2.tex , NULL, NULL, &coinTextureHeight, &coinTextureWidth);
 
-    int COIN_FRAME_WIDTH = COIN_TEXTURE_WIDTH / 2;
-    int COIN_FRAME_HEIGHT =COIN_TEXTURE_HEIGHT / 2;
+    int coinFrameWidth = coinTextureWidth / 2;
+    int coinFrameHeight =coinTextureHeight / 2;
 
-    levelTwoRotatingCoin.rect.w = (int)COIN_FRAME_WIDTH;
-    levelTwoRotatingCoin.rect.h = (int)COIN_FRAME_HEIGHT;
+    levelTwoRotatingCoin.rect.w = (int)coinFrameWidth;
+    levelTwoRotatingCoin.rect.h = (int)coinFrameHeight;
     levelTwoRotatingCoin.rect.x = (int)0;
     levelTwoRotatingCoin.rect.y = (int)0;
  
-    Level2CoinsPopup();
+    LevelTwoCoinsPopupLoad();
 
 }
 
 void LevelTwoCoinsCleanUp()
 {
-     
- 
-    // SDL_FreeSurface(levelTwoWindow.level2Coin.surface);
     SDL_DestroyTexture(levelTwoCoin1.tex);
     SDL_DestroyTexture(levelTwoCoin2.tex);
     IMG_Quit();
 }
 
-void Level2CoinsPopCleanUp()
+void LevelTwoCoinsPopCleanUp()
 {
-     
- 
-    // SDL_FreeSurface(levelTwoWindow.level2Coin.surface);
+    
     SDL_DestroyTexture(levelTwoCoinPointPopUp.tex);
     IMG_Quit();
 }

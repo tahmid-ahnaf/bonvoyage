@@ -9,7 +9,7 @@ component
     welcomeWindowGameTitle,
     welcomeWindowNewgameButton,
     welcomeWindowControlsButton,
-    welcomeWindowDetailsButton,
+    welcomeWindowLegendsButton,
     welcomeWindowExitButton,
 
     newgameWindowlevelOneButton,
@@ -38,17 +38,18 @@ component
     levelTwoWindowTreeShade,
     levelTwoWindowClouds,
     levelTwoWindowTrack,
-    levelTwoWindowCharacter,
-    levelTwoWindowCharacterPosition,
-    levelTwoBox, levelTwoInvisibleBorder, levelTwoCoin1, levelTwoCoin2, levelTwoRotatingCoin, levelTwoCoinPointPopUp, levelTwoBomb, levelTwoPlane, levelTwoExplosion,
-    levelTwoHeart, levelTwoRotatingHeart, levelTwoLifeBonusPopUp, levelTwoLifeScoreDisplay, levelTwoHeartDisplay, levelTwoScoreText, levelTwoHighScoreText, levelTwoLifeScoreText,
     characterFramePosition,
     tigerFramePosition,
+    
+    levelTwoWindowScoreText,
+    levelTwoWindowHighScoreText,
+    levelTwoLifeScoreText,
 
     levelOneWindowCoins[5],
     levelOneWindowObstacle[3],
     levelOneWindowLife[6],
     levelOneWindowCoinsEffect[5],
+    levelOneLifeLoss[3],
 
     scoreBoardPlayerScore[5],
     scoreBoardPlayerName[5],
@@ -59,6 +60,14 @@ component
 
     playerNameBox,
     enterCommand,
+
+    levelOneGameOverOverlay,
+    levelOneGameOverMessage,
+
+    levelTwoWindowCharacter, levelTwoWindowCharacterPosition,
+    levelTwoInvisibleBorder, levelTwoBox, levelTwoCoin1, levelTwoCoin2, levelTwoRotatingCoin,levelTwoCoinPointPopUp, levelTwoBomb, levelTwoPlane, levelTwoExplosion, 
+    levelTwoHeart, levelTwoRotatingHeart,levelTwoLifeBonusPopUp, levelTwoLifeScoreDisplay, levelTwoHeartDisplay,
+    
     back;
 
 Variables variables;

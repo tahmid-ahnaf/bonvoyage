@@ -2,7 +2,7 @@
 
 void scoreboard(void)
 {
-    window.surface = IMG_Load("./images/levelone/scoreboard.png"); // LOADING THE IMAGE TO CREATED SURFACE FOR BACKGROUND ! WILL CONTINUE THIS PROCESS FOR ALL FUTURE SURFACES
+    window.surface = IMG_Load("./images/levelone/scoreboard.png");
     if (!window.surface)
     {
         printf("scoreBoard Error: %s\n", IMG_GetError());
@@ -11,7 +11,7 @@ void scoreboard(void)
         SDL_Quit();
         exit(1);
     }
-    scoreBoard.tex = SDL_CreateTextureFromSurface(app.rend, window.surface); //  LOADING CREATED TEXTURE TO PREVIOUSLY CREATED SURFACE ! WILL CONTINUE THIS PROCESS FOR ALL FUTURE TEXTURES
+    scoreBoard.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
     SDL_FreeSurface(window.surface);
 
     if (!scoreBoard.tex)
@@ -27,7 +27,7 @@ void scoreboard(void)
     scoreBoard.rect.w = (int)906;
     scoreBoard.rect.h = (int)630;
     scoreBoard.rect.x = WINDOW_WIDTH / 2 - 453;
-    scoreBoard.rect.y = WINDOW_HEIGHT / 2 - 315;
+    scoreBoard.rect.y = WINDOW_HEIGHT / 2 - 415;
 
     //playername
 
@@ -56,7 +56,7 @@ void scoreboard(void)
         }
 
         scoreBoardPlayerName[i].tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
-
+        SDL_FreeSurface(window.surface);
         if (!scoreBoardPlayerName[i].tex)
         {
             printf("scoreText Texture %s\n", SDL_GetError());
@@ -69,9 +69,9 @@ void scoreboard(void)
         scoreBoardPlayerName[i].rect.w = (int)150;
         scoreBoardPlayerName[i].rect.h = (int)23;
         scoreBoardPlayerName[i].rect.x = (int)570;
-        scoreBoardPlayerName[i].rect.y = (int)435 + i * 61;
+        scoreBoardPlayerName[i].rect.y = (int)335 + i * 61;
         if (i == 3 || i == 4)
-            scoreBoardPlayerName[i].rect.y = (int)440 + i * 62;
+            scoreBoardPlayerName[i].rect.y = (int)335 + i * 65;
 
         //score
         LoadScoreFile();
@@ -80,8 +80,6 @@ void scoreboard(void)
         else
             sprintf(scoreBoardPlayerScoreString[i], "%d", 0);
 
-        // strcpy(sscore, scoreBoardPlayerScoreString[i]);
-        // itoa(scoreBoardPlayerScoreString[i], sscore, 10);
         window.surface = TTF_RenderText_Solid(variables.font, scoreBoardPlayerScoreString[i], variables.color);
 
         if (!window.surface)
@@ -94,7 +92,7 @@ void scoreboard(void)
         }
 
         scoreBoardPlayerScore[i].tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
-
+        SDL_FreeSurface(window.surface);
         if (!scoreBoardPlayerScore[i].tex)
         {
             printf("scoreText Texture %s\n", SDL_GetError());
@@ -107,12 +105,17 @@ void scoreboard(void)
         scoreBoardPlayerScore[i].rect.w = (int)70;
         scoreBoardPlayerScore[i].rect.h = (int)18;
         scoreBoardPlayerScore[i].rect.x = (int)900;
-        scoreBoardPlayerScore[i].rect.y = (int)440 + i * 61;
+        scoreBoardPlayerScore[i].rect.y = (int)335 + i * 61;
         if (i == 3 || i == 4)
-            scoreBoardPlayerScore[i].rect.y = (int)440 + i * 63;
+            scoreBoardPlayerScore[i].rect.y = (int)335 + i * 65;
     }
 }
-void scoreboardCleanUp()
+void levelOneScoreboardCleanUp()
 {
     SDL_DestroyTexture(scoreBoard.tex);
+    for (int i = 0; i < 5; i++)
+    {
+        SDL_DestroyTexture(scoreBoardPlayerName[i].tex);
+        SDL_DestroyTexture(scoreBoardPlayerScore[i].tex);
+    }
 }

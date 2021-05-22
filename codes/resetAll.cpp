@@ -13,6 +13,8 @@ void resetAll()
     space = 0;
     levelOneWindowTrack.rect.x = 0;
     levelOneCurrentScore = 0;
+    variables.gameOver1 = 0;
+    lifeSize = 6;
 
     strcpy(playerName, " ");
     updatePlayerName();
@@ -25,11 +27,15 @@ void resetAll()
     levelOneCloudsAnimationSpeed = 0;
     levelOneTrackAnimationSpeed = 0;
 
-    variables.AnimationSpeed.levelTwoWindow.sky = 0;
-    variables.AnimationSpeed.levelTwoWindow.mountains = 0;
-    variables.AnimationSpeed.levelTwoWindow.treeshade = 0;
-    variables.AnimationSpeed.levelTwoWindow.clouds = 0;
-    variables.AnimationSpeed.levelTwoWindow.track = 0;
+    levelOneCharacterXposition = 600;
+    levelOneCharacterYposition = 665;
+    tigerYposition = 730;
+
+    levelTwoSkyAnimationSpeed = 0;
+    levelTwoMountainsAnimationSpeed = 0;
+    levelTwoCloudsAnimationSpeed = 0;
+    levelTwoTreeShadeAnimationSpeed = 0;
+    levelTwoTrackAnimationSpeed = 0;
 
     for (int i = 0; i < 5; i++)
     {
@@ -39,7 +45,8 @@ void resetAll()
 
     for (int i = 0; i < 3; i++)
     {
-        levelOneObstacleAnimationSpeed[i] = 0;
+        levelOneObstacleAnimationSpeed[i] = 1380;
+        levelOneLifeAnimationSpeed[i] = 700;
     }
     curzonPosition = 6000;
     count = 0;

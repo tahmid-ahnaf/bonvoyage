@@ -13,6 +13,7 @@ void LevelTwoLifeLoad()
     }
 
     levelTwoHeart.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
 
     if (!levelTwoHeart.tex)
     {
@@ -60,6 +61,7 @@ void LevelTwoLifeLoad()
     }
 
     levelTwoLifeBonusPopUp.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
 
     if (!levelTwoLifeBonusPopUp.tex)
     {
@@ -92,6 +94,7 @@ void LevelTwoLifeLoad()
     }
 
     levelTwoLifeScoreDisplay.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
 
     if (!levelTwoLifeScoreDisplay.tex)
     {
@@ -125,6 +128,7 @@ void LevelTwoLifeLoad()
     }
 
     levelTwoHeartDisplay.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
 
     if (!levelTwoHeartDisplay.tex)
     {
@@ -150,13 +154,11 @@ void LevelTwoLifeLoad()
 void HeartCleanUp()
 {
      
- 
-    // SDL_FreeSurface(levelTwoHeart.surface);
     SDL_DestroyTexture(levelTwoHeart.tex);
-    // SDL_FreeSurface(levelTwoRotatingHeart.surface);
     SDL_DestroyTexture(levelTwoRotatingHeart.tex);
-    // SDL_FreeSurface(levelTwoLifeBonusPopUp.surface);
     SDL_DestroyTexture(levelTwoLifeBonusPopUp.tex);
+    SDL_DestroyTexture(levelTwoHeartDisplay.tex);
+    SDL_DestroyTexture(levelTwoLifeScoreDisplay.tex);
     IMG_Quit();
 }
 

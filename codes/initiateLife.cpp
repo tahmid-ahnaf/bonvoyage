@@ -1,15 +1,14 @@
 #include "initiateLife.h"
 
-void lifeload(void)
+void levelOneLifeLoad(void)
 {
-    //sky
     for (int i = 0; i < 6; i++)
     {
         window.surface = IMG_Load("images/levelone/obstacles/redlife.png");
 
         if (!window.surface)
         {
-            printf("Obstacle[i]_BUTTON Error: %s\n", IMG_GetError());
+            printf("life [i]_BUTTON Error: %s\n", IMG_GetError());
             SDL_DestroyRenderer(app.rend);
             SDL_DestroyWindow(app.window);
             SDL_Quit();
@@ -35,7 +34,7 @@ void lifeload(void)
     }
 }
 
-void lifeCleanUp()
+void levelOneLifeCleanUp()
 {
     for (int i = 0; i < 6; i++)
     {

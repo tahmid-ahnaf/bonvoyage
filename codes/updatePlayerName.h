@@ -7,7 +7,6 @@ extern component
     enterName,
     enterButton,
     playerNameBox,
-    enterCommand,
-    back;
+    enterCommand;
 
 extern Variables variables;

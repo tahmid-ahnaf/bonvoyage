@@ -34,12 +34,9 @@ extern component
     levelTwoWindowClouds,
     levelTwoWindowTrack,
     levelTwoWindowCharacter,
-    levelTwoWindowCharacterPosition,
-    levelTwoBox, levelTwoInvisibleBorder, levelTwoCoin1, levelTwoCoin2, levelTwoRotatingCoin, levelTwoCoinPointPopUp, levelTwoBomb, levelTwoPlane, levelTwoExplosion,
-    levelTwoHeart, levelTwoRotatingHeart, levelTwoLifeBonusPopUp, levelTwoLifeScoreDisplay, levelTwoHeartDisplay, levelTwoScoreText, levelTwoHighScoreText,
     characterFramePosition,
 
-    levelOneWindowCoins[4],
+    levelOneWindowCoins[5],
 
     enterButton,
     back;

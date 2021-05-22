@@ -1,6 +1,6 @@
 #include "initiateLevelTwoWindow.h"
 
-void leveltwowindow(void)
+void levelTwoWindowLoad(void)
 {
     //sky
 
@@ -201,19 +201,6 @@ void leveltwowindow(void)
         exit(1);
     }
 
-    // SDL_QueryTexture(levelTwoWindow.character.tex, NULL, NULL, &characterTexturewidth, &characterTextureheight);
-    //  variables.levelOneVars.characterFramewidth = variables.levelOneVars.characterTexturewidth / 6 + 1;
-    // //for red sprite                                        //for green sprite
-    // variables.levelOneVars.characterFrameheight = variables.levelOneVars.characterTextureheight / 2;
-    // levelTwoWindow.character.rect.w = characterFramewidth;
-    // levelTwoWindow.character.rect.h = characterFrameheight;
-    // levelTwoWindow.character.rect.x = 250;
-    // levelTwoWindow.character.rect.y = 250;
-    // levelOneWindow.characterFramePosition.rect.w = variables.levelOneVars.characterFramewidth;
-    // levelOneWindow.characterFramePosition.rect.h = variables.levelOneVars.characterFrameheight;
-    // levelTwoWindow.characterFramePosition.rect.x = 250;
-    // levelTwoWindow.characterFramePosition.rect.y = 250;
-
     levelTwoWindowCharacter.rect;
     levelTwoWindowCharacterPosition.rect;
   
@@ -236,40 +223,25 @@ void leveltwowindow(void)
     float CHARACTER2_X_POS = (float)100;
     float CHARACTER2_Y_POS = (float)700;
 
-
-
- 
-
-
-
-
     LevelTwoBoxLoad();
     LevelTwoCoinsload();
     BombandPlaneLoad();
     LevelTwoLifeLoad();
-    LevelTwoLoadScoreFile();
 }
 
 void levelTwoWindowCleanUp()
 {
-    // SDL_FreeSurface(window.surface);
     SDL_DestroyTexture(levelTwoWindowSky.tex);
-    // SDL_FreeSurface(window.surface);
     SDL_DestroyTexture(levelTwoWindowMoon.tex);
-    // SDL_FreeSurface(window.surface);
     SDL_DestroyTexture(levelTwoWindowMountains.tex);
-    // SDL_FreeSurface(levelTwoWindowTreeShade.surface);
     SDL_DestroyTexture(levelTwoWindowTreeShade.tex);
-    // SDL_FreeSurface(levelTwoWindowClouds.surface);
     SDL_DestroyTexture(levelTwoWindowClouds.tex);
-    // SDL_FreeSurface(window.surface);
     SDL_DestroyTexture(levelTwoWindowTrack.tex);
-
     SDL_FreeSurface(levelTwoWindowCharacter.surface);
     SDL_DestroyTexture(levelTwoWindowCharacter.tex);
     BoxCleanUp();
     LevelTwoCoinsCleanUp();
-    Level2CoinsPopCleanUp();
     BombandPlaneCleanUp();
+    LevelTwoCoinsPopCleanUp();
     IMG_Quit();
 }

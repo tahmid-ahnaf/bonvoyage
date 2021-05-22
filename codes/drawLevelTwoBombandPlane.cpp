@@ -7,19 +7,19 @@ void planeflying(){
             levelTwoBomb.rect.y = 30;
             levelTwoBomb.rect.w = 0;
             levelTwoBomb.rect.h = 0;
-            RANDOM_GENERATOR = rand() % (WINDOW_WIDTH - 150);
+            randomGenerator = rand() % (WINDOW_WIDTH - 150);
         }
         else
         {
            levelTwoPlane.rect.x -= 10;
         }
-        if (abs(RANDOM_GENERATOR - levelTwoPlane.rect.x) <= 10)
+        if (abs(randomGenerator - levelTwoPlane.rect.x) <= 10)
         {
-           levelTwoBomb.rect.x = RANDOM_GENERATOR;
+           levelTwoBomb.rect.x = randomGenerator;
            levelTwoBomb.rect.w = (int)100;
            levelTwoBomb.rect.h = (int)100;
         }
-        if (levelTwoBomb.rect.x == RANDOM_GENERATOR)
+        if (levelTwoBomb.rect.x == randomGenerator)
         {
             levelTwoBomb.rect.y += 5;
         }

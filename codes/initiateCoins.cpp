@@ -1,8 +1,7 @@
 #include "initiateCoins.h"
 
-void coinsload(void)
+void levelOneCoinsLoad(void)
 {
-    //sky
     for (int i = 0; i < 5; i++)
     {
         window.surface = IMG_Load("images/levelone/coins-min.png");
@@ -35,7 +34,7 @@ void coinsload(void)
     }
 }
 
-void coinsCleanUp()
+void levelOneCoinsCleanUp()
 {
     for (int i = 0; i < 5; i++)
     {

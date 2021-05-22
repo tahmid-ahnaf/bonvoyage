@@ -3,20 +3,12 @@
 extern App app;
 extern component
 
-    levelTwoWindowSky,
-    levelTwoWindowMoon,
-    levelTwoWindowMountains,
-    levelTwoWindowTreeShade,
-    levelTwoWindowClouds,
-    levelTwoWindowTrack,
-    levelTwoWindowCharacter,
-  
+    levelTwoWindowCharacter,  
     levelTwoWindowCharacterPosition,
     window,
     levelOneWindowCoins[4],
-    characterFramePosition,
-    levelTwoBox, levelTwoInvisibleBorder, levelTwoCoin1, levelTwoCoin2, levelTwoRotatingCoin, levelTwoCoinPointPopUp, levelTwoBomb, levelTwoPlane, levelTwoExplosion,
-    levelTwoHeart, levelTwoRotatingHeart, levelTwoLifeBonusPopUp, levelTwoLifeScoreDisplay, levelTwoHeartDisplay, levelTwoScoreText, levelTwoHighScoreText,
+    levelTwoBox, levelTwoHeart, levelTwoRotatingHeart, levelTwoLifeBonusPopUp, levelTwoLifeScoreDisplay, levelTwoHeartDisplay, 
+
     back;
 
 extern Variables variables;

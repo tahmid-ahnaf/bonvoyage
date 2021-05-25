@@ -1,8 +1,8 @@
-#include "initiateLevelTwoBombandPlane.h"
-void BombandPlaneLoad()
+#include "initiateLevelTwoBombandDragon.h"
+void BombandDragonLoad()
 {
-    
-    window.surface = IMG_Load("images/level2obstacles/bomb.png");
+
+    window.surface = IMG_Load("images/level2obstacles/dragonerr.png");
 
     if (!window.surface)
     {
@@ -26,7 +26,7 @@ void BombandPlaneLoad()
     }
     levelTwoBomb.rect;
     SDL_QueryTexture(levelTwoBomb.tex, NULL, NULL, &levelTwoBomb.rect.w, &levelTwoBomb.rect.h);
-  
+
     levelTwoBomb.rect.w = (int)100;
     levelTwoBomb.rect.h = (int)100;
     levelTwoBomb.rect.x = (int)-150;
@@ -34,37 +34,43 @@ void BombandPlaneLoad()
 
     /********************************************************** CREATING BOMBS ENDS  **************************************************************/
 
-    /****************************************************** CREATING PLANE STARTS  ***********************************************************/
-    window.surface = IMG_Load("images/level2obstacles/plane.png");
+    /****************************************************** CREATING Dragon STARTS  ***********************************************************/
+    //dragon
+    window.surface = IMG_Load("images/level2obstacles/dragon_sprite.png");
 
     if (!window.surface)
     {
-        printf("PLANE ERROR: %s\n", IMG_GetError());
+        printf("character_BUTTON Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
         exit(1);
     }
 
-    levelTwoPlane.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    levelTwoDragon.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
     SDL_FreeSurface(window.surface);
-
-    if (!levelTwoPlane.tex)
+    if (!levelTwoDragon.tex)
     {
-        printf("PLANE Texture ERROR %s\n", SDL_GetError());
+        printf("Tiger Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
         exit(1);
     }
-    levelTwoPlane.rect;
-    SDL_QueryTexture(levelTwoPlane.tex, NULL, NULL, &levelTwoPlane.rect.w, &levelTwoPlane.rect.h);
 
-    levelTwoPlane.rect.w = (int)1322 / 6;
-    levelTwoPlane.rect.h = (int)613 / 6;
-    levelTwoPlane.rect.x = (int)WINDOW_WIDTH - 150;
-    levelTwoPlane.rect.y = (int)30;
-
+    SDL_QueryTexture(levelTwoDragon.tex, NULL, NULL, &levelTwoDragonTexturewidth, &levelTwoDragonTextureheight);
+    levelTwoDragonFramewidth = levelTwoDragonTexturewidth / 6 + 1;
+    //for red sprite                                        //for green sprite
+    levelTwoDragonFrameheight = levelTwoDragonTextureheight / 2;
+    levelTwoDragon.rect.w = levelTwoDragonFramewidth;
+    levelTwoDragon.rect.h = levelTwoDragonFrameheight;
+    levelTwoDragon.rect.x = 0;
+    levelTwoDragon.rect.y = 0;
+    levelTwoDragonPosition.rect.w = levelTwoDragonFramewidth;
+    levelTwoDragonPosition.rect.h = levelTwoDragonFrameheight;
+    levelTwoDragonPosition.rect.x = WINDOW_WIDTH + 10;
+    levelTwoDragonPosition.rect.y = 30;
+    //explosion
 
     window.surface = IMG_Load("images/level2obstacles/explosion.png");
 
@@ -77,7 +83,7 @@ void BombandPlaneLoad()
         exit(1);
     }
 
-    levelTwoExplosion.tex= SDL_CreateTextureFromSurface(app.rend, window.surface);
+    levelTwoExplosion.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
     SDL_FreeSurface(window.surface);
 
     if (!levelTwoExplosion.tex)
@@ -94,16 +100,12 @@ void BombandPlaneLoad()
     levelTwoExplosion.rect.w = (int)0;
     levelTwoExplosion.rect.h = (int)0;
     levelTwoExplosion.rect.x = (int)WINDOW_WIDTH - 150;
-    levelTwoExplosion.rect.y = (int)30;
-
+    levelTwoExplosion.rect.y = (int)levelTwoDragonPosition.rect.y;
 }
-    void BombandPlaneCleanUp()
-    {
-        SDL_DestroyTexture(levelTwoPlane.tex);
-        SDL_DestroyTexture(levelTwoBomb.tex);
-        SDL_DestroyTexture(levelTwoExplosion.tex);
-        IMG_Quit();
-    }
-
-
-
+void BombandDragonCleanUp()
+{
+    SDL_DestroyTexture(levelTwoDragon.tex);
+    SDL_DestroyTexture(levelTwoBomb.tex);
+    SDL_DestroyTexture(levelTwoExplosion.tex);
+    IMG_Quit();
+}

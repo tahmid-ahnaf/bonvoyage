@@ -24,10 +24,10 @@ void scoreboard(void)
     }
 
     SDL_QueryTexture(scoreBoard.tex, NULL, NULL, &scoreBoard.rect.w, &scoreBoard.rect.h);
-    scoreBoard.rect.w = (int)906;
-    scoreBoard.rect.h = (int)630;
-    scoreBoard.rect.x = WINDOW_WIDTH / 2 - 453;
-    scoreBoard.rect.y = WINDOW_HEIGHT / 2 - 415;
+    scoreBoard.rect.w = (int)1130;
+    scoreBoard.rect.h = (int)583;
+    scoreBoard.rect.x = WINDOW_WIDTH / 2 - 565;
+    scoreBoard.rect.y = WINDOW_HEIGHT / 2 - 385;
 
     //playername
 
@@ -66,12 +66,12 @@ void scoreboard(void)
             exit(1);
         }
         SDL_QueryTexture(scoreBoardPlayerName[i].tex, NULL, NULL, &scoreBoardPlayerName[i].rect.w, &scoreBoardPlayerName[i].rect.h);
-        scoreBoardPlayerName[i].rect.w = (int)150;
+        scoreBoardPlayerName[i].rect.w = (int)140;
         scoreBoardPlayerName[i].rect.h = (int)23;
         scoreBoardPlayerName[i].rect.x = (int)570;
-        scoreBoardPlayerName[i].rect.y = (int)335 + i * 61;
+        scoreBoardPlayerName[i].rect.y = (int)331 + i * 61;
         if (i == 3 || i == 4)
-            scoreBoardPlayerName[i].rect.y = (int)335 + i * 65;
+            scoreBoardPlayerName[i].rect.y = (int)330 + i * 65;
 
         //score
         LoadScoreFile();

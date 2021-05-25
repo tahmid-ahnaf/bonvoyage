@@ -48,6 +48,6 @@ void resetAll()
         levelOneObstacleAnimationSpeed[i] = 1380;
         levelOneLifeAnimationSpeed[i] = 700;
     }
-    curzonPosition = 6000;
+    curzonPosition = 10000;
     count = 0;
 }

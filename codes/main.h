@@ -40,10 +40,11 @@ component
     levelTwoWindowTrack,
     characterFramePosition,
     tigerFramePosition,
-    
+
     levelTwoWindowScoreText,
     levelTwoWindowHighScoreText,
     levelTwoLifeScoreText,
+    levelTwoWindowCoins[4],
 
     levelOneWindowCoins[5],
     levelOneWindowObstacle[3],
@@ -65,9 +66,9 @@ component
     levelOneGameOverMessage,
 
     levelTwoWindowCharacter, levelTwoWindowCharacterPosition,
-    levelTwoInvisibleBorder, levelTwoBox, levelTwoCoin1, levelTwoCoin2, levelTwoRotatingCoin,levelTwoCoinPointPopUp, levelTwoBomb, levelTwoPlane, levelTwoExplosion, 
-    levelTwoHeart, levelTwoRotatingHeart,levelTwoLifeBonusPopUp, levelTwoLifeScoreDisplay, levelTwoHeartDisplay,
-    
+    levelTwoInvisibleBorder, levelTwoBox, levelTwoCoin1, levelTwoCoin2, levelTwoRotatingCoin, levelTwoCoinPointPopUp, levelTwoBomb, levelTwoDragon, levelTwoDragonPosition, levelTwoExplosion,
+    levelTwoHeart, levelTwoRotatingHeart, levelTwoLifeBonusPopUp, levelTwoLifeScoreDisplay, levelTwoHeartDisplay,
+
     back;
 
 Variables variables;

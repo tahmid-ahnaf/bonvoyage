@@ -115,7 +115,7 @@ void welcomeWindowLoad(void)
     welcomeWindowTrees.rect.y = 0;
 
     //title
-    window.surface = IMG_Load("images/title.png");
+    window.surface = IMG_Load("images/bonvoyagelogo.png");
 
     if (!window.surface)
     {
@@ -139,10 +139,10 @@ void welcomeWindowLoad(void)
     }
     SDL_QueryTexture(welcomeWindowGameTitle.tex, NULL, NULL, &welcomeWindowGameTitle.rect.w, &welcomeWindowGameTitle.rect.h);
     /* adjusting the poster for wide screen */
-    welcomeWindowGameTitle.rect.w = (int)800;
-    welcomeWindowGameTitle.rect.h = (int)150;
-    welcomeWindowGameTitle.rect.x = (int)WINDOW_WIDTH / 2 - 400;
-    welcomeWindowGameTitle.rect.y = (int)WINDOW_HEIGHT / 2 - 480;
+    welcomeWindowGameTitle.rect.w = (int)241;
+    welcomeWindowGameTitle.rect.h = (int)181;
+    welcomeWindowGameTitle.rect.x = (int)WINDOW_WIDTH / 2 - 120;
+    welcomeWindowGameTitle.rect.y = (int)WINDOW_HEIGHT / 2 - 460;
 
     //newgame
     window.surface = IMG_Load("images/buttons/newPlayButton.png");
@@ -172,7 +172,7 @@ void welcomeWindowLoad(void)
     welcomeWindowNewgameButton.rect.w = (int)309;
     welcomeWindowNewgameButton.rect.h = (int)77;
     welcomeWindowNewgameButton.rect.x = (int)WINDOW_WIDTH / 2 + 180;
-    welcomeWindowNewgameButton.rect.y = (int)WINDOW_HEIGHT / 2 - 250;
+    welcomeWindowNewgameButton.rect.y = (int)WINDOW_HEIGHT / 2 - 220;
 
     //Legends Button
     window.surface = IMG_Load("images/buttons/newLegendsButton.png");

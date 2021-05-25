@@ -2,18 +2,19 @@
 
 void collisionsLevelTwo()
 {   
-      
-        SDL_bool collisionBetweenCharacterandCoinOne = SDL_HasIntersection(&levelTwoCoin1.rect, &levelTwoWindowCharacterPosition.rect);
+    for(int i=0; i<5; i++)
+    {
+        SDL_bool collisionBetweenCharacterandCoinOne = SDL_HasIntersection(&levelTwoWindowCoins[i].rect, &levelTwoWindowCharacterPosition.rect);
         if (collisionBetweenCharacterandCoinOne)
         {
             Mix_PlayMusic(coingain, 1);
             currentScore+=5;
-            levelTwoCoin1.rect.w = 0;
-            levelTwoCoin1.rect.h = 0;
+            levelTwoWindowCoins[i].rect.w = 0;
+            levelTwoWindowCoins[i].rect.h = 0;
             levelTwoCoinPointPopUp.rect.w = 50;
             levelTwoCoinPointPopUp.rect.h = 50;
-            levelTwoCoinPointPopUp.rect.x = levelTwoCoin1.rect.x;
-            levelTwoCoinPointPopUp.rect.y = levelTwoCoin1.rect.y;
+            levelTwoCoinPointPopUp.rect.x = levelTwoWindowCoins[i].rect.x;
+            levelTwoCoinPointPopUp.rect.y = levelTwoWindowCoins[i].rect.y;
             delayCountForPointPopUp++;
         }
         if (delayCountForPointPopUp > 0)
@@ -28,31 +29,57 @@ void collisionsLevelTwo()
             levelTwoCoinPointPopUp.rect.h = 0;
         }
 
-       SDL_bool collisionBetweenCharacterandCoinTwo = SDL_HasIntersection(&levelTwoCoin2.rect, &levelTwoWindowCharacterPosition.rect);
+        }
+        // SDL_bool collisionBetweenCharacterandCoinOne = SDL_HasIntersection(&levelTwoCoin1.rect, &levelTwoWindowCharacterPosition.rect);
+        // if (collisionBetweenCharacterandCoinOne)
+        // {
+        //     Mix_PlayMusic(coingain, 1);
+        //     currentScore+=5;
+        //     levelTwoCoin1.rect.w = 0;
+        //     levelTwoCoin1.rect.h = 0;
+        //     levelTwoCoinPointPopUp.rect.w = 50;
+        //     levelTwoCoinPointPopUp.rect.h = 50;
+        //     levelTwoCoinPointPopUp.rect.x = levelTwoCoin1.rect.x;
+        //     levelTwoCoinPointPopUp.rect.y = levelTwoCoin1.rect.y;
+        //     delayCountForPointPopUp++;
+        // }
+        // if (delayCountForPointPopUp > 0)
+        // {
+        //     delayCountForPointPopUp++;
+        //     levelTwoCoinPointPopUp.rect.y -= 5;
+        // }
+        // if (delayCountForPointPopUp == 40)
+        // {
+        //     delayCountForPointPopUp = 0;
+        //     levelTwoCoinPointPopUp.rect.w = 0;
+        //     levelTwoCoinPointPopUp.rect.h = 0;
+        // }
 
-        if (collisionBetweenCharacterandCoinTwo)
-        {
-            Mix_PlayMusic(coingain, 1);
-            levelTwoCoin2.rect.w = 0;
-            levelTwoCoin2.rect.h = 0;
-            currentScore+=5;
-            levelTwoCoinPointPopUp.rect.w = 50;
-            levelTwoCoinPointPopUp.rect.h = 50;
-            levelTwoCoinPointPopUp.rect.x = levelTwoCoin2.rect.x;
-            levelTwoCoinPointPopUp.rect.y = levelTwoCoin2.rect.y;
-            delayCountForPointPopUp++;
-        }
-        if (delayCountForPointPopUp > 0)
-        {
-            delayCountForPointPopUp++;
-            levelTwoCoinPointPopUp.rect.y -= 5;
-        }
-        if (delayCountForPointPopUp == 40)
-        {
-            delayCountForPointPopUp = 0;
-            levelTwoCoinPointPopUp.rect.w = 0;
-            levelTwoCoinPointPopUp.rect.h = 0;
-        }
+    //    SDL_bool collisionBetweenCharacterandCoinTwo = SDL_HasIntersection(&levelTwoCoin2.rect, &levelTwoWindowCharacterPosition.rect);
+
+    //     if (collisionBetweenCharacterandCoinTwo)
+    //     {
+    //         Mix_PlayMusic(coingain, 1);
+    //         levelTwoCoin2.rect.w = 0;
+    //         levelTwoCoin2.rect.h = 0;
+    //         currentScore+=5;
+    //         levelTwoCoinPointPopUp.rect.w = 50;
+    //         levelTwoCoinPointPopUp.rect.h = 50;
+    //         levelTwoCoinPointPopUp.rect.x = levelTwoCoin2.rect.x;
+    //         levelTwoCoinPointPopUp.rect.y = levelTwoCoin2.rect.y;
+    //         delayCountForPointPopUp++;
+    //     }
+    //     if (delayCountForPointPopUp > 0)
+    //     {
+    //         delayCountForPointPopUp++;
+    //         levelTwoCoinPointPopUp.rect.y -= 5;
+    //     }
+    //     if (delayCountForPointPopUp == 40)
+    //     {
+    //         delayCountForPointPopUp = 0;
+    //         levelTwoCoinPointPopUp.rect.w = 0;
+    //         levelTwoCoinPointPopUp.rect.h = 0;
+    //     }
 
          SDL_bool collisionBetweenCharacterandBomb = SDL_HasIntersection(&levelTwoBomb.rect, &levelTwoWindowCharacterPosition.rect);
 

@@ -10,12 +10,12 @@ extern component
     levelTwoWindowClouds,
     levelTwoWindowTrack,
     levelTwoWindowCharacter,
-  
+
     levelTwoWindowCharacterPosition,
     window,
     levelOneWindowCoins[4],
     characterFramePosition,
-    levelTwoBomb, levelTwoPlane, levelTwoExplosion,
+    levelTwoBomb, levelTwoDragon, levelTwoDragonPosition, levelTwoExplosion,
     back;
 
 extern Variables variables;

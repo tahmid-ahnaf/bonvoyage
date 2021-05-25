@@ -1,7 +1,7 @@
 #include "initiateLevelTwoLife.h"
 void LevelTwoLifeLoad()
 {
-    window.surface = IMG_Load("images/level2obstacles/hearts.png");
+    window.surface = IMG_Load("images/level2obstacles/newLifeSprite.png");
 
     if (!window.surface)
     {
@@ -27,15 +27,13 @@ void LevelTwoLifeLoad()
     levelTwoHeart.rect;
 
     SDL_QueryTexture(levelTwoHeart.tex, NULL, NULL, &levelTwoHeart.rect.w, &levelTwoHeart.rect.h);
-    
-    levelTwoHeart.rect.w = (int)100;
-    levelTwoHeart.rect.h = (int)100;
+
+    levelTwoHeart.rect.w = (int)50;
+    levelTwoHeart.rect.h = (int)50;
     levelTwoHeart.rect.x = (int)levelTwoBox.rect.x + 50;
     levelTwoHeart.rect.y = (int)levelTwoBox.rect.y - 70;
 
     /*#######################################   VARIABLES FOR ANIMATE THE HEART SPRITESHEET #############################################*/
-
-   
 
     levelTwoRotatingHeart.rect;
     SDL_QueryTexture(levelTwoHeart.tex, NULL, NULL, &heartTextureHeight, &heartTextureWidth);
@@ -47,7 +45,6 @@ void LevelTwoLifeLoad()
     levelTwoRotatingHeart.rect.h = (int)HEART_FRAME_HEIGHT;
     levelTwoRotatingHeart.rect.x = (int)0;
     levelTwoRotatingHeart.rect.y = (int)0;
-
 
     window.surface = IMG_Load("images/level2obstacles/point.png");
 
@@ -74,10 +71,10 @@ void LevelTwoLifeLoad()
     levelTwoLifeBonusPopUp.rect;
     SDL_QueryTexture(levelTwoLifeBonusPopUp.tex, NULL, NULL, &levelTwoLifeBonusPopUp.rect.w, &levelTwoLifeBonusPopUp.rect.h);
 
-   levelTwoLifeBonusPopUp.rect.w = (int)0;
-   levelTwoLifeBonusPopUp.rect.h = (int)0;
-   levelTwoLifeBonusPopUp.rect.x = (int)WINDOW_WIDTH / 2;
-   levelTwoLifeBonusPopUp.rect.y = (int)WINDOW_HEIGHT / 2;
+    levelTwoLifeBonusPopUp.rect.w = (int)0;
+    levelTwoLifeBonusPopUp.rect.h = (int)0;
+    levelTwoLifeBonusPopUp.rect.x = (int)WINDOW_WIDTH / 2;
+    levelTwoLifeBonusPopUp.rect.y = (int)WINDOW_HEIGHT / 2;
 
     /*********************************************** CREATING POINT POP UP AGAIN FOR LIFE BONUS ENDS  *******************************************/
     /*********************************************** CREATING RECT FOR DISPLAYING LIFE SCORE STARTS  ********************************************/
@@ -107,7 +104,7 @@ void LevelTwoLifeLoad()
 
     levelTwoLifeScoreDisplay.rect;
     SDL_QueryTexture(levelTwoLifeScoreDisplay.tex, NULL, NULL, &levelTwoLifeScoreDisplay.rect.w, &levelTwoLifeScoreDisplay.rect.h);
-   
+
     levelTwoLifeScoreDisplay.rect.w = (int)125;
     levelTwoLifeScoreDisplay.rect.h = (int)39;
     levelTwoLifeScoreDisplay.rect.x = (int)1110;
@@ -138,22 +135,18 @@ void LevelTwoLifeLoad()
         SDL_Quit();
         exit(1);
     }
-     levelTwoHeartDisplay.rect;
+    levelTwoHeartDisplay.rect;
     SDL_QueryTexture(levelTwoHeartDisplay.tex, NULL, NULL, &levelTwoHeartDisplay.rect.w, &levelTwoHeartDisplay.rect.h);
-    
+
     levelTwoHeartDisplay.rect.w = (int)90;
     levelTwoHeartDisplay.rect.h = (int)72;
     levelTwoHeartDisplay.rect.x = (int)1078;
     levelTwoHeartDisplay.rect.y = (int)31;
-
 }
-
-
-
 
 void HeartCleanUp()
 {
-     
+
     SDL_DestroyTexture(levelTwoHeart.tex);
     SDL_DestroyTexture(levelTwoRotatingHeart.tex);
     SDL_DestroyTexture(levelTwoLifeBonusPopUp.tex);
@@ -161,4 +154,3 @@ void HeartCleanUp()
     SDL_DestroyTexture(levelTwoLifeScoreDisplay.tex);
     IMG_Quit();
 }
-

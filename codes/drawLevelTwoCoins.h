@@ -5,7 +5,7 @@ extern component
 
     levelTwoWindowCharacter,
     levelTwoWindowCharacterPosition,
-    levelTwoBox, levelTwoInvisibleBorder, levelTwoCoin1, levelTwoCoin2, levelTwoRotatingCoin, levelTwoCoinPointPopUp,
+    levelTwoBox, levelTwoInvisibleBorder, levelTwoWindowCoins[4], levelTwoRotatingCoin, levelTwoCoinPointPopUp,
 
     back;
 

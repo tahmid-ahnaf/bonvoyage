@@ -31,7 +31,7 @@ void boxmotion()
     levelOneCharacterDeltatime = (levelOneCharacterCurrentime - levelOneCharacterPrevtime) / 280.0f;
 
     xPosLevelTwoBox -= moveSpeed / 3 * levelOneCharacterDeltatime;
-    if (xPosLevelTwoBox + levelTwoBox.rect.w <= 0)
+    if (xPosLevelTwoBox + levelTwoBox.rect.w <=0)
         {
 
             xPosLevelTwoBox = WINDOW_WIDTH;
@@ -43,8 +43,12 @@ void boxmotion()
         levelTwoInvisibleBorder.rect.y = levelTwoBox.rect.y + 30; 
         levelTwoInvisibleBorder.rect.x = xPosLevelTwoBox;
         levelTwoBox.rect.x =xPosLevelTwoBox;
-        levelTwoCoin1.rect.x = levelTwoBox.rect.x + levelTwoCoin1.rect.y / 4;
-        levelTwoCoin2.rect.x  =  levelTwoBox.rect.x + levelTwoCoin2.rect.y / 4 + 100;
+        levelTwoWindowCoins[0].rect.x = levelTwoBox.rect.x + levelTwoWindowCoins[0].rect.y / 4;
+        levelTwoWindowCoins[1].rect.x  =  levelTwoBox.rect.x + levelTwoWindowCoins[1].rect.y / 4 + 300;
+        levelTwoWindowCoins[2].rect.x = levelTwoBox.rect.x - 200 ;
+        levelTwoWindowCoins[3].rect.x = levelTwoBox.rect.x  - 300 ;
+        levelTwoWindowCoins[4].rect.x = levelTwoBox.rect.x  + levelTwoBox.rect.w + 200 ;
+
         
         JumpingEffectCharacter();
      
@@ -52,8 +56,7 @@ void boxmotion()
 void drawBoxFunction()
 {
     SDL_RenderCopy(app.rend, levelTwoBox.tex, NULL, &levelTwoBox.rect);
-    levelTwoBox.rect.x = xPosLevelTwoBox + levelTwoBox.rect.w;
+    levelTwoBox.rect.x = xPosLevelTwoBox + levelTwoBox.rect.w ;
      
 }
-
 

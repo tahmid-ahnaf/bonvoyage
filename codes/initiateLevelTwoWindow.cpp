@@ -151,7 +151,7 @@ void levelTwoWindowLoad(void)
     levelTwoWindowClouds.rect.y = 50;
 
     //track
-    window.surface = IMG_Load("images/leveltwo/new/tracks1.png");
+    window.surface = IMG_Load("images/leveltwo/new/newnightTrack.png");
 
     if (!window.surface)
     {
@@ -203,14 +203,14 @@ void levelTwoWindowLoad(void)
 
     levelTwoWindowCharacter.rect;
     levelTwoWindowCharacterPosition.rect;
-  
+
     float FRAME_TIME = 0;
     int PREV_TIME = 0;
     float DELTA_TIME = 0;
 
     SDL_QueryTexture(levelTwoWindowCharacter.tex, NULL, NULL, &levelTwoCharacterTextureHeight, &levelTwoCharacterTextureWidth);
 
-    levelTwoCharacterFrameWidth = levelTwoCharacterTextureWidth/ 2;
+    levelTwoCharacterFrameWidth = levelTwoCharacterTextureWidth / 2;
     levelTwoCharacterFrameHeight = levelTwoCharacterTextureHeight / 2;
     levelTwoWindowCharacter.rect.w = levelTwoCharacterFrameWidth;
     levelTwoWindowCharacter.rect.h = levelTwoCharacterFrameHeight;
@@ -219,13 +219,13 @@ void levelTwoWindowLoad(void)
     levelTwoWindowCharacterPosition.rect.w = levelTwoCharacterFrameWidth;
     levelTwoWindowCharacterPosition.rect.h = levelTwoCharacterFrameHeight;
     levelTwoWindowCharacterPosition.rect.x = 30;
-    levelTwoWindowCharacterPosition.rect.y =720;
+    levelTwoWindowCharacterPosition.rect.y = 720;
     float CHARACTER2_X_POS = (float)100;
     float CHARACTER2_Y_POS = (float)700;
 
     LevelTwoBoxLoad();
     LevelTwoCoinsload();
-    BombandPlaneLoad();
+    BombandDragonLoad();
     LevelTwoLifeLoad();
 }
 
@@ -241,7 +241,7 @@ void levelTwoWindowCleanUp()
     SDL_DestroyTexture(levelTwoWindowCharacter.tex);
     BoxCleanUp();
     LevelTwoCoinsCleanUp();
-    BombandPlaneCleanUp();
+    BombandDragonCleanUp();
     LevelTwoCoinsPopCleanUp();
     IMG_Quit();
 }

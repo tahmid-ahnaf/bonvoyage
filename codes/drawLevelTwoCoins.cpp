@@ -6,32 +6,45 @@ void drawLevelTwoCoinsPopupFunction(){
   SDL_RenderCopy(app.rend,levelTwoCoinPointPopUp.tex, 0, &levelTwoCoinPointPopUp.rect);
 }
 
- 
-void drawLevelTwoCoinsFunction()
-{
 
-    SDL_RenderCopy(app.rend, levelTwoCoin1.tex,&levelTwoRotatingCoin.rect, &levelTwoCoin1.rect);
-    SDL_RenderCopy(app.rend, levelTwoCoin2.tex,&levelTwoRotatingCoin.rect, &levelTwoCoin2.rect);
-     
-}
 
 
 void updateCoinsPosition()
 {
-    levelTwoCoin1.rect.w = (int)40;
-    levelTwoCoin1.rect.h = (int)40;
-    levelTwoCoin2.rect.w = (int)40;
-    levelTwoCoin2.rect.h = (int)40;
+    levelTwoWindowCoins[0].rect.w = (int)40;
+    levelTwoWindowCoins[0].rect.h = (int)40;
+    levelTwoWindowCoins[1].rect.w = (int)40;
+    levelTwoWindowCoins[1].rect.h = (int)40;
+    levelTwoWindowCoins[2].rect.w = (int)40;
+    levelTwoWindowCoins[2].rect.h = (int)40;
+    levelTwoWindowCoins[3].rect.w = (int)40; 
+    levelTwoWindowCoins[3].rect.h = (int)40;
+    levelTwoWindowCoins[4].rect.w = (int)40;
+    levelTwoWindowCoins[4].rect.h = (int)40;
 
-    if (levelTwoBox.rect.y < WINDOW_HEIGHT / 2 || levelTwoBox.rect.y >= WINDOW_HEIGHT - 400 ||  levelTwoBox.rect.y- levelTwoWindowCharacterPosition.rect.y<=levelTwoCoin1.rect.h)
+    if (levelTwoBox.rect.y < WINDOW_HEIGHT / 2 || levelTwoBox.rect.y >= WINDOW_HEIGHT - 400 ||  levelTwoBox.rect.y- levelTwoWindowCharacterPosition.rect.y<=levelTwoWindowCoins[0].rect.h)
     {
         levelTwoBox.rect.y = WINDOW_HEIGHT / 2 + rand() % 50;
     }
-        levelTwoCoin1.rect.y = levelTwoBox.rect.y - 70 - rand() % 200;
-        levelTwoCoin2.rect.y = levelTwoBox.rect.y - 70 - rand() % 200;
+       levelTwoWindowCoins[0].rect.y = levelTwoBox.rect.y - 70 - rand() % 200;
+        levelTwoWindowCoins[1].rect.y = levelTwoBox.rect.y - 70 - rand() % 200 ;
 
-    if (levelTwoCoin1.rect.y < levelTwoBox.rect.y && levelTwoCoin1.rect.y > levelTwoBox.rect.y - 120)
+    if (levelTwoWindowCoins[0].rect.y < levelTwoBox.rect.y && levelTwoWindowCoins[0].rect.y > levelTwoBox.rect.y - 120)
     {
-            levelTwoCoin1.rect.y = WINDOW_WIDTH + 300;
+            levelTwoWindowCoins[0].rect.y = WINDOW_WIDTH + 300;
     }  
+        levelTwoWindowCoins[2].rect.y = 200;
+        levelTwoWindowCoins[3].rect.y = levelTwoWindowCoins[2].rect.y + 200;
+        levelTwoWindowCoins[4].rect.y = levelTwoWindowCoins[3].rect.y  + 300;
+}
+
+ 
+void drawLevelTwoCoinsFunction()
+{
+
+    for (int i = 0; i < 5; i++)
+    {
+        SDL_RenderCopy(app.rend, levelTwoWindowCoins[i].tex,&levelTwoRotatingCoin.rect, &levelTwoWindowCoins[i].rect);
+    }
+     
 }

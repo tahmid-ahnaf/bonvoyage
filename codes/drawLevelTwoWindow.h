@@ -10,6 +10,9 @@ extern component
     levelTwoWindowCharacter, levelTwoWindowCharacterPosition, levelTwoRotatingCoin, levelTwoRotatingHeart,
     characterFramePosition,
     levelTwoWindowScoreText, levelTwoWindowHighScoreText,
+    levelOneWindowScore,
+    levelOneWindowHighScore,
+    levelTwoDragon,
     back;
 
 extern Variables variables;
@@ -17,7 +20,7 @@ extern void drawBoxFunction(void);
 extern void boxmotion(void);
 extern void drawLevelTwoCoinsFunction(void);
 extern void drawLevelTwoCoinsPopupFunction(void);
-extern void drawBombandPlaneFunction(void);
+extern void drawBombandDragonFunction(void);
 extern void collisionsLevelTwo(void);
 extern void updateLevelTwoScore(void);
 extern void updateLevelTwoLifeBonusPopupFunction(void);

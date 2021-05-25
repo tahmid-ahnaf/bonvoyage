@@ -4,9 +4,9 @@ extern App app;
 extern component
 
     levelTwoWindowCharacter,
-    levelTwoWindowCharacterPosition, 
-    levelTwoBomb, levelTwoPlane, levelTwoExplosion,
+    levelTwoWindowCharacterPosition,
+    levelTwoBomb, levelTwoDragonPosition, levelTwoDragon, levelTwoExplosion,
     back;
 
 extern Variables variables;
-extern void  updateCoinsPosition();
+extern void updateCoinsPosition();

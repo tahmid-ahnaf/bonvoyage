@@ -22,8 +22,11 @@ extern int levelTwoCharacterFrameWidth,
     lifePercentage,
     highScore,
     currentScore,
+    scoreUpdate,
     isspaceclicked,
-    iflifeatstake;
+    iflifeatstake,
+    leftbuttonclicked,
+    rightbuttonclicked;
 
 extern float characterTwoFrametime,
     characterTwoPrevtime,
@@ -40,8 +43,11 @@ extern float characterTwoFrametime,
     levelTwoTrackAnimationSpeed,
     levelTwoCloudsAnimationSpeed,
     levelTwoBirdsAnimationSpeed,
-    xPosLevelTwoBox,
-    yPosLevelTwoBox;
+    xPosLevelTwoTrack,
+    yPosLevelTwoTrack, 
+    xPosLevelTwoTrack2,
+    yPosLevelTwoTrack2;
+    
 
 extern char lifeString[256];
 extern char scoreString[256],

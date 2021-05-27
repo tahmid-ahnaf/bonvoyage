@@ -4,21 +4,21 @@ void doInput(void)
 {
     SDL_Event event;
 
-     while (SDL_PollEvent(&event))
-     {   
-            
-       if (event.type == SDL_QUIT)
-       {
+    while (SDL_PollEvent(&event))
+    {
+
+        if (event.type == SDL_QUIT)
+        {
             exit(0);
-       }
-       if(variables.levelOnePlayerName == 1 || variables.levelOne == 1)
-       {
-           if (event.type == SDL_KEYDOWN)
-           {
-               if (event.key.keysym.sym == SDLK_BACKSPACE && strlen(playerName) > 1)
-               {
-                   playerName[strlen(playerName) - 1] = '\0';
-                   updatePlayerName();
+        }
+        if (variables.levelOnePlayerName == 1 || variables.levelOne == 1)
+        {
+            if (event.type == SDL_KEYDOWN)
+            {
+                if (event.key.keysym.sym == SDLK_BACKSPACE && strlen(playerName) > 1)
+                {
+                    playerName[strlen(playerName) - 1] = '\0';
+                    updatePlayerName();
                 }
                 else if (event.key.keysym.scancode == SDL_SCANCODE_SPACE && variables.levelOne == 1)
                 {
@@ -27,71 +27,80 @@ void doInput(void)
                 else if (event.key.keysym.scancode == SDL_SCANCODE_UP)
                 {
                     levelOneCharacterYposition -= levelOneMoveSpeed * levelOneCharacterDeltatime + 400;
+                    SDL_SetTextureColorMod(levelOneWindowCharacter.tex, 255, 255, 255);
                 }
-        }
-        else if (event.type == SDL_TEXTINPUT && variables.levelOnePlayerName == 1)
-        {
-            //Not copy or pasting
-            if (!(SDL_GetModState() & KMOD_CTRL && (event.text.text[0] == ' ' || event.text.text[0] == 'c' || event.text.text[0] == 'C' || event.text.text[0] == 'v' || event.text.text[0] == 'V')))
+            }
+            else if (event.type == SDL_TEXTINPUT && variables.levelOnePlayerName == 1)
             {
-                strcat(playerName, event.text.text);
-                updatePlayerName();
+                //Not copy or pasting
+                if (!(SDL_GetModState() & KMOD_CTRL && (event.text.text[0] == ' ' || event.text.text[0] == 'c' || event.text.text[0] == 'C' || event.text.text[0] == 'v' || event.text.text[0] == 'V')))
+                {
+                    strcat(playerName, event.text.text);
+                    updatePlayerName();
+                }
             }
         }
 
- }
-  
-    if(variables.levelTwo == 1)
-    {
-
-        switch (event.type)
+        if (variables.levelTwo == 1)
         {
+
+            switch (event.type)
+            {
             case SDL_KEYDOWN:
 
-            switch (event.key.keysym.scancode)
-            {
+                switch (event.key.keysym.scancode)
+                {
                 case SDL_SCANCODE_SPACE: //IF SPACE IS PRESSED GAME START
-                isspaceclicked=1;
+                    isspaceclicked = 1;
 
-                if (levelTwoWindowCharacterPosition.rect.y- ( levelTwoInvisibleBorder.rect.y + levelTwoInvisibleBorder.rect.h) < 120 && levelTwoWindowCharacterPosition.rect.y - ( levelTwoInvisibleBorder.rect.y +  levelTwoInvisibleBorder.rect.h) > 0 && (abs((xPosLevelTwoCharacter)-levelTwoInvisibleBorder.rect.x) <= levelTwoInvisibleBorder.rect.w))
-                {
-                    yPosLevelTwoCharacter -= levelTwoWindowCharacterPosition.rect.y - (levelTwoInvisibleBorder.rect.y + levelTwoInvisibleBorder.rect.h) + 20;
+                    
+                    break;
+
+                case SDL_SCANCODE_RIGHT:
+                    
+                    leftbuttonclicked=0;
+                    rightbuttonclicked=1;
+
+                    if (xPosLevelTwoCharacter < WINDOW_WIDTH - 300)
+                    {
+                        xPosLevelTwoCharacter += moveSpeed * characterTwoDeltatime;
+                    }
+
+                    break;
+
+                case SDL_SCANCODE_LEFT:
+
+                    leftbuttonclicked=1;
+                    rightbuttonclicked=0;
+
+                    xPosLevelTwoCharacter -= moveSpeed * characterTwoDeltatime;
+                    break;
+
+                case SDL_SCANCODE_UP:
+
+                   if (levelTwoWindowCharacterPosition.rect.y - (levelTwoInvisibleBorder[0].rect.y + levelTwoInvisibleBorder[0].rect.h) <= 120 && levelTwoWindowCharacterPosition.rect.y - (levelTwoInvisibleBorder[0].rect.y + levelTwoInvisibleBorder[0].rect.h) >= 0 && (xPosLevelTwoCharacter + levelTwoWindowCharacter.rect.w  > levelTwoInvisibleBorder[0].rect.x &&  xPosLevelTwoCharacter - levelTwoInvisibleBorder[0].rect.x - levelTwoInvisibleBorder[0].rect.w  <=0) )
+                    {
+                        yPosLevelTwoCharacter -= levelTwoWindowCharacterPosition.rect.y - (levelTwoInvisibleBorder[0].rect.y + levelTwoInvisibleBorder[0].rect.h) + 20;
+                    }
+                    else if (levelTwoWindowCharacterPosition.rect.y - (levelTwoInvisibleBorder[1].rect.y + levelTwoInvisibleBorder[1].rect.h) <= 120 && levelTwoWindowCharacterPosition.rect.y - (levelTwoInvisibleBorder[1].rect.y + levelTwoInvisibleBorder[1].rect.h) >= 0 && (xPosLevelTwoCharacter + levelTwoWindowCharacter.rect.w  > levelTwoInvisibleBorder[1].rect.x &&  xPosLevelTwoCharacter - levelTwoInvisibleBorder[1].rect.x - levelTwoInvisibleBorder[1].rect.w  <=0))
+                    {
+                        yPosLevelTwoCharacter -= levelTwoWindowCharacterPosition.rect.y - (levelTwoInvisibleBorder[1].rect.y + levelTwoInvisibleBorder[1].rect.h) + 20;
+                    }
+                    else if (yPosLevelTwoCharacter > 250)
+                    {
+                        yPosLevelTwoCharacter -= 120;
+                    }
+
+                    break;
+
+                case SDL_SCANCODE_DOWN:
+
+                    yPosLevelTwoCharacter += moveSpeed * characterTwoDeltatime;
+                    break;
                 }
-                else if (yPosLevelTwoCharacter > 300)
-                {
-                    yPosLevelTwoCharacter -= 120;
-                }
-            break;
-
-            case SDL_SCANCODE_RIGHT:
-
-                if(xPosLevelTwoCharacter<WINDOW_WIDTH-300)
-                {
-                   xPosLevelTwoCharacter += moveSpeed * characterTwoDeltatime;
-                }
-                  
-                break;
-                
-            case SDL_SCANCODE_LEFT:
-                xPosLevelTwoCharacter -= moveSpeed * characterTwoDeltatime;
-                break;
-
-            case SDL_SCANCODE_UP:
-              
-                yPosLevelTwoCharacter = WINDOW_HEIGHT-500;
-                break;
-             
-            case SDL_SCANCODE_DOWN:
-                     
-                yPosLevelTwoCharacter += moveSpeed * characterTwoDeltatime;
-                break;
-                        
-              }
-
- }
- 
-  }
-       }
+            }
+        }
+    }
 
     int mousex, mousey;
     int buttons = SDL_GetMouseState(&mousex, &mousey);

@@ -2,7 +2,7 @@
 
 void collisionsLevelTwo()
 {   
-    for(int i=0; i<5; i++)
+    for(int i=0; i<7; i++)
     {
         SDL_bool collisionBetweenCharacterandCoinOne = SDL_HasIntersection(&levelTwoWindowCoins[i].rect, &levelTwoWindowCharacterPosition.rect);
         if (collisionBetweenCharacterandCoinOne)
@@ -30,56 +30,7 @@ void collisionsLevelTwo()
         }
 
         }
-        // SDL_bool collisionBetweenCharacterandCoinOne = SDL_HasIntersection(&levelTwoCoin1.rect, &levelTwoWindowCharacterPosition.rect);
-        // if (collisionBetweenCharacterandCoinOne)
-        // {
-        //     Mix_PlayMusic(coingain, 1);
-        //     currentScore+=5;
-        //     levelTwoCoin1.rect.w = 0;
-        //     levelTwoCoin1.rect.h = 0;
-        //     levelTwoCoinPointPopUp.rect.w = 50;
-        //     levelTwoCoinPointPopUp.rect.h = 50;
-        //     levelTwoCoinPointPopUp.rect.x = levelTwoCoin1.rect.x;
-        //     levelTwoCoinPointPopUp.rect.y = levelTwoCoin1.rect.y;
-        //     delayCountForPointPopUp++;
-        // }
-        // if (delayCountForPointPopUp > 0)
-        // {
-        //     delayCountForPointPopUp++;
-        //     levelTwoCoinPointPopUp.rect.y -= 5;
-        // }
-        // if (delayCountForPointPopUp == 40)
-        // {
-        //     delayCountForPointPopUp = 0;
-        //     levelTwoCoinPointPopUp.rect.w = 0;
-        //     levelTwoCoinPointPopUp.rect.h = 0;
-        // }
-
-    //    SDL_bool collisionBetweenCharacterandCoinTwo = SDL_HasIntersection(&levelTwoCoin2.rect, &levelTwoWindowCharacterPosition.rect);
-
-    //     if (collisionBetweenCharacterandCoinTwo)
-    //     {
-    //         Mix_PlayMusic(coingain, 1);
-    //         levelTwoCoin2.rect.w = 0;
-    //         levelTwoCoin2.rect.h = 0;
-    //         currentScore+=5;
-    //         levelTwoCoinPointPopUp.rect.w = 50;
-    //         levelTwoCoinPointPopUp.rect.h = 50;
-    //         levelTwoCoinPointPopUp.rect.x = levelTwoCoin2.rect.x;
-    //         levelTwoCoinPointPopUp.rect.y = levelTwoCoin2.rect.y;
-    //         delayCountForPointPopUp++;
-    //     }
-    //     if (delayCountForPointPopUp > 0)
-    //     {
-    //         delayCountForPointPopUp++;
-    //         levelTwoCoinPointPopUp.rect.y -= 5;
-    //     }
-    //     if (delayCountForPointPopUp == 40)
-    //     {
-    //         delayCountForPointPopUp = 0;
-    //         levelTwoCoinPointPopUp.rect.w = 0;
-    //         levelTwoCoinPointPopUp.rect.h = 0;
-    //     }
+        
 
          SDL_bool collisionBetweenCharacterandBomb = SDL_HasIntersection(&levelTwoBomb.rect, &levelTwoWindowCharacterPosition.rect);
 
@@ -110,14 +61,19 @@ void collisionsLevelTwo()
             levelTwoExplosion.rect.h = 0;
             delayCountForExplosion = 0;
         }
-
-        SDL_bool collisionBetweenCharacterandInvisibleBorder = SDL_HasIntersection(&levelTwoInvisibleBorder.rect, &levelTwoWindowCharacterPosition.rect);
-
-        if (collisionBetweenCharacterandInvisibleBorder)
+        
+        for(int i=0; i<2; i++)
         {
-           lifePercentage += 20;
-           levelTwoWindowCharacterPosition.rect.y = levelTwoInvisibleBorder.rect.y + levelTwoInvisibleBorder.rect.h + 20;
+            SDL_bool collisionBetweenCharacterandInvisibleBorders = SDL_HasIntersection(&levelTwoInvisibleBorder[i].rect, &levelTwoWindowCharacterPosition.rect);
+
+        if (collisionBetweenCharacterandInvisibleBorders)
+        {
+           lifePercentage += 5;
+           levelTwoWindowCharacterPosition.rect.y = levelTwoInvisibleBorder[i].rect.y + levelTwoInvisibleBorder[i].rect.h + 20;
         }
+
+        }
+       
 
         SDL_bool collisionBetweenCharacterandHeart = SDL_HasIntersection(&levelTwoHeart.rect, &levelTwoWindowCharacterPosition.rect);
 

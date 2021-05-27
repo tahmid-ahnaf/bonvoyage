@@ -6,7 +6,7 @@ extern component
     
     levelTwoWindowCharacter,
     levelTwoWindowCharacterPosition,
-    levelTwoBox, levelTwoInvisibleBorder, levelTwoWindowCoins[4],levelTwoRotatingCoin, levelTwoCoinPointPopUp, levelTwoBomb, levelTwoPlane, levelTwoExplosion, 
+    levelTwoTrack[2], levelTwoInvisibleBorder[2], levelTwoWindowCoins[7], levelTwoRotatingCoin, levelTwoCoinPointPopUp, levelTwoBomb, levelTwoPlane, levelTwoExplosion, 
     levelTwoHeart, levelTwoRotatingHeart, levelTwoLifeBonusPopUp, levelTwoLifeScoreDisplay, levelTwoHeartDisplay, levelTwoScoreText, levelTwoHighScoreText,
 
     back;

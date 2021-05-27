@@ -223,7 +223,7 @@ void levelTwoWindowLoad(void)
     float CHARACTER2_X_POS = (float)100;
     float CHARACTER2_Y_POS = (float)700;
 
-    LevelTwoBoxLoad();
+    LevelTwoTracksLoad();
     LevelTwoCoinsload();
     BombandDragonLoad();
     LevelTwoLifeLoad();
@@ -239,7 +239,7 @@ void levelTwoWindowCleanUp()
     SDL_DestroyTexture(levelTwoWindowTrack.tex);
     SDL_FreeSurface(levelTwoWindowCharacter.surface);
     SDL_DestroyTexture(levelTwoWindowCharacter.tex);
-    BoxCleanUp();
+    LevelTwoTracksCleanUp();
     LevelTwoCoinsCleanUp();
     BombandDragonCleanUp();
     LevelTwoCoinsPopCleanUp();

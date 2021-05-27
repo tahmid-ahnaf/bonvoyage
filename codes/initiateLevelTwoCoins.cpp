@@ -38,7 +38,7 @@ void LevelTwoCoinsPopupLoad()
 
 void LevelTwoCoinsload(void)
 {
-    for(int i=0; i<5; i++)
+    for(int i=0; i<7; i++)
     { 
         window.surface = IMG_Load("images/level2obstacles/coinsprite.png");
 
@@ -69,8 +69,8 @@ void LevelTwoCoinsload(void)
     
     levelTwoWindowCoins[i].rect.w = (int)40;
     levelTwoWindowCoins[i].rect.h = (int)40;
-    levelTwoWindowCoins[i].rect.x = (int) levelTwoBox.rect.x + 150;
-    levelTwoWindowCoins[i].rect.y = (int) levelTwoBox.rect.y - 70;
+    levelTwoWindowCoins[i].rect.x = (int) levelTwoTrack[0].rect.x + 150;
+    levelTwoWindowCoins[i].rect.y = (int) levelTwoTrack[0].rect.y - 70;
 
 
  
@@ -94,7 +94,7 @@ void LevelTwoCoinsload(void)
 
 void LevelTwoCoinsCleanUp()
 {
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 7; i++)
     {
         SDL_DestroyTexture(levelTwoWindowCoins[i].tex);
     }

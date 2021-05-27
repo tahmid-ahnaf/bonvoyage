@@ -20,8 +20,11 @@ int levelTwoCharacterFrameWidth,
     lifePercentage = 0,
     highScore,
     currentScore = 0,
+    scoreUpdate = 0,
     isspaceclicked = 0,
-    iflifeatstake = 0;
+    iflifeatstake = 0,
+    leftbuttonclicked = 0,
+    rightbuttonclicked = 1;
 
 float characterTwoFrametime = 0,
       characterTwoPrevtime = 0,
@@ -30,6 +33,7 @@ float characterTwoFrametime = 0,
       moveSpeed = 300.0f,
       xPosLevelTwoCharacter = (float)100,
       yPosLevelTwoCharacter = (float)700,
+      
 
       levelTwoSkyAnimationSpeed = 0,
       levelTwoMountainsAnimationSpeed = 0,
@@ -38,8 +42,10 @@ float characterTwoFrametime = 0,
       levelTwoTrackAnimationSpeed = 0,
       levelTwoCloudsAnimationSpeed = 0,
       levelTwoBirdsAnimationSpeed = 0,
-      xPosLevelTwoBox = (float)WINDOW_WIDTH / 2 + 200,
-      yPosLevelTwoBox = (float)WINDOW_HEIGHT / 2 - 200;
+      xPosLevelTwoTrack = (float)WINDOW_WIDTH / 2 + 200,
+      yPosLevelTwoTrack = (float)WINDOW_HEIGHT / 2 - 200,
+      xPosLevelTwoTrack2 = (float)WINDOW_WIDTH / 2 + 200,
+      yPosLevelTwoTrack2 =  (float)WINDOW_HEIGHT / 2 - 200;
 
 char lifeString[256] = " ";
 char scoreString[256],

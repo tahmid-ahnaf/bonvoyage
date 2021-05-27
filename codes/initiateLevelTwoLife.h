@@ -7,7 +7,7 @@ extern component
     levelTwoWindowCharacterPosition,
     window,
     levelOneWindowCoins[4],
-    levelTwoBox, levelTwoHeart, levelTwoRotatingHeart, levelTwoLifeBonusPopUp, levelTwoLifeScoreDisplay, levelTwoHeartDisplay, 
+    levelTwoTrack[2], levelTwoHeart, levelTwoRotatingHeart, levelTwoLifeBonusPopUp, levelTwoLifeScoreDisplay, levelTwoHeartDisplay, 
 
     back;
 

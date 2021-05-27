@@ -66,13 +66,16 @@ void updateAnimationSpeedForLevelTwoWindow()
     levelTwoWindowCharacter.rect.y = levelTwoRotatingCoin.rect.y = levelTwoRotatingHeart.rect.y = recty;
 
     drawLevelTwoLifeText();
-    boxmotion();
+    levelTwoTrackmotion();
     updateHeartPosition();
 
-    //   if (currentScore >highScore)
-    //             {
-    //   updateHighScoreOnFileLevel2();
-    // //   }
+    scoreUpdate ++;
+    if(scoreUpdate==10)
+    {
+        scoreUpdate=0;
+        currentScore++;   
+    }
+
     collisionsLevelTwo();
     lifeatstakeaftereffect();
     updateLevelTwoLifeBonusPopupFunction();
@@ -174,8 +177,17 @@ void drawLevelTwoWindowFunction()
 
     if (isspaceclicked == 1 && variables.levelTwo == 1)
     {
-        SDL_RenderCopy(app.rend, levelTwoWindowCharacter.tex, &levelTwoWindowCharacter.rect, &levelTwoWindowCharacterPosition.rect);
-        drawBoxFunction();
+        if(leftbuttonclicked==1)
+        {
+            SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
+            SDL_RenderCopyEx(app.rend, levelTwoWindowCharacter.tex, &levelTwoWindowCharacter.rect, &levelTwoWindowCharacterPosition.rect, 0, NULL, flip);
+        }
+        else if(rightbuttonclicked==1)
+        {
+           SDL_RenderCopy(app.rend, levelTwoWindowCharacter.tex, &levelTwoWindowCharacter.rect, &levelTwoWindowCharacterPosition.rect);
+        }
+       
+        drawLevelTwoTrackFunction();
         drawLevelTwoCoinsFunction();
         drawLevelTwoCoinsPopupFunction();
         drawBombandDragonFunction();

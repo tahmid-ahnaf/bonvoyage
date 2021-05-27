@@ -15,7 +15,7 @@ extern component
     window,
     levelOneWindowCoins[4],
     characterFramePosition,
-    levelTwoBox, levelTwoInvisibleBorder, levelTwoCoin1, levelTwoCoin2, levelTwoRotatingCoin,
+    levelTwoTrack[2], levelTwoInvisibleBorder[2], levelTwoInvisibleBorder2, levelTwoRotatingCoin,
     back;
 
 extern Variables variables;

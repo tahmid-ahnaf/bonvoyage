@@ -44,7 +44,7 @@ component
     levelTwoWindowScoreText,
     levelTwoWindowHighScoreText,
     levelTwoLifeScoreText,
-    levelTwoWindowCoins[4],
+    levelTwoWindowCoins[7],
 
     levelOneWindowCoins[5],
     levelOneWindowObstacle[3],
@@ -66,7 +66,7 @@ component
     levelOneGameOverMessage,
 
     levelTwoWindowCharacter, levelTwoWindowCharacterPosition,
-    levelTwoInvisibleBorder, levelTwoBox, levelTwoCoin1, levelTwoCoin2, levelTwoRotatingCoin, levelTwoCoinPointPopUp, levelTwoBomb, levelTwoDragon, levelTwoDragonPosition, levelTwoExplosion,
+    levelTwoInvisibleBorder[2], levelTwoTrack[2], levelTwoRotatingCoin, levelTwoCoinPointPopUp, levelTwoBomb, levelTwoDragon, levelTwoDragonPosition, levelTwoExplosion,
     levelTwoHeart, levelTwoRotatingHeart, levelTwoLifeBonusPopUp, levelTwoLifeScoreDisplay, levelTwoHeartDisplay,
 
     back;

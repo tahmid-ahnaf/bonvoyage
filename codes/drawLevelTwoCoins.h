@@ -5,9 +5,8 @@ extern component
 
     levelTwoWindowCharacter,
     levelTwoWindowCharacterPosition,
-    levelTwoBox, levelTwoInvisibleBorder, levelTwoWindowCoins[4], levelTwoRotatingCoin, levelTwoCoinPointPopUp,
+    levelTwoTrack[2], levelTwoInvisibleBorder[2], levelTwoWindowCoins[7], levelTwoRotatingCoin, levelTwoCoinPointPopUp,
 
     back;
 
 extern Variables variables;
-

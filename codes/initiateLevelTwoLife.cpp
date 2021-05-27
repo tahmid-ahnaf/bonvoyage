@@ -1,7 +1,7 @@
 #include "initiateLevelTwoLife.h"
 void LevelTwoLifeLoad()
 {
-    window.surface = IMG_Load("images/level2obstacles/newLifeSprite.png");
+    window.surface = IMG_Load("images/level2obstacles/redgreenheartsprite.png");
 
     if (!window.surface)
     {
@@ -30,8 +30,8 @@ void LevelTwoLifeLoad()
 
     levelTwoHeart.rect.w = (int)50;
     levelTwoHeart.rect.h = (int)50;
-    levelTwoHeart.rect.x = (int)levelTwoBox.rect.x + 50;
-    levelTwoHeart.rect.y = (int)levelTwoBox.rect.y - 70;
+    levelTwoHeart.rect.x = (int)levelTwoTrack[0].rect.x + 50;
+    levelTwoHeart.rect.y = (int)levelTwoTrack[0].rect.y - 70;
 
     /*#######################################   VARIABLES FOR ANIMATE THE HEART SPRITESHEET #############################################*/
 

@@ -16,8 +16,8 @@ extern component
     back;
 
 extern Variables variables;
-extern void drawBoxFunction(void);
-extern void boxmotion(void);
+extern void drawLevelTwoTrackFunction(void);
+extern void levelTwoTrackmotion(void);
 extern void drawLevelTwoCoinsFunction(void);
 extern void drawLevelTwoCoinsPopupFunction(void);
 extern void drawBombandDragonFunction(void);

@@ -32,8 +32,8 @@ extern component
     levelTwoWindowMountains,
     levelTwoWindowTreeShade,
     levelTwoWindowClouds,
-    levelTwoWindowTrack,
-    levelTwoWindowCharacter, levelTwoWindowCharacterPosition, levelTwoInvisibleBorder, 
+    levelTwoTrack[2],
+    levelTwoWindowCharacter, levelTwoWindowCharacterPosition, levelTwoInvisibleBorder[2],
     characterFramePosition,
     welcomeWindowExitButton,
 

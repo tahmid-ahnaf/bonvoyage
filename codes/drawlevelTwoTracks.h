@@ -6,9 +6,10 @@ extern component
 
     levelTwoWindowCharacter,
     levelTwoWindowCharacterPosition, 
-    levelTwoBox, levelTwoInvisibleBorder, levelTwoWindowCoins[4],
+    levelTwoTrack[2], levelTwoInvisibleBorder[2], levelTwoWindowCoins[7],
 
     back;
 
 extern Variables variables;
 extern void  updateCoinsPosition();
+extern void  updateCoinsPosition2();

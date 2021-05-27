@@ -14,9 +14,9 @@ extern component
     window;
 
 extern Variables variables;
-extern void LevelTwoBoxLoad();
+extern void LevelTwoTracksLoad();
 extern void LevelTwoCoinsload();
-extern void BoxCleanUp();
+extern void LevelTwoTracksCleanUp();
 extern void LevelTwoCoinsCleanUp();
 extern void BombandDragonLoad();
 extern void LevelTwoLoadScoreFile();

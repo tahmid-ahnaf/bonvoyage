@@ -10,7 +10,7 @@ void updateAnimationSpeedForLevelTwoWindow()
     levelTwoDragonCurrentime = SDL_GetTicks();
     levelTwoDragonDeltatime = (levelTwoDragonCurrentime - levelTwoDragonPrevtime) / 280.0f;
 
-    levelTwoDragonFrametime += levelTwoDragonDeltatime;
+     levelTwoDragonFrametime += levelTwoDragonDeltatime;
     if (levelTwoDragonFrametime >= (0.25f))
     {
         levelTwoDragonFrametime = 0.0;
@@ -41,29 +41,77 @@ void updateAnimationSpeedForLevelTwoWindow()
         delayCountForCharacterCollisionEffect++;
     }
 
-    rectx = levelTwoWindowCharacter.rect.x;
-    recty = levelTwoWindowCharacter.rect.y;
+
     characterTwoFrametime += characterTwoDeltatime;
 
     if (characterTwoFrametime >= (0.25f))
     {
         characterTwoFrametime = 0;
-        rectx += levelTwoCharacterFrameWidth;
-        if (rectx == levelTwoCharacterTextureWidth && recty == 130)
+        levelTwoWindowCharacter.rect.x += levelTwoCharacterFrameWidth;
+        if (levelTwoWindowCharacter.rect.x == levelTwoCharacterTextureWidth && levelTwoWindowCharacter.rect.y == levelTwoCharacterFrameHeight)
         {
-            recty = 0;
-            rectx = 0;
+            levelTwoWindowCharacter.rect.y = 0;
+            levelTwoWindowCharacter.rect.x = 0;
         }
-        else if (rectx == levelTwoCharacterTextureWidth)
+        else if (levelTwoWindowCharacter.rect.x == levelTwoCharacterTextureWidth)
         {
-            rectx = 0;
-            recty = levelTwoCharacterFrameHeight;
+            levelTwoWindowCharacter.rect.x = 0;
+            levelTwoWindowCharacter.rect.y = levelTwoCharacterFrameHeight;
         }
     }
 
-    levelTwoWindowCharacter.rect.x = levelTwoRotatingCoin.rect.x = levelTwoRotatingHeart.rect.x = rectx;
 
-    levelTwoWindowCharacter.rect.y = levelTwoRotatingCoin.rect.y = levelTwoRotatingHeart.rect.y = recty;
+    levelTwoRotatingCoinPrevtime = levelTwoRotatingCoinCurrentime;
+    levelTwoRotatingCoinCurrentime = SDL_GetTicks();
+    levelTwoRotatingCoinDeltatime = (levelTwoRotatingCoinCurrentime - levelTwoRotatingCoinPrevtime) / 280.0f;
+
+    levelTwoRotatingCoinFrametime += levelTwoRotatingCoinDeltatime;
+
+    if (levelTwoRotatingCoinFrametime >= (0.25f))
+    {
+        levelTwoRotatingCoinFrametime = 0;
+        levelTwoRotatingCoin.rect.x += levelTwoCoinFrameWidth;
+        if (levelTwoRotatingCoin.rect.x == levelTwoCoinTextureWidth && levelTwoRotatingCoin.rect.y == levelTwoCoinFrameHeight)
+        {
+            levelTwoRotatingCoin.rect.y = 0;
+            levelTwoRotatingCoin.rect.x = 0;
+        }
+        else if (levelTwoRotatingCoin.rect.x == levelTwoCoinTextureWidth)
+        {
+            levelTwoRotatingCoin.rect.x = 0;
+            levelTwoRotatingCoin.rect.y = levelTwoCoinFrameHeight;
+        }
+    }
+
+
+
+    levelTwoRotatingHeartPrevtime = levelTwoRotatingHeartCurrentime;
+    levelTwoRotatingHeartCurrentime = SDL_GetTicks();
+    levelTwoRotatingHeartDeltatime = (levelTwoRotatingHeartCurrentime - levelTwoRotatingHeartPrevtime) / 280.0f;
+
+
+    levelTwoRotatingHeartFrametime += levelTwoRotatingHeartDeltatime;
+
+    if (levelTwoRotatingHeartFrametime >= (0.25f))
+    {
+        levelTwoRotatingHeartFrametime = 0;
+        levelTwoRotatingHeart.rect.x += levelTwoHeartFrameWidth;
+        if (levelTwoRotatingHeart.rect.x == levelTwoHeartTextureWidth && levelTwoRotatingHeart.rect.y == levelTwoHeartFrameHeight)
+        {
+            levelTwoRotatingHeart.rect.y = 0;
+            levelTwoRotatingHeart.rect.x = 0;
+        }
+        else if (levelTwoRotatingHeart.rect.x == levelTwoHeartTextureWidth)
+        {
+            levelTwoRotatingHeart.rect.x = 0;
+            levelTwoRotatingHeart.rect.y = levelTwoHeartFrameHeight;
+        }
+    }
+    
+
+    // levelTwoWindowCharacter.rect.x = levelTwoRotatingCoin.rect.x = levelTwoRotatingHeart.rect.x = rectx;
+
+    // levelTwoWindowCharacter.rect.y = levelTwoRotatingCoin.rect.y = levelTwoRotatingHeart.rect.y = recty;
 
     drawLevelTwoLifeText();
     levelTwoTrackmotion();

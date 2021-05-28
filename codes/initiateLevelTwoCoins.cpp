@@ -74,13 +74,13 @@ void LevelTwoCoinsload(void)
 
 
  
-    SDL_QueryTexture(levelTwoWindowCoins[i].tex , NULL, NULL, &coinTextureHeight, &coinTextureWidth);
+    SDL_QueryTexture(levelTwoWindowCoins[i].tex , NULL, NULL, &levelTwoCoinTextureHeight, &levelTwoCoinTextureWidth);
 
-    int coinFrameWidth = coinTextureWidth / 2;
-    int coinFrameHeight =coinTextureHeight / 2;
+    levelTwoCoinFrameWidth = levelTwoCoinTextureWidth / 2;
+    levelTwoCoinFrameHeight = levelTwoCoinTextureHeight / 2;
 
-    levelTwoRotatingCoin.rect.w = (int)coinFrameWidth;
-    levelTwoRotatingCoin.rect.h = (int)coinFrameHeight;
+    levelTwoRotatingCoin.rect.w = (int)levelTwoCoinFrameWidth;
+    levelTwoRotatingCoin.rect.h = (int)levelTwoCoinFrameHeight;
     levelTwoRotatingCoin.rect.x = (int)0;
     levelTwoRotatingCoin.rect.y = (int)0;
  

@@ -36,13 +36,13 @@ void LevelTwoLifeLoad()
     /*#######################################   VARIABLES FOR ANIMATE THE HEART SPRITESHEET #############################################*/
 
     levelTwoRotatingHeart.rect;
-    SDL_QueryTexture(levelTwoHeart.tex, NULL, NULL, &heartTextureHeight, &heartTextureWidth);
+    SDL_QueryTexture(levelTwoHeart.tex, NULL, NULL, &levelTwoHeartTextureHeight, &levelTwoHeartTextureWidth);
 
-    int HEART_FRAME_WIDTH = heartTextureWidth / 2;
-    int HEART_FRAME_HEIGHT = heartTextureHeight / 2;
+    levelTwoHeartFrameWidth = levelTwoHeartTextureWidth / 2;
+    levelTwoHeartFrameHeight = levelTwoHeartTextureHeight / 2;
 
-    levelTwoRotatingHeart.rect.w = (int)HEART_FRAME_WIDTH;
-    levelTwoRotatingHeart.rect.h = (int)HEART_FRAME_HEIGHT;
+    levelTwoRotatingHeart.rect.w = (int)levelTwoHeartFrameWidth;
+    levelTwoRotatingHeart.rect.h = (int)levelTwoHeartFrameHeight;
     levelTwoRotatingHeart.rect.x = (int)0;
     levelTwoRotatingHeart.rect.y = (int)0;
 

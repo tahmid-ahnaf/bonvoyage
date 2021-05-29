@@ -37,6 +37,10 @@ void prepareScene(void)
     {
         drawLevelOneGameOverFunction();
     }
+    if (variables.levelTwoCompleted == 1)
+    {
+        drawLevelTwoCompletedFunction();
+    }
 }
 
 void presentScene(void)

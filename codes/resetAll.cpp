@@ -14,6 +14,7 @@ void resetAll()
     levelOneWindowTrack.rect.x = 0;
     levelOneCurrentScore = 0;
     variables.gameOver1 = 0;
+    variables.levelTwoCompleted = 0;
     lifeSize = 6;
 
     strcpy(playerName, " ");
@@ -50,4 +51,6 @@ void resetAll()
     }
     curzonPosition = 10000;
     count = 0;
+    currentScore = 0;
+    isspaceclicked = 0;
 }

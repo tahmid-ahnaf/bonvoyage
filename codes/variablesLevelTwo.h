@@ -17,12 +17,14 @@ extern int levelTwoCharacterFrameWidth,
     levelTwoHeartFrameHeight,
     levelTwoHeartFrameWidth,
 
+    
     randomGenerator,
     delayCountForPointPopUp,
     delayCountForHearts,
     delayCountForLifeRectChange,
     delayCountForExplosion,
     delayCountForCharacterCollisionEffect,
+    
     currentLife,
     lifePercentage,
     highScore,
@@ -37,7 +39,7 @@ extern float characterTwoFrametime,
     characterTwoPrevtime,
     characterTwoCurrentime,
     characterTwoDeltatime,
-    
+
     levelTwoRotatingCoinFrametime,
     levelTwoRotatingCoinPrevtime,
     levelTwoRotatingCoinCurrentime,
@@ -47,6 +49,7 @@ extern float characterTwoFrametime,
     levelTwoRotatingHeartPrevtime,
     levelTwoRotatingHeartCurrentime,
     levelTwoRotatingHeartDeltatime,
+
 
     moveSpeed,
     xPosLevelTwoCharacter,

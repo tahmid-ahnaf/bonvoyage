@@ -4,7 +4,7 @@ int levelTwoCharacterFrameWidth,
     levelTwoCharacterFrameHeight,
     levelTwoCharacterTextureWidth,
     levelTwoCharacterTextureHeight,
-    
+
     levelTwoCoinTextureHeight,
     levelTwoCoinTextureWidth,
     levelTwoCoinFrameHeight,
@@ -14,14 +14,14 @@ int levelTwoCharacterFrameWidth,
     levelTwoHeartTextureHeight,
     levelTwoHeartFrameHeight,
     levelTwoHeartFrameWidth,
-
+    
     randomGenerator,
     delayCountForPointPopUp = 0,
     delayCountForHearts = 0,
     delayCountForLifeRectChange = 0,
     delayCountForExplosion = 0,
     delayCountForCharacterCollisionEffect = 0,
-   
+    
     currentLife = 100,
     lifePercentage = 0,
     highScore,
@@ -36,7 +36,10 @@ float characterTwoFrametime = 0,
       characterTwoPrevtime = 0,
       characterTwoCurrentime = 0,
       characterTwoDeltatime = 0.0,
-      
+      moveSpeed = 300.0f,
+      xPosLevelTwoCharacter = (float)100,
+      yPosLevelTwoCharacter = (float)700,
+
       levelTwoRotatingCoinFrametime=0,
       levelTwoRotatingCoinPrevtime =0,
       levelTwoRotatingCoinCurrentime = 0,
@@ -47,9 +50,6 @@ float characterTwoFrametime = 0,
       levelTwoRotatingHeartCurrentime=0,
       levelTwoRotatingHeartDeltatime =0.0,
 
-      moveSpeed = 300.0f,
-      xPosLevelTwoCharacter = (float)100,
-      yPosLevelTwoCharacter = (float)700,
       
 
       levelTwoSkyAnimationSpeed = 0,

@@ -68,6 +68,7 @@ component
     levelTwoWindowCharacter, levelTwoWindowCharacterPosition,
     levelTwoInvisibleBorder[2], levelTwoTrack[2], levelTwoRotatingCoin, levelTwoCoinPointPopUp, levelTwoBomb, levelTwoDragon, levelTwoDragonPosition, levelTwoExplosion,
     levelTwoHeart, levelTwoRotatingHeart, levelTwoLifeBonusPopUp, levelTwoLifeScoreDisplay, levelTwoHeartDisplay,
+    levelTwoCompletedOverlay, levelTwoCompletedMessage,
 
     back;
 

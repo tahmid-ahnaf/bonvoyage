@@ -82,8 +82,8 @@ void updateHeartPosition()
 
         if (delayCountForHearts == 30)
         {
-            levelTwoHeart.rect.w = 100;
-            levelTwoHeart.rect.h = 100;
+            levelTwoHeart.rect.w = 80;
+            levelTwoHeart.rect.h = 80;
             levelTwoHeart.rect.x = rand() % (WINDOW_WIDTH - 150);
             levelTwoHeart.rect.y = rand() % WINDOW_HEIGHT;
 

@@ -23,10 +23,10 @@ typedef struct
     int ScoreBoard = 0;
     int gameOver = 0;
     int gameOver1 = 0;
+    int levelTwoCompleted = 0;
     TTF_Font *font;
     SDL_Color color;
     TTF_Font *levelTwofont;
     SDL_Color levelTwocolor;
-
 
 } Variables;

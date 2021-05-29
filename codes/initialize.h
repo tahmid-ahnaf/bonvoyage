@@ -15,6 +15,7 @@ extern void levelTwoWindowLoad(void);
 extern void levelOneCompletedLoad(void);
 extern void scoreboard(void);
 extern void levelOneGameOverLoad();
+extern void levelTwoCompletedLoad(void);
 
 extern void welcomeWindowCleanUp(void);
 extern void newGameWindowCleanUp(void);
@@ -34,3 +35,4 @@ extern void levelOneGameOverCleanUp(void);
 extern void levelTwoWindowCleanUp(void);
 
 extern void updatePlayerName();
+extern void levelTwoCompletedCleanUp(void);

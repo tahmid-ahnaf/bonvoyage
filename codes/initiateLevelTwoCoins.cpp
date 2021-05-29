@@ -2,7 +2,7 @@
 
 void LevelTwoCoinsPopupLoad()
 {
-    
+
     window.surface = IMG_Load("images/level2obstacles/point.png");
 
     if (!window.surface)
@@ -32,9 +32,6 @@ void LevelTwoCoinsPopupLoad()
     levelTwoCoinPointPopUp.rect.x = (int)WINDOW_WIDTH / 2;
     levelTwoCoinPointPopUp.rect.y = (int)WINDOW_HEIGHT / 2;
 }
-
-
- 
 
 void LevelTwoCoinsload(void)
 {
@@ -104,9 +101,7 @@ void LevelTwoCoinsCleanUp()
 
 void LevelTwoCoinsPopCleanUp()
 {
-    
+
     SDL_DestroyTexture(levelTwoCoinPointPopUp.tex);
     IMG_Quit();
 }
-
-

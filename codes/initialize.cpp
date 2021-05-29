@@ -37,7 +37,7 @@ void initSDL(void)
 
     variables.color = {43, 255, 0};
     variables.levelTwofont = TTF_OpenFont("Freshman.ttf", 30);
-    variables.levelTwocolor =  {0, 230, 64};
+    variables.levelTwocolor = {0, 230, 64};
 
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
     background = Mix_LoadMUS("audio/Delusion.mp3");
@@ -90,6 +90,7 @@ void initSDL(void)
     levelTwoWindowLoad();
 
     levelOneCompletedLoad();
+    levelTwoCompletedLoad();
 
     levelOneGameOverLoad();
 
@@ -119,7 +120,7 @@ void cleanup(void)
     SDL_DestroyWindow(app.window);
 
     SDL_DestroyTexture(back.tex);
-    
+
     SDL_StopTextInput();
     TTF_CloseFont(variables.font);
     TTF_Quit();

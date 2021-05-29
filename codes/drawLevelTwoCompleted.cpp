@@ -1,6 +1,6 @@
-#include "drawLevelTwoWindow.h"
+#include "drawLevelTwoCompleted.h"
 
-void updateAnimationSpeedForLevelTwoWindow()
+void updateAnimationSpeedForLevelTwoCompleted()
 {
     characterTwoPrevtime = characterTwoCurrentime;
     characterTwoCurrentime = SDL_GetTicks();
@@ -107,23 +107,6 @@ void updateAnimationSpeedForLevelTwoWindow()
         }
     }
 
-    drawLevelTwoLifeText();
-    levelTwoTrackmotion();
-    updateHeartPosition();
-
-    scoreUpdate++;
-    if (scoreUpdate == 10)
-    {
-        scoreUpdate = 0;
-        currentScore++;
-    }
-
-    collisionsLevelTwo();
-    lifeatstakeaftereffect();
-    updateLevelTwoLifeBonusPopupFunction();
-    updateLevelTwoScore();
-    sprintf(lifeString, "%i", currentLife);
-
     if (yPosLevelTwoCharacter <= 40)
     {
         yPosLevelTwoCharacter = 40;
@@ -173,17 +156,12 @@ void updateAnimationSpeedForLevelTwoWindow()
     {
         levelTwoTrackAnimationSpeed = 0;
     }
-    if (currentScore >= 1000)
-    {
-        variables.levelTwo = 0;
-        variables.levelTwoCompleted = 1;
-    }
 }
-void drawLevelTwoWindowFunction()
+void drawLevelTwoCompletedFunction()
 {
-    if (isspaceclicked == 1 && variables.levelTwo == 1)
+    if (variables.levelTwoCompleted == 1)
     {
-        updateAnimationSpeedForLevelTwoWindow();
+        updateAnimationSpeedForLevelTwoCompleted();
     }
 
     levelTwoWindowSky.rect.x = levelTwoSkyAnimationSpeed;
@@ -220,31 +198,8 @@ void drawLevelTwoWindowFunction()
     SDL_RenderCopy(app.rend, levelTwoWindowScoreText.tex, NULL, &levelTwoWindowScoreText.rect);
     SDL_RenderCopy(app.rend, levelTwoWindowHighScoreText.tex, NULL, &levelTwoWindowHighScoreText.rect);
 
+    SDL_RenderCopy(app.rend, levelTwoCompletedOverlay.tex, NULL, &levelTwoCompletedOverlay.rect);
+    SDL_RenderCopy(app.rend, levelTwoCompletedMessage.tex, NULL, &levelTwoCompletedMessage.rect);
+
     SDL_RenderCopy(app.rend, back.tex, NULL, &back.rect);
-    if (isspaceclicked == 0)
-        SDL_RenderCopy(app.rend, levelTwoWindowCharacter.tex, &levelTwoWindowCharacter.rect, &levelTwoWindowCharacterPosition.rect);
-    drawLevelTwoLifeFunction();
-    updateLevelTwoScore();
-    if (isspaceclicked == 1 && variables.levelTwo == 1)
-    {
-
-        drawLevelTwoTrackFunction();
-        drawLevelTwoCoinsFunction();
-        drawLevelTwoCoinsPopupFunction();
-        drawBombandDragonFunction();
-
-        LevelTwoLifeTextCleanUp();
-        drawLevelTwoHeartFunction();
-        drawLevelTwoHeartPopupFunction();
-
-        if (leftbuttonclicked == 1)
-        {
-            SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
-            SDL_RenderCopyEx(app.rend, levelTwoWindowCharacter.tex, &levelTwoWindowCharacter.rect, &levelTwoWindowCharacterPosition.rect, 0, NULL, flip);
-        }
-        else if (rightbuttonclicked == 1)
-        {
-            SDL_RenderCopy(app.rend, levelTwoWindowCharacter.tex, &levelTwoWindowCharacter.rect, &levelTwoWindowCharacterPosition.rect);
-        }
-    }
 }

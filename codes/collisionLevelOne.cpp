@@ -7,6 +7,8 @@ void collision()
 
         if (SDL_HasIntersection(&characterFramePosition.rect, &levelOneWindowCoins[i].rect))
         {
+            Mix_VolumeChunk(levelOneCoingain, 10);
+            Mix_PlayChannel(-1, levelOneCoingain, 0);
             levelOneWindowCoins[i].rect.h = 0;
             levelOneWindowCoins[i].rect.w = 0;
             levelOneWindowCoinsEffect[i].rect.h = int(100);

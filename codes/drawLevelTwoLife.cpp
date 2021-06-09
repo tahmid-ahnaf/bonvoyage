@@ -42,7 +42,7 @@ void updateLevelTwoLifeBonusPopupFunction()
         else if (levelTwoLifeBonusPopUp.rect.w == 50)
         {
             lifePercentage -= 100;
-            Mix_PlayMusic(pointgainsound, 1);
+            Mix_PlayChannel(-1, pointgainsound, 0);
             variables.levelTwofont = TTF_OpenFont("Freshman.ttf", 40);
             levelTwoLifeScoreText.rect.x = 1154;
             levelTwoLifeScoreText.rect.y = 62;
@@ -111,13 +111,13 @@ void updateHeartPosition()
 
 void lifeatstakeaftereffect()
 {
-    if (currentLife <= 10 && iflifeatstake == 0)
+    if (currentLife <= 10 && iflifeatstake == 0 && currentLife>0)
     {
         iflifeatstake = 1;
         levelTwoWindowCharacter.surface = IMG_Load("images/level2obstacles/sonicsprite3.png");
         levelTwoWindowCharacter.tex = SDL_CreateTextureFromSurface(app.rend, levelTwoWindowCharacter.surface);
     }
-    else if (currentLife > 10 && iflifeatstake == 1)
+    else if ((currentLife > 10 && iflifeatstake == 1) || (currentLife<=0))
     {
         iflifeatstake = 0;
         levelTwoWindowCharacter.surface = IMG_Load("images/level2obstacles/sonicsprite.png");

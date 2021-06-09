@@ -342,7 +342,7 @@ void levelOneWindowLoad(void)
     levelOneWindowHighScore.rect.y = (int)100;
 
     //curzon
-    window.surface = IMG_Load("images/levelone/newcurzon.png");
+    window.surface = IMG_Load("images/levelone/curzonre.png");
 
     if (!window.surface)
     {

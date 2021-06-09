@@ -40,11 +40,16 @@ void initSDL(void)
     variables.levelTwocolor = {0, 230, 64};
 
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
-    background = Mix_LoadMUS("audio/Delusion.mp3");
-    coingain = Mix_LoadMUS("audio/coingain.mp3");
-    explosionsound = Mix_LoadMUS("audio/explosionsound.mp3");
-    jumpsound = Mix_LoadMUS("audio/jump.mp3");
-    pointgainsound = Mix_LoadMUS("audio/pointgain.mp3");
+    background = Mix_LoadMUS("audio/inception.mp3");
+    got = Mix_LoadMUS("audio/got.mp3");
+    whoWeWantToBe = Mix_LoadMUS("audio/llg.mp3");
+    coingain = Mix_LoadWAV("audio/coingain.wav");
+    explosionsound = Mix_LoadWAV("audio/explosionsound.wav");
+    jumpsound = Mix_LoadWAV("audio/jump.wav");
+    pointgainsound = Mix_LoadWAV("audio/pointgain.wav");
+
+    levelOneCoingain = Mix_LoadWAV("audio/levelOneCoinGain.wav");
+    tigerRoar = Mix_LoadWAV("audio/tigerroar.wav");
 
     //back
     window.surface = IMG_Load("images/backbutton.png");
@@ -84,6 +89,7 @@ void initSDL(void)
     newgameWindowLoad();
 
     updatePlayerName();
+    updateLevelTwoPlayerName();
 
     levelOneWindowLoad();
 
@@ -95,6 +101,9 @@ void initSDL(void)
     levelOneGameOverLoad();
 
     scoreboard();
+    levelTwoScoreboard();
+
+    LegendsWindowLoad();
 }
 void cleanup(void)
 {
@@ -114,8 +123,10 @@ void cleanup(void)
     levelOneCoinsCleanUp();
     levelOneGameOverCleanUp();
 
-    levelTwoWindowCleanUp();
+    LegendsWindowCleanUp();
 
+    levelTwoWindowCleanUp();
+    levelTwoScoreboardCleanUp();
     SDL_DestroyRenderer(app.rend);
     SDL_DestroyWindow(app.window);
 
@@ -125,10 +136,10 @@ void cleanup(void)
     TTF_CloseFont(variables.font);
     TTF_Quit();
     Mix_FreeMusic(background);
-    Mix_FreeMusic(coingain);
-    Mix_FreeMusic(explosionsound);
-    Mix_FreeMusic(jumpsound);
-    Mix_FreeMusic(pointgainsound);
+    Mix_FreeChunk(coingain);
+    Mix_FreeChunk(explosionsound);
+    Mix_FreeChunk(jumpsound);
+    Mix_FreeChunk(pointgainsound);
     Mix_CloseAudio();
     IMG_Quit();
     SDL_Quit();

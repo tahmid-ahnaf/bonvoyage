@@ -23,3 +23,4 @@ extern void LevelTwoLoadScoreFile();
 extern void BombandDragonCleanUp();
 extern void LevelTwoCoinsPopCleanUp();
 extern void LevelTwoLifeLoad();
+extern void updateLevelTwoScore();

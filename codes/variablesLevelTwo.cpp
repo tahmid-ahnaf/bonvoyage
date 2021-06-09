@@ -14,14 +14,14 @@ int levelTwoCharacterFrameWidth,
     levelTwoHeartTextureHeight,
     levelTwoHeartFrameHeight,
     levelTwoHeartFrameWidth,
-    
+
     randomGenerator,
     delayCountForPointPopUp = 0,
     delayCountForHearts = 0,
     delayCountForLifeRectChange = 0,
     delayCountForExplosion = 0,
     delayCountForCharacterCollisionEffect = 0,
-    
+
     currentLife = 100,
     lifePercentage = 0,
     highScore,
@@ -40,17 +40,15 @@ float characterTwoFrametime = 0,
       xPosLevelTwoCharacter = (float)100,
       yPosLevelTwoCharacter = (float)700,
 
-      levelTwoRotatingCoinFrametime=0,
-      levelTwoRotatingCoinPrevtime =0,
+      levelTwoRotatingCoinFrametime = 0,
+      levelTwoRotatingCoinPrevtime = 0,
       levelTwoRotatingCoinCurrentime = 0,
-      levelTwoRotatingCoinDeltatime =0.0,
-      
-      levelTwoRotatingHeartFrametime=0,
-      levelTwoRotatingHeartPrevtime=0,
-      levelTwoRotatingHeartCurrentime=0,
-      levelTwoRotatingHeartDeltatime =0.0,
+      levelTwoRotatingCoinDeltatime = 0.0,
 
-      
+      levelTwoRotatingHeartFrametime = 0,
+      levelTwoRotatingHeartPrevtime = 0,
+      levelTwoRotatingHeartCurrentime = 0,
+      levelTwoRotatingHeartDeltatime = 0.0,
 
       levelTwoSkyAnimationSpeed = 0,
       levelTwoMountainsAnimationSpeed = 0,
@@ -62,17 +60,16 @@ float characterTwoFrametime = 0,
       xPosLevelTwoTrack = (float)WINDOW_WIDTH / 2 + 200,
       yPosLevelTwoTrack = (float)WINDOW_HEIGHT / 2 - 200,
       xPosLevelTwoTrack2 = (float)WINDOW_WIDTH / 2 + 200,
-      yPosLevelTwoTrack2 =  (float)WINDOW_HEIGHT / 2 - 200;
+      yPosLevelTwoTrack2 = (float)WINDOW_HEIGHT / 2 - 200;
 
 char lifeString[256] = " ";
 char scoreString[256],
     highScoreString[256];
-
-Mix_Music *background;
-Mix_Music *coingain;
-Mix_Music *explosionsound;
-Mix_Music *jumpsound;
-Mix_Music *pointgainsound;
+Mix_Music *got;
+Mix_Chunk *coingain;
+Mix_Chunk *explosionsound;
+Mix_Chunk *jumpsound;
+Mix_Chunk *pointgainsound;
 
 int levelTwoDragonFramewidth = 0, levelTwoDragonFrameheight = 0;
 int levelTwoDragonTexturewidth = 0, levelTwoDragonTextureheight = 0;
@@ -81,3 +78,13 @@ float levelTwoDragonFrametime = 0;
 int levelTwoDragonPrevtime = 0;
 int levelTwoDragonCurrentime = 0;
 float levelTwoDragonDeltatime = 0;
+
+char levelTwoScoreBoardPlayerNameString[100][10];
+char levelTwoScoreBoardPlayerScoreString[100][10];
+
+char levelTwoPlayerNameList[100][100], showLevelTwoPlayerNameList[10000][100];
+int levelTwoScoreList[100];
+char levelTwoHighScoreString[10];
+
+char levelTwoPlayerName[100] = " ";
+int countLevelTwo = 0;

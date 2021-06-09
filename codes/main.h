@@ -52,12 +52,16 @@ component
     levelOneWindowCoinsEffect[5],
     levelOneLifeLoss[3],
 
-    scoreBoardPlayerScore[5],
-    scoreBoardPlayerName[5],
     window,
     enterName,
     enterButton,
+
     scoreBoard,
+    scoreBoardPlayerScore[5],
+    scoreBoardPlayerName[5],
+    levelTwoScoreBoard,
+    levelTwoScoreBoardPlayerScore[5],
+    levelTwoScoreBoardPlayerName[5],
 
     playerNameBox,
     enterCommand,
@@ -69,6 +73,14 @@ component
     levelTwoInvisibleBorder[2], levelTwoTrack[2], levelTwoRotatingCoin, levelTwoCoinPointPopUp, levelTwoBomb, levelTwoDragon, levelTwoDragonPosition, levelTwoExplosion,
     levelTwoHeart, levelTwoRotatingHeart, levelTwoLifeBonusPopUp, levelTwoLifeScoreDisplay, levelTwoHeartDisplay,
     levelTwoCompletedOverlay, levelTwoCompletedMessage,
+
+    newgameWindowlevelOneLegendsButton,
+    newgameWindowlevelTwoLegendsButton,
+
+    levelTwoEnterName,
+    levelTwoEnterButton,
+    levelTwoPlayerNameBox,
+    levelTwoEnterCommand,
 
     back;
 

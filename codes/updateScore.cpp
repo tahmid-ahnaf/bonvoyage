@@ -77,17 +77,18 @@ void levelOneScoreCleanUp()
 }
 
 void updateLevelTwoScore()
-{    
-     
+{
+
     LevelTwoLoadScoreFile();
-    sprintf(highScoreString, "%i", highScore);
-   
     sprintf(scoreString, "%i", currentScore);
 
-    if (currentScore >highScore)
+    if (variables.levelTwoCompleted == 1 && countLevelTwo == 1)
     {
         updateLevelTwoHighScoreOnFile();
+        levelTwoScoreboard();
     }
+    sprintf(levelTwoHighScoreString, "%i", highScore);
+
     levelTwoWindowScoreText.surface = TTF_RenderText_Solid(variables.levelTwofont, scoreString, variables.levelTwocolor);
 
     if (!levelTwoWindowScoreText.surface)
@@ -113,9 +114,8 @@ void updateLevelTwoScore()
     levelTwoWindowScoreText.rect.h = (int)levelTwoWindowScoreText.surface->h;
     levelTwoWindowScoreText.rect.x = (int)150;
     levelTwoWindowScoreText.rect.y = (int)45;
-   
 
-    levelTwoWindowHighScoreText.surface = TTF_RenderText_Solid(variables.levelTwofont, highScoreString, variables.levelTwocolor);
+    levelTwoWindowHighScoreText.surface = TTF_RenderText_Solid(variables.levelTwofont, levelTwoHighScoreString, variables.levelTwocolor);
 
     if (!levelTwoWindowHighScoreText.surface)
     {
@@ -127,7 +127,7 @@ void updateLevelTwoScore()
     }
 
     levelTwoWindowHighScoreText.tex = SDL_CreateTextureFromSurface(app.rend, levelTwoWindowHighScoreText.surface);
-    
+
     if (!levelTwoWindowHighScoreText.tex)
     {
         printf("highScoreText Texture %s\n", SDL_GetError());
@@ -143,7 +143,7 @@ void updateLevelTwoScore()
     levelTwoWindowHighScoreText.rect.y = (int)110;
 }
 void levelTwoScoreCleanUp()
-{   
+{
     SDL_FreeSurface(levelTwoWindowScoreText.surface);
     SDL_FreeSurface(levelTwoWindowHighScoreText.surface);
     SDL_DestroyTexture(levelTwoWindowScoreText.tex);

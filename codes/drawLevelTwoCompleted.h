@@ -23,7 +23,7 @@ extern void drawBoxFunction(void);
 extern void boxmotion(void);
 extern void drawLevelTwoCoinsFunction(void);
 extern void drawLevelTwoCoinsPopupFunction(void);
-extern void drawBombandDragonFunction(void);
+// extern void drawBombandDragonFunction(void);
 extern void collisionsLevelTwo(void);
 extern void updateLevelTwoScore(void);
 extern void updateLevelTwoLifeBonusPopupFunction(void);

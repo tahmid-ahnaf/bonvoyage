@@ -18,7 +18,9 @@ void resetAll()
     lifeSize = 6;
 
     strcpy(playerName, " ");
+    strcpy(levelTwoPlayerName, " ");
     updatePlayerName();
+    updateLevelTwoPlayerName();
     updateScore();
 
     levelOneSkyAnimationSpeed = 0;
@@ -49,8 +51,14 @@ void resetAll()
         levelOneObstacleAnimationSpeed[i] = 1380;
         levelOneLifeAnimationSpeed[i] = 700;
     }
-    curzonPosition = 10000;
+    curzonPosition = 15000;
     count = 0;
     currentScore = 0;
     isspaceclicked = 0;
+
+    variables.levelTwoScoreBoard = 0;
+    variables.legendsWindow = 0;
+    variables.levelTwoPlayerName = 0;
+    variables.newLevelTwoScore = 0;
+    countLevelTwo = 0;
 }

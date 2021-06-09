@@ -59,7 +59,6 @@ void updateAnimationSpeedForLevelTwoCompleted()
         }
     }
 
-
     levelTwoRotatingCoinPrevtime = levelTwoRotatingCoinCurrentime;
     levelTwoRotatingCoinCurrentime = SDL_GetTicks();
     levelTwoRotatingCoinDeltatime = (levelTwoRotatingCoinCurrentime - levelTwoRotatingCoinPrevtime) / 280.0f;
@@ -82,12 +81,9 @@ void updateAnimationSpeedForLevelTwoCompleted()
         }
     }
 
-
-
     levelTwoRotatingHeartPrevtime = levelTwoRotatingHeartCurrentime;
     levelTwoRotatingHeartCurrentime = SDL_GetTicks();
     levelTwoRotatingHeartDeltatime = (levelTwoRotatingHeartCurrentime - levelTwoRotatingHeartPrevtime) / 280.0f;
-
 
     levelTwoRotatingHeartFrametime += levelTwoRotatingHeartDeltatime;
 
@@ -159,9 +155,14 @@ void updateAnimationSpeedForLevelTwoCompleted()
 }
 void drawLevelTwoCompletedFunction()
 {
+    countLevelTwo++;
     if (variables.levelTwoCompleted == 1)
     {
         updateAnimationSpeedForLevelTwoCompleted();
+    }
+    if (variables.levelTwoCompleted == 1 && countLevelTwo == 1)
+    {
+        updateLevelTwoScore();
     }
 
     levelTwoWindowSky.rect.x = levelTwoSkyAnimationSpeed;

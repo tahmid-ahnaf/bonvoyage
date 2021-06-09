@@ -35,58 +35,50 @@ void LevelTwoCoinsPopupLoad()
 
 void LevelTwoCoinsload(void)
 {
-    for(int i=0; i<7; i++)
-    { 
-        window.surface = IMG_Load("images/level2obstacles/coinsprite.png");
-
-    if (!window.surface)
+    for (int i = 0; i < 7; i++)
     {
-        printf("Coins Error: %s\n", IMG_GetError());
-        SDL_DestroyRenderer(app.rend);
-        SDL_DestroyWindow(app.window);
-        SDL_Quit();
-        exit(1);
-    }
+        window.surface = IMG_Load("images/level2obstacles/finalcoins.png");
 
-    
-    levelTwoWindowCoins[i].tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
-    SDL_FreeSurface(window.surface);
+        if (!window.surface)
+        {
+            printf("Coins Error: %s\n", IMG_GetError());
+            SDL_DestroyRenderer(app.rend);
+            SDL_DestroyWindow(app.window);
+            SDL_Quit();
+            exit(1);
+        }
 
-    if (!levelTwoWindowCoins[i].tex)
-    {
-        printf("BOX TEXTURE ERROR%s\n", SDL_GetError());
-        SDL_DestroyRenderer(app.rend);
-        SDL_DestroyWindow(app.window);
-        SDL_Quit();
-        exit(1);
-    }
-    levelTwoWindowCoins[i].rect;
-    
-    SDL_QueryTexture(levelTwoWindowCoins[i].tex, NULL, NULL, &levelTwoWindowCoins[i].rect.w, &levelTwoWindowCoins[i].rect.h);
-    
-    levelTwoWindowCoins[i].rect.w = (int)40;
-    levelTwoWindowCoins[i].rect.h = (int)40;
-    levelTwoWindowCoins[i].rect.x = (int) levelTwoTrack[0].rect.x + 150;
-    levelTwoWindowCoins[i].rect.y = (int) levelTwoTrack[0].rect.y - 70;
+        levelTwoWindowCoins[i].tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+        SDL_FreeSurface(window.surface);
 
+        if (!levelTwoWindowCoins[i].tex)
+        {
+            printf("BOX TEXTURE ERROR%s\n", SDL_GetError());
+            SDL_DestroyRenderer(app.rend);
+            SDL_DestroyWindow(app.window);
+            SDL_Quit();
+            exit(1);
+        }
+        levelTwoWindowCoins[i].rect;
 
- 
-    SDL_QueryTexture(levelTwoWindowCoins[i].tex , NULL, NULL, &levelTwoCoinTextureHeight, &levelTwoCoinTextureWidth);
+        SDL_QueryTexture(levelTwoWindowCoins[i].tex, NULL, NULL, &levelTwoWindowCoins[i].rect.w, &levelTwoWindowCoins[i].rect.h);
 
-    levelTwoCoinFrameWidth = levelTwoCoinTextureWidth / 2;
-    levelTwoCoinFrameHeight = levelTwoCoinTextureHeight / 2;
+        levelTwoWindowCoins[i].rect.w = (int)60;
+        levelTwoWindowCoins[i].rect.h = (int)60;
+        levelTwoWindowCoins[i].rect.x = (int)levelTwoTrack[0].rect.x + 150;
+        levelTwoWindowCoins[i].rect.y = (int)levelTwoTrack[0].rect.y - 70;
 
-    levelTwoRotatingCoin.rect.w = (int)levelTwoCoinFrameWidth;
-    levelTwoRotatingCoin.rect.h = (int)levelTwoCoinFrameHeight;
-    levelTwoRotatingCoin.rect.x = (int)0;
-    levelTwoRotatingCoin.rect.y = (int)0;
- 
-    
+        SDL_QueryTexture(levelTwoWindowCoins[i].tex, NULL, NULL, &levelTwoCoinTextureHeight, &levelTwoCoinTextureWidth);
 
+        levelTwoCoinFrameWidth = levelTwoCoinTextureWidth / 2;
+        levelTwoCoinFrameHeight = levelTwoCoinTextureHeight / 2;
 
+        levelTwoRotatingCoin.rect.w = (int)levelTwoCoinFrameWidth;
+        levelTwoRotatingCoin.rect.h = (int)levelTwoCoinFrameHeight;
+        levelTwoRotatingCoin.rect.x = (int)0;
+        levelTwoRotatingCoin.rect.y = (int)0;
     }
     LevelTwoCoinsPopupLoad();
-   
 }
 
 void LevelTwoCoinsCleanUp()

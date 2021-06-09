@@ -17,14 +17,13 @@ extern int levelTwoCharacterFrameWidth,
     levelTwoHeartFrameHeight,
     levelTwoHeartFrameWidth,
 
-    
     randomGenerator,
     delayCountForPointPopUp,
     delayCountForHearts,
     delayCountForLifeRectChange,
     delayCountForExplosion,
     delayCountForCharacterCollisionEffect,
-    
+
     currentLife,
     lifePercentage,
     highScore,
@@ -50,7 +49,6 @@ extern float characterTwoFrametime,
     levelTwoRotatingHeartCurrentime,
     levelTwoRotatingHeartDeltatime,
 
-
     moveSpeed,
     xPosLevelTwoCharacter,
     yPosLevelTwoCharacter,
@@ -63,17 +61,16 @@ extern float characterTwoFrametime,
     levelTwoCloudsAnimationSpeed,
     levelTwoBirdsAnimationSpeed,
     xPosLevelTwoTrack,
-    yPosLevelTwoTrack, 
+    yPosLevelTwoTrack,
     xPosLevelTwoTrack2,
     yPosLevelTwoTrack2;
-    
 
 extern char lifeString[256];
 extern char scoreString[256],
     highScoreString[256];
 
-extern Mix_Music *background,
-    *coingain,
+extern Mix_Music *got;
+extern Mix_Chunk *coingain,
     *explosionsound,
     *jumpsound,
     *pointgainsound;
@@ -84,3 +81,13 @@ extern float levelTwoDragonFrametime;
 extern int levelTwoDragonPrevtime;
 extern int levelTwoDragonCurrentime;
 extern float levelTwoDragonDeltatime;
+
+extern char levelTwoScoreBoardPlayerNameString[100][10];
+extern char levelTwoScoreBoardPlayerScoreString[100][10];
+
+extern char levelTwoPlayerNameList[100][100], showLevelTwoPlayerNameList[10000][100];
+extern int levelTwoScoreList[100];
+extern char levelTwoHighScoreString[10];
+
+extern char levelTwoPlayerName[100];
+extern int countLevelTwo;

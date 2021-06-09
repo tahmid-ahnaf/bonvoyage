@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 
     initSDL(); //in init.cpp file
     atexit(cleanup);
-
+    Mix_PlayMusic(background, -1);
     while (1)
     {
 

@@ -179,7 +179,7 @@ void levelTwoWindowLoad(void)
     levelTwoWindowTrack.rect.x = (int)0;
     levelTwoWindowTrack.rect.y = (int)760;
 
-    levelTwoWindowCharacter.surface = IMG_Load("images/level2obstacles/horseSprite.png");
+    levelTwoWindowCharacter.surface = IMG_Load("images/level2obstacles/sonicsprite.png");
 
     if (!levelTwoWindowCharacter.surface)
     {
@@ -227,6 +227,7 @@ void levelTwoWindowLoad(void)
     LevelTwoCoinsload();
     BombandDragonLoad();
     LevelTwoLifeLoad();
+    updateLevelTwoScore();
 }
 
 void levelTwoWindowCleanUp()

@@ -1,3 +1,4 @@
+#include <SDL2/SDL_mixer.h>
 extern float welcomeWindowSkyAnimationSpeed;
 extern float welcomeWindowMountainsAnimationSpeed;
 extern float welcomeWindowBirdsAnimationSpeed;
@@ -64,3 +65,5 @@ extern int count;
 extern int tigerJumped;
 extern float tigerYposition;
 extern int lifeSize;
+extern Mix_Music *background, *whoWeWantToBe;
+extern Mix_Chunk *levelOneCoingain, *tigerRoar;

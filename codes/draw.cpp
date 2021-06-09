@@ -41,6 +41,18 @@ void prepareScene(void)
     {
         drawLevelTwoCompletedFunction();
     }
+    if (variables.levelTwoScoreBoard == 1)
+    {
+        drawLevelTwoScoreBoardFunction();
+    }
+    if (variables.legendsWindow == 1)
+    {
+        drawLegendsWindowFunction();
+    }
+    if (variables.levelTwoPlayerName == 1)
+    {
+        drawLevelTwoPlayerNameFunction();
+    }
 }
 
 void presentScene(void)

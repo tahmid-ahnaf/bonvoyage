@@ -31,3 +31,4 @@ extern void updateHeartPosition(void);
 extern void lifeatstakeaftereffect(void);
 extern void drawLevelTwoHeartFunction(void);
 extern void drawLevelTwoHeartPopupFunction(void);
+ 

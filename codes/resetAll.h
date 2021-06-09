@@ -44,3 +44,4 @@ extern component
 extern Variables variables;
 extern void updateScore();
 extern void updatePlayerName();
+extern void updateLevelTwoPlayerName();

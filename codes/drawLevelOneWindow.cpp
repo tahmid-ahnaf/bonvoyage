@@ -132,6 +132,12 @@ void updateAnimationSpeedForLevelOneWindow()
         variables.gameOver1 = 1;
     }
     curzonPosition -= 3;
+
+    if (levelOneCurrentScore % 100 == 0)
+    {
+        Mix_VolumeChunk(tigerRoar, 10);
+        Mix_PlayChannel(-1, tigerRoar, 0);
+    }
 }
 void drawLevelOneWindowFunction()
 {

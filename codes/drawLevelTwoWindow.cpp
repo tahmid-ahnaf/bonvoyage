@@ -59,7 +59,6 @@ void updateAnimationSpeedForLevelTwoWindow()
         }
     }
 
-
     levelTwoRotatingCoinPrevtime = levelTwoRotatingCoinCurrentime;
     levelTwoRotatingCoinCurrentime = SDL_GetTicks();
     levelTwoRotatingCoinDeltatime = (levelTwoRotatingCoinCurrentime - levelTwoRotatingCoinPrevtime) / 280.0f;
@@ -75,19 +74,16 @@ void updateAnimationSpeedForLevelTwoWindow()
             levelTwoRotatingCoin.rect.y = 0;
             levelTwoRotatingCoin.rect.x = 0;
         }
-        else if (levelTwoRotatingCoin.rect.x == levelTwoCoinTextureWidth)
+        else if (levelTwoRotatingCoin.rect.x >= levelTwoCoinTextureWidth)
         {
             levelTwoRotatingCoin.rect.x = 0;
             levelTwoRotatingCoin.rect.y = levelTwoCoinFrameHeight;
         }
     }
 
-
-
     levelTwoRotatingHeartPrevtime = levelTwoRotatingHeartCurrentime;
     levelTwoRotatingHeartCurrentime = SDL_GetTicks();
     levelTwoRotatingHeartDeltatime = (levelTwoRotatingHeartCurrentime - levelTwoRotatingHeartPrevtime) / 280.0f;
-
 
     levelTwoRotatingHeartFrametime += levelTwoRotatingHeartDeltatime;
 
@@ -100,7 +96,7 @@ void updateAnimationSpeedForLevelTwoWindow()
             levelTwoRotatingHeart.rect.y = 0;
             levelTwoRotatingHeart.rect.x = 0;
         }
-        else if (levelTwoRotatingHeart.rect.x == levelTwoHeartTextureWidth)
+        else if (levelTwoRotatingHeart.rect.x >= levelTwoHeartTextureWidth)
         {
             levelTwoRotatingHeart.rect.x = 0;
             levelTwoRotatingHeart.rect.y = levelTwoHeartFrameHeight;
@@ -181,9 +177,11 @@ void updateAnimationSpeedForLevelTwoWindow()
 }
 void drawLevelTwoWindowFunction()
 {
+
     if (isspaceclicked == 1 && variables.levelTwo == 1)
     {
         updateAnimationSpeedForLevelTwoWindow();
+        updateLevelTwoScore();
     }
 
     levelTwoWindowSky.rect.x = levelTwoSkyAnimationSpeed;
@@ -224,7 +222,7 @@ void drawLevelTwoWindowFunction()
     if (isspaceclicked == 0)
         SDL_RenderCopy(app.rend, levelTwoWindowCharacter.tex, &levelTwoWindowCharacter.rect, &levelTwoWindowCharacterPosition.rect);
     drawLevelTwoLifeFunction();
-    updateLevelTwoScore();
+
     if (isspaceclicked == 1 && variables.levelTwo == 1)
     {
 
@@ -232,7 +230,7 @@ void drawLevelTwoWindowFunction()
         drawLevelTwoCoinsFunction();
         drawLevelTwoCoinsPopupFunction();
         drawBombandDragonFunction();
-
+ 
         LevelTwoLifeTextCleanUp();
         drawLevelTwoHeartFunction();
         drawLevelTwoHeartPopupFunction();

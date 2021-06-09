@@ -1,4 +1,3 @@
-
 #include "variablesLevelOne.h"
 
 float welcomeWindowSkyAnimationSpeed = 0;
@@ -62,8 +61,11 @@ int levelOnePointEffectAnimationSpeed[5];
 int levelOnePointAnimationSpeed[5];
 int levelOneObstacleAnimationSpeed[3] = {1380, 1380, 1380};
 int levelOneLifeAnimationSpeed[3] = {700, 700, 700};
-int curzonPosition = 10000;
+int curzonPosition = 15000;
 int count = 0;
 int tigerJumped = 0;
 float tigerYposition = 730;
 int lifeSize = 6;
+
+Mix_Music *background, *whoWeWantToBe;
+Mix_Chunk *levelOneCoingain, *tigerRoar;

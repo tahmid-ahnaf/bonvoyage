@@ -42,8 +42,14 @@ extern component
     tigerFramePosition,
     levelOneWindowObstacle[3],
     enterButton,
+
+    newgameWindowlevelOneLegendsButton,
+    newgameWindowlevelTwoLegendsButton,
+    levelTwoEnterButton,
     back;
 
 extern Variables variables;
 extern void resetAll();
 extern void updatePlayerName();
+
+extern void updateLevelTwoPlayerName();

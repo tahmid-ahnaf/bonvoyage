@@ -19,11 +19,15 @@ typedef struct
     int levelTwo = 0;
     int levelOneCompleted = 0;
     int levelOnePlayerName = 0;
+    int levelTwoPlayerName = 0;
     int newScore = 0;
     int ScoreBoard = 0;
     int gameOver = 0;
     int gameOver1 = 0;
     int levelTwoCompleted = 0;
+    int levelTwoScoreBoard = 0;
+    int legendsWindow = 0;
+    int newLevelTwoScore = 0;
     TTF_Font *font;
     SDL_Color color;
     TTF_Font *levelTwofont;

@@ -3,7 +3,7 @@
 void LevelTwoCoinsPopupLoad()
 {
 
-    window.surface = IMG_Load("images/level2obstacles/point.png");
+    window.surface = IMG_Load("images/level2obstacles/100.png");
 
     if (!window.surface)
     {

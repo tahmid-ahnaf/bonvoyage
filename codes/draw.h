@@ -20,3 +20,6 @@ extern void drawLevelTwoScoreBoardFunction(void);
 extern void drawLegendsWindowFunction(void);
 
 extern void drawLevelTwoPlayerNameFunction(void);
+
+extern void drawControlsWindowFunction();
+extern void drawLevelTwoGameOverFunction();

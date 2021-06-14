@@ -9,10 +9,12 @@ extern component
     levelTwoWindowTrack,
     levelTwoWindowCharacter, levelTwoWindowCharacterPosition, levelTwoRotatingCoin, levelTwoRotatingHeart,
     characterFramePosition,
-    levelTwoWindowScoreText, levelTwoWindowHighScoreText,
+    levelTwoWindowScoreText,levelTwoLifeScoreText, levelTwoWindowHighScoreText,
     levelOneWindowScore,
     levelOneWindowHighScore,
     levelTwoDragon,
+    ironThrone,
+    initialInstructions,
     back;
 
 extern Variables variables;
@@ -31,4 +33,3 @@ extern void updateHeartPosition(void);
 extern void lifeatstakeaftereffect(void);
 extern void drawLevelTwoHeartFunction(void);
 extern void drawLevelTwoHeartPopupFunction(void);
- 

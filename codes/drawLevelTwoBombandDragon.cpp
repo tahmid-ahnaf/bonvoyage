@@ -8,11 +8,11 @@ void dragonflying()
         levelTwoBomb.rect.y = 150;
         levelTwoBomb.rect.w = 0;
         levelTwoBomb.rect.h = 0;
-        randomGenerator =  levelTwoWindowCharacterPosition.rect.x;
+        randomGenerator = levelTwoWindowCharacterPosition.rect.x;
     }
     else
     {
-        levelTwoDragonPosition.rect.x -= 10;
+        levelTwoDragonPosition.rect.x -= 6;
     }
     if (abs(randomGenerator - levelTwoDragonPosition.rect.x) <= 10)
     {

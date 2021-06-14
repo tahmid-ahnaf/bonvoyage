@@ -5,7 +5,7 @@ void updateScore()
     LoadScoreFile();
     sprintf(levelOneScoreString, "%i", levelOneCurrentScore);
 
-    if (variables.gameOver == 1 && count == 1)
+    if (variables.saveScore == 1 && count == 1)
     {
         updateHighScoreOnFile();
         scoreboard();
@@ -13,9 +13,9 @@ void updateScore()
 
     sprintf(levelOneHighScoreString, "%i", scoreList[0]);
 
-    window.surface = TTF_RenderText_Solid(variables.font, levelOneScoreString, variables.color);
+    levelOneWindowScoreText.surface = TTF_RenderText_Solid(variables.font, levelOneScoreString, variables.color);
 
-    if (!window.surface)
+    if (!levelOneWindowScoreText.surface)
     {
         printf("scoreText_BUTTON Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -24,8 +24,7 @@ void updateScore()
         exit(1);
     }
 
-    levelOneWindowScoreText.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
-    SDL_FreeSurface(window.surface);
+    levelOneWindowScoreText.tex = SDL_CreateTextureFromSurface(app.rend, levelOneWindowScoreText.surface);
     if (!levelOneWindowScoreText.tex)
     {
         printf("scoreText Texture %s\n", SDL_GetError());
@@ -35,16 +34,16 @@ void updateScore()
         exit(1);
     }
     SDL_QueryTexture(levelOneWindowScoreText.tex, NULL, NULL, &levelOneWindowScoreText.rect.w, &levelOneWindowScoreText.rect.h);
-    levelOneWindowScoreText.rect.w = (int)40;
-    levelOneWindowScoreText.rect.h = (int)23;
+    levelOneWindowScoreText.rect.w = (int)levelOneWindowScoreText.surface->w;
+    levelOneWindowScoreText.rect.h = (int)levelOneWindowScoreText.surface->h;
     levelOneWindowScoreText.rect.x = (int)150;
     levelOneWindowScoreText.rect.y = (int)45;
 
     //highscore
 
-    window.surface = TTF_RenderText_Solid(variables.font, levelOneHighScoreString, variables.color);
+    levelOneWindowHighScoreText.surface = TTF_RenderText_Solid(variables.font, levelOneHighScoreString, variables.color);
 
-    if (!window.surface)
+    if (!levelOneWindowHighScoreText.surface)
     {
         printf("highScoreText_BUTTON Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -53,8 +52,7 @@ void updateScore()
         exit(1);
     }
 
-    levelOneWindowHighScoreText.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
-    SDL_FreeSurface(window.surface);
+    levelOneWindowHighScoreText.tex = SDL_CreateTextureFromSurface(app.rend, levelOneWindowHighScoreText.surface);
     if (!levelOneWindowHighScoreText.tex)
     {
         printf("highScoreText Texture %s\n", SDL_GetError());
@@ -64,8 +62,8 @@ void updateScore()
         exit(1);
     }
     SDL_QueryTexture(levelOneWindowHighScoreText.tex, NULL, NULL, &levelOneWindowHighScoreText.rect.w, &levelOneWindowHighScoreText.rect.h);
-    levelOneWindowHighScoreText.rect.w = (int)40;
-    levelOneWindowHighScoreText.rect.h = (int)23;
+    levelOneWindowHighScoreText.rect.w = (int)levelOneWindowHighScoreText.surface->w;
+    levelOneWindowHighScoreText.rect.h = (int)levelOneWindowHighScoreText.surface->h;
     levelOneWindowHighScoreText.rect.x = (int)150;
     levelOneWindowHighScoreText.rect.y = (int)110;
 }
@@ -74,6 +72,8 @@ void levelOneScoreCleanUp()
 {
     SDL_DestroyTexture(levelOneWindowScoreText.tex);
     SDL_DestroyTexture(levelOneWindowHighScoreText.tex);
+    SDL_FreeSurface(levelOneWindowScoreText.surface);
+    SDL_FreeSurface(levelOneWindowHighScoreText.surface);
 }
 
 void updateLevelTwoScore()
@@ -87,7 +87,7 @@ void updateLevelTwoScore()
         updateLevelTwoHighScoreOnFile();
         levelTwoScoreboard();
     }
-    sprintf(levelTwoHighScoreString, "%i", highScore);
+    sprintf(levelTwoHighScoreString, "%i", levelTwoScoreList[0]);
 
     levelTwoWindowScoreText.surface = TTF_RenderText_Solid(variables.levelTwofont, scoreString, variables.levelTwocolor);
 
@@ -144,6 +144,7 @@ void updateLevelTwoScore()
 }
 void levelTwoScoreCleanUp()
 {
+
     SDL_FreeSurface(levelTwoWindowScoreText.surface);
     SDL_FreeSurface(levelTwoWindowHighScoreText.surface);
     SDL_DestroyTexture(levelTwoWindowScoreText.tex);

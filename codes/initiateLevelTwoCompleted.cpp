@@ -33,7 +33,7 @@ void levelTwoCompletedLoad(void)
     levelTwoCompletedOverlay.rect.y = (int)0;
 
     //Trophy
-    window.surface = IMG_Load("images/levelone/trophygreen.png");
+    window.surface = IMG_Load("images/newcomponents/trophy.png");
 
     if (!window.surface)
     {

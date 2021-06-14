@@ -4,7 +4,7 @@ void updatePlayerName()
 
     //Player name
 
-    window.surface = TTF_RenderText_Solid(variables.font, playerName, variables.color);
+    enterName.surface = TTF_RenderText_Solid(variables.font, playerName, variables.color);
 
     if (!window.surface)
     {
@@ -15,8 +15,7 @@ void updatePlayerName()
         exit(1);
     }
 
-    enterName.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
-    SDL_FreeSurface(window.surface);
+    enterName.tex = SDL_CreateTextureFromSurface(app.rend, enterName.surface);
     if (!enterName.tex)
     {
         printf("back_BUTTON  Texture %s\n", SDL_GetError());
@@ -27,10 +26,15 @@ void updatePlayerName()
     }
 
     SDL_QueryTexture(enterName.tex, NULL, NULL, &enterName.rect.w, &enterName.rect.h);
-    enterName.rect.w = (int)150;
-    enterName.rect.h = (int)23;
-    enterName.rect.x = (int)WINDOW_WIDTH / 2 - 75;
+    enterName.rect.w = (int)enterName.surface->w;
+    enterName.rect.h = (int)enterName.surface->h;
+    enterName.rect.x = (int)WINDOW_WIDTH / 2 - 55;
     enterName.rect.y = (int)405;
+
+    if (strlen(playerName) > 7)
+    {
+        enterName.rect.x -= 25;
+    }
 
     //boxforplayername
     window.surface = IMG_Load("images/levelone/nameSquare.png");
@@ -125,4 +129,5 @@ void levelOnePlayerNameCleanUp()
     SDL_DestroyTexture(enterButton.tex);
     SDL_DestroyTexture(playerNameBox.tex);
     SDL_DestroyTexture(enterCommand.tex);
+    SDL_FreeSurface(enterName.surface);
 }

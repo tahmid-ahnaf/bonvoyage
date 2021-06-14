@@ -47,6 +47,6 @@ void drawScoreBoardFunction()
         SDL_RenderCopy(app.rend, scoreBoardPlayerName[i].tex, NULL, &scoreBoardPlayerName[i].rect);
         SDL_RenderCopy(app.rend, scoreBoardPlayerScore[i].tex, NULL, &scoreBoardPlayerScore[i].rect);
     }
-
+    SDL_RenderCopy(app.rend, welcomeWindowGameTitle.tex, NULL, &welcomeWindowGameTitle.rect);
     SDL_RenderCopy(app.rend, back.tex, NULL, &back.rect);
 }

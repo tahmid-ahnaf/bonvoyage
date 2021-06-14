@@ -15,7 +15,7 @@ extern component
     levelOneWindowHighScore,
     levelOneWindowScoreText,
     levelOneWindowHighScoreText,
-    levelOneCurzon,
+    levelOneCurzon, initialInstructions,
 
     characterFramePosition,
     tigerFramePosition,

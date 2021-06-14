@@ -8,10 +8,10 @@ void collisionsLevelTwo()
         if (collisionBetweenCharacterandCoinOne)
         {
             Mix_PlayChannel(-1, coingain, 0);
-            currentScore += 5;
+            currentScore += 100;
             levelTwoWindowCoins[i].rect.w = 0;
             levelTwoWindowCoins[i].rect.h = 0;
-            levelTwoCoinPointPopUp.rect.w = 50;
+            levelTwoCoinPointPopUp.rect.w = 80;
             levelTwoCoinPointPopUp.rect.h = 50;
             levelTwoCoinPointPopUp.rect.x = levelTwoWindowCoins[i].rect.x;
             levelTwoCoinPointPopUp.rect.y = levelTwoWindowCoins[i].rect.y;
@@ -32,7 +32,7 @@ void collisionsLevelTwo()
 
     SDL_bool collisionBetweenCharacterandBomb = SDL_HasIntersection(&levelTwoBomb.rect, &levelTwoWindowCharacterPosition.rect);
 
-    if (collisionBetweenCharacterandBomb && currentLife>0)
+    if (collisionBetweenCharacterandBomb && currentLife > 0)
     {
         Mix_PlayChannel(-1, explosionsound, 0);
         lifePercentage += 200;

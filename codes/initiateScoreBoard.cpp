@@ -2,7 +2,7 @@
 
 void scoreboard(void)
 {
-    window.surface = IMG_Load("./images/levelone/scoreboard.png");
+    window.surface = IMG_Load("./images/newcomponents/sundarbanScoreboard.png");
     if (!window.surface)
     {
         printf("scoreBoard Error: %s\n", IMG_GetError());
@@ -24,10 +24,10 @@ void scoreboard(void)
     }
 
     SDL_QueryTexture(scoreBoard.tex, NULL, NULL, &scoreBoard.rect.w, &scoreBoard.rect.h);
-    scoreBoard.rect.w = (int)1130;
-    scoreBoard.rect.h = (int)583;
-    scoreBoard.rect.x = WINDOW_WIDTH / 2 - 565;
-    scoreBoard.rect.y = WINDOW_HEIGHT / 2 - 385;
+    scoreBoard.rect.w = (int)952;
+    scoreBoard.rect.h = (int)529;
+    scoreBoard.rect.x = WINDOW_WIDTH / 2 - 476;
+    scoreBoard.rect.y = WINDOW_HEIGHT / 2 - 245;
 
     //playername
 
@@ -44,7 +44,7 @@ void scoreboard(void)
             sprintf(scoreBoardPlayerNameString[i], "%s", sscore);
         }
 
-        window.surface = TTF_RenderText_Solid(variables.font, scoreBoardPlayerNameString[i], variables.color);
+        scoreBoardPlayerName[i].surface = TTF_RenderText_Solid(variables.font, scoreBoardPlayerNameString[i], variables.color);
 
         if (!window.surface)
         {
@@ -55,8 +55,7 @@ void scoreboard(void)
             exit(1);
         }
 
-        scoreBoardPlayerName[i].tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
-        SDL_FreeSurface(window.surface);
+        scoreBoardPlayerName[i].tex = SDL_CreateTextureFromSurface(app.rend, scoreBoardPlayerName[i].surface);
         if (!scoreBoardPlayerName[i].tex)
         {
             printf("scoreText Texture %s\n", SDL_GetError());
@@ -66,12 +65,17 @@ void scoreboard(void)
             exit(1);
         }
         SDL_QueryTexture(scoreBoardPlayerName[i].tex, NULL, NULL, &scoreBoardPlayerName[i].rect.w, &scoreBoardPlayerName[i].rect.h);
-        scoreBoardPlayerName[i].rect.w = (int)140;
-        scoreBoardPlayerName[i].rect.h = (int)23;
-        scoreBoardPlayerName[i].rect.x = (int)570;
-        scoreBoardPlayerName[i].rect.y = (int)331 + i * 61;
+        scoreBoardPlayerName[i].rect.w = (int)scoreBoardPlayerName[i].surface->w - 5;
+        scoreBoardPlayerName[i].rect.h = (int)scoreBoardPlayerName[i].surface->h - 5;
+        scoreBoardPlayerName[i].rect.x = (int)590;
+        scoreBoardPlayerName[i].rect.y = (int)425 + i * 61;
         if (i == 3 || i == 4)
-            scoreBoardPlayerName[i].rect.y = (int)330 + i * 65;
+            scoreBoardPlayerName[i].rect.y = (int)417 + i * 65;
+
+        if (strlen(scoreBoardPlayerNameString[i]) > 6)
+        {
+            scoreBoardPlayerName[i].rect.x = (int)575;
+        }
 
         //score
         LoadScoreFile();
@@ -80,9 +84,9 @@ void scoreboard(void)
         else
             sprintf(scoreBoardPlayerScoreString[i], "%d", 0);
 
-        window.surface = TTF_RenderText_Solid(variables.font, scoreBoardPlayerScoreString[i], variables.color);
+        scoreBoardPlayerScore[i].surface = TTF_RenderText_Solid(variables.font, scoreBoardPlayerScoreString[i], variables.color);
 
-        if (!window.surface)
+        if (!scoreBoardPlayerScore[i].surface)
         {
             printf("scorestring Error: %s\n", IMG_GetError());
             SDL_DestroyRenderer(app.rend);
@@ -91,8 +95,7 @@ void scoreboard(void)
             exit(1);
         }
 
-        scoreBoardPlayerScore[i].tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
-        SDL_FreeSurface(window.surface);
+        scoreBoardPlayerScore[i].tex = SDL_CreateTextureFromSurface(app.rend, scoreBoardPlayerScore[i].surface);
         if (!scoreBoardPlayerScore[i].tex)
         {
             printf("scoreText Texture %s\n", SDL_GetError());
@@ -102,12 +105,12 @@ void scoreboard(void)
             exit(1);
         }
         SDL_QueryTexture(scoreBoardPlayerScore[i].tex, NULL, NULL, &scoreBoardPlayerScore[i].rect.w, &scoreBoardPlayerScore[i].rect.h);
-        scoreBoardPlayerScore[i].rect.w = (int)70;
-        scoreBoardPlayerScore[i].rect.h = (int)18;
-        scoreBoardPlayerScore[i].rect.x = (int)900;
-        scoreBoardPlayerScore[i].rect.y = (int)335 + i * 61;
+        scoreBoardPlayerScore[i].rect.w = (int)scoreBoardPlayerScore[i].surface->w - 10;
+        scoreBoardPlayerScore[i].rect.h = (int)scoreBoardPlayerScore[i].surface->h - 10;
+        scoreBoardPlayerScore[i].rect.x = (int)880;
+        scoreBoardPlayerScore[i].rect.y = (int)430 + i * 61;
         if (i == 3 || i == 4)
-            scoreBoardPlayerScore[i].rect.y = (int)335 + i * 65;
+            scoreBoardPlayerScore[i].rect.y = (int)422 + i * 65;
     }
 }
 void levelOneScoreboardCleanUp()
@@ -117,5 +120,7 @@ void levelOneScoreboardCleanUp()
     {
         SDL_DestroyTexture(scoreBoardPlayerName[i].tex);
         SDL_DestroyTexture(scoreBoardPlayerScore[i].tex);
+        SDL_FreeSurface(scoreBoardPlayerName[i].surface);
+        SDL_FreeSurface(scoreBoardPlayerScore[i].surface);
     }
 }

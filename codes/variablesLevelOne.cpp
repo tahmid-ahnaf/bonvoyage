@@ -68,4 +68,4 @@ float tigerYposition = 730;
 int lifeSize = 6;
 
 Mix_Music *background, *whoWeWantToBe;
-Mix_Chunk *levelOneCoingain, *tigerRoar;
+Mix_Chunk *levelOneCoingain, *tigerRoar, *hitLevelOne, *gameOver, *click;

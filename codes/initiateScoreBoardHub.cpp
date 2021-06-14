@@ -4,7 +4,7 @@ void LegendsWindowLoad(void)
 {
     //levelone button
 
-    window.surface = IMG_Load("images/buttons/newSundarbanButton.png");
+    window.surface = IMG_Load("images/newcomponents/legendsOfSundorban.png");
 
     if (!window.surface)
     {
@@ -27,14 +27,14 @@ void LegendsWindowLoad(void)
     }
     newgameWindowlevelOneLegendsButton.rect;
     SDL_QueryTexture(newgameWindowlevelOneLegendsButton.tex, NULL, NULL, &newgameWindowlevelOneLegendsButton.rect.w, &newgameWindowlevelOneLegendsButton.rect.h);
-    newgameWindowlevelOneLegendsButton.rect.w = (int)322;
-    newgameWindowlevelOneLegendsButton.rect.h = (int)63;
-    newgameWindowlevelOneLegendsButton.rect.x = (int)WINDOW_WIDTH / 2 - 161;
+    newgameWindowlevelOneLegendsButton.rect.w = (int)532;
+    newgameWindowlevelOneLegendsButton.rect.h = (int)77;
+    newgameWindowlevelOneLegendsButton.rect.x = (int)WINDOW_WIDTH / 2 - 266;
     newgameWindowlevelOneLegendsButton.rect.y = (int)WINDOW_HEIGHT / 2 - 200;
 
     //level two button
 
-    window.surface = IMG_Load("images/buttons/newCoxsBazarButton.png");
+    window.surface = IMG_Load("images//newcomponents/legendsOfWinterfell.png");
 
     if (!window.surface)
     {
@@ -57,9 +57,9 @@ void LegendsWindowLoad(void)
     }
     newgameWindowlevelTwoLegendsButton.rect;
     SDL_QueryTexture(newgameWindowlevelTwoLegendsButton.tex, NULL, NULL, &newgameWindowlevelTwoLegendsButton.rect.w, &newgameWindowlevelTwoLegendsButton.rect.h);
-    newgameWindowlevelTwoLegendsButton.rect.w = (int)322;
-    newgameWindowlevelTwoLegendsButton.rect.h = (int)63;
-    newgameWindowlevelTwoLegendsButton.rect.x = (int)WINDOW_WIDTH / 2 - 161;
+    newgameWindowlevelTwoLegendsButton.rect.w = (int)532;
+    newgameWindowlevelTwoLegendsButton.rect.h = (int)77;
+    newgameWindowlevelTwoLegendsButton.rect.x = (int)WINDOW_WIDTH / 2 - 266;
     newgameWindowlevelTwoLegendsButton.rect.y = (int)WINDOW_HEIGHT / 2 - 100;
 }
 

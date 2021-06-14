@@ -49,11 +49,11 @@ void updateAnimationSpeedForLevelOneCompleted()
 void drawLevelOneCompletedFunction()
 {
     count++;
-    if (variables.gameOver == 1)
+    if (variables.saveScore == 1)
     {
         updateAnimationSpeedForLevelOneCompleted();
     }
-    if (variables.gameOver == 1 && count == 1)
+    if (variables.saveScore == 1 && count == 1)
     {
         updateScore();
     }

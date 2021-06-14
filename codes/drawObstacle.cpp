@@ -3,14 +3,14 @@
 void levelOneObstacleUpdateAnimation()
 {
 
-    levelOneObstacleAnimationSpeed[0] -= 6;
+    levelOneObstacleAnimationSpeed[0] -= 5;
     if (levelOneObstacleAnimationSpeed[0] < -WINDOW_WIDTH - 100)
     {
         levelOneObstacleAnimationSpeed[0] = WINDOW_WIDTH + 100;
         levelOneWindowObstacle[0].rect.w = (int)160;
         levelOneWindowObstacle[0].rect.h = (int)140;
     }
-    levelOneObstacleAnimationSpeed[1] -= 6;
+    levelOneObstacleAnimationSpeed[1] -= 5;
     if (levelOneObstacleAnimationSpeed[1] < -WINDOW_WIDTH - 100)
     {
         levelOneObstacleAnimationSpeed[1] = WINDOW_WIDTH * 2;
@@ -18,7 +18,7 @@ void levelOneObstacleUpdateAnimation()
         levelOneWindowObstacle[1].rect.h = (int)136;
     }
 
-    levelOneObstacleAnimationSpeed[2] -= 6;
+    levelOneObstacleAnimationSpeed[2] -= 5;
     if (levelOneObstacleAnimationSpeed[2] < -WINDOW_WIDTH - 100)
     {
         levelOneObstacleAnimationSpeed[2] = WINDOW_WIDTH * 3;

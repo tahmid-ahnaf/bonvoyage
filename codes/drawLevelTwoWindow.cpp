@@ -8,7 +8,7 @@ void updateAnimationSpeedForLevelTwoWindow()
 
     levelTwoDragonPrevtime = levelTwoDragonCurrentime;
     levelTwoDragonCurrentime = SDL_GetTicks();
-    levelTwoDragonDeltatime = (levelTwoDragonCurrentime - levelTwoDragonPrevtime) / 280.0f;
+    levelTwoDragonDeltatime = (levelTwoDragonCurrentime - levelTwoDragonPrevtime) / 260.0f;
 
     levelTwoDragonFrametime += levelTwoDragonDeltatime;
     if (levelTwoDragonFrametime >= (0.25f))
@@ -169,7 +169,19 @@ void updateAnimationSpeedForLevelTwoWindow()
     {
         levelTwoTrackAnimationSpeed = 0;
     }
-    if (currentScore >= 1000)
+    if (currentLife <= 0)
+    {
+        isspaceclicked=0;
+        currentScore = 0;
+        SDL_DestroyTexture(levelTwoLifeScoreText.tex);
+        variables.levelTwo = 0;
+        variables.levelTwoGameOver = 1;
+        Mix_PlayChannel(-1, gameOver, 0);
+    }
+
+    thronePosition -= 2;
+
+    if (levelTwoWindowCharacterPosition.rect.x >= ironThrone.rect.x)
     {
         variables.levelTwo = 0;
         variables.levelTwoCompleted = 1;
@@ -189,6 +201,8 @@ void drawLevelTwoWindowFunction()
     levelTwoWindowTreeShade.rect.x = levelTwoTreeShadeAnimationSpeed;
     levelTwoWindowClouds.rect.x = levelTwoCloudsAnimationSpeed;
     levelTwoWindowTrack.rect.x = levelTwoTrackAnimationSpeed;
+
+    ironThrone.rect.x = thronePosition;
     SDL_RenderClear(app.rend);
 
     SDL_RenderCopy(app.rend, levelTwoWindowSky.tex, NULL, &levelTwoWindowSky.rect);
@@ -218,10 +232,11 @@ void drawLevelTwoWindowFunction()
     SDL_RenderCopy(app.rend, levelTwoWindowScoreText.tex, NULL, &levelTwoWindowScoreText.rect);
     SDL_RenderCopy(app.rend, levelTwoWindowHighScoreText.tex, NULL, &levelTwoWindowHighScoreText.rect);
 
-    SDL_RenderCopy(app.rend, back.tex, NULL, &back.rect);
     if (isspaceclicked == 0)
         SDL_RenderCopy(app.rend, levelTwoWindowCharacter.tex, &levelTwoWindowCharacter.rect, &levelTwoWindowCharacterPosition.rect);
     drawLevelTwoLifeFunction();
+    if (variables.levelTwo == 1 && isspaceclicked == 0)
+        SDL_RenderCopy(app.rend, initialInstructions.tex, NULL, &initialInstructions.rect);
 
     if (isspaceclicked == 1 && variables.levelTwo == 1)
     {
@@ -230,7 +245,7 @@ void drawLevelTwoWindowFunction()
         drawLevelTwoCoinsFunction();
         drawLevelTwoCoinsPopupFunction();
         drawBombandDragonFunction();
- 
+
         LevelTwoLifeTextCleanUp();
         drawLevelTwoHeartFunction();
         drawLevelTwoHeartPopupFunction();
@@ -245,4 +260,7 @@ void drawLevelTwoWindowFunction()
             SDL_RenderCopy(app.rend, levelTwoWindowCharacter.tex, &levelTwoWindowCharacter.rect, &levelTwoWindowCharacterPosition.rect);
         }
     }
+    SDL_RenderCopy(app.rend, ironThrone.tex, NULL, &ironThrone.rect);
+
+    SDL_RenderCopy(app.rend, back.tex, NULL, &back.rect);
 }

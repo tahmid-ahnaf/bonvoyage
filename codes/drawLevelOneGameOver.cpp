@@ -49,11 +49,11 @@ void updateAnimationSpeedForLevelOneGameOver()
 void drawLevelOneGameOverFunction()
 {
 
-    if (variables.gameOver1 == 1)
+    if (variables.levelOnegameOver == 1)
     {
         updateAnimationSpeedForLevelOneGameOver();
     }
-    if (lifeSize == 0 && variables.gameOver1 == 1)
+    if (lifeSize == 0 && variables.levelOnegameOver == 1)
     {
         updateScore();
     }

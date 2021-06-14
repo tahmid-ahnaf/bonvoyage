@@ -223,6 +223,36 @@ void levelTwoWindowLoad(void)
     float CHARACTER2_X_POS = (float)100;
     float CHARACTER2_Y_POS = (float)700;
 
+    //ironthrone
+    //track
+    window.surface = IMG_Load("images/newcomponents/ironethrone.png");
+
+    if (!window.surface)
+    {
+        printf("track_BUTTON Error: %s\n", IMG_GetError());
+        SDL_DestroyRenderer(app.rend);
+        SDL_DestroyWindow(app.window);
+        SDL_Quit();
+        exit(1);
+    }
+
+    ironThrone.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
+    if (!ironThrone.tex)
+    {
+        printf("track Texture %s\n", SDL_GetError());
+        SDL_DestroyRenderer(app.rend);
+        SDL_DestroyWindow(app.window);
+        SDL_Quit();
+        exit(1);
+    }
+    ironThrone.rect;
+    SDL_QueryTexture(ironThrone.tex, NULL, NULL, &ironThrone.rect.w, &ironThrone.rect.h);
+    ironThrone.rect.w = (int)254;
+    ironThrone.rect.h = (int)289;
+    ironThrone.rect.x = (int)thronePosition;
+    ironThrone.rect.y = (int)300;
+
     LevelTwoTracksLoad();
     LevelTwoCoinsload();
     BombandDragonLoad();

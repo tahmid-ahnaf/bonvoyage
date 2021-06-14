@@ -88,3 +88,4 @@ char levelTwoHighScoreString[10];
 
 char levelTwoPlayerName[100] = " ";
 int countLevelTwo = 0;
+int thronePosition = 10000;

@@ -11,6 +11,7 @@ extern component
     levelTwoWindowTrack,
     levelTwoWindowCharacter, levelTwoWindowCharacterPosition,
     characterFramePosition,
+    ironThrone,
     window;
 
 extern Variables variables;

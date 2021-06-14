@@ -4,9 +4,9 @@ void updateLevelTwoPlayerName()
 
     //Player name
 
-    window.surface = TTF_RenderText_Solid(variables.font, levelTwoPlayerName, variables.color);
+    levelTwoEnterName.surface = TTF_RenderText_Solid(variables.font, levelTwoPlayerName, variables.color);
 
-    if (!window.surface)
+    if (!levelTwoEnterName.surface)
     {
         printf("playername Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -14,8 +14,8 @@ void updateLevelTwoPlayerName()
         SDL_Quit();
         exit(1);
     }
-    levelTwoEnterName.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
-    SDL_FreeSurface(window.surface);
+    levelTwoEnterName.tex = SDL_CreateTextureFromSurface(app.rend, levelTwoEnterName.surface);
+
     if (!levelTwoEnterName.tex)
     {
         printf("back_BUTTON  Texture %s\n", SDL_GetError());
@@ -26,10 +26,15 @@ void updateLevelTwoPlayerName()
     }
 
     SDL_QueryTexture(levelTwoEnterName.tex, NULL, NULL, &levelTwoEnterName.rect.w, &levelTwoEnterName.rect.h);
-    levelTwoEnterName.rect.w = (int)150;
-    levelTwoEnterName.rect.h = (int)23;
-    levelTwoEnterName.rect.x = (int)WINDOW_WIDTH / 2 - 75;
+    levelTwoEnterName.rect.w = (int)levelTwoEnterName.surface->w;
+    levelTwoEnterName.rect.h = (int)levelTwoEnterName.surface->h;
+    levelTwoEnterName.rect.x = (int)WINDOW_WIDTH / 2 - 55;
     levelTwoEnterName.rect.y = (int)405;
+
+    if (strlen(levelTwoPlayerName) > 7)
+    {
+        levelTwoEnterName.rect.x -= 25;
+    }
 
     //boxforplayername
     window.surface = IMG_Load("images/levelone/nameSquare.png");
@@ -124,4 +129,5 @@ void levelTwoPlayerNameCleanUp()
     SDL_DestroyTexture(levelTwoEnterButton.tex);
     SDL_DestroyTexture(levelTwoPlayerNameBox.tex);
     SDL_DestroyTexture(levelTwoEnterCommand.tex);
+    SDL_FreeSurface(levelTwoEnterName.surface);
 }

@@ -2,7 +2,7 @@
 
 void levelTwoScoreboard(void)
 {
-    window.surface = IMG_Load("./images/levelone/scoreboard.png");
+    window.surface = IMG_Load("./images/newcomponents/gotScoreboard.png");
     if (!window.surface)
     {
         printf("scoreBoard Error: %s\n", IMG_GetError());
@@ -24,30 +24,28 @@ void levelTwoScoreboard(void)
     }
 
     SDL_QueryTexture(levelTwoScoreBoard.tex, NULL, NULL, &levelTwoScoreBoard.rect.w, &levelTwoScoreBoard.rect.h);
-    levelTwoScoreBoard.rect.w = (int)1130;
-    levelTwoScoreBoard.rect.h = (int)583;
-    levelTwoScoreBoard.rect.x = WINDOW_WIDTH / 2 - 565;
-    levelTwoScoreBoard.rect.y = WINDOW_HEIGHT / 2 - 385;
+    levelTwoScoreBoard.rect.w = (int)952;
+    levelTwoScoreBoard.rect.h = (int)529;
+    levelTwoScoreBoard.rect.x = WINDOW_WIDTH / 2 - 476;
+    levelTwoScoreBoard.rect.y = WINDOW_HEIGHT / 2 - 245;
 
     //playername
 
     for (int i = 0; i < 5; i++)
     {
-        char sscore[100][10];
-        strcpy(sscore[0], "h");
+
         LoadScoreFile();
         if (showLevelTwoPlayerNameList[levelTwoScoreList[i]])
-            // sprintf(levelTwoScoreBoardPlayerNameString[i], "%s", showPlayerNameList[scoreList[i]]);
+
             sprintf(levelTwoScoreBoardPlayerNameString[i], "%s", showLevelTwoPlayerNameList[levelTwoScoreList[i]]);
         else
         {
-            strcpy(levelTwoPlayerNameList[0], "h");
-            sprintf(levelTwoScoreBoardPlayerNameString[i], "%s", sscore);
+
+            sprintf(levelTwoScoreBoardPlayerNameString[i], "%s", "000");
         }
 
-        // window.surface = TTF_RenderText_Solid(variables.font, levelTwoScoreBoardPlayerNameString[i], variables.color);
-        window.surface = TTF_RenderText_Solid(variables.font, levelTwoScoreBoardPlayerNameString[i], variables.color);
-        if (!window.surface)
+        levelTwoScoreBoardPlayerName[i].surface = TTF_RenderText_Solid(variables.font, levelTwoScoreBoardPlayerNameString[i], variables.color);
+        if (!levelTwoScoreBoardPlayerName[i].surface)
         {
             printf("playername Error: %s\n", IMG_GetError());
             SDL_DestroyRenderer(app.rend);
@@ -56,8 +54,7 @@ void levelTwoScoreboard(void)
             exit(1);
         }
 
-        levelTwoScoreBoardPlayerName[i].tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
-        SDL_FreeSurface(window.surface);
+        levelTwoScoreBoardPlayerName[i].tex = SDL_CreateTextureFromSurface(app.rend, levelTwoScoreBoardPlayerName[i].surface);
         if (!levelTwoScoreBoardPlayerName[i].tex)
         {
             printf("scoreText Texture %s\n", SDL_GetError());
@@ -67,12 +64,18 @@ void levelTwoScoreboard(void)
             exit(1);
         }
         SDL_QueryTexture(levelTwoScoreBoardPlayerName[i].tex, NULL, NULL, &levelTwoScoreBoardPlayerName[i].rect.w, &levelTwoScoreBoardPlayerName[i].rect.h);
-        levelTwoScoreBoardPlayerName[i].rect.w = (int)140;
-        levelTwoScoreBoardPlayerName[i].rect.h = (int)23;
-        levelTwoScoreBoardPlayerName[i].rect.x = (int)570;
-        levelTwoScoreBoardPlayerName[i].rect.y = (int)331 + i * 61;
+        levelTwoScoreBoardPlayerName[i].rect.w = (int)levelTwoScoreBoardPlayerName[i].surface->w - 5;
+        levelTwoScoreBoardPlayerName[i].rect.h = (int)levelTwoScoreBoardPlayerName[i].surface->h - 5;
+        levelTwoScoreBoardPlayerName[i].rect.x = (int)590;
+        levelTwoScoreBoardPlayerName[i].rect.y = (int)425 + i * 61;
         if (i == 3 || i == 4)
-            levelTwoScoreBoardPlayerName[i].rect.y = (int)330 + i * 65;
+
+            levelTwoScoreBoardPlayerName[i].rect.y = (int)417 + i * 65;
+
+        if (strlen(levelTwoScoreBoardPlayerNameString[i]) > 6)
+        {
+            levelTwoScoreBoardPlayerName[i].rect.x = (int)575;
+        }
 
         //score
         LoadScoreFile();
@@ -81,9 +84,9 @@ void levelTwoScoreboard(void)
         else
             sprintf(levelTwoScoreBoardPlayerScoreString[i], "%d", 0);
 
-        window.surface = TTF_RenderText_Solid(variables.font, levelTwoScoreBoardPlayerScoreString[i], variables.color);
+        levelTwoScoreBoardPlayerScore[i].surface = TTF_RenderText_Solid(variables.font, levelTwoScoreBoardPlayerScoreString[i], variables.color);
 
-        if (!window.surface)
+        if (!levelTwoScoreBoardPlayerScore[i].surface)
         {
             printf("scorestring Error: %s\n", IMG_GetError());
             SDL_DestroyRenderer(app.rend);
@@ -92,8 +95,7 @@ void levelTwoScoreboard(void)
             exit(1);
         }
 
-        levelTwoScoreBoardPlayerScore[i].tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
-        SDL_FreeSurface(window.surface);
+        levelTwoScoreBoardPlayerScore[i].tex = SDL_CreateTextureFromSurface(app.rend, levelTwoScoreBoardPlayerScore[i].surface);
         if (!levelTwoScoreBoardPlayerScore[i].tex)
         {
             printf("scoreText Texture %s\n", SDL_GetError());
@@ -103,12 +105,12 @@ void levelTwoScoreboard(void)
             exit(1);
         }
         SDL_QueryTexture(levelTwoScoreBoardPlayerScore[i].tex, NULL, NULL, &levelTwoScoreBoardPlayerScore[i].rect.w, &levelTwoScoreBoardPlayerScore[i].rect.h);
-        levelTwoScoreBoardPlayerScore[i].rect.w = (int)70;
-        levelTwoScoreBoardPlayerScore[i].rect.h = (int)18;
-        levelTwoScoreBoardPlayerScore[i].rect.x = (int)900;
-        levelTwoScoreBoardPlayerScore[i].rect.y = (int)335 + i * 61;
+        levelTwoScoreBoardPlayerScore[i].rect.w = (int)levelTwoScoreBoardPlayerScore[i].surface->w - 10;
+        levelTwoScoreBoardPlayerScore[i].rect.h = (int)levelTwoScoreBoardPlayerScore[i].surface->h - 10;
+        levelTwoScoreBoardPlayerScore[i].rect.x = (int)880;
+        levelTwoScoreBoardPlayerScore[i].rect.y = (int)430 + i * 61;
         if (i == 3 || i == 4)
-            levelTwoScoreBoardPlayerScore[i].rect.y = (int)335 + i * 65;
+            levelTwoScoreBoardPlayerScore[i].rect.y = (int)422 + i * 65;
     }
 }
 void levelTwoScoreboardCleanUp()
@@ -118,5 +120,7 @@ void levelTwoScoreboardCleanUp()
     {
         SDL_DestroyTexture(levelTwoScoreBoardPlayerName[i].tex);
         SDL_DestroyTexture(levelTwoScoreBoardPlayerScore[i].tex);
+        SDL_FreeSurface(levelTwoScoreBoardPlayerName[i].surface);
+        SDL_FreeSurface(levelTwoScoreBoardPlayerScore[i].surface);
     }
 }

@@ -47,7 +47,7 @@ void updateAnimationSpeedForLevelOneWindow()
     {
         variables.levelOneCompleted = 1;
         variables.levelOne = 0;
-        variables.gameOver = 1;
+        variables.saveScore = 1;
     }
     levelOneBackgroundFrametime += levelOneBackgroundDeltatime;
     if (levelOneBackgroundFrametime >= (0.25f))
@@ -59,11 +59,11 @@ void updateAnimationSpeedForLevelOneWindow()
         {
             levelOneSkyAnimationSpeed = 0;
         }
-        levelOneCloudsAnimationSpeed -= 0.812;
-        if (levelOneCloudsAnimationSpeed < -levelOneWindowClouds.rect.w)
-        {
-            levelOneCloudsAnimationSpeed = 0;
-        }
+        // levelOneCloudsAnimationSpeed -= 0.812;
+        // if (levelOneCloudsAnimationSpeed < -levelOneWindowClouds.rect.w)
+        // {
+        //     levelOneCloudsAnimationSpeed = 0;
+        // }
         levelOneMountainsAnimationSpeed -= 1.625;
         if (levelOneMountainsAnimationSpeed < -levelOneWindowMountains.rect.w)
         {
@@ -129,7 +129,8 @@ void updateAnimationSpeedForLevelOneWindow()
     if (lifeSize == 0)
     {
         variables.levelOne = 0;
-        variables.gameOver1 = 1;
+        variables.levelOnegameOver = 1;
+        Mix_PlayChannel(-1, gameOver, 0);
     }
     curzonPosition -= 3;
 
@@ -146,6 +147,12 @@ void drawLevelOneWindowFunction()
     {
         updateAnimationSpeedForLevelOneWindow();
         updateScore();
+    }
+
+    levelOneCloudsAnimationSpeed -= 0.812;
+    if (levelOneCloudsAnimationSpeed < -levelOneWindowClouds.rect.w)
+    {
+        levelOneCloudsAnimationSpeed = 0;
     }
 
     levelOneWindowSky.rect.x = levelOneSkyAnimationSpeed;
@@ -183,12 +190,18 @@ void drawLevelOneWindowFunction()
     levelOneWindowTrack.rect.x = levelOneTrackAnimationSpeed + levelOneWindowTrack.rect.w;
     SDL_RenderCopy(app.rend, levelOneWindowTrack.tex, NULL, &levelOneWindowTrack.rect);
 
-    SDL_RenderCopy(app.rend, levelOneWindowCharacter.tex, &levelOneWindowCharacter.rect, &characterFramePosition.rect);
-    SDL_RenderCopy(app.rend, levelOneWindowTiger.tex, &levelOneWindowTiger.rect, &tigerFramePosition.rect);
     SDL_RenderCopy(app.rend, levelOneWindowScore.tex, NULL, &levelOneWindowScore.rect);
     SDL_RenderCopy(app.rend, levelOneWindowHighScore.tex, NULL, &levelOneWindowHighScore.rect);
     SDL_RenderCopy(app.rend, levelOneWindowScoreText.tex, NULL, &levelOneWindowScoreText.rect);
     SDL_RenderCopy(app.rend, levelOneWindowHighScoreText.tex, NULL, &levelOneWindowHighScoreText.rect);
+    if (variables.levelOne == 1 && space == 0)
+        SDL_RenderCopy(app.rend, initialInstructions.tex, NULL, &initialInstructions.rect);
+
+    if (variables.levelOne == 1 && space == 1)
+    {
+        SDL_RenderCopy(app.rend, levelOneWindowCharacter.tex, &levelOneWindowCharacter.rect, &characterFramePosition.rect);
+        SDL_RenderCopy(app.rend, levelOneWindowTiger.tex, &levelOneWindowTiger.rect, &tigerFramePosition.rect);
+    }
 
     SDL_RenderCopy(app.rend, back.tex, NULL, &back.rect);
 

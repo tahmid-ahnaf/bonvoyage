@@ -30,7 +30,7 @@ component
     levelOneWindowHighScoreText,
     levelOneCompletedOverlay,
     levelOneCompletedMessage,
-    levelOneCurzon,
+    levelOneCurzon, initialInstructions,
 
     levelTwoWindowSky,
     levelTwoWindowMoon,
@@ -81,6 +81,9 @@ component
     levelTwoEnterButton,
     levelTwoPlayerNameBox,
     levelTwoEnterCommand,
+
+    controlsList,
+    ironThrone,
 
     back;
 

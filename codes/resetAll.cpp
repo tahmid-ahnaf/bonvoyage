@@ -11,10 +11,19 @@ void resetAll()
     variables.newScore = 0;
     variables.ScoreBoard = 0;
     space = 0;
+    variables.legendsWindow = 0;
     levelOneWindowTrack.rect.x = 0;
     levelOneCurrentScore = 0;
-    variables.gameOver1 = 0;
+    variables.levelOnegameOver = 0;
     variables.levelTwoCompleted = 0;
+    variables.controlsWindow = 0;
+    variables.levelTwoGameOver = 0;
+
+    variables.levelTwoScoreBoard = 0;
+
+    variables.levelTwoPlayerName = 0;
+    variables.newLevelTwoScore = 0;
+
     lifeSize = 6;
 
     strcpy(playerName, " ");
@@ -39,6 +48,7 @@ void resetAll()
     levelTwoCloudsAnimationSpeed = 0;
     levelTwoTreeShadeAnimationSpeed = 0;
     levelTwoTrackAnimationSpeed = 0;
+    xPosLevelTwoCharacter = 0;
 
     for (int i = 0; i < 5; i++)
     {
@@ -54,11 +64,13 @@ void resetAll()
     curzonPosition = 15000;
     count = 0;
     currentScore = 0;
+    lifePercentage = 0;
     isspaceclicked = 0;
+    rightbuttonclicked = 1;
+    leftbuttonclicked=0;
+    levelTwoWindowLoad();
 
-    variables.levelTwoScoreBoard = 0;
-    variables.legendsWindow = 0;
-    variables.levelTwoPlayerName = 0;
-    variables.newLevelTwoScore = 0;
     countLevelTwo = 0;
+    thronePosition = 10000;
+    // currentLife = 100;
 }

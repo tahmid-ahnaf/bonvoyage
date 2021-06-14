@@ -66,4 +66,4 @@ extern int tigerJumped;
 extern float tigerYposition;
 extern int lifeSize;
 extern Mix_Music *background, *whoWeWantToBe;
-extern Mix_Chunk *levelOneCoingain, *tigerRoar;
+extern Mix_Chunk *levelOneCoingain, *tigerRoar, *hitLevelOne, *gameOver, *click;

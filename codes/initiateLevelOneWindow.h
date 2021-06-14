@@ -20,6 +20,7 @@ extern component
     window,
     characterFramePosition,
     tigerFramePosition,
+    initialInstructions,
 
     levelOneWindowCoins[5];
 

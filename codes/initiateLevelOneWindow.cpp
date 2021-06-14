@@ -366,10 +366,38 @@ void levelOneWindowLoad(void)
     }
     levelOneCurzon.rect;
     SDL_QueryTexture(levelOneCurzon.tex, NULL, NULL, &levelOneCurzon.rect.w, &levelOneCurzon.rect.h);
-    levelOneCurzon.rect.w = (int)400;
-    levelOneCurzon.rect.h = (int)200;
+    levelOneCurzon.rect.w = (int)785;
+    levelOneCurzon.rect.h = (int)410;
     levelOneCurzon.rect.x = (int)curzonPosition;
-    levelOneCurzon.rect.y = (int)630;
+    levelOneCurzon.rect.y = (int)405;
+    //initialInstruction
+    window.surface = IMG_Load("images/newcomponents/initialInstruction.png");
+
+    if (!window.surface)
+    {
+        printf("initial Instructions Error: %s\n", IMG_GetError());
+        SDL_DestroyRenderer(app.rend);
+        SDL_DestroyWindow(app.window);
+        SDL_Quit();
+        exit(1);
+    }
+
+    initialInstructions.tex = SDL_CreateTextureFromSurface(app.rend, window.surface);
+    SDL_FreeSurface(window.surface);
+    if (!initialInstructions.tex)
+    {
+        printf("initial InstructionsTexture %s\n", SDL_GetError());
+        SDL_DestroyRenderer(app.rend);
+        SDL_DestroyWindow(app.window);
+        SDL_Quit();
+        exit(1);
+    }
+    initialInstructions.rect;
+    SDL_QueryTexture(initialInstructions.tex, NULL, NULL, &initialInstructions.rect.w, &initialInstructions.rect.h);
+    initialInstructions.rect.w = (int)WINDOW_WIDTH;
+    initialInstructions.rect.h = (int)WINDOW_HEIGHT;
+    initialInstructions.rect.x = (int)0;
+    initialInstructions.rect.y = (int)0;
 
     levelOneCoinsLoad();
     levelOneObstacleLoad();

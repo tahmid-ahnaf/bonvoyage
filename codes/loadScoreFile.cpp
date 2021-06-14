@@ -61,7 +61,7 @@ void updateHighScoreOnFile()
     levelOneHighScore = levelOneCurrentScore;
 
     fp = fopen("score.txt", "a");
-    if (variables.newScore == 1 && variables.gameOver == 1 && levelOneHighScore > 0)
+    if (variables.newScore == 1 && variables.saveScore == 1 && levelOneHighScore > 0)
     {
 
         fprintf(fp, "%s ", playerName);

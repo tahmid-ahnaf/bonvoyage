@@ -35,21 +35,23 @@ void initSDL(void)
     }
     variables.font = TTF_OpenFont("Freshman.ttf", 30);
 
-    variables.color = {43, 255, 0};
+    variables.color = {234, 206, 9};
     variables.levelTwofont = TTF_OpenFont("Freshman.ttf", 30);
-    variables.levelTwocolor = {0, 230, 64};
+    variables.levelTwocolor = {234, 206, 9};
 
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
     background = Mix_LoadMUS("audio/inception.mp3");
     got = Mix_LoadMUS("audio/got.mp3");
-    whoWeWantToBe = Mix_LoadMUS("audio/llg.mp3");
+    whoWeWantToBe = Mix_LoadMUS("audio/potc.mp3");
     coingain = Mix_LoadWAV("audio/coingain.wav");
     explosionsound = Mix_LoadWAV("audio/explosionsound.wav");
     jumpsound = Mix_LoadWAV("audio/jump.wav");
     pointgainsound = Mix_LoadWAV("audio/pointgain.wav");
-
+    hitLevelOne = Mix_LoadWAV("audio/hitLevelOne.wav");
     levelOneCoingain = Mix_LoadWAV("audio/levelOneCoinGain.wav");
     tigerRoar = Mix_LoadWAV("audio/tigerroar.wav");
+    gameOver = Mix_LoadWAV("audio/gameOver.wav");
+    click = Mix_LoadWAV("audio/click.wav");
 
     //back
     window.surface = IMG_Load("images/backbutton.png");
@@ -104,6 +106,8 @@ void initSDL(void)
     levelTwoScoreboard();
 
     LegendsWindowLoad();
+
+    ControlsWindowLoad();
 }
 void cleanup(void)
 {

@@ -7,7 +7,7 @@ void collision()
 
         if (SDL_HasIntersection(&characterFramePosition.rect, &levelOneWindowCoins[i].rect))
         {
-            Mix_VolumeChunk(levelOneCoingain, 10);
+            Mix_VolumeChunk(levelOneCoingain, 40);
             Mix_PlayChannel(-1, levelOneCoingain, 0);
             levelOneWindowCoins[i].rect.h = 0;
             levelOneWindowCoins[i].rect.w = 0;
@@ -22,6 +22,7 @@ void collision()
 
         if (SDL_HasIntersection(&characterFramePosition.rect, &levelOneWindowObstacle[i].rect))
         {
+            Mix_PlayChannel(-1, hitLevelOne, 0);
             SDL_SetTextureColorMod(levelOneWindowCharacter.tex, 255, 0, 0);
             levelOneWindowObstacle[i].rect.h = 0;
             levelOneWindowObstacle[i].rect.w = 0;

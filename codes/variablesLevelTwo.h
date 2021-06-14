@@ -91,3 +91,4 @@ extern char levelTwoHighScoreString[10];
 
 extern char levelTwoPlayerName[100];
 extern int countLevelTwo;
+extern int thronePosition;

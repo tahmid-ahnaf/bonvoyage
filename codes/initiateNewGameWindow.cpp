@@ -34,7 +34,7 @@ void newgameWindowLoad(void)
 
     //level two button
 
-    window.surface = IMG_Load("images/buttons/newCoxsBazarButton.png");
+    window.surface = IMG_Load("images/newcomponents/winterfell.png");
 
     if (!window.surface)
     {

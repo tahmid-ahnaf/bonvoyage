@@ -47,6 +47,6 @@ void drawLevelTwoScoreBoardFunction()
         SDL_RenderCopy(app.rend, levelTwoScoreBoardPlayerName[i].tex, NULL, &levelTwoScoreBoardPlayerName[i].rect);
         SDL_RenderCopy(app.rend, levelTwoScoreBoardPlayerScore[i].tex, NULL, &levelTwoScoreBoardPlayerScore[i].rect);
     }
-
+    SDL_RenderCopy(app.rend, welcomeWindowGameTitle.tex, NULL, &welcomeWindowGameTitle.rect);
     SDL_RenderCopy(app.rend, back.tex, NULL, &back.rect);
 }

@@ -42,3 +42,5 @@ extern void levelTwoScoreboardCleanUp(void);
 extern void LegendsWindowLoad();
 extern void LegendsWindowCleanUp();
 extern void updateLevelTwoPlayerName();
+
+extern void ControlsWindowLoad();

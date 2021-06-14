@@ -33,7 +33,7 @@ void prepareScene(void)
     {
         drawScoreBoardFunction();
     }
-    if (variables.gameOver1 == 1)
+    if (variables.levelOnegameOver == 1)
     {
         drawLevelOneGameOverFunction();
     }
@@ -52,6 +52,14 @@ void prepareScene(void)
     if (variables.levelTwoPlayerName == 1)
     {
         drawLevelTwoPlayerNameFunction();
+    }
+    if (variables.controlsWindow == 1)
+    {
+        drawControlsWindowFunction();
+    }
+    if (variables.levelTwoGameOver == 1)
+    {
+        drawLevelTwoGameOverFunction();
     }
 }
 

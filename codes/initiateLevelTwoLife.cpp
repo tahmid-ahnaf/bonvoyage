@@ -46,7 +46,7 @@ void LevelTwoLifeLoad()
     levelTwoRotatingHeart.rect.x = (int)0;
     levelTwoRotatingHeart.rect.y = (int)0;
 
-    window.surface = IMG_Load("images/level2obstacles/point.png");
+    window.surface = IMG_Load("images/level2obstacles/5p.png");
 
     if (!window.surface)
     {

@@ -1,15 +1,13 @@
-
 #include "commonHeaders.h"
-// #include "allstructs.h"
 extern App app;
 extern component
 
     levelTwoWindowCharacter,
-    levelTwoWindowCharacterPosition, 
+    levelTwoWindowCharacterPosition,
     levelTwoTrack[2], levelTwoInvisibleBorder[2], levelTwoWindowCoins[7],
 
     back;
 
 extern Variables variables;
-extern void  updateCoinsPosition();
-extern void  updateCoinsPosition2();
+extern void updateCoinsPosition();
+extern void updateCoinsPosition2();

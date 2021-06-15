@@ -66,39 +66,32 @@ void doInput(void)
         if (variables.levelTwo == 1)
         {
 
-            switch (event.type)
+            if(event.type == SDL_KEYDOWN)
             {
-            case SDL_KEYDOWN:
-
-                switch (event.key.keysym.scancode)
-                {
-                case SDL_SCANCODE_SPACE: //IF SPACE IS PRESSED GAME START
+                if(event.key.keysym.scancode == SDL_SCANCODE_SPACE )
+                { 
+                    //IF SPACE IS PRESSED GAME START
                     isspaceclicked = 1;
-
-                    break;
-
-                case SDL_SCANCODE_RIGHT:
-
+                }
+                if(event.key.keysym.scancode == SDL_SCANCODE_RIGHT || event.key.keysym.scancode == SDL_SCANCODE_D)
+                {
                     leftbuttonclicked = 0;
                     rightbuttonclicked = 1;
-
                     if (xPosLevelTwoCharacter < WINDOW_WIDTH - 300)
                     {
                         xPosLevelTwoCharacter += moveSpeed * characterTwoDeltatime;
                     }
-
-                    break;
-
-                case SDL_SCANCODE_LEFT:
-
+                }
+                if(event.key.keysym.scancode == SDL_SCANCODE_LEFT || event.key.keysym.scancode == SDL_SCANCODE_A)
+                {
                     leftbuttonclicked = 1;
                     rightbuttonclicked = 0;
 
                     xPosLevelTwoCharacter -= moveSpeed * characterTwoDeltatime;
-                    break;
-
-                case SDL_SCANCODE_UP:
-
+                }
+                    
+                if(event.key.keysym.scancode == SDL_SCANCODE_UP || event.key.keysym.scancode == SDL_SCANCODE_W)
+                {
                     if (levelTwoWindowCharacterPosition.rect.y - (levelTwoInvisibleBorder[0].rect.y + levelTwoInvisibleBorder[0].rect.h) <= 120 && levelTwoWindowCharacterPosition.rect.y - (levelTwoInvisibleBorder[0].rect.y + levelTwoInvisibleBorder[0].rect.h) >= 0 && (xPosLevelTwoCharacter + levelTwoWindowCharacter.rect.w > levelTwoInvisibleBorder[0].rect.x && xPosLevelTwoCharacter - levelTwoInvisibleBorder[0].rect.x - levelTwoInvisibleBorder[0].rect.w <= 0))
                     {
                         yPosLevelTwoCharacter -= levelTwoWindowCharacterPosition.rect.y - (levelTwoInvisibleBorder[0].rect.y + levelTwoInvisibleBorder[0].rect.h) + 20;
@@ -112,16 +105,18 @@ void doInput(void)
                         yPosLevelTwoCharacter -= 120;
                     }
 
+                }
+                 if(event.key.keysym.scancode == SDL_SCANCODE_DOWN || event.key.keysym.scancode == SDL_SCANCODE_S)
+                 {
+                      yPosLevelTwoCharacter += moveSpeed * characterTwoDeltatime;
                     break;
 
-                case SDL_SCANCODE_DOWN:
-
-                    yPosLevelTwoCharacter += moveSpeed * characterTwoDeltatime;
-                    break;
+                 }
+                 
                 }
             }
         }
-    }
+
 
     int mousex, mousey;
     int buttons = SDL_GetMouseState(&mousex, &mousey);

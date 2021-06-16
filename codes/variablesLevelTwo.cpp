@@ -30,7 +30,9 @@ int levelTwoCharacterFrameWidth,
     isspaceclicked = 0,
     iflifeatstake = 0,
     leftbuttonclicked = 0,
-    rightbuttonclicked = 1;
+    rightbuttonclicked = 1,
+    isDownPressed=0,
+    isUpPressed=0;
 
 float characterTwoFrametime = 0,
       characterTwoPrevtime = 0,

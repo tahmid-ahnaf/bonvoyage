@@ -4,38 +4,59 @@
 void JumpingEffectCharacter(){
     
     
-        if ( levelTwoTrack[0].rect.y == yPosLevelTwoCharacter + levelTwoWindowCharacter.rect.h -5  && (xPosLevelTwoCharacter + levelTwoWindowCharacter.rect.w >= levelTwoTrack[0].rect.x && xPosLevelTwoCharacter + levelTwoWindowCharacter.rect.w - 100 <= levelTwoTrack[0].rect.x + levelTwoTrack[0].rect.w))
+    SDL_bool collisionBetweenCharacterandTrackOne =  SDL_HasIntersection(&levelTwoTrack[0].rect , &levelTwoWindowCharacterPosition.rect);
+    SDL_bool collisionBetweenCharacterandTrackTwo =  SDL_HasIntersection(&levelTwoTrack[1].rect , &levelTwoWindowCharacterPosition.rect);
+    SDL_bool collisionBetweenCharacterandInvisibleBorderOne =  SDL_HasIntersection(&levelTwoInvisibleBorder[0].rect , &levelTwoWindowCharacterPosition.rect);
+    SDL_bool collisionBetweenCharacterandInvisibleBorderTwo =  SDL_HasIntersection(&levelTwoInvisibleBorder[1].rect , &levelTwoWindowCharacterPosition.rect);
+    
+
+    
+    if(collisionBetweenCharacterandInvisibleBorderOne)
+    {
+        yPosLevelTwoCharacter  +=5;
+        isDownPressed = 0;
+    }
+    else if(collisionBetweenCharacterandInvisibleBorderTwo)
+    {
+        yPosLevelTwoCharacter   +=5;
+        isDownPressed = 0;
+    }
+    else if(collisionBetweenCharacterandTrackOne && isUpPressed ==0)
+    {
+        isDownPressed = 0;
+        yPosLevelTwoCharacter =  levelTwoTrack[0].rect.y - levelTwoWindowCharacter.rect.w -5 ;
+    }
+    else if(collisionBetweenCharacterandTrackTwo  && isUpPressed ==0)
+    {
+        isDownPressed = 0;
+        yPosLevelTwoCharacter =  levelTwoTrack[1].rect.y - levelTwoWindowCharacter.rect.w - 5 ;
+    }
+    if((!collisionBetweenCharacterandTrackOne && !collisionBetweenCharacterandTrackTwo ) || abs(levelTwoTrack[1].rect.y  -  yPosLevelTwoCharacter - levelTwoWindowCharacter.rect.w)>=6 ||  abs(levelTwoTrack[0].rect.y  -  yPosLevelTwoCharacter - levelTwoWindowCharacter.rect.w)>=6 )
+    {
+        if (yPosLevelTwoCharacter != WINDOW_HEIGHT)
         {
-            yPosLevelTwoCharacter = levelTwoTrack[0].rect.y - levelTwoWindowCharacter.rect.h+5;
+            yPosLevelTwoCharacter += 10;
         }
-        else if (abs(yPosLevelTwoCharacter - (levelTwoTrack[0].rect.y - levelTwoWindowCharacter.rect.h)) <= 4)
-        {
-            yPosLevelTwoCharacter += 1;
-        }else     if ( levelTwoTrack[1].rect.y == yPosLevelTwoCharacter + levelTwoWindowCharacter.rect.h -5  && (xPosLevelTwoCharacter + levelTwoWindowCharacter.rect.w >= levelTwoTrack[1].rect.x && xPosLevelTwoCharacter + levelTwoWindowCharacter.rect.w - 100 <= levelTwoTrack[1].rect.x + levelTwoTrack[1].rect.w))
-        {
-            yPosLevelTwoCharacter = levelTwoTrack[1].rect.y - levelTwoWindowCharacter.rect.h+5;
-        }
-        else if (abs(yPosLevelTwoCharacter - (levelTwoTrack[1].rect.y - levelTwoWindowCharacter.rect.h)) <= 4)
-        {
-            yPosLevelTwoCharacter += 1;
-        }
-        else
-        {
-            if (yPosLevelTwoCharacter != WINDOW_HEIGHT)
-            {
-                yPosLevelTwoCharacter += 5;
-            }
-        }
+
         if (yPosLevelTwoCharacter >= WINDOW_HEIGHT - 250)
         {
             yPosLevelTwoCharacter = WINDOW_HEIGHT - 250;
         }
+    }
+    if(isUpPressed ==1)
+    {
+        isUpPressed =0;
+    }
+
+    if(isDownPressed==1 && yPosLevelTwoCharacter <= WINDOW_HEIGHT - 260  )
+    {
+        yPosLevelTwoCharacter  +=40;
+        isDownPressed=0;
+    }
 
 }
 void levelTwoTrackmotion()
 {    
-    // levelTwoTrack.rect.x = xPosLevelTwoTrack;
-    // levelTwoTrack2.rect.x = xPosLevelTwoTrack2;
     levelOneCharacterPrevtime = levelOneCharacterCurrentime;  
     levelOneCharacterCurrentime = SDL_GetTicks();
     levelOneCharacterDeltatime = (levelOneCharacterCurrentime - levelOneCharacterPrevtime) / 280.0f;
@@ -54,14 +75,14 @@ void levelTwoTrackmotion()
         if (xPosLevelTwoTrack2 + levelTwoTrack[0].rect.w <=0)
         {
 
-            xPosLevelTwoTrack2 = xPosLevelTwoTrack + 820;
+            xPosLevelTwoTrack2 = xPosLevelTwoTrack + 900 ;
             levelTwoTrack[1].rect.y = levelTwoTrack[0].rect.y -100;
             updateCoinsPosition2();
         }
 
-        levelTwoInvisibleBorder[0].rect.y = levelTwoTrack[0].rect.y + 30; 
+        levelTwoInvisibleBorder[0].rect.y = levelTwoTrack[0].rect.y + levelTwoTrack[0].rect.h; 
         levelTwoInvisibleBorder[0].rect.x = xPosLevelTwoTrack;
-        levelTwoInvisibleBorder[1].rect.y = levelTwoTrack[1].rect.y + 30; 
+        levelTwoInvisibleBorder[1].rect.y = levelTwoTrack[1].rect.y + levelTwoTrack[0].rect.h; 
         levelTwoInvisibleBorder[1].rect.x = xPosLevelTwoTrack2;
 
         levelTwoTrack[0].rect.x =xPosLevelTwoTrack;
@@ -86,8 +107,5 @@ void drawLevelTwoTrackFunction()
     levelTwoTrack[0].rect.x = xPosLevelTwoTrack + levelTwoTrack[0].rect.w ;
     SDL_RenderCopy(app.rend, levelTwoTrack[1].tex, NULL, &levelTwoTrack[1].rect);
     levelTwoTrack[1].rect.x = xPosLevelTwoTrack2 + levelTwoTrack[1].rect.w ;
-    // SDL_RenderCopy(app.rend, levelTwoInvisibleBorder2.tex, NULL, &levelTwoInvisibleBorder2.rect);
-
-     
 }
 

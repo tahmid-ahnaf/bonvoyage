@@ -32,7 +32,9 @@ extern int levelTwoCharacterFrameWidth,
     isspaceclicked,
     iflifeatstake,
     leftbuttonclicked,
-    rightbuttonclicked;
+    rightbuttonclicked,
+    isDownPressed,
+    isUpPressed;
 
 extern float characterTwoFrametime,
     characterTwoPrevtime,

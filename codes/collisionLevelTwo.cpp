@@ -60,17 +60,6 @@ void collisionsLevelTwo()
         delayCountForExplosion = 0;
     }
 
-    for (int i = 0; i < 2; i++)
-    {
-        SDL_bool collisionBetweenCharacterandInvisibleBorders = SDL_HasIntersection(&levelTwoInvisibleBorder[i].rect, &levelTwoWindowCharacterPosition.rect);
-
-        if (collisionBetweenCharacterandInvisibleBorders)
-        {
-            lifePercentage += 5;
-            levelTwoWindowCharacterPosition.rect.y = levelTwoInvisibleBorder[i].rect.y + levelTwoInvisibleBorder[i].rect.h + 20;
-        }
-    }
-
     SDL_bool collisionBetweenCharacterandHeart = SDL_HasIntersection(&levelTwoHeart.rect, &levelTwoWindowCharacterPosition.rect);
 
     if (collisionBetweenCharacterandHeart)

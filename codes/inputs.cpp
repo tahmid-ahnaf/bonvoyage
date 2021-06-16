@@ -86,32 +86,33 @@ void doInput(void)
                 {
                     leftbuttonclicked = 1;
                     rightbuttonclicked = 0;
-
                     xPosLevelTwoCharacter -= moveSpeed * characterTwoDeltatime;
                 }
                     
                 if(event.key.keysym.scancode == SDL_SCANCODE_UP || event.key.keysym.scancode == SDL_SCANCODE_W)
                 {
-                    if (levelTwoWindowCharacterPosition.rect.y - (levelTwoInvisibleBorder[0].rect.y + levelTwoInvisibleBorder[0].rect.h) <= 120 && levelTwoWindowCharacterPosition.rect.y - (levelTwoInvisibleBorder[0].rect.y + levelTwoInvisibleBorder[0].rect.h) >= 0 && (xPosLevelTwoCharacter + levelTwoWindowCharacter.rect.w > levelTwoInvisibleBorder[0].rect.x && xPosLevelTwoCharacter - levelTwoInvisibleBorder[0].rect.x - levelTwoInvisibleBorder[0].rect.w <= 0))
+                    SDL_bool collisionBetweenCharacterandInvisibleBorderOne =  SDL_HasIntersection(&levelTwoInvisibleBorder[0].rect , &levelTwoWindowCharacterPosition.rect);
+                    SDL_bool collisionBetweenCharacterandInvisibleBorderTwo =  SDL_HasIntersection(&levelTwoInvisibleBorder[1].rect , &levelTwoWindowCharacterPosition.rect);
+                    
+                    if(collisionBetweenCharacterandInvisibleBorderOne)
                     {
-                        yPosLevelTwoCharacter -= levelTwoWindowCharacterPosition.rect.y - (levelTwoInvisibleBorder[0].rect.y + levelTwoInvisibleBorder[0].rect.h) + 20;
+                        yPosLevelTwoCharacter+=5 ;
                     }
-                    else if (levelTwoWindowCharacterPosition.rect.y - (levelTwoInvisibleBorder[1].rect.y + levelTwoInvisibleBorder[1].rect.h) <= 120 && levelTwoWindowCharacterPosition.rect.y - (levelTwoInvisibleBorder[1].rect.y + levelTwoInvisibleBorder[1].rect.h) >= 0 && (xPosLevelTwoCharacter + levelTwoWindowCharacter.rect.w > levelTwoInvisibleBorder[1].rect.x && xPosLevelTwoCharacter - levelTwoInvisibleBorder[1].rect.x - levelTwoInvisibleBorder[1].rect.w <= 0))
+                    else if(collisionBetweenCharacterandInvisibleBorderTwo)
                     {
-                        yPosLevelTwoCharacter -= levelTwoWindowCharacterPosition.rect.y - (levelTwoInvisibleBorder[1].rect.y + levelTwoInvisibleBorder[1].rect.h) + 20;
+                        yPosLevelTwoCharacter+=5;
                     }
-                    else if (yPosLevelTwoCharacter > 250)
+                    else if(yPosLevelTwoCharacter > 250)
                     {
-                        yPosLevelTwoCharacter -= 120;
+                        isUpPressed = 1;
+                        yPosLevelTwoCharacter -= 70;
                     }
-
                 }
-                 if(event.key.keysym.scancode == SDL_SCANCODE_DOWN || event.key.keysym.scancode == SDL_SCANCODE_S)
-                 {
-                      yPosLevelTwoCharacter += moveSpeed * characterTwoDeltatime;
-                    break;
 
-                 }
+                if(event.key.keysym.scancode == SDL_SCANCODE_DOWN || event.key.keysym.scancode == SDL_SCANCODE_S)
+                {
+                    isDownPressed=1;
+                }
                  
                 }
             }

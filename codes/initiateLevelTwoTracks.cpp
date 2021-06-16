@@ -30,8 +30,8 @@ void InvisibleBorderLoad()
 
     levelTwoInvisibleBorder[i].rect;
     SDL_QueryTexture(levelTwoInvisibleBorder[i].tex, NULL, NULL, &levelTwoInvisibleBorder[i].rect.w, &levelTwoInvisibleBorder[i].rect.h);
-    levelTwoInvisibleBorder[i].rect.w = (int)594;
-    levelTwoInvisibleBorder[i].rect.h = (int)75;
+    levelTwoInvisibleBorder[i].rect.w = levelTwoTrack[i].rect.w;
+    levelTwoInvisibleBorder[i].rect.h = 30;
     levelTwoInvisibleBorder[i].rect.x = (int)WINDOW_WIDTH / 2;
     levelTwoInvisibleBorder[i].rect.y = (int)WINDOW_HEIGHT / 2 - 100 + 30;
 

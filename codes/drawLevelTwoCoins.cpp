@@ -7,21 +7,19 @@ void drawLevelTwoCoinsPopupFunction()
 
 void updateCoinsPosition()
 {
-    levelTwoWindowCoins[0].rect.w = (int)60;
-    levelTwoWindowCoins[0].rect.h = (int)60;
-    levelTwoWindowCoins[1].rect.w = (int)60;
-    levelTwoWindowCoins[1].rect.h = (int)60;
-    levelTwoWindowCoins[2].rect.w = (int)60;
-    levelTwoWindowCoins[2].rect.h = (int)60;
-    levelTwoWindowCoins[3].rect.w = (int)60;
-    levelTwoWindowCoins[3].rect.h = (int)60;
-    levelTwoWindowCoins[4].rect.w = (int)60;
-    levelTwoWindowCoins[4].rect.h = (int)60;
-
+    for(int i=0; i<5; i++)
+    {
+        levelTwoWindowCoins[i].rect.w = (int)60;
+        levelTwoWindowCoins[i].rect.h = (int)60;
+    }
+    
+    //adjusting tracks position and keeping it into the frame  
     if (levelTwoTrack[0].rect.y < WINDOW_HEIGHT / 2 || levelTwoTrack[0].rect.y >= WINDOW_HEIGHT - 400)
     {
         levelTwoTrack[0].rect.y = WINDOW_HEIGHT / 2 + rand() % 100;
     }
+    
+    //updating coins position with respect to tracks 
     levelTwoWindowCoins[0].rect.y = levelTwoTrack[0].rect.y - 70 - rand() % 200;
     levelTwoWindowCoins[1].rect.y = levelTwoTrack[0].rect.y - 70 - rand() % 200;
 
@@ -50,7 +48,6 @@ void updateCoinsPosition2()
 }
 void drawLevelTwoCoinsFunction()
 {
-
     for (int i = 0; i < 7; i++)
     {
         SDL_RenderCopy(app.rend, levelTwoWindowCoins[i].tex, &levelTwoRotatingCoin.rect, &levelTwoWindowCoins[i].rect);

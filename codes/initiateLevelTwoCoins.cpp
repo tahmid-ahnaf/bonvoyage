@@ -2,12 +2,11 @@
 
 void LevelTwoCoinsPopupLoad()
 {
-
     window.surface = IMG_Load("images/level2obstacles/100.png");
 
     if (!window.surface)
     {
-        printf("coin_point_popup Error: %s\n", IMG_GetError());
+        printf("coinPointPopUp Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -19,13 +18,13 @@ void LevelTwoCoinsPopupLoad()
 
     if (!levelTwoCoinPointPopUp.tex)
     {
-        printf("coin_point_popup Texture %s\n", SDL_GetError());
+        printf("coinPointPopUp Texture Error: %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
         exit(1);
     }
-    levelTwoCoinPointPopUp.rect;
+    
     SDL_QueryTexture(levelTwoCoinPointPopUp.tex, NULL, NULL, &levelTwoCoinPointPopUp.rect.w, &levelTwoCoinPointPopUp.rect.h);
     levelTwoCoinPointPopUp.rect.w = (int)0;
     levelTwoCoinPointPopUp.rect.h = (int)0;
@@ -41,7 +40,7 @@ void LevelTwoCoinsload(void)
 
         if (!window.surface)
         {
-            printf("Coins Error: %s\n", IMG_GetError());
+            printf("levelTwoCoins Error: %s\n", IMG_GetError());
             SDL_DestroyRenderer(app.rend);
             SDL_DestroyWindow(app.window);
             SDL_Quit();
@@ -53,16 +52,14 @@ void LevelTwoCoinsload(void)
 
         if (!levelTwoWindowCoins[i].tex)
         {
-            printf("BOX TEXTURE ERROR%s\n", SDL_GetError());
+            printf("levelTwoCoins Texture Error: %s\n", SDL_GetError());
             SDL_DestroyRenderer(app.rend);
             SDL_DestroyWindow(app.window);
             SDL_Quit();
             exit(1);
         }
-        levelTwoWindowCoins[i].rect;
 
         SDL_QueryTexture(levelTwoWindowCoins[i].tex, NULL, NULL, &levelTwoWindowCoins[i].rect.w, &levelTwoWindowCoins[i].rect.h);
-
         levelTwoWindowCoins[i].rect.w = (int)60;
         levelTwoWindowCoins[i].rect.h = (int)60;
         levelTwoWindowCoins[i].rect.x = (int)levelTwoTrack[0].rect.x + 150;
@@ -70,6 +67,7 @@ void LevelTwoCoinsload(void)
 
         SDL_QueryTexture(levelTwoWindowCoins[i].tex, NULL, NULL, &levelTwoCoinTextureHeight, &levelTwoCoinTextureWidth);
 
+        // variables for animating the rotatingCoins 
         levelTwoCoinFrameWidth = levelTwoCoinTextureWidth / 2;
         levelTwoCoinFrameHeight = levelTwoCoinTextureHeight / 2;
 
@@ -93,7 +91,6 @@ void LevelTwoCoinsCleanUp()
 
 void LevelTwoCoinsPopCleanUp()
 {
-
     SDL_DestroyTexture(levelTwoCoinPointPopUp.tex);
     IMG_Quit();
 }

@@ -1,15 +1,13 @@
 #include "drawLevelTwoCompleted.h"
 
 void updateAnimationSpeedForLevelTwoCompleted()
-{
-    characterTwoPrevtime = characterTwoCurrentime;
-    characterTwoCurrentime = SDL_GetTicks();
-    characterTwoDeltatime = (characterTwoCurrentime - characterTwoPrevtime) / 280.0f;
-
+{   
+    // adjusting animation speed for levelTwoDragon 
     levelTwoDragonPrevtime = levelTwoDragonCurrentime;
     levelTwoDragonCurrentime = SDL_GetTicks();
     levelTwoDragonDeltatime = (levelTwoDragonCurrentime - levelTwoDragonPrevtime) / 280.0f;
-
+    
+    // updating the frame for animating levelTwoDragonSprite 
     levelTwoDragonFrametime += levelTwoDragonDeltatime;
     if (levelTwoDragonFrametime >= (0.25f))
     {
@@ -21,7 +19,8 @@ void updateAnimationSpeedForLevelTwoCompleted()
             levelTwoDragon.rect.x = 0;
         }
     }
-
+    
+    //implementing collision after effect for levelTwoCharacter
     if (delayCountForCharacterCollisionEffect == 250)
     {
         if (currentLife > 10)
@@ -40,6 +39,11 @@ void updateAnimationSpeedForLevelTwoCompleted()
     {
         delayCountForCharacterCollisionEffect++;
     }
+    
+    //adjusting animation speed for levelTwoCharacter 
+    characterTwoPrevtime = characterTwoCurrentime;
+    characterTwoCurrentime = SDL_GetTicks();
+    characterTwoDeltatime = (characterTwoCurrentime - characterTwoPrevtime) / 280.0f;
 
     characterTwoFrametime += characterTwoDeltatime;
 
@@ -58,11 +62,13 @@ void updateAnimationSpeedForLevelTwoCompleted()
             levelTwoWindowCharacter.rect.y = levelTwoCharacterFrameHeight;
         }
     }
-
+    
+    // adjusting animation speed for levelTwoRotatingCoins
     levelTwoRotatingCoinPrevtime = levelTwoRotatingCoinCurrentime;
     levelTwoRotatingCoinCurrentime = SDL_GetTicks();
     levelTwoRotatingCoinDeltatime = (levelTwoRotatingCoinCurrentime - levelTwoRotatingCoinPrevtime) / 280.0f;
 
+    // updating the frame for animating levelTwoRotatingCoinSprite 
     levelTwoRotatingCoinFrametime += levelTwoRotatingCoinDeltatime;
 
     if (levelTwoRotatingCoinFrametime >= (0.25f))
@@ -80,11 +86,13 @@ void updateAnimationSpeedForLevelTwoCompleted()
             levelTwoRotatingCoin.rect.y = levelTwoCoinFrameHeight;
         }
     }
-
+    
+    // adjusting animation speed for levelTwoRotatingHearts
     levelTwoRotatingHeartPrevtime = levelTwoRotatingHeartCurrentime;
     levelTwoRotatingHeartCurrentime = SDL_GetTicks();
     levelTwoRotatingHeartDeltatime = (levelTwoRotatingHeartCurrentime - levelTwoRotatingHeartPrevtime) / 280.0f;
 
+    // updating the frame for animating levelTwoRotatingHeartSprite
     levelTwoRotatingHeartFrametime += levelTwoRotatingHeartDeltatime;
 
     if (levelTwoRotatingHeartFrametime >= (0.25f))
@@ -103,6 +111,7 @@ void updateAnimationSpeedForLevelTwoCompleted()
         }
     }
 
+    // keeping levelTwoCharacter into the frame 
     if (yPosLevelTwoCharacter <= 40)
     {
         yPosLevelTwoCharacter = 40;
@@ -119,11 +128,12 @@ void updateAnimationSpeedForLevelTwoCompleted()
     {
         xPosLevelTwoCharacter = 0;
     }
-    /*############### KEEPING THE CHARACTER INTO THE FRAME ENDS ####################*/
 
     levelTwoWindowCharacterPosition.rect.x = xPosLevelTwoCharacter;
     levelTwoWindowCharacterPosition.rect.y = yPosLevelTwoCharacter;
+    
 
+    // adjusting the animation speeds for levelTwo sky, mountains, treeShades, clouds, windowTrack 
     levelTwoSkyAnimationSpeed -= 0.5;
     if (levelTwoSkyAnimationSpeed < -levelTwoWindowSky.rect.w)
     {
@@ -156,6 +166,7 @@ void updateAnimationSpeedForLevelTwoCompleted()
 void drawLevelTwoCompletedFunction()
 {
     countLevelTwo++;
+
     if (variables.levelTwoCompleted == 1)
     {
         updateAnimationSpeedForLevelTwoCompleted();
@@ -170,6 +181,7 @@ void drawLevelTwoCompletedFunction()
     levelTwoWindowTreeShade.rect.x = levelTwoTreeShadeAnimationSpeed;
     levelTwoWindowClouds.rect.x = levelTwoCloudsAnimationSpeed;
     levelTwoWindowTrack.rect.x = levelTwoTrackAnimationSpeed;
+
     SDL_RenderClear(app.rend);
 
     SDL_RenderCopy(app.rend, levelTwoWindowSky.tex, NULL, &levelTwoWindowSky.rect);

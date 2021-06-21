@@ -8,7 +8,7 @@ void InvisibleBorderLoad()
 
     if (!window.surface)
     {
-        printf("BORDER Error: %s\n", IMG_GetError());
+        printf("levelTwoInvisibleBorder Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -21,14 +21,13 @@ void InvisibleBorderLoad()
 
     if (!levelTwoInvisibleBorder[i].tex)
     {
-        printf("levelTwoInvisibleBorder[i].tex %s\n", SDL_GetError());
+        printf("levelTwoInvisibleBorder Texture Error: %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
         exit(1);
     }
 
-    levelTwoInvisibleBorder[i].rect;
     SDL_QueryTexture(levelTwoInvisibleBorder[i].tex, NULL, NULL, &levelTwoInvisibleBorder[i].rect.w, &levelTwoInvisibleBorder[i].rect.h);
     levelTwoInvisibleBorder[i].rect.w = levelTwoTrack[i].rect.w;
     levelTwoInvisibleBorder[i].rect.h = 30;
@@ -57,7 +56,7 @@ void LevelTwoTracksLoad(void)
 
     if (!window.surface)
     {
-        printf("Track Error: %s\n", IMG_GetError());
+        printf("levelTwoTrack Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -69,21 +68,20 @@ void LevelTwoTracksLoad(void)
 
     if (!levelTwoTrack[i].tex)
     {
-        printf("Track TEXTURE ERROR%s\n", SDL_GetError());
+        printf("levelTwoTrack Texture Error: %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
         exit(1);
     }
-    levelTwoTrack[i].rect;
+
     SDL_QueryTexture(levelTwoTrack[i].tex, NULL, NULL, &levelTwoTrack[i].rect.w, &levelTwoTrack[i].rect.h);
 
     levelTwoTrack[i].rect.w = (int)634;
     levelTwoTrack[i].rect.h = (int)105;
     levelTwoTrack[i].rect.x = (int)WINDOW_WIDTH / 2;
     levelTwoTrack[i].rect.y = (int)WINDOW_HEIGHT / 2 - 100;
-
-
+    
     }
     
     InvisibleBorderLoad();

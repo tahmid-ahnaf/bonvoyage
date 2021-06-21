@@ -17,6 +17,11 @@ extern int levelTwoCharacterFrameWidth,
     levelTwoHeartFrameHeight,
     levelTwoHeartFrameWidth,
 
+    levelTwoDragonFramewidth, 
+    levelTwoDragonFrameheight,
+    levelTwoDragonTexturewidth, 
+    levelTwoDragonTextureheight,
+
     randomGenerator,
     delayCountForPointPopUp,
     delayCountForHearts,
@@ -29,17 +34,23 @@ extern int levelTwoCharacterFrameWidth,
     highScore,
     currentScore,
     scoreUpdate,
+    levelTwoScoreList[100],
     isspaceclicked,
     iflifeatstake,
     leftbuttonclicked,
     rightbuttonclicked,
     isDownPressed,
-    isUpPressed;
+    isUpPressed,
+    countLevelTwo,
+    thronePosition;
 
 extern float characterTwoFrametime,
     characterTwoPrevtime,
     characterTwoCurrentime,
-    characterTwoDeltatime,
+    characterTwoDeltatime ,
+    moveSpeed,
+    xPosLevelTwoCharacter,
+    yPosLevelTwoCharacter,
 
     levelTwoRotatingCoinFrametime,
     levelTwoRotatingCoinPrevtime,
@@ -50,10 +61,11 @@ extern float characterTwoFrametime,
     levelTwoRotatingHeartPrevtime,
     levelTwoRotatingHeartCurrentime,
     levelTwoRotatingHeartDeltatime,
-
-    moveSpeed,
-    xPosLevelTwoCharacter,
-    yPosLevelTwoCharacter,
+      
+    levelTwoDragonFrametime,
+    levelTwoDragonPrevtime,
+    levelTwoDragonCurrentime,
+    levelTwoDragonDeltatime,
 
     levelTwoSkyAnimationSpeed,
     levelTwoMountainsAnimationSpeed,
@@ -67,30 +79,18 @@ extern float characterTwoFrametime,
     xPosLevelTwoTrack2,
     yPosLevelTwoTrack2;
 
-extern char lifeString[256];
-extern char scoreString[256],
-    highScoreString[256];
+extern char lifeString[256],
+    scoreString[256],
+    highScoreString[256],
+    levelTwoScoreBoardPlayerNameString[100][10],
+    levelTwoScoreBoardPlayerScoreString[100][10],
+    levelTwoPlayerNameList[100][100], 
+    showLevelTwoPlayerNameList[10000][100],
+    levelTwoHighScoreString[10],
+    levelTwoPlayerName[100];
 
 extern Mix_Music *got;
 extern Mix_Chunk *coingain,
     *explosionsound,
     *jumpsound,
     *pointgainsound;
-
-extern int levelTwoDragonFramewidth, levelTwoDragonFrameheight;
-extern int levelTwoDragonTexturewidth, levelTwoDragonTextureheight;
-extern float levelTwoDragonFrametime;
-extern int levelTwoDragonPrevtime;
-extern int levelTwoDragonCurrentime;
-extern float levelTwoDragonDeltatime;
-
-extern char levelTwoScoreBoardPlayerNameString[100][10];
-extern char levelTwoScoreBoardPlayerScoreString[100][10];
-
-extern char levelTwoPlayerNameList[100][100], showLevelTwoPlayerNameList[10000][100];
-extern int levelTwoScoreList[100];
-extern char levelTwoHighScoreString[10];
-
-extern char levelTwoPlayerName[100];
-extern int countLevelTwo;
-extern int thronePosition;

@@ -1,12 +1,16 @@
-
 #include "commonHeaders.h"
-// #include "allstructs.h"
+
 extern App app;
 extern component
 
     levelTwoWindowCharacter,
-    levelTwoHeart,levelTwoHeartDisplay, levelTwoRotatingHeart, levelTwoLifeScoreDisplay, levelTwoLifeScoreText, levelTwoWindowScoreText, levelTwoWindowHighScoreText, levelTwoLifeBonusPopUp, 
-    window,
-    back;
+    levelTwoHeart,
+    levelTwoHeartDisplay, 
+    levelTwoRotatingHeart, 
+    levelTwoLifeScoreDisplay, 
+    levelTwoLifeScoreText, 
+    levelTwoWindowScoreText, 
+    levelTwoWindowHighScoreText, 
+    levelTwoLifeBonusPopUp;
 
 extern Variables variables;

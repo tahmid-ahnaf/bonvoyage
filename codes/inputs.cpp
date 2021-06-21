@@ -91,6 +91,8 @@ void doInput(void)
                     
                 if(event.key.keysym.scancode == SDL_SCANCODE_UP || event.key.keysym.scancode == SDL_SCANCODE_W)
                 {
+                    // handling the collision between invisible borders & the character and implementing the jumping effect of the character 
+                    
                     SDL_bool collisionBetweenCharacterandInvisibleBorderOne =  SDL_HasIntersection(&levelTwoInvisibleBorder[0].rect , &levelTwoWindowCharacterPosition.rect);
                     SDL_bool collisionBetweenCharacterandInvisibleBorderTwo =  SDL_HasIntersection(&levelTwoInvisibleBorder[1].rect , &levelTwoWindowCharacterPosition.rect);
                     

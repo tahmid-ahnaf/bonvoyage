@@ -29,6 +29,8 @@ void drawLevelTwoHeartFunction()
 }
 void updateLevelTwoLifeBonusPopupFunction()
 {
+    
+    // implementing the life bonus popup motion to the right corner 
 
     levelTwoLifeBonusPopUp.rect.x += (levelTwoLifeScoreText.rect.x - levelTwoLifeBonusPopUp.rect.x) / 30;
     levelTwoLifeBonusPopUp.rect.y += (levelTwoLifeScoreText.rect.y - levelTwoLifeBonusPopUp.rect.y) / 30;
@@ -52,7 +54,7 @@ void updateLevelTwoLifeBonusPopupFunction()
         levelTwoLifeBonusPopUp.rect.w = 0;
         levelTwoLifeBonusPopUp.rect.h = 0;
     }
-
+    // delay the changing of life rect 
     if (delayCountForLifeRectChange > 0)
     {
         delayCountForLifeRectChange++;
@@ -70,6 +72,8 @@ void updateHeartPosition()
 {
     currentLife = 100 - (lifePercentage / 20);
     sprintf(lifeString, "%i", currentLife);
+    
+    // hearts start coming when currentLife is less than 95% 
     if (currentLife <= 95)
     {
         if (delayCountForHearts == 0)
@@ -77,7 +81,8 @@ void updateHeartPosition()
             levelTwoHeart.rect.w = 0;
             levelTwoHeart.rect.h = 0;
         }
-
+        
+        // adjusting the interval after which another heart will come
         delayCountForHearts++;
 
         if (delayCountForHearts == 30)
@@ -110,7 +115,8 @@ void updateHeartPosition()
 }
 
 void lifeatstakeaftereffect()
-{
+{   
+    // red color alert when life of the levelTwoCharacter at stake 
     if (currentLife <= 10 && iflifeatstake == 0 && currentLife>0)
     {
         iflifeatstake = 1;
@@ -129,9 +135,8 @@ void drawLevelTwoLifeText()
 {
     levelTwoLifeScoreText.surface = TTF_RenderText_Solid(variables.levelTwofont, lifeString, variables.levelTwocolor);
     levelTwoLifeScoreText.tex = SDL_CreateTextureFromSurface(app.rend, levelTwoLifeScoreText.surface);
-    levelTwoLifeScoreText.rect;
-    SDL_QueryTexture(levelTwoLifeScoreText.tex, NULL, NULL, &levelTwoLifeScoreText.rect.w, &levelTwoLifeScoreText.rect.h);
 
+    SDL_QueryTexture(levelTwoLifeScoreText.tex, NULL, NULL, &levelTwoLifeScoreText.rect.w, &levelTwoLifeScoreText.rect.h);
     levelTwoLifeScoreText.rect.w = (int)levelTwoLifeScoreText.surface->w;
     levelTwoLifeScoreText.rect.h = (int)levelTwoLifeScoreText.surface->h;
     levelTwoLifeScoreText.rect.x = (int)1163;
@@ -140,7 +145,6 @@ void drawLevelTwoLifeText()
 
 void LevelTwoLifeTextCleanUp()
 {
-
     SDL_DestroyTexture(levelTwoLifeScoreText.tex);
     SDL_DestroyTexture(levelTwoWindowScoreText.tex);
     SDL_DestroyTexture(levelTwoWindowHighScoreText.tex);

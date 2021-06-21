@@ -3,12 +3,12 @@
 extern App app;
 extern component
 
-    levelTwoWindowCharacter,  
-    levelTwoWindowCharacterPosition,
     window,
-    levelOneWindowCoins[4],
-    levelTwoTrack[2], levelTwoHeart, levelTwoRotatingHeart, levelTwoLifeBonusPopUp, levelTwoLifeScoreDisplay, levelTwoHeartDisplay, 
-
-    back;
+    levelTwoHeart, 
+    levelTwoRotatingHeart, 
+    levelTwoLifeBonusPopUp, 
+    levelTwoLifeScoreDisplay, 
+    levelTwoHeartDisplay, 
+    levelTwoTrack[2]; 
 
 extern Variables variables;

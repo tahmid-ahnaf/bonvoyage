@@ -7,16 +7,13 @@ extern component
     levelTwoWindowTreeShade,
     levelTwoWindowClouds,
     levelTwoWindowTrack,
-    levelTwoWindowScoreText, levelTwoWindowHighScoreText,
+    levelTwoWindowScoreText, 
+    levelTwoWindowHighScoreText,
     levelOneWindowScore,
     levelOneWindowHighScore,
     levelOneCompletedOverlay,
     levelOneGameOverMessage,
-
     back;
 
 extern Variables variables;
 
-extern void updateLevelTwoScore(void);
-
-extern void drawLevelTwoLifeText(void);

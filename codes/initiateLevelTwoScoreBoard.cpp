@@ -2,6 +2,7 @@
 
 void levelTwoScoreboard(void)
 {
+    //levelTwoScoreBoard load 
     window.surface = IMG_Load("./images/newcomponents/gotScoreboard.png");
     if (!window.surface)
     {
@@ -16,7 +17,7 @@ void levelTwoScoreboard(void)
 
     if (!levelTwoScoreBoard.tex)
     {
-        printf(" levelTwoScoreBoard Texture %s\n", SDL_GetError());
+        printf("levelTwoScoreBoard Texture Error: %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -29,18 +30,18 @@ void levelTwoScoreboard(void)
     levelTwoScoreBoard.rect.x = WINDOW_WIDTH / 2 - 476;
     levelTwoScoreBoard.rect.y = WINDOW_HEIGHT / 2 - 245;
 
-    //playername
+    //levelTwoPlayerName load 
 
     for (int i = 0; i < 5; i++)
     {
-
         LoadScoreFile();
         if (showLevelTwoPlayerNameList[levelTwoScoreList[i]])
-
+        {
             sprintf(levelTwoScoreBoardPlayerNameString[i], "%s", showLevelTwoPlayerNameList[levelTwoScoreList[i]]);
+
+        }
         else
         {
-
             sprintf(levelTwoScoreBoardPlayerNameString[i], "%s", "000");
         }
 
@@ -57,7 +58,7 @@ void levelTwoScoreboard(void)
         levelTwoScoreBoardPlayerName[i].tex = SDL_CreateTextureFromSurface(app.rend, levelTwoScoreBoardPlayerName[i].surface);
         if (!levelTwoScoreBoardPlayerName[i].tex)
         {
-            printf("scoreText Texture %s\n", SDL_GetError());
+            printf("scoreText Texture Error: %s\n", SDL_GetError());
             SDL_DestroyRenderer(app.rend);
             SDL_DestroyWindow(app.window);
             SDL_Quit();
@@ -77,7 +78,7 @@ void levelTwoScoreboard(void)
             levelTwoScoreBoardPlayerName[i].rect.x = (int)575;
         }
 
-        //score
+        //levelTwoPlayerScore load
         LoadScoreFile();
         if (levelTwoScoreList[i])
             sprintf(levelTwoScoreBoardPlayerScoreString[i], "%d", levelTwoScoreList[i]);
@@ -98,7 +99,7 @@ void levelTwoScoreboard(void)
         levelTwoScoreBoardPlayerScore[i].tex = SDL_CreateTextureFromSurface(app.rend, levelTwoScoreBoardPlayerScore[i].surface);
         if (!levelTwoScoreBoardPlayerScore[i].tex)
         {
-            printf("scoreText Texture %s\n", SDL_GetError());
+            printf("scoreText Texture Error: %s\n", SDL_GetError());
             SDL_DestroyRenderer(app.rend);
             SDL_DestroyWindow(app.window);
             SDL_Quit();

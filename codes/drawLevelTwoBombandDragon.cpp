@@ -1,7 +1,8 @@
 #include "drawLevelTwoBombandDragon.h"
 
 void dragonflying()
-{
+{   
+    //implementing the flying dragon and updating its motion 
     if ((levelTwoDragonPosition.rect.x + levelTwoDragonPosition.rect.w <= 0 && levelTwoBomb.rect.y > WINDOW_HEIGHT))
     {
         levelTwoDragonPosition.rect.x = WINDOW_WIDTH;
@@ -21,7 +22,7 @@ void dragonflying()
         levelTwoBomb.rect.w = (int)40;
         levelTwoBomb.rect.h = (int)50;
     }
-    if (levelTwoBomb.rect.x == randomGenerator)
+    if (levelTwoBomb.rect.x == randomGenerator)    // bomb falls when it possess the same x position as the character
     {
         levelTwoBomb.rect.y += 7;
     }

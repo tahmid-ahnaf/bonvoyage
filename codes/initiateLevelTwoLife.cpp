@@ -1,11 +1,12 @@
 #include "initiateLevelTwoLife.h"
 void LevelTwoLifeLoad()
-{
+{   
+    // hearts load
     window.surface = IMG_Load("images/level2obstacles/redgreenheartsprite.png");
 
     if (!window.surface)
     {
-        printf("HEART Error: %s\n", IMG_GetError());
+        printf("levelTwoHeart Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -17,14 +18,12 @@ void LevelTwoLifeLoad()
 
     if (!levelTwoHeart.tex)
     {
-        printf("HEART Texture %s\n", SDL_GetError());
+        printf("levelTwoHeart Texture Error: %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
         exit(1);
     }
-
-    levelTwoHeart.rect;
 
     SDL_QueryTexture(levelTwoHeart.tex, NULL, NULL, &levelTwoHeart.rect.w, &levelTwoHeart.rect.h);
 
@@ -33,9 +32,7 @@ void LevelTwoLifeLoad()
     levelTwoHeart.rect.x = (int)levelTwoTrack[0].rect.x + 50;
     levelTwoHeart.rect.y = (int)levelTwoTrack[0].rect.y - 70;
 
-    /*#######################################   VARIABLES FOR ANIMATE THE HEART SPRITESHEET #############################################*/
-
-    levelTwoRotatingHeart.rect;
+    // variables for animating the rotatingHeartSprite
     SDL_QueryTexture(levelTwoHeart.tex, NULL, NULL, &levelTwoHeartTextureHeight, &levelTwoHeartTextureWidth);
 
     levelTwoHeartFrameWidth = levelTwoHeartTextureWidth / 2;
@@ -46,11 +43,12 @@ void LevelTwoLifeLoad()
     levelTwoRotatingHeart.rect.x = (int)0;
     levelTwoRotatingHeart.rect.y = (int)0;
 
+    // lifeBonus Load 
     window.surface = IMG_Load("images/level2obstacles/5p.png");
 
     if (!window.surface)
     {
-        printf("LIFEBONUS ERROR: %s\n", IMG_GetError());
+        printf("lifeBonus Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -62,13 +60,13 @@ void LevelTwoLifeLoad()
 
     if (!levelTwoLifeBonusPopUp.tex)
     {
-        printf("LIFEBONUS Texture ERROR %s\n", SDL_GetError());
+        printf("lifeBonus Texture Error: %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
         exit(1);
     }
-    levelTwoLifeBonusPopUp.rect;
+
     SDL_QueryTexture(levelTwoLifeBonusPopUp.tex, NULL, NULL, &levelTwoLifeBonusPopUp.rect.w, &levelTwoLifeBonusPopUp.rect.h);
 
     levelTwoLifeBonusPopUp.rect.w = (int)0;
@@ -76,14 +74,13 @@ void LevelTwoLifeLoad()
     levelTwoLifeBonusPopUp.rect.x = (int)WINDOW_WIDTH / 2;
     levelTwoLifeBonusPopUp.rect.y = (int)WINDOW_HEIGHT / 2;
 
-    /*********************************************** CREATING POINT POP UP AGAIN FOR LIFE BONUS ENDS  *******************************************/
-    /*********************************************** CREATING RECT FOR DISPLAYING LIFE SCORE STARTS  ********************************************/
-
+    
+    // lifeScore load 
     window.surface = IMG_Load("images/level2obstacles/lifescore.png");
 
     if (!window.surface)
     {
-        printf("LIFE_SCORE_DISPLAY Error: %s\n", IMG_GetError());
+        printf("lifeScoreDisplay Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -95,29 +92,26 @@ void LevelTwoLifeLoad()
 
     if (!levelTwoLifeScoreDisplay.tex)
     {
-        printf("LIFE_SCORE_DISPLAY  Texture %s\n", SDL_GetError());
+        printf("lifeScoreDisplay Texture Error: %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
         exit(1);
     }
 
-    levelTwoLifeScoreDisplay.rect;
     SDL_QueryTexture(levelTwoLifeScoreDisplay.tex, NULL, NULL, &levelTwoLifeScoreDisplay.rect.w, &levelTwoLifeScoreDisplay.rect.h);
 
     levelTwoLifeScoreDisplay.rect.w = (int)125;
     levelTwoLifeScoreDisplay.rect.h = (int)39;
     levelTwoLifeScoreDisplay.rect.x = (int)1110;
     levelTwoLifeScoreDisplay.rect.y = (int)63;
-
-    /*********************************************** CREATING RECT FOR DISPLAYING LIFE SCORE ENDS  ********************************************/
-
-    /*********************************************** CREATING RECT FOR DISPLAYING STATIC HEART BEFORE LIFE SCORE STARTS  ********************************************/
+    
+    //life heart display load 
     window.surface = IMG_Load("images/level2obstacles/life.png");
 
     if (!window.surface)
     {
-        printf("LIFE_HEART_DISPLAY Error: %s\n", IMG_GetError());
+        printf("lifeHeartDisplay Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -129,13 +123,13 @@ void LevelTwoLifeLoad()
 
     if (!levelTwoHeartDisplay.tex)
     {
-        printf("LIFE_HEART_DISPLAY  Texture %s\n", SDL_GetError());
+        printf("lifeHeartDisplay Texture Error: %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
         exit(1);
     }
-    levelTwoHeartDisplay.rect;
+
     SDL_QueryTexture(levelTwoHeartDisplay.tex, NULL, NULL, &levelTwoHeartDisplay.rect.w, &levelTwoHeartDisplay.rect.h);
 
     levelTwoHeartDisplay.rect.w = (int)90;
@@ -146,7 +140,6 @@ void LevelTwoLifeLoad()
 
 void HeartCleanUp()
 {
-
     SDL_DestroyTexture(levelTwoHeart.tex);
     SDL_DestroyTexture(levelTwoRotatingHeart.tex);
     SDL_DestroyTexture(levelTwoLifeBonusPopUp.tex);

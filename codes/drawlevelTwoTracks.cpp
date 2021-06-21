@@ -1,16 +1,14 @@
 #include "drawlevelTwoTracks.h"
 
 
-void JumpingEffectCharacter(){
-    
-    
+void JumpingEffectCharacter()
+{    
     SDL_bool collisionBetweenCharacterandTrackOne =  SDL_HasIntersection(&levelTwoTrack[0].rect , &levelTwoWindowCharacterPosition.rect);
     SDL_bool collisionBetweenCharacterandTrackTwo =  SDL_HasIntersection(&levelTwoTrack[1].rect , &levelTwoWindowCharacterPosition.rect);
     SDL_bool collisionBetweenCharacterandInvisibleBorderOne =  SDL_HasIntersection(&levelTwoInvisibleBorder[0].rect , &levelTwoWindowCharacterPosition.rect);
     SDL_bool collisionBetweenCharacterandInvisibleBorderTwo =  SDL_HasIntersection(&levelTwoInvisibleBorder[1].rect , &levelTwoWindowCharacterPosition.rect);
     
-
-    
+    // keeping the character below the tracks
     if(collisionBetweenCharacterandInvisibleBorderOne)
     {
         yPosLevelTwoCharacter  +=5;
@@ -21,6 +19,7 @@ void JumpingEffectCharacter(){
         yPosLevelTwoCharacter   +=5;
         isDownPressed = 0;
     }
+    // enabling the character walking on the tracks 
     else if(collisionBetweenCharacterandTrackOne && isUpPressed ==0)
     {
         isDownPressed = 0;
@@ -31,6 +30,7 @@ void JumpingEffectCharacter(){
         isDownPressed = 0;
         yPosLevelTwoCharacter =  levelTwoTrack[1].rect.y - levelTwoWindowCharacter.rect.w - 5 ;
     }
+    // if the character is not colliding with the tracks or invisible borders then it falls automatically 
     if((!collisionBetweenCharacterandTrackOne && !collisionBetweenCharacterandTrackTwo ) || abs(levelTwoTrack[1].rect.y  -  yPosLevelTwoCharacter - levelTwoWindowCharacter.rect.w)>=6 ||  abs(levelTwoTrack[0].rect.y  -  yPosLevelTwoCharacter - levelTwoWindowCharacter.rect.w)>=6 )
     {
         if (yPosLevelTwoCharacter != WINDOW_HEIGHT)
@@ -87,7 +87,8 @@ void levelTwoTrackmotion()
 
         levelTwoTrack[0].rect.x =xPosLevelTwoTrack;
         levelTwoTrack[1].rect.x =xPosLevelTwoTrack2;
-
+        
+        // coin positioning with respect to the tracks 
         levelTwoWindowCoins[0].rect.x = levelTwoTrack[0].rect.x + levelTwoWindowCoins[0].rect.y / 4;
         levelTwoWindowCoins[1].rect.x  =  levelTwoTrack[0].rect.x + levelTwoWindowCoins[1].rect.y / 4 + 300;
         levelTwoWindowCoins[2].rect.x = levelTwoTrack[0].rect.x - 200;

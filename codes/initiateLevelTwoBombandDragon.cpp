@@ -1,12 +1,12 @@
 #include "initiateLevelTwoBombandDragon.h"
 void BombandDragonLoad()
-{
-
+{   
+    // bomb load 
     window.surface = IMG_Load("images/level2obstacles/dragonerr.png");
 
     if (!window.surface)
     {
-        printf("BOMB Error: %s\n", IMG_GetError());
+        printf("bomb Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -18,13 +18,13 @@ void BombandDragonLoad()
 
     if (!levelTwoBomb.tex)
     {
-        printf("BOMB TEXTURE ERROR %s\n", SDL_GetError());
+        printf("bomb Texture Error: %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
         exit(1);
     }
-    levelTwoBomb.rect;
+
     SDL_QueryTexture(levelTwoBomb.tex, NULL, NULL, &levelTwoBomb.rect.w, &levelTwoBomb.rect.h);
 
     levelTwoBomb.rect.w = (int)100;
@@ -32,15 +32,12 @@ void BombandDragonLoad()
     levelTwoBomb.rect.x = (int)-150;
     levelTwoBomb.rect.y = (int)WINDOW_HEIGHT + 10;
 
-    /********************************************************** CREATING BOMBS ENDS  **************************************************************/
-
-    /****************************************************** CREATING Dragon STARTS  ***********************************************************/
-    //dragon
+    //dragon load 
     window.surface = IMG_Load("images/level2obstacles/dragon_sprite.png");
 
     if (!window.surface)
     {
-        printf("character_BUTTON Error: %s\n", IMG_GetError());
+        printf("dragonSprite Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -51,7 +48,7 @@ void BombandDragonLoad()
     SDL_FreeSurface(window.surface);
     if (!levelTwoDragon.tex)
     {
-        printf("Tiger Texture %s\n", SDL_GetError());
+        printf("dragon Texture Error: %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -59,8 +56,9 @@ void BombandDragonLoad()
     }
 
     SDL_QueryTexture(levelTwoDragon.tex, NULL, NULL, &levelTwoDragonTexturewidth, &levelTwoDragonTextureheight);
+    
+    // variables for animating the dragonSprite 
     levelTwoDragonFramewidth = levelTwoDragonTexturewidth / 6 + 1;
-    //for red sprite                                        //for green sprite
     levelTwoDragonFrameheight = levelTwoDragonTextureheight / 2;
     levelTwoDragon.rect.w = levelTwoDragonFramewidth;
     levelTwoDragon.rect.h = levelTwoDragonFrameheight;
@@ -70,13 +68,14 @@ void BombandDragonLoad()
     levelTwoDragonPosition.rect.h = levelTwoDragonFrameheight;
     levelTwoDragonPosition.rect.x = WINDOW_WIDTH + 10;
     levelTwoDragonPosition.rect.y = 30;
-    //explosion
+    
 
+    //explosion load 
     window.surface = IMG_Load("images/level2obstacles/explosion.png");
 
     if (!window.surface)
     {
-        printf("EXPLOSION ERROR: %s\n", IMG_GetError());
+        printf("explosion Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -88,13 +87,13 @@ void BombandDragonLoad()
 
     if (!levelTwoExplosion.tex)
     {
-        printf("Explosion Texture %s\n", SDL_GetError());
+        printf("explosion Texture Error: %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
         exit(1);
     }
-    levelTwoExplosion.rect;
+
     SDL_QueryTexture(levelTwoExplosion.tex, NULL, NULL, &levelTwoExplosion.rect.w, &levelTwoExplosion.rect.h);
 
     levelTwoExplosion.rect.w = (int)0;

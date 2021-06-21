@@ -4,8 +4,9 @@ void collisionsLevelTwo()
 {
     for (int i = 0; i < 7; i++)
     {
-        SDL_bool collisionBetweenCharacterandCoinOne = SDL_HasIntersection(&levelTwoWindowCoins[i].rect, &levelTwoWindowCharacterPosition.rect);
-        if (collisionBetweenCharacterandCoinOne)
+        //handling the collision between the character and the coins 
+        SDL_bool collisionBetweenCharacterandCoins = SDL_HasIntersection(&levelTwoWindowCoins[i].rect, &levelTwoWindowCharacterPosition.rect);
+        if (collisionBetweenCharacterandCoins)
         {
             Mix_PlayChannel(-1, coingain, 0);
             currentScore += 100;
@@ -29,7 +30,7 @@ void collisionsLevelTwo()
             levelTwoCoinPointPopUp.rect.h = 0;
         }
     }
-
+    //handling the collision between the character and the bomb and the explosion effect 
     SDL_bool collisionBetweenCharacterandBomb = SDL_HasIntersection(&levelTwoBomb.rect, &levelTwoWindowCharacterPosition.rect);
 
     if (collisionBetweenCharacterandBomb && currentLife > 0)
@@ -53,13 +54,14 @@ void collisionsLevelTwo()
     {
         delayCountForExplosion++;
     }
-    if (delayCountForExplosion == 10 && levelTwoBomb.rect.w == 0)
+    if (delayCountForExplosion == 10 && levelTwoBomb.rect.w == 0)  //delaying the explosion 
     {
         levelTwoExplosion.rect.w = 0;
         levelTwoExplosion.rect.h = 0;
         delayCountForExplosion = 0;
     }
-
+    
+    //handling the collision between the character and the hearts 
     SDL_bool collisionBetweenCharacterandHeart = SDL_HasIntersection(&levelTwoHeart.rect, &levelTwoWindowCharacterPosition.rect);
 
     if (collisionBetweenCharacterandHeart)

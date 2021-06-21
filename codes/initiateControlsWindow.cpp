@@ -3,7 +3,7 @@
 void ControlsWindowLoad(void)
 {
 
-    window.surface = IMG_Load("images/newcomponents/controlsWindow.png");
+    window.surface = IMG_Load("images/newcomponents/finalControlsWindow.png");
 
     if (!window.surface)
     {

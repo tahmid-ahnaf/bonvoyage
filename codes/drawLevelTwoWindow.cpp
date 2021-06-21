@@ -2,14 +2,13 @@
 
 void updateAnimationSpeedForLevelTwoWindow()
 {
-    characterTwoPrevtime = characterTwoCurrentime;
-    characterTwoCurrentime = SDL_GetTicks();
-    characterTwoDeltatime = (characterTwoCurrentime - characterTwoPrevtime) / 280.0f;
-
+    
+    // adjusting animation speed for levelTwoDragon 
     levelTwoDragonPrevtime = levelTwoDragonCurrentime;
     levelTwoDragonCurrentime = SDL_GetTicks();
     levelTwoDragonDeltatime = (levelTwoDragonCurrentime - levelTwoDragonPrevtime) / 260.0f;
-
+    
+    // updating the frame for animating levelTwoDragonSprite 
     levelTwoDragonFrametime += levelTwoDragonDeltatime;
     if (levelTwoDragonFrametime >= (0.25f))
     {
@@ -21,7 +20,7 @@ void updateAnimationSpeedForLevelTwoWindow()
             levelTwoDragon.rect.x = 0;
         }
     }
-
+    //implementing collision after effect for levelTwoCharacter 
     if (delayCountForCharacterCollisionEffect == 250)
     {
         if (currentLife > 10)
@@ -40,7 +39,12 @@ void updateAnimationSpeedForLevelTwoWindow()
     {
         delayCountForCharacterCollisionEffect++;
     }
-
+    // adjusting animation speed for levelTwoCharacter 
+    characterTwoPrevtime = characterTwoCurrentime;
+    characterTwoCurrentime = SDL_GetTicks();
+    characterTwoDeltatime = (characterTwoCurrentime - characterTwoPrevtime) / 280.0f;
+    
+    // updating the frame for animating levelTwoCharacterSprite 
     characterTwoFrametime += characterTwoDeltatime;
 
     if (characterTwoFrametime >= (0.25f))
@@ -58,11 +62,13 @@ void updateAnimationSpeedForLevelTwoWindow()
             levelTwoWindowCharacter.rect.y = levelTwoCharacterFrameHeight;
         }
     }
-
+    
+    // adjusting animation speed for levelTwoRotatingCoins
     levelTwoRotatingCoinPrevtime = levelTwoRotatingCoinCurrentime;
     levelTwoRotatingCoinCurrentime = SDL_GetTicks();
     levelTwoRotatingCoinDeltatime = (levelTwoRotatingCoinCurrentime - levelTwoRotatingCoinPrevtime) / 280.0f;
-
+    
+    // updating the frame for animating levelTwoRotatingCoinSprite 
     levelTwoRotatingCoinFrametime += levelTwoRotatingCoinDeltatime;
 
     if (levelTwoRotatingCoinFrametime >= (0.25f))
@@ -81,10 +87,12 @@ void updateAnimationSpeedForLevelTwoWindow()
         }
     }
 
+    // adjusting animation speed for levelTwoRotatingHearts
     levelTwoRotatingHeartPrevtime = levelTwoRotatingHeartCurrentime;
     levelTwoRotatingHeartCurrentime = SDL_GetTicks();
     levelTwoRotatingHeartDeltatime = (levelTwoRotatingHeartCurrentime - levelTwoRotatingHeartPrevtime) / 280.0f;
-
+    
+    // updating the frame for animating levelTwoRotatingHeartSprite
     levelTwoRotatingHeartFrametime += levelTwoRotatingHeartDeltatime;
 
     if (levelTwoRotatingHeartFrametime >= (0.25f))
@@ -106,7 +114,8 @@ void updateAnimationSpeedForLevelTwoWindow()
     drawLevelTwoLifeText();
     levelTwoTrackmotion();
     updateHeartPosition();
-
+    
+    // update the score automatically while the character survives
     scoreUpdate++;
     if (scoreUpdate == 10)
     {
@@ -119,7 +128,8 @@ void updateAnimationSpeedForLevelTwoWindow()
     updateLevelTwoLifeBonusPopupFunction();
     updateLevelTwoScore();
     sprintf(lifeString, "%i", currentLife);
-
+    
+    // keeping levelTwoCharacter into the frame 
     if (yPosLevelTwoCharacter <= 40)
     {
         yPosLevelTwoCharacter = 40;
@@ -136,11 +146,11 @@ void updateAnimationSpeedForLevelTwoWindow()
     {
         xPosLevelTwoCharacter = 0;
     }
-    /*############### KEEPING THE CHARACTER INTO THE FRAME ENDS ####################*/
 
     levelTwoWindowCharacterPosition.rect.x = xPosLevelTwoCharacter;
     levelTwoWindowCharacterPosition.rect.y = yPosLevelTwoCharacter;
-
+    
+    // adjusting the animation speeds for levelTwo sky, mountains, treeShades, clouds, windowTrack 
     levelTwoSkyAnimationSpeed -= 0.5;
     if (levelTwoSkyAnimationSpeed < -levelTwoWindowSky.rect.w)
     {
@@ -169,16 +179,17 @@ void updateAnimationSpeedForLevelTwoWindow()
     {
         levelTwoTrackAnimationSpeed = 0;
     }
+    // resetting variables if no life remains 
     if (currentLife <= 0)
     {
-        isspaceclicked=0;
-        currentScore = 0;
+        isspaceclicked = 0;
         SDL_DestroyTexture(levelTwoLifeScoreText.tex);
         variables.levelTwo = 0;
         variables.levelTwoGameOver = 1;
         Mix_PlayChannel(-1, gameOver, 0);
     }
-
+    
+    // welcoming the throne for legendary gameplay 
     thronePosition -= 2;
 
     if (levelTwoWindowCharacterPosition.rect.x >= ironThrone.rect.x)
@@ -240,7 +251,6 @@ void drawLevelTwoWindowFunction()
 
     if (isspaceclicked == 1 && variables.levelTwo == 1)
     {
-
         drawLevelTwoTrackFunction();
         drawLevelTwoCoinsFunction();
         drawLevelTwoCoinsPopupFunction();
@@ -249,7 +259,8 @@ void drawLevelTwoWindowFunction()
         LevelTwoLifeTextCleanUp();
         drawLevelTwoHeartFunction();
         drawLevelTwoHeartPopupFunction();
-
+        
+        // left-right flipping of the character 
         if (leftbuttonclicked == 1)
         {
             SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;

@@ -1,7 +1,10 @@
 #include "initiateScoreBoard.h"
 
-void scoreboard(void)
+void scoreboard(void) //Creating scoreboard layouts and player name and scoreList
 {
+
+    // Legends Of Sundarban ScoreBoard Layout
+
     window.surface = IMG_Load("./images/newcomponents/sundarbanScoreboard.png");
     if (!window.surface)
     {
@@ -29,26 +32,20 @@ void scoreboard(void)
     scoreBoard.rect.x = WINDOW_WIDTH / 2 - 476;
     scoreBoard.rect.y = WINDOW_HEIGHT / 2 - 245;
 
-    //playername
+    // Legends Of Sundarban ScoreBoard Player Name List
 
     for (int i = 0; i < 5; i++)
     {
-        char sscore[100][10];
-        strcpy(sscore[0], "h");
+
         LoadScoreFile();
         if (showPlayerNameList[scoreList[i]])
             sprintf(scoreBoardPlayerNameString[i], "%s", showPlayerNameList[scoreList[i]]);
-        else
-        {
-            strcpy(playerNameList[0], "h");
-            sprintf(scoreBoardPlayerNameString[i], "%s", sscore);
-        }
 
         scoreBoardPlayerName[i].surface = TTF_RenderText_Solid(variables.font, scoreBoardPlayerNameString[i], variables.color);
 
         if (!window.surface)
         {
-            printf("playername Error: %s\n", IMG_GetError());
+            printf("scoreBoardPlayerName Error: %s\n", IMG_GetError());
             SDL_DestroyRenderer(app.rend);
             SDL_DestroyWindow(app.window);
             SDL_Quit();
@@ -58,7 +55,7 @@ void scoreboard(void)
         scoreBoardPlayerName[i].tex = SDL_CreateTextureFromSurface(app.rend, scoreBoardPlayerName[i].surface);
         if (!scoreBoardPlayerName[i].tex)
         {
-            printf("scoreText Texture %s\n", SDL_GetError());
+            printf("scoreBoardPlayerName Texture %s\n", SDL_GetError());
             SDL_DestroyRenderer(app.rend);
             SDL_DestroyWindow(app.window);
             SDL_Quit();
@@ -72,12 +69,13 @@ void scoreboard(void)
         if (i == 3 || i == 4)
             scoreBoardPlayerName[i].rect.y = (int)417 + i * 65;
 
-        if (strlen(scoreBoardPlayerNameString[i]) > 6)
+        if (strlen(scoreBoardPlayerNameString[i]) > 6) // adjusting frame for large names
         {
             scoreBoardPlayerName[i].rect.x = (int)575;
         }
 
-        //score
+        // Legends Of Sundarban ScoreBoard Player Score List (already sorted while loading)
+
         LoadScoreFile();
         if (scoreList[i])
             sprintf(scoreBoardPlayerScoreString[i], "%d", scoreList[i]);
@@ -88,7 +86,7 @@ void scoreboard(void)
 
         if (!scoreBoardPlayerScore[i].surface)
         {
-            printf("scorestring Error: %s\n", IMG_GetError());
+            printf("scoreBoardPlayerScore Error: %s\n", IMG_GetError());
             SDL_DestroyRenderer(app.rend);
             SDL_DestroyWindow(app.window);
             SDL_Quit();
@@ -98,7 +96,7 @@ void scoreboard(void)
         scoreBoardPlayerScore[i].tex = SDL_CreateTextureFromSurface(app.rend, scoreBoardPlayerScore[i].surface);
         if (!scoreBoardPlayerScore[i].tex)
         {
-            printf("scoreText Texture %s\n", SDL_GetError());
+            printf("scoreBoardPlayerScore Texture %s\n", SDL_GetError());
             SDL_DestroyRenderer(app.rend);
             SDL_DestroyWindow(app.window);
             SDL_Quit();
@@ -113,7 +111,7 @@ void scoreboard(void)
             scoreBoardPlayerScore[i].rect.y = (int)422 + i * 65;
     }
 }
-void levelOneScoreboardCleanUp()
+void levelOneScoreboardCleanUp() //cleanig up
 {
     SDL_DestroyTexture(scoreBoard.tex);
     for (int i = 0; i < 5; i++)

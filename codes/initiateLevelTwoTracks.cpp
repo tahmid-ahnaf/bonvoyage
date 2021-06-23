@@ -2,6 +2,7 @@
 
 void InvisibleBorderLoad()
 {   
+    // invisible border to control the collisions with the character and fixing the upper limit of jumping below the tracks 
     for(int i=0; i<2; i++)
     {
         window.surface = IMG_Load("images/level2obstacles/border.png");

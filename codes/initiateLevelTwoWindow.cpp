@@ -25,7 +25,7 @@ void levelTwoWindowLoad(void)
         SDL_Quit();
         exit(1);
     }
-    
+
     SDL_QueryTexture(levelTwoWindowSky.tex, NULL, NULL, &levelTwoWindowSky.rect.w, &levelTwoWindowSky.rect.h);
     levelTwoWindowSky.rect.w = (int)WINDOW_WIDTH;
     levelTwoWindowSky.rect.h = (int)WINDOW_HEIGHT;
@@ -85,14 +85,14 @@ void levelTwoWindowLoad(void)
         SDL_Quit();
         exit(1);
     }
-    
+
     SDL_QueryTexture(levelTwoWindowMountains.tex, NULL, NULL, &levelTwoWindowMountains.rect.w, &levelTwoWindowMountains.rect.h);
     levelTwoWindowMountains.rect.w = (int)WINDOW_WIDTH;
     levelTwoWindowMountains.rect.h = (int)650;
     levelTwoWindowMountains.rect.x = (int)0;
     levelTwoWindowMountains.rect.y = (int)220;
 
-    // levelTwoTreeshade load 
+    // levelTwoTreeshade load
 
     window.surface = IMG_Load("images/leveltwo/new/tree.png");
 
@@ -115,7 +115,7 @@ void levelTwoWindowLoad(void)
         SDL_Quit();
         exit(1);
     }
-    
+
     SDL_QueryTexture(levelTwoWindowTreeShade.tex, NULL, NULL, &levelTwoWindowTreeShade.rect.w, &levelTwoWindowTreeShade.rect.h);
     levelTwoWindowTreeShade.rect.w = (int)WINDOW_WIDTH;
     levelTwoWindowTreeShade.rect.h = (int)380;
@@ -144,14 +144,14 @@ void levelTwoWindowLoad(void)
         SDL_Quit();
         exit(1);
     }
-    
+
     SDL_QueryTexture(levelTwoWindowClouds.tex, NULL, NULL, &levelTwoWindowClouds.rect.w, &levelTwoWindowClouds.rect.h);
     levelTwoWindowClouds.rect.w = (int)WINDOW_WIDTH - 200;
     levelTwoWindowClouds.rect.h = (int)226;
     levelTwoWindowClouds.rect.x = (int)0;
     levelTwoWindowClouds.rect.y = 50;
 
-    //levelTwoWindowTrack load 
+    //levelTwoWindowTrack load
     window.surface = IMG_Load("images/leveltwo/new/newnightTrack.png");
 
     if (!window.surface)
@@ -173,15 +173,15 @@ void levelTwoWindowLoad(void)
         SDL_Quit();
         exit(1);
     }
-    
+
     SDL_QueryTexture(levelTwoWindowTrack.tex, NULL, NULL, &levelTwoWindowTrack.rect.w, &levelTwoWindowTrack.rect.h);
     levelTwoWindowTrack.rect.w = (int)WINDOW_WIDTH;
     levelTwoWindowTrack.rect.h = (int)200;
     levelTwoWindowTrack.rect.x = (int)0;
     levelTwoWindowTrack.rect.y = (int)760;
-    
-    // levelTwoWindowCharacter load 
-    levelTwoWindowCharacter.surface = IMG_Load("images/level2obstacles/sonicsprite.png");
+
+    // levelTwoWindowCharacter load
+    levelTwoWindowCharacter.surface = IMG_Load("images/level2obstacles/winterfellCharacter.png");
 
     if (!levelTwoWindowCharacter.surface)
     {
@@ -218,8 +218,8 @@ void levelTwoWindowLoad(void)
     float CHARACTER2_X_POS = (float)100;
     float CHARACTER2_Y_POS = (float)700;
 
-    // levelTwoIronThrone load 
-   
+    // levelTwoIronThrone load
+
     window.surface = IMG_Load("images/newcomponents/ironethrone.png");
 
     if (!window.surface)
@@ -241,7 +241,7 @@ void levelTwoWindowLoad(void)
         SDL_Quit();
         exit(1);
     }
-    
+
     SDL_QueryTexture(ironThrone.tex, NULL, NULL, &ironThrone.rect.w, &ironThrone.rect.h);
     ironThrone.rect.w = (int)254;
     ironThrone.rect.h = (int)289;
@@ -269,5 +269,6 @@ void levelTwoWindowCleanUp()
     LevelTwoCoinsCleanUp();
     LevelTwoCoinsPopCleanUp();
     BombandDragonCleanUp();
+    HeartCleanUp();
     IMG_Quit();
 }

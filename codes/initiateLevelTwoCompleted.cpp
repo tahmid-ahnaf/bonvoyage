@@ -1,13 +1,14 @@
 #include "initiateLevelTwoCompleted.h"
 
-void levelTwoCompletedLoad(void)
+void levelTwoCompletedLoad(void) // if player completes the game , overlay with a message apears
 {
-    // Overlay Load 
+    // Overlay Load
+
     window.surface = IMG_Load("images/levelone/overlay-min.png");
 
     if (!window.surface)
     {
-        printf("overlay Error: %s\n", IMG_GetError());
+        printf("levelTwoCompletedOverlay Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -19,7 +20,7 @@ void levelTwoCompletedLoad(void)
 
     if (!levelTwoCompletedOverlay.tex)
     {
-        printf("overlay Texture Error: %s\n", SDL_GetError());
+        printf("levelTwoCompletedOverlay Texture Error: %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -32,12 +33,12 @@ void levelTwoCompletedLoad(void)
     levelTwoCompletedOverlay.rect.x = (int)0;
     levelTwoCompletedOverlay.rect.y = (int)0;
 
-    //Trophy Load 
+    //Trophy Load
     window.surface = IMG_Load("images/newcomponents/trophy.png");
 
     if (!window.surface)
     {
-        printf("trophy Error: %s\n", IMG_GetError());
+        printf("levelTwoCompletedMessage Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();

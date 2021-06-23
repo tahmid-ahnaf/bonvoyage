@@ -25,3 +25,4 @@ extern void BombandDragonCleanUp();
 extern void LevelTwoCoinsPopCleanUp();
 extern void LevelTwoLifeLoad();
 extern void updateLevelTwoScore();
+extern void HeartCleanUp();

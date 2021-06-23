@@ -1,5 +1,6 @@
 #include "drawLife.h"
 
+//funtion to set the life sizes and rendering them
 void levelOneDrawLifeFunction()
 {
 

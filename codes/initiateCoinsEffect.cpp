@@ -1,5 +1,6 @@
 #include "initiateCoinsEffect.h"
 
+//funtion to load the effect after collecting coins
 void levelOneCoinsEffectLoad(void)
 {
     for (int i = 0; i < 5; i++)
@@ -8,7 +9,7 @@ void levelOneCoinsEffectLoad(void)
 
         if (!window.surface)
         {
-            printf("coinseffect[i]_BUTTON Error: %s\n", IMG_GetError());
+            printf("coinseffect[i] Error: %s\n", IMG_GetError());
             SDL_DestroyRenderer(app.rend);
             SDL_DestroyWindow(app.window);
             SDL_Quit();
@@ -19,7 +20,7 @@ void levelOneCoinsEffectLoad(void)
         SDL_FreeSurface(window.surface);
         if (!levelOneWindowCoinsEffect[i].tex)
         {
-            printf("coins[i]effects_  Texture %s\n", SDL_GetError());
+            printf("coinseffects[i] Texture %s\n", SDL_GetError());
             SDL_DestroyRenderer(app.rend);
             SDL_DestroyWindow(app.window);
             SDL_Quit();
@@ -34,6 +35,7 @@ void levelOneCoinsEffectLoad(void)
     }
 }
 
+//function to destroy the textures of coinseffect
 void levelOneCoinsEffectCleanUp()
 {
     for (int i = 0; i < 5; i++)

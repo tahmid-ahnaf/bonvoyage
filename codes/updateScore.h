@@ -12,7 +12,6 @@ extern Variables variables;
 extern void updateHighScoreOnFile(void);
 extern void updateLevelTwoHighScoreOnFile(void);
 extern void LoadScoreFile();
-extern void LevelTwoLoadScoreFile();
 extern void scoreboard();
 extern void levelTwoScoreboard();
 extern void updateLevelTwoHighScoreOnFile();

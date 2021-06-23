@@ -1,7 +1,9 @@
 #include "drawLevelOneCompleted.h"
 
+//funtion to control the speeds of the levelOne completed window elements
 void updateAnimationSpeedForLevelOneCompleted()
-{
+{   
+    //getting the current time
     levelOneBackgroundPrevtime = levelOneBackgroundCurrenttime;
     levelOneBackgroundCurrenttime = SDL_GetTicks();
     levelOneBackgroundDeltatime = (levelOneBackgroundCurrenttime - levelOneBackgroundPrevtime) / 20.0f;
@@ -46,13 +48,18 @@ void updateAnimationSpeedForLevelOneCompleted()
         }
     }
 }
+//funtion to render the components of levelOne completed window
 void drawLevelOneCompletedFunction()
-{
+{   
+    //when game ends count increases
     count++;
+    
+    //writes the score in files
     if (variables.saveScore == 1)
     {
         updateAnimationSpeedForLevelOneCompleted();
     }
+    //count is used to make sure score is written only once for one player
     if (variables.saveScore == 1 && count == 1)
     {
         updateScore();
@@ -95,7 +102,7 @@ void drawLevelOneCompletedFunction()
     SDL_RenderCopy(app.rend, levelOneWindowHighScore.tex, NULL, &levelOneWindowHighScore.rect);
     SDL_RenderCopy(app.rend, levelOneWindowScoreText.tex, NULL, &levelOneWindowScoreText.rect);
     SDL_RenderCopy(app.rend, levelOneWindowHighScoreText.tex, NULL, &levelOneWindowHighScoreText.rect);
-
+    //rendering the levelOne completed message
     SDL_RenderCopy(app.rend, levelOneCompletedOverlay.tex, NULL, &levelOneCompletedOverlay.rect);
     SDL_RenderCopy(app.rend, levelOneCompletedMessage.tex, NULL, &levelOneCompletedMessage.rect);
     SDL_RenderCopy(app.rend, back.tex, NULL, &back.rect);

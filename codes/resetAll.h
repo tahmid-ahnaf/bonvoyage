@@ -37,7 +37,7 @@ extern component
     characterFramePosition,
 
     levelOneWindowCoins[5],
-
+    levelOneLifeLoss[3],
     enterButton,
     back;
 

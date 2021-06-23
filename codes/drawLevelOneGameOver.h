@@ -18,7 +18,7 @@ extern component
     levelOneCompletedOverlay,
     levelOneGameOverMessage,
 
-    levelOneWindowCoins[5],
+    
 
     back;
 

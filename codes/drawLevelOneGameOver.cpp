@@ -1,7 +1,9 @@
 #include "drawLevelOneGameOver.h"
 
+//updating the component speeds for the gameover window
 void updateAnimationSpeedForLevelOneGameOver()
-{
+{   
+    //getting the current time
     levelOneBackgroundPrevtime = levelOneBackgroundCurrenttime;
     levelOneBackgroundCurrenttime = SDL_GetTicks();
     levelOneBackgroundDeltatime = (levelOneBackgroundCurrenttime - levelOneBackgroundPrevtime) / 20.0f;
@@ -46,13 +48,15 @@ void updateAnimationSpeedForLevelOneGameOver()
         }
     }
 }
+//funtion to render the components of the gameover window
 void drawLevelOneGameOverFunction()
 {
-
+    //what will happen if the game is over
     if (variables.levelOnegameOver == 1)
     {
         updateAnimationSpeedForLevelOneGameOver();
     }
+    //updating the score after game is over
     if (lifeSize == 0 && variables.levelOnegameOver == 1)
     {
         updateScore();
@@ -64,6 +68,7 @@ void drawLevelOneGameOverFunction()
     levelOneWindowTrees.rect.x = levelOneTreesAnimationSpeed;
     levelOneWindowClouds.rect.x = levelOneCloudsAnimationSpeed;
     levelOneWindowTrack.rect.x = levelOneTrackAnimationSpeed;
+    //rendering all the elements of the gameover window
     SDL_RenderClear(app.rend);
 
     SDL_RenderCopy(app.rend, levelOneWindowSky.tex, NULL, &levelOneWindowSky.rect);
@@ -96,7 +101,7 @@ void drawLevelOneGameOverFunction()
     SDL_RenderCopy(app.rend, levelOneWindowHighScore.tex, NULL, &levelOneWindowHighScore.rect);
     SDL_RenderCopy(app.rend, levelOneWindowScoreText.tex, NULL, &levelOneWindowScoreText.rect);
     SDL_RenderCopy(app.rend, levelOneWindowHighScoreText.tex, NULL, &levelOneWindowHighScoreText.rect);
-
+    //rendering the gameover message
     SDL_RenderCopy(app.rend, levelOneCompletedOverlay.tex, NULL, &levelOneCompletedOverlay.rect);
     SDL_RenderCopy(app.rend, levelOneGameOverMessage.tex, NULL, &levelOneGameOverMessage.rect);
     SDL_RenderCopy(app.rend, back.tex, NULL, &back.rect);

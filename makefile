@@ -1,4 +1,4 @@
-PROG = run1
+PROG = play
 
 CC = g++
 include common.mk

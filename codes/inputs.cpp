@@ -11,12 +11,16 @@ void doInput(void)
         {
             exit(0);
         }
+        //level one Key Events
+
         if (variables.levelOnePlayerName == 1 || variables.levelOne == 1)
         {
             if (event.type == SDL_KEYDOWN)
             {
                 if (event.key.keysym.sym == SDLK_BACKSPACE && strlen(playerName) > 1)
                 {
+                    //delteing player names character
+
                     playerName[strlen(playerName) - 1] = '\0';
                     updatePlayerName();
                 }
@@ -26,18 +30,23 @@ void doInput(void)
                 }
                 else if (event.key.keysym.scancode == SDL_SCANCODE_UP || event.key.keysym.scancode == SDL_SCANCODE_W)
                 {
+                    //if player jumps up  color and position are toggled
+
                     levelOneCharacterYposition -= levelOneMoveSpeed * levelOneCharacterDeltatime + 400;
                     SDL_SetTextureColorMod(levelOneWindowCharacter.tex, 255, 255, 255);
                 }
                 else if (event.key.keysym.scancode == SDL_SCANCODE_DOWN || event.key.keysym.scancode == SDL_SCANCODE_S)
                 {
+                    //if player jumps down  color and position are toggled
+
                     levelOneCharacterYposition += levelOneMoveSpeed * levelOneCharacterDeltatime + 400;
                     SDL_SetTextureColorMod(levelOneWindowCharacter.tex, 255, 255, 255);
                 }
             }
             else if (event.type == SDL_TEXTINPUT && variables.levelOnePlayerName == 1)
             {
-                //Not copy or pasting
+                //Not allowing player to copy paste for username
+
                 if (strlen(playerName) < 10 && !(SDL_GetModState() & KMOD_CTRL && (event.text.text[0] == ' ' || event.text.text[0] == 'c' || event.text.text[0] == 'C' || event.text.text[0] == 'v' || event.text.text[0] == 'V')))
                 {
                     strcat(playerName, event.text.text);
@@ -50,30 +59,32 @@ void doInput(void)
         {
             if (event.key.keysym.sym == SDLK_BACKSPACE && strlen(levelTwoPlayerName) > 1)
             {
+                //delteing player names character
+
                 levelTwoPlayerName[strlen(levelTwoPlayerName) - 1] = '\0';
                 updateLevelTwoPlayerName();
             }
         }
         if (event.type == SDL_TEXTINPUT && variables.levelTwoPlayerName == 1)
         {
-            //Not copy or pasting
+            //Not allowing player to copy paste for username
+
             if (strlen(levelTwoPlayerName) < 10 && !(SDL_GetModState() & KMOD_CTRL && (event.text.text[0] == ' ' || event.text.text[0] == 'c' || event.text.text[0] == 'C' || event.text.text[0] == 'v' || event.text.text[0] == 'V')))
             {
                 strcat(levelTwoPlayerName, event.text.text);
                 updateLevelTwoPlayerName();
             }
         }
-        if (variables.levelTwo == 1)
+        if (variables.levelTwo == 1) // level Two Key Events
         {
 
-            if(event.type == SDL_KEYDOWN)
+            if (event.type == SDL_KEYDOWN)
             {
-                if(event.key.keysym.scancode == SDL_SCANCODE_SPACE )
-                { 
-                    //IF SPACE IS PRESSED GAME START
+                if (event.key.keysym.scancode == SDL_SCANCODE_SPACE)
+                {
                     isspaceclicked = 1;
                 }
-                if(event.key.keysym.scancode == SDL_SCANCODE_RIGHT || event.key.keysym.scancode == SDL_SCANCODE_D)
+                if (event.key.keysym.scancode == SDL_SCANCODE_RIGHT || event.key.keysym.scancode == SDL_SCANCODE_D)
                 {
                     leftbuttonclicked = 0;
                     rightbuttonclicked = 1;
@@ -82,44 +93,44 @@ void doInput(void)
                         xPosLevelTwoCharacter += moveSpeed * characterTwoDeltatime;
                     }
                 }
-                if(event.key.keysym.scancode == SDL_SCANCODE_LEFT || event.key.keysym.scancode == SDL_SCANCODE_A)
+                if (event.key.keysym.scancode == SDL_SCANCODE_LEFT || event.key.keysym.scancode == SDL_SCANCODE_A)
                 {
                     leftbuttonclicked = 1;
                     rightbuttonclicked = 0;
                     xPosLevelTwoCharacter -= moveSpeed * characterTwoDeltatime;
                 }
-                    
-                if(event.key.keysym.scancode == SDL_SCANCODE_UP || event.key.keysym.scancode == SDL_SCANCODE_W)
+
+                if (event.key.keysym.scancode == SDL_SCANCODE_UP || event.key.keysym.scancode == SDL_SCANCODE_W)
                 {
-                    // handling the collision between invisible borders & the character and implementing the jumping effect of the character 
-                    
-                    SDL_bool collisionBetweenCharacterandInvisibleBorderOne =  SDL_HasIntersection(&levelTwoInvisibleBorder[0].rect , &levelTwoWindowCharacterPosition.rect);
-                    SDL_bool collisionBetweenCharacterandInvisibleBorderTwo =  SDL_HasIntersection(&levelTwoInvisibleBorder[1].rect , &levelTwoWindowCharacterPosition.rect);
-                    
-                    if(collisionBetweenCharacterandInvisibleBorderOne)
+                    // handling the collision between invisible borders & the character and implementing the jumping effect of the character
+
+                    SDL_bool collisionBetweenCharacterandInvisibleBorderOne = SDL_HasIntersection(&levelTwoInvisibleBorder[0].rect, &levelTwoWindowCharacterPosition.rect);
+                    SDL_bool collisionBetweenCharacterandInvisibleBorderTwo = SDL_HasIntersection(&levelTwoInvisibleBorder[1].rect, &levelTwoWindowCharacterPosition.rect);
+
+                    if (collisionBetweenCharacterandInvisibleBorderOne)
                     {
-                        yPosLevelTwoCharacter+=5 ;
+                        yPosLevelTwoCharacter += 5;
                     }
-                    else if(collisionBetweenCharacterandInvisibleBorderTwo)
+                    else if (collisionBetweenCharacterandInvisibleBorderTwo)
                     {
-                        yPosLevelTwoCharacter+=5;
+                        yPosLevelTwoCharacter += 5;
                     }
-                    else if(yPosLevelTwoCharacter > 250)
+                    else if (yPosLevelTwoCharacter > 250)
                     {
                         isUpPressed = 1;
                         yPosLevelTwoCharacter -= 70;
                     }
                 }
 
-                if(event.key.keysym.scancode == SDL_SCANCODE_DOWN || event.key.keysym.scancode == SDL_SCANCODE_S)
+                if (event.key.keysym.scancode == SDL_SCANCODE_DOWN || event.key.keysym.scancode == SDL_SCANCODE_S)
                 {
-                    isDownPressed=1;
-                }
-                 
+                    isDownPressed = 1;
                 }
             }
         }
+    }
 
+    // mouse events for all levels
 
     int mousex, mousey;
     int buttons = SDL_GetMouseState(&mousex, &mousey);
@@ -127,10 +138,9 @@ void doInput(void)
     {
         if (variables.gameWindowBegin == 1 && (mousex >= welcomeWindowNewgameButton.rect.x && mousex <= (welcomeWindowNewgameButton.rect.x + welcomeWindowNewgameButton.rect.w) && mousey >= welcomeWindowNewgameButton.rect.y && mousey <= (welcomeWindowNewgameButton.rect.y + welcomeWindowNewgameButton.rect.h)))
         {
-
+            variables.chooseLevel = 1;
             variables.levelOne = 0;
             variables.levelTwo = 0;
-            variables.chooseLevel = 1;
             variables.gameWindowBegin = 0;
             variables.levelOneCompleted = 0;
             variables.levelOnePlayerName = 0;
@@ -143,11 +153,10 @@ void doInput(void)
             variables.controlsWindow = 0;
             variables.levelTwoGameOver = 0;
             Mix_PlayChannel(-1, click, 0);
-            SDL_SetTextureColorMod(welcomeWindowNewgameButton.tex, 255, 23, 255);
         }
         if (variables.gameWindowBegin == 1 && (mousex >= welcomeWindowControlsButton.rect.x && mousex <= (welcomeWindowControlsButton.rect.x + welcomeWindowControlsButton.rect.w) && mousey >= welcomeWindowControlsButton.rect.y && mousey <= (welcomeWindowControlsButton.rect.y + welcomeWindowControlsButton.rect.h)))
         {
-
+            variables.controlsWindow = 1;
             variables.levelOne = 0;
             variables.levelTwo = 0;
             variables.chooseLevel = 0;
@@ -160,18 +169,17 @@ void doInput(void)
             variables.levelTwoScoreBoard = 0;
             variables.legendsWindow = 0;
             variables.newLevelTwoScore = 0;
-            variables.controlsWindow = 1;
             variables.levelTwoGameOver = 0;
             Mix_PlayChannel(-1, click, 0);
         }
         if (variables.chooseLevel == 1 && (mousex >= newgameWindowlevelOneButton.rect.x && mousex <= (newgameWindowlevelOneButton.rect.x + newgameWindowlevelOneButton.rect.w) && mousey >= newgameWindowlevelOneButton.rect.y && mousey <= (newgameWindowlevelOneButton.rect.y + newgameWindowlevelOneButton.rect.h)))
         {
+            variables.levelOnePlayerName = 1;
             variables.levelOne = 0;
             variables.levelTwo = 0;
             variables.chooseLevel = 0;
             variables.gameWindowBegin = 0;
             variables.levelOneCompleted = 0;
-            variables.levelOnePlayerName = 1;
             variables.newScore = 0;
             variables.ScoreBoard = 0;
             variables.levelOnegameOver = 0;
@@ -185,6 +193,7 @@ void doInput(void)
 
         if (variables.chooseLevel == 1 && (mousex >= newgameWindowlevelTwoButton.rect.x && mousex <= (newgameWindowlevelTwoButton.rect.x + newgameWindowlevelTwoButton.rect.w) && mousey >= newgameWindowlevelTwoButton.rect.y && mousey <= (newgameWindowlevelTwoButton.rect.y + newgameWindowlevelTwoButton.rect.h)))
         {
+            variables.levelTwoPlayerName = 1;
             variables.levelOne = 0;
             variables.levelTwo = 0;
             variables.chooseLevel = 0;
@@ -196,7 +205,6 @@ void doInput(void)
             variables.levelOnegameOver = 0;
             variables.levelTwoScoreBoard = 0;
             variables.legendsWindow = 0;
-            variables.levelTwoPlayerName = 1;
             variables.newLevelTwoScore = 0;
             variables.controlsWindow = 0;
             variables.levelTwoGameOver = 0;
@@ -220,15 +228,15 @@ void doInput(void)
             variables.newLevelTwoScore = 0;
             variables.controlsWindow = 0;
             variables.levelTwoGameOver = 0;
-            Mix_VolumeMusic(30);
+            Mix_VolumeMusic(30); //adjusting volume
             Mix_PlayMusic(whoWeWantToBe, 0);
             Mix_PlayChannel(-1, click, 0);
         }
 
         if (strlen(levelTwoPlayerName) > 1 && variables.levelTwoPlayerName == 1 && (mousex >= levelTwoEnterButton.rect.x && mousex <= (levelTwoEnterButton.rect.x + levelTwoEnterButton.rect.w) && mousey >= levelTwoEnterButton.rect.y && mousey <= (levelTwoEnterButton.rect.y + levelTwoEnterButton.rect.h)))
         {
-            variables.levelOne = 0;
             variables.levelTwo = 1;
+            variables.levelOne = 0;
             variables.chooseLevel = 0;
             variables.gameWindowBegin = 0;
             variables.levelOneCompleted = 0;
@@ -248,6 +256,7 @@ void doInput(void)
 
         if (variables.gameWindowBegin == 1 && (mousex >= welcomeWindowLegendsButton.rect.x && mousex <= (welcomeWindowLegendsButton.rect.x + welcomeWindowLegendsButton.rect.w) && mousey >= welcomeWindowLegendsButton.rect.y && mousey <= (welcomeWindowLegendsButton.rect.y + welcomeWindowLegendsButton.rect.h)))
         {
+            variables.legendsWindow = 1;
             variables.levelOne = 0;
             variables.levelTwo = 0;
             variables.chooseLevel = 0;
@@ -258,7 +267,6 @@ void doInput(void)
             variables.ScoreBoard = 0;
             variables.levelOnegameOver = 0;
             variables.levelTwoScoreBoard = 0;
-            variables.legendsWindow = 1;
             variables.levelTwoPlayerName = 0;
             variables.newLevelTwoScore = 0;
             variables.controlsWindow = 0;
@@ -267,6 +275,7 @@ void doInput(void)
         }
         if (variables.legendsWindow == 1 && (mousex >= newgameWindowlevelOneLegendsButton.rect.x && mousex <= (newgameWindowlevelOneLegendsButton.rect.x + newgameWindowlevelOneLegendsButton.rect.w) && mousey >= newgameWindowlevelOneLegendsButton.rect.y && mousey <= (newgameWindowlevelOneLegendsButton.rect.y + newgameWindowlevelOneLegendsButton.rect.h)))
         {
+            variables.ScoreBoard = 1;
             variables.levelOne = 0;
             variables.levelTwo = 0;
             variables.chooseLevel = 0;
@@ -274,7 +283,6 @@ void doInput(void)
             variables.levelOneCompleted = 0;
             variables.levelOnePlayerName = 0;
             variables.newScore = 0;
-            variables.ScoreBoard = 1;
             variables.levelOnegameOver = 0;
             variables.levelTwoScoreBoard = 0;
             variables.legendsWindow = 0;
@@ -287,6 +295,7 @@ void doInput(void)
 
         if (variables.legendsWindow == 1 && (mousex >= newgameWindowlevelTwoLegendsButton.rect.x && mousex <= (newgameWindowlevelTwoLegendsButton.rect.x + newgameWindowlevelTwoLegendsButton.rect.w) && mousey >= newgameWindowlevelTwoLegendsButton.rect.y && mousey <= (newgameWindowlevelTwoLegendsButton.rect.y + newgameWindowlevelTwoLegendsButton.rect.h)))
         {
+            variables.levelTwoScoreBoard = 1;
             variables.levelOne = 0;
             variables.levelTwo = 0;
             variables.chooseLevel = 0;
@@ -296,7 +305,6 @@ void doInput(void)
             variables.newScore = 0;
             variables.ScoreBoard = 0;
             variables.levelOnegameOver = 0;
-            variables.levelTwoScoreBoard = 1;
             variables.legendsWindow = 0;
             variables.levelTwoPlayerName = 0;
             variables.newLevelTwoScore = 0;
@@ -316,10 +324,13 @@ void doInput(void)
             {
                 Mix_PlayMusic(background, -1);
             }
+            //if player wants to go back reseting the windows
 
             resetAll();
         }
     }
+
+    // Hover Effects for Buttons
 
     if (variables.gameWindowBegin == 1 && (mousex >= welcomeWindowNewgameButton.rect.x && mousex <= (welcomeWindowNewgameButton.rect.x + welcomeWindowNewgameButton.rect.w) && mousey >= welcomeWindowNewgameButton.rect.y && mousey <= (welcomeWindowNewgameButton.rect.y + welcomeWindowNewgameButton.rect.h)))
     {

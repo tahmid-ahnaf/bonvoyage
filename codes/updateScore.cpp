@@ -1,6 +1,8 @@
 #include "updateScore.h"
-void updateScore()
+void updateScore() // for managin levelOne Score (sundarban)
 {
+
+    // loading the scores from file and updating them if necessary
 
     LoadScoreFile();
     sprintf(levelOneScoreString, "%i", levelOneCurrentScore);
@@ -13,11 +15,13 @@ void updateScore()
 
     sprintf(levelOneHighScoreString, "%i", scoreList[0]);
 
+    // level One Score Displaying Components Initialisation
+
     levelOneWindowScoreText.surface = TTF_RenderText_Solid(variables.font, levelOneScoreString, variables.color);
 
     if (!levelOneWindowScoreText.surface)
     {
-        printf("scoreText_BUTTON Error: %s\n", IMG_GetError());
+        printf("levelOneWindowScoreText Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -27,7 +31,7 @@ void updateScore()
     levelOneWindowScoreText.tex = SDL_CreateTextureFromSurface(app.rend, levelOneWindowScoreText.surface);
     if (!levelOneWindowScoreText.tex)
     {
-        printf("scoreText Texture %s\n", SDL_GetError());
+        printf("levelOneWindowScoreText Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -39,13 +43,13 @@ void updateScore()
     levelOneWindowScoreText.rect.x = (int)150;
     levelOneWindowScoreText.rect.y = (int)45;
 
-    //highscore
+    //level One High Score Displaying Components Initialisation
 
     levelOneWindowHighScoreText.surface = TTF_RenderText_Solid(variables.font, levelOneHighScoreString, variables.color);
 
     if (!levelOneWindowHighScoreText.surface)
     {
-        printf("highScoreText_BUTTON Error: %s\n", IMG_GetError());
+        printf("levelOneWindowHighScoreText Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -55,7 +59,7 @@ void updateScore()
     levelOneWindowHighScoreText.tex = SDL_CreateTextureFromSurface(app.rend, levelOneWindowHighScoreText.surface);
     if (!levelOneWindowHighScoreText.tex)
     {
-        printf("highScoreText Texture %s\n", SDL_GetError());
+        printf("levelOneWindowHighScoreText Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -68,7 +72,7 @@ void updateScore()
     levelOneWindowHighScoreText.rect.y = (int)110;
 }
 
-void levelOneScoreCleanUp()
+void levelOneScoreCleanUp() //cleaing up the textures and surfaces
 {
     SDL_DestroyTexture(levelOneWindowScoreText.tex);
     SDL_DestroyTexture(levelOneWindowHighScoreText.tex);
@@ -76,10 +80,12 @@ void levelOneScoreCleanUp()
     SDL_FreeSurface(levelOneWindowHighScoreText.surface);
 }
 
-void updateLevelTwoScore()
+void updateLevelTwoScore() // for managing Score of Level Two(Winterfell)
 {
 
-    LevelTwoLoadScoreFile();
+    //loading levelTwo Score and Updating if necessary
+    LoadScoreFile();
+
     sprintf(scoreString, "%i", currentScore);
 
     if (variables.levelTwoCompleted == 1 && countLevelTwo == 1)
@@ -89,11 +95,13 @@ void updateLevelTwoScore()
     }
     sprintf(levelTwoHighScoreString, "%i", levelTwoScoreList[0]);
 
+    //leve Two  Score Displaying Components Initialisation
+
     levelTwoWindowScoreText.surface = TTF_RenderText_Solid(variables.levelTwofont, scoreString, variables.levelTwocolor);
 
     if (!levelTwoWindowScoreText.surface)
     {
-        printf("scoreText_BUTTON Error: %s\n", IMG_GetError());
+        printf("levelTwoWindowScoreText Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -103,7 +111,7 @@ void updateLevelTwoScore()
     levelTwoWindowScoreText.tex = SDL_CreateTextureFromSurface(app.rend, levelTwoWindowScoreText.surface);
     if (!levelTwoWindowScoreText.tex)
     {
-        printf("scoreText Texture %s\n", SDL_GetError());
+        printf("levelTwoWindowScoreText Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -115,11 +123,13 @@ void updateLevelTwoScore()
     levelTwoWindowScoreText.rect.x = (int)150;
     levelTwoWindowScoreText.rect.y = (int)45;
 
+    //level Two High Score Displaying Components Initialisation
+
     levelTwoWindowHighScoreText.surface = TTF_RenderText_Solid(variables.levelTwofont, levelTwoHighScoreString, variables.levelTwocolor);
 
     if (!levelTwoWindowHighScoreText.surface)
     {
-        printf("highScoreText_BUTTON Error: %s\n", IMG_GetError());
+        printf("levelTwoWindowHighScoreText Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -130,7 +140,7 @@ void updateLevelTwoScore()
 
     if (!levelTwoWindowHighScoreText.tex)
     {
-        printf("highScoreText Texture %s\n", SDL_GetError());
+        printf("levelTwoWindowHighScoreText Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -142,7 +152,7 @@ void updateLevelTwoScore()
     levelTwoWindowHighScoreText.rect.x = (int)150;
     levelTwoWindowHighScoreText.rect.y = (int)110;
 }
-void levelTwoScoreCleanUp()
+void levelTwoScoreCleanUp() // cleaning up Level Two Score displaying surfaces and textures
 {
 
     SDL_FreeSurface(levelTwoWindowScoreText.surface);

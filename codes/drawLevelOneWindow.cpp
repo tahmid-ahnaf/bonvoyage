@@ -1,12 +1,14 @@
 #include "drawLevelOneWindow.h"
 
+//funtion to add the animation effects
 void updateAnimationSpeedForLevelOneWindow()
 {
-
+    //getting the current time 
     levelOneCharacterPrevtime = levelOneCharacterCurrentime;
     levelOneCharacterCurrentime = SDL_GetTicks();
     levelOneCharacterDeltatime = (levelOneCharacterCurrentime - levelOneCharacterPrevtime) / 220.0f;
-
+    
+    //setting the frame rate according to device fps
     levelOneTigerPrevtime = levelOneTigerCurrentime;
     levelOneTigerCurrentime = SDL_GetTicks();
     levelOneTigerDeltatime = (levelOneTigerCurrentime - levelOneTigerPrevtime) / 280.0f;
@@ -18,7 +20,8 @@ void updateAnimationSpeedForLevelOneWindow()
     levelOneBackgroundPrevtime = levelOneBackgroundCurrenttime;
     levelOneBackgroundCurrenttime = SDL_GetTicks();
     levelOneBackgroundDeltatime = (levelOneBackgroundCurrenttime - levelOneBackgroundPrevtime) / 20.0f;
-
+    
+    //character sprite movement
     levelOneCharacterFrametime += levelOneCharacterDeltatime;
     if (levelOneCharacterFrametime >= (0.25f))
     {
@@ -31,7 +34,8 @@ void updateAnimationSpeedForLevelOneWindow()
             levelOneCurrentScore += 22;
         }
     }
-
+    
+    //setting the tiger sprite movement or running effect
     levelOneTigerFrametime += levelOneTigerDeltatime;
     if (levelOneTigerFrametime >= (0.25f))
     {
@@ -43,6 +47,8 @@ void updateAnimationSpeedForLevelOneWindow()
             levelOneWindowTiger.rect.x = 0;
         }
     }
+
+    //when the character reaches the end
     if (characterFramePosition.rect.x >= levelOneCurzon.rect.x + 100)
     {
         variables.levelOneCompleted = 1;
@@ -53,42 +59,39 @@ void updateAnimationSpeedForLevelOneWindow()
     if (levelOneBackgroundFrametime >= (0.25f))
     {
         levelOneBackgroundFrametime = 0.0;
-
+        
         levelOneSkyAnimationSpeed -= 0.412;
+        //setting the movement speed for sky
         if (levelOneSkyAnimationSpeed < -levelOneWindowSky.rect.w)
         {
             levelOneSkyAnimationSpeed = 0;
         }
-        // levelOneCloudsAnimationSpeed -= 0.812;
-        // if (levelOneCloudsAnimationSpeed < -levelOneWindowClouds.rect.w)
-        // {
-        //     levelOneCloudsAnimationSpeed = 0;
-        // }
+         //setting the movement speed for mountains
         levelOneMountainsAnimationSpeed -= 1.625;
         if (levelOneMountainsAnimationSpeed < -levelOneWindowMountains.rect.w)
         {
             levelOneMountainsAnimationSpeed = 0;
         }
-
+         //setting the movement speed for treeshade
         levelOneTreeShadeAnimationSpeed -= 2.125;
         if (levelOneTreeShadeAnimationSpeed < -levelOneWindowTreeShade.rect.w)
         {
             levelOneTreeShadeAnimationSpeed = 0;
         }
-
+         //setting the movement speed for trees
         levelOneTreesAnimationSpeed -= 4.25;
         if (levelOneTreesAnimationSpeed < -levelOneWindowTrees.rect.w)
         {
             levelOneTreesAnimationSpeed = 0;
         }
-
+          //setting the movement speed for track
         levelOneTrackAnimationSpeed -= 5.5;
         if (levelOneTrackAnimationSpeed < -levelOneWindowTrack.rect.w)
         {
             levelOneTrackAnimationSpeed = 0;
         }
     }
-
+    //resetting the character position
     if (levelOneCharacterYposition <= 40)
     {
         levelOneCharacterYposition = 40;
@@ -108,6 +111,7 @@ void updateAnimationSpeedForLevelOneWindow()
     characterFramePosition.rect.x = WINDOW_WIDTH / 2 - 100;
     characterFramePosition.rect.y = levelOneCharacterYposition;
 
+    //setting the jump effect
     levelOneCharacterJumpFrametime += levelOneCharacterJumpDeltatime;
 
     if (levelOneCharacterJumpFrametime >= (0.25f))
@@ -125,7 +129,7 @@ void updateAnimationSpeedForLevelOneWindow()
     }
 
     tigerFramePosition.rect.y = tigerYposition;
-
+    //setting what happens after life becomes zero
     if (lifeSize == 0)
     {
         variables.levelOne = 0;
@@ -134,12 +138,14 @@ void updateAnimationSpeedForLevelOneWindow()
     }
     curzonPosition -= 3;
 
+    //setting tiger roar effect
     if (levelOneCurrentScore % 100 == 0)
     {
         Mix_VolumeChunk(tigerRoar, 10);
         Mix_PlayChannel(-1, tigerRoar, 0);
     }
 }
+//funtion to load all the animations
 void drawLevelOneWindowFunction()
 {
 
@@ -148,13 +154,13 @@ void drawLevelOneWindowFunction()
         updateAnimationSpeedForLevelOneWindow();
         updateScore();
     }
-
+    //setting the clouds animation speed
     levelOneCloudsAnimationSpeed -= 0.812;
     if (levelOneCloudsAnimationSpeed < -levelOneWindowClouds.rect.w)
     {
         levelOneCloudsAnimationSpeed = 0;
     }
-
+    
     levelOneWindowSky.rect.x = levelOneSkyAnimationSpeed;
     levelOneWindowMountains.rect.x = levelOneMountainsAnimationSpeed;
     levelOneWindowTreeShade.rect.x = levelOneTreeShadeAnimationSpeed;
@@ -162,8 +168,11 @@ void drawLevelOneWindowFunction()
     levelOneWindowClouds.rect.x = levelOneCloudsAnimationSpeed;
     levelOneWindowTrack.rect.x = levelOneTrackAnimationSpeed;
     levelOneCurzon.rect.x = curzonPosition;
-    SDL_RenderClear(app.rend);
 
+    //rendering all the objects
+    SDL_RenderClear(app.rend);
+    
+    //rendering the elements everytime new window comes
     SDL_RenderCopy(app.rend, levelOneWindowSky.tex, NULL, &levelOneWindowSky.rect);
     levelOneWindowSky.rect.x = levelOneSkyAnimationSpeed + levelOneWindowSky.rect.w;
     SDL_RenderCopy(app.rend, levelOneWindowSky.tex, NULL, &levelOneWindowSky.rect);
@@ -204,11 +213,14 @@ void drawLevelOneWindowFunction()
     }
 
     SDL_RenderCopy(app.rend, back.tex, NULL, &back.rect);
-
+    
+    //calling the functions for showing rewards and obstacles
     if (variables.levelOne == 1 && space == 1)
     {
         drawCoinsFunction();
         levelOneDrawObstacleFunction();
+        
+        //calling the funtion to detect collision
         collision();
         drawCoinsEffectFunction();
         levelOneDrawLifeFunction();

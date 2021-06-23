@@ -1,5 +1,6 @@
 #include "drawCoinsEffect.h"
 
+//funtion to delay the effect after getting a coin
 void coineffectdelay()
 {
     for (int i = 0; i < 5; i++)
@@ -11,6 +12,7 @@ void coineffectdelay()
         }
     }
 }
+//funtion to determine what happens after getting a coin
 void coinseffectupdateanimation()
 {
 
@@ -18,7 +20,7 @@ void coinseffectupdateanimation()
     if (levelOnePointEffectAnimationSpeed[0] < -1280)
     {
         levelOnePointEffectAnimationSpeed[0] = WINDOW_WIDTH;
-
+        //setting the coin getting effect to zero when new window arrives
         levelOneWindowCoinsEffect[0].rect.h = 0;
         levelOneWindowCoinsEffect[0].rect.w = 0;
         levelOneWindowCoinsEffect[0].rect.y = levelOneWindowCoins[0].rect.y;
@@ -64,7 +66,7 @@ void coinseffectupdateanimation()
         levelOneWindowCoinsEffect[4].rect.y = levelOneWindowCoins[4].rect.y;
     }
 }
-
+//funtion to show the effect after getting a coin
 void drawCoinsEffectFunction()
 {
     coinseffectupdateanimation();

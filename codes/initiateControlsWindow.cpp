@@ -7,7 +7,7 @@ void ControlsWindowLoad(void)
 
     if (!window.surface)
     {
-        printf("sky_BUTTON Error: %s\n", IMG_GetError());
+        printf("controlsList Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -18,13 +18,12 @@ void ControlsWindowLoad(void)
     SDL_FreeSurface(window.surface);
     if (!controlsList.tex)
     {
-        printf("sky_  Texture %s\n", SDL_GetError());
+        printf("controlsList  Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
         exit(1);
     }
-    controlsList.rect;
     SDL_QueryTexture(controlsList.tex, NULL, NULL, &controlsList.rect.w, &controlsList.rect.h);
     controlsList.rect.w = (int)786;
     controlsList.rect.h = (int)435;

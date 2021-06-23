@@ -1,5 +1,6 @@
 #include "initiateObstacle.h"
 
+//function to load obstacles of levelone
 void levelOneObstacleLoad(void)
 {
     for (int i = 0; i < 3; i++)
@@ -9,7 +10,7 @@ void levelOneObstacleLoad(void)
             window.surface = IMG_Load("images/levelone/obstacles/rocktwin.png");
             if (!window.surface)
             {
-                printf("Obstacle[i]_BUTTON Error: %s\n", IMG_GetError());
+                printf("Obstacle[i] Error: %s\n", IMG_GetError());
                 SDL_DestroyRenderer(app.rend);
                 SDL_DestroyWindow(app.window);
                 SDL_Quit();
@@ -20,13 +21,13 @@ void levelOneObstacleLoad(void)
             SDL_FreeSurface(window.surface);
             if (!levelOneWindowObstacle[i].tex)
             {
-                printf("Obstacle[i]_  Texture %s\n", SDL_GetError());
+                printf("Obstacle[i] Texture %s\n", SDL_GetError());
                 SDL_DestroyRenderer(app.rend);
                 SDL_DestroyWindow(app.window);
                 SDL_Quit();
                 exit(1);
             }
-            levelOneWindowObstacle[i].rect;
+
             SDL_QueryTexture(levelOneWindowObstacle[i].tex, NULL, NULL, &levelOneWindowObstacle[i].rect.w, &levelOneWindowObstacle[i].rect.h);
             levelOneWindowObstacle[i].rect.w = (int)160;
             levelOneWindowObstacle[i].rect.h = (int)140;
@@ -39,7 +40,7 @@ void levelOneObstacleLoad(void)
             window.surface = IMG_Load("images/levelone/obstacles/bigrock.png");
             if (!window.surface)
             {
-                printf("Obstacle[i]_BUTTON Error: %s\n", IMG_GetError());
+                printf("Obstacle[i] Error: %s\n", IMG_GetError());
                 SDL_DestroyRenderer(app.rend);
                 SDL_DestroyWindow(app.window);
                 SDL_Quit();
@@ -56,7 +57,7 @@ void levelOneObstacleLoad(void)
                 SDL_Quit();
                 exit(1);
             }
-            levelOneWindowObstacle[i].rect;
+
             SDL_QueryTexture(levelOneWindowObstacle[i].tex, NULL, NULL, &levelOneWindowObstacle[i].rect.w, &levelOneWindowObstacle[i].rect.h);
             levelOneWindowObstacle[i].rect.w = (int)224;
             levelOneWindowObstacle[i].rect.h = (int)136;
@@ -69,7 +70,7 @@ void levelOneObstacleLoad(void)
             window.surface = IMG_Load("images/levelone/obstacles/pumpkin.png");
             if (!window.surface)
             {
-                printf("Obstacle[i]_BUTTON Error: %s\n", IMG_GetError());
+                printf("Obstacle[i] Error: %s\n", IMG_GetError());
                 SDL_DestroyRenderer(app.rend);
                 SDL_DestroyWindow(app.window);
                 SDL_Quit();
@@ -80,13 +81,13 @@ void levelOneObstacleLoad(void)
             SDL_FreeSurface(window.surface);
             if (!levelOneWindowObstacle[i].tex)
             {
-                printf("Obstacle[i]_  Texture %s\n", SDL_GetError());
+                printf("Obstacle[i]  Texture %s\n", SDL_GetError());
                 SDL_DestroyRenderer(app.rend);
                 SDL_DestroyWindow(app.window);
                 SDL_Quit();
                 exit(1);
             }
-            levelOneWindowObstacle[i].rect;
+
             SDL_QueryTexture(levelOneWindowObstacle[i].tex, NULL, NULL, &levelOneWindowObstacle[i].rect.w, &levelOneWindowObstacle[i].rect.h);
             levelOneWindowObstacle[i].rect.w = (int)102;
             levelOneWindowObstacle[i].rect.h = (int)93;
@@ -96,6 +97,7 @@ void levelOneObstacleLoad(void)
     }
 }
 
+//funtion to destroy the textures of obstacles
 void levelOneObstacleCleanUp()
 {
     for (int i = 0; i < 3; i++)

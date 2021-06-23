@@ -1,12 +1,14 @@
 #include "drawLifeLoss.h"
 
+//funtion to control the effects after losing a life
 void lifeUpdateAnimation()
 {
-
+    //setting the speed of the life loss balloon
     levelOneLifeAnimationSpeed[0] -= 3;
     if (levelOneLifeAnimationSpeed[0] < 10)
     {
         levelOneLifeAnimationSpeed[0] = 700;
+        //setting life loss rect to zero whenever new window comes
         levelOneLifeLoss[0].rect.w = (int)0;
         levelOneLifeLoss[0].rect.h = (int)0;
     }
@@ -26,7 +28,7 @@ void lifeUpdateAnimation()
         levelOneLifeLoss[2].rect.h = (int)0;
     }
 }
-
+//funtion to render the life losing effect
 void levelOneDrawLifeLossFunction()
 {
     lifeUpdateAnimation();
@@ -37,6 +39,6 @@ void levelOneDrawLifeLossFunction()
         levelOneLifeLoss[i].rect.x = 700;
         SDL_RenderCopy(app.rend, levelOneLifeLoss[i].tex, NULL, &levelOneLifeLoss[i].rect);
 
-        // SDL_RenderCopy(app.rend, levelOneWindowObstacle[i].tex, NULL, &levelOneWindowObstacle[i].rect);
+        
     }
 }

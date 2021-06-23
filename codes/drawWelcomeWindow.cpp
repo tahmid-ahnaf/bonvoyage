@@ -24,13 +24,14 @@ void drawWelcomeWindowFunction()
 {
 
     updateAnimationSpeedForWelcomeWindow();
+    // updating components positions
     welcomeWindowSky.rect.x = welcomeWindowSkyAnimationSpeed;
     welcomeWindowBirds.rect.x = welcomeWindowBirdsAnimationSpeed;
     welcomeWindowMountains.rect.x = welcomeWindowMountainsAnimationSpeed;
     SDL_RenderClear(app.rend);
 
     SDL_RenderCopy(app.rend, welcomeWindowSky.tex, NULL, &welcomeWindowSky.rect);
-    welcomeWindowSky.rect.x = welcomeWindowSkyAnimationSpeed + welcomeWindowSky.rect.w;
+    welcomeWindowSky.rect.x = welcomeWindowSkyAnimationSpeed + welcomeWindowSky.rect.w; //updating to render consequetively
     SDL_RenderCopy(app.rend, welcomeWindowSky.tex, NULL, &welcomeWindowSky.rect);
 
     SDL_RenderCopy(app.rend, welcomeWindowBirds.tex, NULL, &welcomeWindowBirds.rect);

@@ -1,9 +1,11 @@
 #include "drawObstacle.h"
 
+//function to control the speeeds of the obstacles
 void levelOneObstacleUpdateAnimation()
 {
 
     levelOneObstacleAnimationSpeed[0] -= 5;
+    //reloading the obstacles everytime new window arrives
     if (levelOneObstacleAnimationSpeed[0] < -WINDOW_WIDTH - 100)
     {
         levelOneObstacleAnimationSpeed[0] = WINDOW_WIDTH + 100;
@@ -26,11 +28,11 @@ void levelOneObstacleUpdateAnimation()
         levelOneWindowObstacle[2].rect.h = (int)93;
     }
 }
-
+//funtion to load the obstacle animations
 void levelOneDrawObstacleFunction()
 {
     levelOneObstacleUpdateAnimation();
-
+    //rendering the obstacles
     for (int i = 0; i < 3; i++)
     {
         levelOneWindowObstacle[i].rect.x = levelOneObstacleAnimationSpeed[i] + 500 * i;

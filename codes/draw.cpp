@@ -1,5 +1,5 @@
 #include "draw.h"
-void prepareScene(void)
+void prepareScene(void) //Calling functions based on players command
 {
 
     if (variables.gameWindowBegin == 1)
@@ -63,7 +63,7 @@ void prepareScene(void)
     }
 }
 
-void presentScene(void)
+void presentScene(void) //Presenting the Window
 {
     SDL_RenderPresent(app.rend);
 }

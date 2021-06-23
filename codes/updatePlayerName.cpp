@@ -1,12 +1,13 @@
 #include "updatePlayerName.h"
+
 void updatePlayerName()
 {
 
-    //Player name
+    //Player Name
 
     enterName.surface = TTF_RenderText_Solid(variables.font, playerName, variables.color);
 
-    if (!window.surface)
+    if (!enterName.surface)
     {
         printf("playername Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
@@ -18,7 +19,7 @@ void updatePlayerName()
     enterName.tex = SDL_CreateTextureFromSurface(app.rend, enterName.surface);
     if (!enterName.tex)
     {
-        printf("back_BUTTON  Texture %s\n", SDL_GetError());
+        printf("playername  Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -31,17 +32,20 @@ void updatePlayerName()
     enterName.rect.x = (int)WINDOW_WIDTH / 2 - 55;
     enterName.rect.y = (int)405;
 
+    // Keeping name in frame for larger names
+
     if (strlen(playerName) > 7)
     {
         enterName.rect.x -= 25;
     }
 
-    //boxforplayername
+    //Box for typing Playername
+
     window.surface = IMG_Load("images/levelone/nameSquare.png");
 
     if (!window.surface)
     {
-        printf("playername Error: %s\n", IMG_GetError());
+        printf("playerNameBox Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -52,7 +56,7 @@ void updatePlayerName()
     SDL_FreeSurface(window.surface);
     if (!playerNameBox.tex)
     {
-        printf("back_BUTTON  Texture %s\n", SDL_GetError());
+        printf("playerNameBox  Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -65,12 +69,13 @@ void updatePlayerName()
     playerNameBox.rect.x = (int)WINDOW_WIDTH / 2 - 187;
     playerNameBox.rect.y = (int)385;
 
-    //enterbutton
+    //Enter button
+
     window.surface = IMG_Load("images/buttons/newenterbutton.png");
 
     if (!window.surface)
     {
-        printf("enterbuttonBUTTON Error: %s\n", IMG_GetError());
+        printf("enterButton Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -81,7 +86,7 @@ void updatePlayerName()
     SDL_FreeSurface(window.surface);
     if (!enterButton.tex)
     {
-        printf("enterbutton  Texture %s\n", SDL_GetError());
+        printf("enterButton  Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -94,12 +99,13 @@ void updatePlayerName()
     enterButton.rect.x = (int)WINDOW_WIDTH / 2 - 119;
     enterButton.rect.y = (int)WINDOW_HEIGHT / 2;
 
-    //entercommand
+    //Enter Command
+
     window.surface = IMG_Load("images/levelone/enterYourName.png");
 
     if (!window.surface)
     {
-        printf("enterbuttonBUTTON Error: %s\n", IMG_GetError());
+        printf("enterCommand Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -123,7 +129,7 @@ void updatePlayerName()
     enterCommand.rect.x = (int)WINDOW_WIDTH / 2 - 192;
     enterCommand.rect.y = (int)WINDOW_HEIGHT / 2 - 200;
 }
-void levelOnePlayerNameCleanUp()
+void levelOnePlayerNameCleanUp() //cleaning up Components surface and texture
 {
     SDL_DestroyTexture(enterName.tex);
     SDL_DestroyTexture(enterButton.tex);

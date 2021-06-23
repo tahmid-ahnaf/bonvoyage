@@ -73,7 +73,7 @@ $ sudo apt-get install libsdl2-mixer-2.0-0
 From the directory of Bon-Voyage open your terminal and run the following Command
 
 ```console
-$ make && ./run
+$ make && ./play
 ```
 
 [Back To The Top](#Bon-Voyage)

@@ -1,6 +1,6 @@
 #include "resetAll.h"
 
-void resetAll()
+void resetAll() // Resetting all the variables
 {
     variables.gameWindowBegin = 1;
     variables.levelOne = 0;
@@ -60,6 +60,8 @@ void resetAll()
     {
         levelOneObstacleAnimationSpeed[i] = 1380;
         levelOneLifeAnimationSpeed[i] = 700;
+        levelOneLifeLoss[i].rect.w = (int)0;
+        levelOneLifeLoss[i].rect.h = (int)0;
     }
     curzonPosition = 15000;
     count = 0;
@@ -67,10 +69,10 @@ void resetAll()
     lifePercentage = 0;
     isspaceclicked = 0;
     rightbuttonclicked = 1;
-    leftbuttonclicked=0;
+    leftbuttonclicked = 0;
     levelTwoWindowLoad();
 
     countLevelTwo = 0;
     thronePosition = 10000;
-    // currentLife = 100;
+    SDL_SetTextureColorMod(levelOneWindowCharacter.tex, 255, 255, 255);
 }

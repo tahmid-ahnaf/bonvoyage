@@ -1,17 +1,22 @@
 #include "loadScoreFile.h"
+
 FILE *fp;
-void LoadScoreFile()
+
+void LoadScoreFile() //lodaing Score from files
 {
     int i = 0, j;
 
-    fp = fopen("score.txt", "r"); // OPENING FILE
+    // Loading Level One Score
+
+    fp = fopen("score.txt", "r"); // Opening file to read
 
     while (fscanf(fp, "%s %d\n", &playerNameList[i], &scoreList[i]) != EOF)
     {
-        sprintf(showPlayerNameList[scoreList[i]], "%s", playerNameList[i]);
+        sprintf(showPlayerNameList[scoreList[i]], "%s", playerNameList[i]); //mapping the score for players
         i++;
     }
     int tmp;
+    // sorting the score list
     for (i = 0; scoreList[i]; i++)
     {
         for (j = i + 1; scoreList[j]; j++)
@@ -28,15 +33,17 @@ void LoadScoreFile()
     fclose(fp);
     sprintf(levelOneHighScoreString, "%i", scoreList[0]);
 
-    //level two
+    //Loading Level Two Scores
 
-    fp = fopen("scoreleveltwo.txt", "r"); // OPENING FILE
+    fp = fopen("scoreleveltwo.txt", "r"); //  Opening file to read
     i = 0;
     while (fscanf(fp, "%s %d\n", &levelTwoPlayerNameList[i], &levelTwoScoreList[i]) != EOF)
     {
-        sprintf(showLevelTwoPlayerNameList[levelTwoScoreList[i]], "%s", levelTwoPlayerNameList[i]);
+        sprintf(showLevelTwoPlayerNameList[levelTwoScoreList[i]], "%s", levelTwoPlayerNameList[i]); //mapping the score for players
         i++;
     }
+    // sorting the score list
+
     for (i = 0; levelTwoScoreList[i]; i++)
     {
         for (j = i + 1; levelTwoScoreList[j]; j++)
@@ -56,7 +63,7 @@ void LoadScoreFile()
     sprintf(levelTwoHighScoreString, "%i", levelTwoScoreList[0]);
 }
 
-void updateHighScoreOnFile()
+void updateHighScoreOnFile() //if player completes the level then score is saved
 {
     levelOneHighScore = levelOneCurrentScore;
 
@@ -72,15 +79,7 @@ void updateHighScoreOnFile()
     fclose(fp);
 }
 
-void LevelTwoLoadScoreFile()
-{
-    FILE *fp;
-    fp = fopen("scoreleveltwo.txt", "r"); // OPENING FILE
-    fscanf(fp, "%d", &highScore);
-    fclose(fp);
-}
-
-void updateLevelTwoHighScoreOnFile()
+void updateLevelTwoHighScoreOnFile() //if player completes the level then score is saved
 {
     highScore = currentScore;
     fp = fopen("scoreleveltwo.txt", "a");

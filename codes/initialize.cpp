@@ -33,11 +33,14 @@ void initSDL(void)
         SDL_Quit();
         exit(1);
     }
-    variables.font = TTF_OpenFont("Freshman.ttf", 30);
+    //loading fonts and setting colors
 
+    variables.font = TTF_OpenFont("Freshman.ttf", 30); // opening fonts
     variables.color = {234, 206, 9};
     variables.levelTwofont = TTF_OpenFont("Freshman.ttf", 30);
     variables.levelTwocolor = {234, 206, 9};
+
+    //loading All musics
 
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
     background = Mix_LoadMUS("audio/inception.mp3");
@@ -53,7 +56,8 @@ void initSDL(void)
     gameOver = Mix_LoadWAV("audio/gameOver.wav");
     click = Mix_LoadWAV("audio/click.wav");
 
-    //back
+    //Back button initialization
+
     window.surface = IMG_Load("images/backbutton.png");
 
     if (!window.surface)
@@ -82,7 +86,7 @@ void initSDL(void)
     back.rect.x = (int)30;
     back.rect.y = (int)890;
 
-    //function calls
+    //function calls to load other game windows
 
     SDL_StartTextInput();
 
@@ -109,7 +113,7 @@ void initSDL(void)
 
     ControlsWindowLoad();
 }
-void cleanup(void)
+void cleanup(void) //cleaning up all the components at exit
 {
 
     welcomeWindowCleanUp();
@@ -123,19 +127,20 @@ void cleanup(void)
     levelOneScoreboardCleanUp();
     levelOneObstacleCleanUp();
     levelOneLifeLossCleanUp();
+    levelOneLifeCleanUp();
     levelOneCoinsEffectCleanUp();
     levelOneCoinsCleanUp();
     levelOneGameOverCleanUp();
+    levelTwoCompletedCleanUp();
 
     LegendsWindowCleanUp();
-
     levelTwoWindowCleanUp();
     levelTwoScoreboardCleanUp();
+    controlsWindowCleanUp();
+
     SDL_DestroyRenderer(app.rend);
     SDL_DestroyWindow(app.window);
-
     SDL_DestroyTexture(back.tex);
-
     SDL_StopTextInput();
     TTF_CloseFont(variables.font);
     TTF_Quit();

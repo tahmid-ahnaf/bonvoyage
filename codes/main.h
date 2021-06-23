@@ -2,6 +2,8 @@
 
 App app;
 component
+    //welcome window Components
+
     welcomeWindowSky,
     welcomeWindowBirds,
     welcomeWindowMountains,
@@ -12,8 +14,12 @@ component
     welcomeWindowLegendsButton,
     welcomeWindowExitButton,
 
+    //newgame Window Components
+
     newgameWindowlevelOneButton,
     newgameWindowlevelTwoButton,
+
+    //level One(SundarBan) Components
 
     levelOneWindowSky,
     levelOneWindowSun,
@@ -31,21 +37,6 @@ component
     levelOneCompletedOverlay,
     levelOneCompletedMessage,
     levelOneCurzon, initialInstructions,
-
-    levelTwoWindowSky,
-    levelTwoWindowMoon,
-    levelTwoWindowMountains,
-    levelTwoWindowTreeShade,
-    levelTwoWindowClouds,
-    levelTwoWindowTrack,
-    characterFramePosition,
-    tigerFramePosition,
-
-    levelTwoWindowScoreText,
-    levelTwoWindowHighScoreText,
-    levelTwoLifeScoreText,
-    levelTwoWindowCoins[7],
-
     levelOneWindowCoins[5],
     levelOneWindowObstacle[3],
     levelOneWindowLife[6],
@@ -55,6 +46,47 @@ component
     window,
     enterName,
     enterButton,
+    playerNameBox,
+    enterCommand,
+
+    //Level Two Components
+
+    levelTwoWindowSky,
+    levelTwoWindowMoon,
+    levelTwoWindowMountains,
+    levelTwoWindowTreeShade,
+    levelTwoWindowClouds,
+    levelTwoWindowTrack,
+    characterFramePosition,
+    tigerFramePosition,
+    levelTwoWindowScoreText,
+    levelTwoWindowHighScoreText,
+    levelTwoLifeScoreText,
+    levelTwoWindowCoins[7],
+    levelTwoWindowCharacter,
+    levelTwoWindowCharacterPosition,
+    levelTwoInvisibleBorder[2],
+    levelTwoTrack[2],
+    levelTwoRotatingCoin,
+    levelTwoCoinPointPopUp,
+    levelTwoBomb,
+    levelTwoDragon,
+    levelTwoDragonPosition,
+    levelTwoExplosion,
+    levelTwoHeart,
+    ironThrone,
+    levelTwoRotatingHeart,
+    levelTwoLifeBonusPopUp,
+    levelTwoLifeScoreDisplay,
+    levelTwoHeartDisplay,
+    levelTwoCompletedOverlay,
+    levelTwoCompletedMessage,
+    levelTwoEnterName,
+    levelTwoEnterButton,
+    levelTwoPlayerNameBox,
+    levelTwoEnterCommand,
+
+    //score Board Components for both levels
 
     scoreBoard,
     scoreBoardPlayerScore[5],
@@ -63,28 +95,20 @@ component
     levelTwoScoreBoardPlayerScore[5],
     levelTwoScoreBoardPlayerName[5],
 
-    playerNameBox,
-    enterCommand,
+    //Components for game Over (used for both levels)
 
     levelOneGameOverOverlay,
     levelOneGameOverMessage,
 
-    levelTwoWindowCharacter, levelTwoWindowCharacterPosition,
-    levelTwoInvisibleBorder[2], levelTwoTrack[2], levelTwoRotatingCoin, levelTwoCoinPointPopUp, levelTwoBomb, levelTwoDragon, levelTwoDragonPosition, levelTwoExplosion,
-    levelTwoHeart, levelTwoRotatingHeart, levelTwoLifeBonusPopUp, levelTwoLifeScoreDisplay, levelTwoHeartDisplay,
-    levelTwoCompletedOverlay, levelTwoCompletedMessage,
+    //legends window Components
 
     newgameWindowlevelOneLegendsButton,
     newgameWindowlevelTwoLegendsButton,
 
-    levelTwoEnterName,
-    levelTwoEnterButton,
-    levelTwoPlayerNameBox,
-    levelTwoEnterCommand,
-
+    // control Window Components
     controlsList,
-    ironThrone,
 
+    //Back button
     back;
 
 Variables variables;

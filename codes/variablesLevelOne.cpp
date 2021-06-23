@@ -1,24 +1,17 @@
 #include "variablesLevelOne.h"
 
+// welcome window animation speed
+
 float welcomeWindowSkyAnimationSpeed = 0;
 float welcomeWindowMountainsAnimationSpeed = 0;
 float welcomeWindowBirdsAnimationSpeed = 0;
 
-float levelOneSkyAnimationSpeed = 0;
-float levelOneMountainsAnimationSpeed = 0;
-float levelOneTreeShadeAnimationSpeed = 0;
-float levelOneTreesAnimationSpeed = 0;
-float levelOneTrackAnimationSpeed = 0;
-float levelOneCloudsAnimationSpeed = 0;
+float levelOneSkyAnimationSpeed = 0, levelOneMountainsAnimationSpeed = 0,
+      levelOneTreeShadeAnimationSpeed = 0, levelOneTreesAnimationSpeed = 0,
+      levelOneTrackAnimationSpeed = 0, levelOneCloudsAnimationSpeed = 0;
 
-// float levelTwoSkyAnimationSpeed = 0;
-// float levelTwoMountainsAnimationSpeed = 0;
-// float levelTwoTreeShadeAnimationSpeed = 0;
-// float levelTwoTrackAnimationSpeed = 0;
-// float levelTwoCloudsAnimationSpeed = 0;
-
-int levelOneCharacterFramewidth = 0, levelOneCharacterFrameheight = 0;
-int levelOneCharacterTexturewidth = 0, levelOneCharacterTextureheight = 0;
+int levelOneCharacterFramewidth = 0, levelOneCharacterFrameheight = 0,
+    levelOneCharacterTexturewidth = 0, levelOneCharacterTextureheight = 0;
 
 float levelOneCharacterFrametime = 0;
 int levelOneCharacterPrevtime = 0;
@@ -36,10 +29,8 @@ float levelOneTigerDeltatime = 0;
 float levelOneMoveSpeed = 0;
 
 int levelOneHighScore = 0;
-char levelOneScoreString[10];
-char levelOneHighScoreString[10];
-char scoreBoardPlayerNameString[100][10];
-char scoreBoardPlayerScoreString[100][10];
+char levelOneScoreString[10], levelOneHighScoreString[10],
+    scoreBoardPlayerNameString[100][10], scoreBoardPlayerScoreString[100][10];
 
 int space = 0;
 int levelOneCurrentScore = 0;

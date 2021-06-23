@@ -2,6 +2,8 @@
 
 void welcomeWindowLoad(void)
 {
+    // Welcome Window Backgroud Sky
+
     window.surface = IMG_Load("./images/frontbackground/sky.png");
     if (!window.surface)
     {
@@ -29,12 +31,12 @@ void welcomeWindowLoad(void)
     welcomeWindowSky.rect.x = 0;
     welcomeWindowSky.rect.y = 0;
 
-    // welcome screen birds
+    // Welcome Window Backgroud Birds
 
     window.surface = IMG_Load("./images/frontbackground/birds.png");
     if (!window.surface)
     {
-        printf("Welcome window sky Surface Error: %s\n", IMG_GetError());
+        printf("welcomeWindowBirds Surface Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -45,7 +47,7 @@ void welcomeWindowLoad(void)
 
     if (!welcomeWindowBirds.tex)
     {
-        printf("Welcome window sky Texture %s\n", SDL_GetError());
+        printf("welcomeWindowBirds Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -58,11 +60,12 @@ void welcomeWindowLoad(void)
     welcomeWindowBirds.rect.x = 0;
     welcomeWindowBirds.rect.y = 100;
 
-    //welcome screen mountains
+    // Welcome Window Backgroud Mountains
+
     window.surface = IMG_Load("./images/frontbackground/mountains.png");
     if (!window.surface)
     {
-        printf("Welcome window sky Surface Error: %s\n", IMG_GetError());
+        printf("welcomeWindowMountains Surface Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -73,7 +76,7 @@ void welcomeWindowLoad(void)
 
     if (!welcomeWindowMountains.tex)
     {
-        printf("Welcome window sky Texture %s\n", SDL_GetError());
+        printf("welcomeWindowMountains Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -86,11 +89,12 @@ void welcomeWindowLoad(void)
     welcomeWindowMountains.rect.x = 0;
     welcomeWindowMountains.rect.y = 200;
 
-    //welcome screen trees
+    // Welcome Window Backgroud Trees
+
     window.surface = IMG_Load("./images/frontbackground/frontTrees.png");
     if (!window.surface)
     {
-        printf("Welcome window sky Surface Error: %s\n", IMG_GetError());
+        printf("welcomeWindowTrees Surface Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -101,7 +105,7 @@ void welcomeWindowLoad(void)
 
     if (!welcomeWindowTrees.tex)
     {
-        printf("Welcome window sky Texture %s\n", SDL_GetError());
+        printf("welcomeWindowTrees Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -114,12 +118,13 @@ void welcomeWindowLoad(void)
     welcomeWindowTrees.rect.x = 0;
     welcomeWindowTrees.rect.y = 0;
 
-    //title
+    // Welcome Window Game Logo
+
     window.surface = IMG_Load("images/bonvoyagelogo.png");
 
     if (!window.surface)
     {
-        printf("game_title Error: %s\n", IMG_GetError());
+        printf("welcomeWindowGameTitle Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -131,7 +136,7 @@ void welcomeWindowLoad(void)
 
     if (!welcomeWindowGameTitle.tex)
     {
-        printf("game_title  Texture %s\n", SDL_GetError());
+        printf("welcomeWindowGameTitle  Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -144,12 +149,13 @@ void welcomeWindowLoad(void)
     welcomeWindowGameTitle.rect.x = (int)WINDOW_WIDTH / 2 - 120;
     welcomeWindowGameTitle.rect.y = (int)WINDOW_HEIGHT / 2 - 460;
 
-    //newgame
+    // Welcome Window Play  Button
+
     window.surface = IMG_Load("images/buttons/newPlayButton.png");
 
     if (!window.surface)
     {
-        printf("NEWGAME_BUTTON Error: %s\n", IMG_GetError());
+        printf("welcomeWindowNewgameButton Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -161,25 +167,26 @@ void welcomeWindowLoad(void)
 
     if (!welcomeWindowNewgameButton.tex)
     {
-        printf("NEWGAME_BUTTON  Texture %s\n", SDL_GetError());
+        printf("welcomeWindowNewgameButton  Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
         exit(1);
     }
-    welcomeWindowNewgameButton.rect;
+
     SDL_QueryTexture(welcomeWindowNewgameButton.tex, NULL, NULL, &welcomeWindowNewgameButton.rect.w, &welcomeWindowNewgameButton.rect.h);
     welcomeWindowNewgameButton.rect.w = (int)309;
     welcomeWindowNewgameButton.rect.h = (int)77;
     welcomeWindowNewgameButton.rect.x = (int)WINDOW_WIDTH / 2 + 180;
     welcomeWindowNewgameButton.rect.y = (int)WINDOW_HEIGHT / 2 - 220;
 
-    //Legends Button
+    // Welcome Window Legends  Button
+
     window.surface = IMG_Load("images/buttons/newLegendsButton.png");
 
     if (!window.surface)
     {
-        printf("controls_BUTTON Error: %s\n", IMG_GetError());
+        printf("welcomeWindowLegendsButton Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -191,25 +198,26 @@ void welcomeWindowLoad(void)
 
     if (!welcomeWindowLegendsButton.tex)
     {
-        printf("Legends_BUTTON  Texture %s\n", SDL_GetError());
+        printf("welcomeWindowLegendsButton  Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
         exit(1);
     }
-    welcomeWindowLegendsButton.rect;
+
     SDL_QueryTexture(welcomeWindowLegendsButton.tex, NULL, NULL, &welcomeWindowLegendsButton.rect.w, &welcomeWindowLegendsButton.rect.h);
     welcomeWindowLegendsButton.rect.w = (int)309;
     welcomeWindowLegendsButton.rect.h = (int)77;
     welcomeWindowLegendsButton.rect.x = (int)welcomeWindowNewgameButton.rect.x;
     welcomeWindowLegendsButton.rect.y = (int)welcomeWindowNewgameButton.rect.y + 100;
 
-    //Controls
+    // Welcome Window Controls  Button
+
     window.surface = IMG_Load("images/buttons/newControlsButton.png");
 
     if (!window.surface)
     {
-        printf("Controls_BUTTON Error: %s\n", IMG_GetError());
+        printf("welcomeWindowControlsButton Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -221,25 +229,26 @@ void welcomeWindowLoad(void)
 
     if (!welcomeWindowControlsButton.tex)
     {
-        printf("Controls_BUTTON  Texture %s\n", SDL_GetError());
+        printf("welcomeWindowControlsButton  Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
         exit(1);
     }
-    welcomeWindowControlsButton.rect;
+
     SDL_QueryTexture(welcomeWindowControlsButton.tex, NULL, NULL, &welcomeWindowControlsButton.rect.w, &welcomeWindowControlsButton.rect.h);
     welcomeWindowControlsButton.rect.w = (int)309;
     welcomeWindowControlsButton.rect.h = (int)70;
     welcomeWindowControlsButton.rect.x = (int)welcomeWindowNewgameButton.rect.x;
     welcomeWindowControlsButton.rect.y = (int)welcomeWindowNewgameButton.rect.y + 200;
 
-    //exit
+    //WelCome Window Exit Button
+
     window.surface = IMG_Load("images/buttons/newExitButton.png");
 
     if (!window.surface)
     {
-        printf("details_BUTTON Error: %s\n", IMG_GetError());
+        printf("welcomeWindowExitButton Error: %s\n", IMG_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
@@ -251,13 +260,13 @@ void welcomeWindowLoad(void)
 
     if (!welcomeWindowExitButton.tex)
     {
-        printf("Exit_BUTTON  Texture %s\n", SDL_GetError());
+        printf("welcomeWindowExitButton  Texture %s\n", SDL_GetError());
         SDL_DestroyRenderer(app.rend);
         SDL_DestroyWindow(app.window);
         SDL_Quit();
         exit(1);
     }
-    welcomeWindowExitButton.rect;
+
     SDL_QueryTexture(welcomeWindowExitButton.tex, NULL, NULL, &welcomeWindowExitButton.rect.w, &welcomeWindowExitButton.rect.h);
     welcomeWindowExitButton.rect.w = (int)309;
     welcomeWindowExitButton.rect.h = (int)70;
@@ -265,7 +274,7 @@ void welcomeWindowLoad(void)
     welcomeWindowExitButton.rect.y = (int)welcomeWindowNewgameButton.rect.y + 300;
 }
 
-void welcomeWindowCleanUp()
+void welcomeWindowCleanUp() // cleaning up components textures and surfaces
 {
 
     SDL_DestroyTexture(welcomeWindowSky.tex);
@@ -276,5 +285,6 @@ void welcomeWindowCleanUp()
     SDL_DestroyTexture(welcomeWindowNewgameButton.tex);
     SDL_DestroyTexture(welcomeWindowLegendsButton.tex);
     SDL_DestroyTexture(welcomeWindowControlsButton.tex);
+    SDL_DestroyTexture(welcomeWindowExitButton.tex);
     IMG_Quit();
 }

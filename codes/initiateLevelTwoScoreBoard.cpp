@@ -2,7 +2,8 @@
 
 void levelTwoScoreboard(void)
 {
-    //levelTwoScoreBoard load 
+    // Legends Of Winterfell ScoreBoard Layouts
+
     window.surface = IMG_Load("./images/newcomponents/gotScoreboard.png");
     if (!window.surface)
     {
@@ -30,7 +31,7 @@ void levelTwoScoreboard(void)
     levelTwoScoreBoard.rect.x = WINDOW_WIDTH / 2 - 476;
     levelTwoScoreBoard.rect.y = WINDOW_HEIGHT / 2 - 245;
 
-    //levelTwoPlayerName load 
+    // Legends Of Winterfell ScoreBoard Player Name List
 
     for (int i = 0; i < 5; i++)
     {
@@ -38,7 +39,6 @@ void levelTwoScoreboard(void)
         if (showLevelTwoPlayerNameList[levelTwoScoreList[i]])
         {
             sprintf(levelTwoScoreBoardPlayerNameString[i], "%s", showLevelTwoPlayerNameList[levelTwoScoreList[i]]);
-
         }
         else
         {
@@ -78,7 +78,7 @@ void levelTwoScoreboard(void)
             levelTwoScoreBoardPlayerName[i].rect.x = (int)575;
         }
 
-        //levelTwoPlayerScore load
+        // Legends Of Winterfell ScoreBoard Player Score List
         LoadScoreFile();
         if (levelTwoScoreList[i])
             sprintf(levelTwoScoreBoardPlayerScoreString[i], "%d", levelTwoScoreList[i]);

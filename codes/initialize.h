@@ -31,6 +31,7 @@ extern void levelOneLifeLossCleanUp(void);
 extern void levelOneCoinsEffectCleanUp(void);
 extern void levelOneCoinsCleanUp(void);
 extern void levelOneGameOverCleanUp(void);
+extern void levelOneLifeCleanUp(void);
 
 extern void levelTwoWindowCleanUp(void);
 
@@ -44,3 +45,4 @@ extern void LegendsWindowCleanUp();
 extern void updateLevelTwoPlayerName();
 
 extern void ControlsWindowLoad();
+extern void controlsWindowCleanUp();

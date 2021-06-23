@@ -2,37 +2,25 @@ typedef struct
 {
     SDL_Renderer *rend;
     SDL_Window *window;
-} App;
+} App; // for creating the window
 
 typedef struct
 {
     SDL_Surface *surface;
     SDL_Texture *tex;
     SDL_Rect rect;
-} component;
+} component; // this structure is used to create all the elements of the game
 
 typedef struct
 {
-    int chooseLevel;
-    int gameWindowBegin = 1;
-    int levelOne = 0;
-    int levelTwo = 0;
-    int levelOneCompleted = 0;
-    int levelOnePlayerName = 0;
-    int levelTwoPlayerName = 0;
-    int newScore = 0;
-    int ScoreBoard = 0;
-    int saveScore = 0;
-    int levelOnegameOver = 0;
-    int levelTwoCompleted = 0;
-    int levelTwoScoreBoard = 0;
-    int legendsWindow = 0;
-    int newLevelTwoScore = 0;
-    int controlsWindow = 0;
-    int levelTwoGameOver = 0;
+    int chooseLevel, gameWindowBegin = 1, levelOne = 0, levelTwo = 0,
+                     levelOneCompleted = 0, levelOnePlayerName = 0, levelTwoPlayerName = 0,
+                     newScore = 0, ScoreBoard = 0, saveScore = 0, levelOnegameOver = 0,
+                     levelTwoCompleted = 0, levelTwoScoreBoard = 0, legendsWindow = 0,
+                     newLevelTwoScore = 0, controlsWindow = 0, levelTwoGameOver = 0;
     TTF_Font *font;
     SDL_Color color;
     TTF_Font *levelTwofont;
     SDL_Color levelTwocolor;
 
-} Variables;
+} Variables; //for creating variables for window creating and destroying
